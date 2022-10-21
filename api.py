@@ -1,15 +1,12 @@
-from typing import Union
-
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from langdetect import detect
 
 api = FastAPI()
 
 
-@api.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@api.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+@api.post("/language_detection/")
+async def language_detection(request: Request):
+    body = await request.json()
+    text = body["text"]
+    language = detect(text)
+    return {"language": language}
