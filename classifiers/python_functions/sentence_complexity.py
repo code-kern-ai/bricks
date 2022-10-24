@@ -1,4 +1,5 @@
-from typing import Dict
+from pydantic import BaseModel
+from typing import Dict, Optional
 import textstat
 
 def setall(d, keys, value):
@@ -22,19 +23,33 @@ def get_mapping_complexity(score):
         return OUTCOMES[MIN_SCORE]
     return OUTCOMES[int(score)]
 
-def fn_sentence_complexity(request: Dict):
+
+class SentenceComplexityModel(BaseModel):
+    text: str
+    language: Optional[str]
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "text": "Wow, this is really cool!",
+                "language": "en"
+            }
+        }
+
+
+def fn_sentence_complexity(request: SentenceComplexityModel):
     """Calculate sentence complexity of text
     
     Args:
-        request (Dict): request body
+        reequest (SentenceComplexityModel): schema of request body
 
     Returns:
         dict: Sentence complexity of text
     """
 
-    text = request["text"]
+    text = request.text
 
-    language = request.get("language")
+    language = request.language
     if language is not None:
         textstat.set_lang(language)
     
