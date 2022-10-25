@@ -4,3 +4,4 @@ langdetect==1.0.9
 pip-chill==1.0.1
 textstat==0.7.3
 uvicorn==0.19.0
+spacy==3.1.3
