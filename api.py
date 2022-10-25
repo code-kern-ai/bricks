@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 
 import classifiers
+import extractors
+from extractors.util.spacy import download_all_models
 
 api = FastAPI()
 
@@ -21,3 +23,6 @@ async def root():
     return HTMLResponse(content=html_content, status_code=200) 
 
 api.include_router(classifiers.router, prefix='/classifiers')
+api.include_router(extractors.router, prefix='/extractors')
+
+download_all_models()
