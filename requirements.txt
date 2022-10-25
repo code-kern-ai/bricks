@@ -1,14 +1,6 @@
-de-core-news-sm==3.4.0
-en-core-web-sm==3.4.1
-es-core-news-sm==3.4.0
 fastapi==0.85.1
-fr-core-news-sm==3.4.0
 gunicorn==20.1.0
-it-core-news-sm==3.4.0
 langdetect==1.0.9
-nl-core-news-sm==3.4.0
 pip-chill==1.0.1
-pt-core-news-sm==3.4.0
 textstat==0.7.3
 uvicorn==0.19.0
-xx-ent-wiki-sm==3.4.0
