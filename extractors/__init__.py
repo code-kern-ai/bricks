@@ -9,10 +9,10 @@ router = APIRouter()
 def url_extraction(request: UrlExtractionModel):
     return fn_url_extraction(request)
 
-@router.post('/hashtag_extraxtion')
+@router.post('/hashtag_extraction')
 def hash_extraction(request: HashExtraction):
     return hash_ext(request)
 
-@router.post('/email_extraxtion')
+@router.post('/email_extraction')
 def email_extraction(request: EmailExtraction):
     return email_ext(request)
