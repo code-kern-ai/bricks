@@ -8,7 +8,8 @@ from extractors.util.spacy import download_all_models
 api = FastAPI()
 
 @api.get("/")
-async def root():
+
+def root():
     html_content = """
     <html>
         <head>
