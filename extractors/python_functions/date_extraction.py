@@ -12,7 +12,8 @@ def date_ext(request: DateExtraction):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
     doc = nlp(text)
-    regex = re.compile(r"[(0-9|Jan(uary)|Feb(ruary)|Mar(ch)|Apr(il)|May|Jun(e)|Jul(y)|Sep(tember)|Oct(ober)|Nov(ember)|Dec(ember))\s]+[\w\./-][0-9A-Za-z]+[./,-][\s0-9]+")
+    regex = re.compile(r"(?:[0-9]{1,2}|Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[\/\. -]{1}(?:[0-9]{1,2}|Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[,\/\. -]{1}(?:[0-9]{2,4})")
+ # added whitespace instead of \s since \s can also read newline
     regex.findall(text)
 
     spans = []
