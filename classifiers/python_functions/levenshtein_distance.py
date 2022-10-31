@@ -11,7 +11,7 @@ class LevenshteinDistanceModel(BaseModel):
         schema_extra = {
             "example": {
                 "text_first ": "Example.",
-                "text_second": "Examples",
+                "text_second": "Examples.",
                 "weights": (1, 1, 1)
             }
         }
