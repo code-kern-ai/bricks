@@ -9,7 +9,7 @@ api = FastAPI()
 
 @api.get("/")
 
-def root():
+async def root():
     html_content = """
     <html>
         <head>
