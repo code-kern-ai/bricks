@@ -36,12 +36,11 @@ class SentenceComplexityModel(BaseModel):
             }
         }
 
-
 def fn_sentence_complexity(request: SentenceComplexityModel):
     """Calculate sentence complexity of text
     
     Args:
-        reequest (SentenceComplexityModel): schema of request body
+        request (SentenceComplexityModel): schema of request body
 
     Returns:
         dict: Sentence complexity of text
