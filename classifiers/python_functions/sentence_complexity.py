@@ -23,7 +23,6 @@ def get_mapping_complexity(score):
         return OUTCOMES[MIN_SCORE]
     return OUTCOMES[int(score)]
 
-
 class SentenceComplexityModel(BaseModel):
     text: str
     language: Optional[str]
