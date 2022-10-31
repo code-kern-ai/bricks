@@ -23,7 +23,6 @@ def get_mapping_complexity(score):
         return OUTCOMES[MIN_SCORE]
     return OUTCOMES[int(score)]
 
-
 class SentenceComplexityModel(BaseModel):
     text: str
     language: Optional[str]
@@ -36,12 +35,11 @@ class SentenceComplexityModel(BaseModel):
             }
         }
 
-
 def fn_sentence_complexity(request: SentenceComplexityModel):
     """Calculate sentence complexity of text
     
     Args:
-        reequest (SentenceComplexityModel): schema of request body
+        request (SentenceComplexityModel): schema of request body
 
     Returns:
         dict: Sentence complexity of text
