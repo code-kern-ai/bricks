@@ -76,6 +76,8 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+*.ipynb
 test.ipynb
 
 # IPython
@@ -128,3 +130,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.idea/
