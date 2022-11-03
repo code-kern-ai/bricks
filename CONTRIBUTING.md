@@ -105,5 +105,30 @@ langdetect
 
 If you're not sure, no worries, we're already incredibly thankful for your contribution! We'll add this to the requirements file ourselves.
 
+## spaCy for extractor modules
+We use spaCy for extractor modules, as it helps to put texts into correct tokens. Please use spaCy for extractor modules, and match character returns with token-level returns. For instance:
+```python
+def date_extraction(request: DateExtraction):
+    text = request.text
+    
+    # load the spaCy module as a singleton
+    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    doc = nlp(text)
+
+    # process e.g. via a regular expression
+    regex = re.compile(r"(?:[0-9]{1,2}|Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[\/\. -]{1}(?:[0-9]{1,2}|Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)[,\/\. -]{1}(?:[0-9]{2,4})")
+ # added whitespace instead of \s since \s can also read newline
+    regex.findall(text)
+
+    # match the found character indices to spaCy
+    spans = []
+    for match in regex.finditer(text):
+        start, end = match.span()
+        span = doc.char_span(start, end)
+        spans.append([span.start, span.end, span.text])
+
+    return {"spans": spans}
+```
+
 ## Quality assurance
 We want to make sure that things work nicely and that the modules are of high quality. Therefore, when we will review your submission, we'll do blackbox tests and will check the above criteria. Again, this is about collaboration, so please don't worry about this too much. We'll help you with this!
