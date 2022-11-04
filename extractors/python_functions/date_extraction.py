@@ -28,4 +28,4 @@ def date_extractor(request: DateExtractionModel):
         span = doc.char_span(start, end)
         spans.append([span.start, span.end, span.text])
 
-    return {"spans": spans}
+    return {"extracted dates": spans}

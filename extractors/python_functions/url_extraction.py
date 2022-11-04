@@ -29,4 +29,4 @@ def fn_url_extraction(request: UrlExtractionModel):
         span = doc.char_span(start, end)
         spans.append([span.start, span.end, span.text])
 
-    return {"spans": spans}
+    return {"extracted urls": spans}

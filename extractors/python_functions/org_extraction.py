@@ -25,4 +25,4 @@ def organisation_extraction(request: OrganisationExtractionModel):
         if entity.label_ == 'ORG':
             organisation.append((entity.start, entity.end, entity))
 
-    return {"organisation": organisation}
+    return {"extracted organisations": organisation}

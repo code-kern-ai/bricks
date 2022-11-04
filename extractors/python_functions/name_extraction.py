@@ -31,6 +31,6 @@ def name_extractor(request: NameExtractionModel):
     # "name" will contain all the occurrences of a particular name.
     # This is because spacy treats each word in a text as a unique vector.
     # So, two occurrences of "Div" does not mean "Div" == "Div"!
-    names = {"Extracted names": name}
+    names = {"extracted names": name}
 
     return names
