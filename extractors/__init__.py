@@ -4,6 +4,9 @@ from .python_functions.hashtag_extraction import hash_ext, HashExtraction
 from .python_functions.email_extraction import email_ext, EmailExtraction
 from .python_functions.date_extraction import date_ext, DateExtraction
 from .python_functions.time_extraction import time_extractor, TimeExtractionModel
+from .python_functions.price_extraction import price_extractor, PriceExtractionModel
+from .python_functions.org_extraction import organisation_extraction, OrganisationExtractionModel
+from .python_functions.name_extraction import name_ext, NameExtractionModel
 
 router = APIRouter()
 
@@ -26,3 +29,15 @@ def date_extraction(request: DateExtraction):
 @router.post('/time_extraction')
 def time_extraction(request: TimeExtractionModel):
     return time_extractor(request)
+    
+@router.post('/price_extraction')
+def price_extraction(request: PriceExtractionModel):
+    return price_extractor(request)
+    
+@router.post('/org_extraction')
+def org_extraction(request: OrganisationExtractionModel):
+    return organisation_extraction(request)
+
+@router.post('/name_extraction')
+def name_extraction(request:NameExtractionModel):
+    return name_ext(request)
