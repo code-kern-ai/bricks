@@ -7,7 +7,14 @@ class TimeExtractionModel(BaseModel):
     text: str
     spacy_tokenizer: Optional[str] = "en_core_web_sm"
 
-def time_ext(request: TimeExtractionModel):
+    class Config:
+        schema = {
+            "example": {
+                "text": "Right now it is 14:40:37. Three hours ago it was 11:40 am. Two hours and twenty mins from now it will be 5PM."
+            }
+        }
+
+def time_extractor(request: TimeExtractionModel):
     """
     This function extracts the time from a given text. The correct date format is necessary for successful extraction.
     Valid time formats: "H am/pm/AM/PM", "HH:MM", "HH:MM:SS".
