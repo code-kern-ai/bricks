@@ -6,7 +6,7 @@ import re
 
 class EmailExtraction(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacy_tokenizer: Optional[str] 
 
 def email_ext(request: EmailExtraction):
     text = request.text

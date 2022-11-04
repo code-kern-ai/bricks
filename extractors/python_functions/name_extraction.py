@@ -4,7 +4,7 @@ from extractors.util.spacy import SpacySingleton
 
 class NameExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: str[Optional] = "en_core_web_lg"
+    spacy_tokenizer: Optional[str]
 
 def name_ext(request: NameExtractionModel):
 
@@ -16,6 +16,7 @@ def name_ext(request: NameExtractionModel):
     nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
     doc = nlp(text)
     name = []
+    
 
     for entity in doc.ents:
         if entity.label_ == 'PERSON':

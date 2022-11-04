@@ -6,7 +6,7 @@ import re
 
 class HashExtraction(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacy_tokenizer: Optional[str] 
 
 def hash_ext(request: HashExtraction):
     text = request.text

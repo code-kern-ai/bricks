@@ -5,7 +5,7 @@ import re
 
 class TimeExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacy_tokenizer: Optional[str] 
 
     class Config:
         schema = {
