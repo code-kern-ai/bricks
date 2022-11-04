@@ -3,8 +3,7 @@ import spacy
 def download_all_models():
     print("Downloading spacy models...")
     models = [
-        "en_core_web_sm",
-        "en_core_web_lg",
+        "en_core_web_sm"
     ]
     for model in models:
         print(f"Downloading {model}...")
