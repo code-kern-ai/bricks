@@ -6,7 +6,15 @@ class NameExtractionModel(BaseModel):
     text: str
     spacy_tokenizer: str[Optional] = "en_core_web_lg"
 
-def name_ext(request: NameExtractionModel):
+    class Config:
+        schema = {
+            "example": {
+                "text": "John Doe worked with Jane Doe and now they are together.",
+                "spacy_tokenizer": "en_core_web_lg",
+            }
+        }
+
+def name_extractor(request: NameExtractionModel):
 
     """
     Returns a dictionary of the extracted names from a given text.
