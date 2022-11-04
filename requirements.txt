@@ -6,5 +6,3 @@ python-Levenshtein==0.20.8
 textstat==0.7.3
 uvicorn==0.19.0
 spacy==3.4.1
-en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.4.0/en_core_web_sm-3.4.0-py3-none-any.whl
-en_core_web_lg @ https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.4.0/en_core_web_lg-3.4.0-py3-none-any.whl
