@@ -4,7 +4,7 @@ from extractors.util.spacy import SpacySingleton
 
 class OrganisationExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] 
+    spacy_tokenizer: Optional[str] = "en_core_web_lg"
 
     class Config:
         schema = {

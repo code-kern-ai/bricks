@@ -6,7 +6,7 @@ import re
 
 class DateExtraction(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] 
+    spacy_tokenizer: Optional[str] = "en_core_web_sm"
 
 def date_ext(request: DateExtraction):
     text = request.text

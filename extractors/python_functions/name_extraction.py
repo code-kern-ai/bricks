@@ -4,7 +4,7 @@ from extractors.util.spacy import SpacySingleton
 
 class NameExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str]
+    spacy_tokenizer: Optional[str] = "en_core_web_lg"
 
 def name_ext(request: NameExtractionModel):
 
