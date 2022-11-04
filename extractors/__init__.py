@@ -3,6 +3,7 @@ from .python_functions.url_extraction import fn_url_extraction, UrlExtractionMod
 from .python_functions.hashtag_extraction import hash_ext, HashExtraction
 from .python_functions.email_extraction import email_ext, EmailExtraction
 from .python_functions.date_extraction import date_ext, DateExtraction
+from .python_functions.org_extraction import organisation_extraction, OrganisationExtractionModel
 
 router = APIRouter()
 
@@ -21,3 +22,7 @@ def email_extraction(request: EmailExtraction):
 @router.post('/date_extraction')
 def date_extraction(request: DateExtraction):
     return date_ext(request)
+
+@router.post('/org_extraction')
+def org_extraction(request: OrganisationExtractionModel):
+    return organisation_extraction(request)
