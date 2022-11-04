@@ -4,7 +4,7 @@ from extractors.util.spacy import SpacySingleton
 
 class OrganisationExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: str[Optional] = "en_core_web_lg"
+    spacy_tokenizer: Optional[str] 
 
     class Config:
         schema = {
@@ -16,8 +16,13 @@ class OrganisationExtractionModel(BaseModel):
 
 def organisation_extraction(request: OrganisationExtractionModel):
     text = request.text
-    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
     doc = nlp(text)
+
+    try:
+        nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    except:
+        print("Unable find tokenizer. Using en_core_web_lg instead.")
+        nlp = SpacySingleton.get_nlp("en_core_web_lg")
 
     organisation = []
 
