@@ -22,5 +22,5 @@ def fn_syllable_count(request: SyllableCountModel):
     """
     text = request.text
     syllables = textstat.syllable_count(text)
-    return {"time": syllables}
+    return {"Syllables": syllables}
 

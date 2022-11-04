@@ -5,7 +5,7 @@ import re
 
 class PriceExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_lg"
+    spacy_tokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema = {

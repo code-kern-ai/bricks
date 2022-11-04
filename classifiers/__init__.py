@@ -24,5 +24,5 @@ def syllable_count(request: SyllableCountModel):
     return fn_syllable_count(request)
 
 @router.post('/levenshtein_distance')
-def levenshtein_distance(request: SyllableCountModel):
+def levenshtein_distance(request: LevenshteinDistanceModel):
     return fn_levenshtein_distance(request)
