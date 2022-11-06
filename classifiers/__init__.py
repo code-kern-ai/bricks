@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from .python_functions import (
     language_detection,
     levenshtein_distance,
+    lookup_list,
     reading_time,
     sentence_complexity,
     syllable_count,
@@ -18,6 +19,10 @@ def api_language_detection(request: language_detection.LanguageDetectionModel):
 @router.post('/levenshtein_distance')
 def api_levenshtein_distance(request: levenshtein_distance.LevenshteinDistanceModel):
     return levenshtein_distance.fn_levenshtein_distance(request)
+
+@router.post('/lookup_list')
+def api_lookup_list(request: lookup_list.LookupListModel):
+    return lookup_list.fn_lookup_list(request)
 
 @router.post('/reading_time')
 def api_reading_time(request: reading_time.ReadingTimeModel):
