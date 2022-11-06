@@ -1,4 +1,6 @@
 ```python
+import re
+
 def detect_money_regex(record):
     YOUR_REGEX = "\$[0-9]+" # choose any regex here
     YOUR_ATTRIBUTE = "details" # choose any available attribute here
