@@ -11,11 +11,24 @@ Browse the [content library](https://content-library.kern.ai) to find gold nugge
 Modules that are added in this repository aren't automatically available online; they must be added in our content management system by hand.
 
 ## Table of contents
+- [What are classifiers and extractors?](#what-are-classifiers-and-extractors)] 
 - [Getting started](#getting-started)
 - [Contributing](#contributing)
 - [refinery](#refinery)
 - [Regular updates and newsletter](#regular-updates-and-newsletter)
 - [License](#license)
+
+## What are classifiers and extractors?
+We generally summarize them as modules in this repository.
+
+### Classifiers
+Classifiers are modules that summarizes a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
+
+### Extractors
+Extractors are modules that retrieve specific information from a given text. For example, a module that extracts the author of a text would go into this folder.
+
+### Other modules
+In the future, we'll also add modules such as generators, which create new content based on a given text, or filtersets for refinery with pre-defined content.
 
 ## Getting started
 You can access the modules of this repository in our online [content-library](https://content-library.kern.ai). If you want to host the modules yourself, you can do so by following the steps below.
