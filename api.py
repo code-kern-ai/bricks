@@ -1,14 +1,29 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-
 import classifiers
 import extractors
 from extractors.util.spacy import download_all_models
 
 api = FastAPI()
 
-@api.get("/")
+origins = [
+    "http://127.0.0.1",
+    "http://127.0.0.1:3000",
+    "http://localhost",
+    "http://localhost:3000",
+]
 
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@api.get("/")
 async def root():
     html_content = """
     <html>
