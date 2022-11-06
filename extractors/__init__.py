@@ -3,6 +3,7 @@ from .python_functions import (
     aspect_matcher,
     date_extraction,
     email_extraction,
+    gazetteer,
     hashtag_extraction,
     name_extraction,
     org_extraction,
@@ -26,6 +27,10 @@ def api_date_extraction(request: date_extraction.DateExtractionModel):
 @router.post('/email_extraction')
 def api_email_extraction(request: email_extraction.EmailExtractionModel):
     return email_extraction.email_extractor(request)
+
+@router.post('/gazetteer')
+def api_gazetteer(request: gazetteer.GazetteerModel):
+    return gazetteer.gazetteer(request)
 
 @router.post('/hashtag_extraction')
 def api_hash_extraction(request: hashtag_extraction.HashExtractionModel):
