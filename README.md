@@ -13,6 +13,7 @@ Modules that are added in this repository aren't automatically available online;
 ## Table of contents
 - [Getting started](#getting-started)
 - [Contributing](#contributing)
+- [refinery](#refinery)
 - [Regular updates and newsletter](#regular-updates-and-newsletter)
 - [License](#license)
 
@@ -26,6 +27,11 @@ You can access the modules of this repository in our online [content-library](ht
 
 ## Contributing
 Please look into our [contribution guidelines](CONTRIBUTING.md) to get started. If you have any questions, please reach out to us anytime on [Discord](https://discord.gg/qf4rGCEphW).
+
+If the content of this repository is helpful, please leave a star ⭐️. Also, make sure to check out [refinery](#refinery).
+
+## refinery
+Check out our main product [refinery](https://github.com/code-kern-ai/refinery), which is another open-source project helping you to scale, assess and maintain your training data. You can use the modules from the content library right away in refinery.
 
 ## Regular updates and newsletter
 We regularly update the content library with new modules (we aim to add two modules per week, if not more). If you want to stay up to date, you can subscribe to our [newsletter](https://www.kern.ai/#email-address).
