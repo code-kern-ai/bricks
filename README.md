@@ -21,5 +21,8 @@ You can access the modules of this repository in our online [content-library](ht
 ## Contributing
 Please look into our [contribution guidelines](CONTRIBUTING.md) to get started. If you have any questions, please reach out to us anytime on [Discord](https://discord.gg/qf4rGCEphW).
 
+## Regular updates and newsletter
+We regularly update the content library with new modules (we aim to add two modules per week, if not more). If you want to stay up to date, you can subscribe to our [newsletter](https://www.kern.ai/#email-address).
+
 ## License
 This repository is licensed under the Apache License, Version 2.0. View a copy of the [License file](LICENSE).
