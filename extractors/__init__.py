@@ -9,6 +9,7 @@ from .python_functions import (
     regex_extraction,
     time_extraction,
     url_extraction,
+    window_search,
 )
 
 router = APIRouter()
@@ -48,3 +49,7 @@ def api_time_extraction(request: time_extraction.TimeExtractionModel):
 @router.post('/url_extraction')
 def api_url_extraction(request: url_extraction.UrlExtractionModel):
     return url_extraction.fn_url_extraction(request)
+
+@router.post('/window_search')
+def api_window_search(request: window_search.WindowSearchModel):
+    return window_search.window_search(request)
