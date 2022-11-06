@@ -2,7 +2,7 @@
 from sklearn.linear_model import LogisticRegression
 # you can find further models here: https://scikit-learn.org/stable/supervised_learning.html#supervised-learning
 
-class SciTechCoverageDistilbertLR(LearningClassifier):
+class MyLR(LearningClassifier):
 
     def __init__(self):
         self.model = LogisticRegression()
@@ -15,7 +15,7 @@ class SciTechCoverageDistilbertLR(LearningClassifier):
         self.model.fit(embeddings, labels)
 
     @params_inference(
-        min_confidence = 0.3,
+        min_confidence = 0.8,
         label_names = None # you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
     )
     def predict_proba(self, embeddings):
