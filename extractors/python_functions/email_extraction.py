@@ -1,24 +1,30 @@
-from typing import Optional, Union
+from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
 
-
-class EmailExtraction(BaseModel):
+class EmailExtractionModel(BaseModel):
     text: str
     spacy_tokenizer: Optional[str] = "en_core_web_sm"
 
-def email_ext(request: EmailExtraction):
+    class Config:
+        schema_extra = {
+            "example": {
+                "text": "If you have any questions, please contact johannes.hoetter@kern.ai.",
+                "spacy_tokenizer": "en_core_web_sm"
+            }
+        }
+
+def email_extractor(request: EmailExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
     doc = nlp(text)
     regex = re.compile(r"([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)")
-    regex.findall(text)
 
-    spans = []
+    emails = []
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end)
-        spans.append([span.start, span.end, span.text])
+        emails.append([span.start, span.end, span.text])
 
-    return {"spans": spans}
+    return {"emails": emails}

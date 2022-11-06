@@ -1,4 +1,4 @@
-from typing import Optional, Union
+from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
@@ -8,9 +8,10 @@ class TimeExtractionModel(BaseModel):
     spacy_tokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
-        schema = {
+        schema_extra = {
             "example": {
-                "text": "Right now it is 14:40:37. Three hours ago it was 11:40 am. Two hours and twenty mins from now it will be 5PM."
+                "text": "Right now it is 14:40:37. Three hours ago it was 11:40 am. Two hours and twenty mins from now it will be 5PM.",
+                "spacy_tokenizer": "en_core_web_sm"
             }
         }
 
@@ -25,10 +26,10 @@ def time_extractor(request: TimeExtractionModel):
     doc = nlp(text)
     regex = re.compile(r"(?:(?:[0-9]{1,2}(?::[0-9]{1,2}(?::[0-9]{1,2}:?)?)?)(?:(?: )?am|(?: )?pm|(?: )?AM|(?: )?PM)?)")
 
-    spans = []
+    times = []
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end)
-        spans.append([span.start, span.end, span.text])
+        times.append([span.start, span.end, span.text])
 
-    return {"spans": spans}
+    return {"times": times}

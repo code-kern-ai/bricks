@@ -1,17 +1,16 @@
-from typing import Optional, Union
+from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
-import re
 
 class PriceExtractionModel(BaseModel):
     text: str
     spacy_tokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
-        schema = {
+        schema_extra = {
             "example": {
-                "text": "A desktop with i7 processor costs 800 euros in Germany. In the US, it costs 950 dollars.",
-                "spacy_tokenizer": "en_core_web_lg"
+                "text": "A desktop with i7 processor costs 950 dollars in the US.",
+                "spacy_tokenizer": "en_core_web_sm"
             }
         }
 
@@ -23,7 +22,7 @@ def price_extractor(request: PriceExtractionModel):
     prices = []
     for entity in doc.ents:
         if entity.label_ == 'MONEY':
-            prices.append((entity.start, entity.end, entity))
+            prices.append((entity.start, entity.end, entity.text))
 
-    return {"extracted prices": prices}
+    return {"prices": prices}
 

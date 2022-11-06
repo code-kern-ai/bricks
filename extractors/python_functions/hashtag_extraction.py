@@ -1,24 +1,31 @@
-from typing import Optional, Union
+from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
 
-
-class HashExtraction(BaseModel):
+class HashExtractionModel(BaseModel):
     text: str
     spacy_tokenizer: Optional[str] = "en_web_core_sm"
 
-def hash_ext(request: HashExtraction):
+    class Config:
+        schema_extra = {
+            "example": {
+                "text": "In tech industry, #devrel is a very hot topic",
+                "spacy_tokenizer": "en_core_web_sm",
+            }
+        }
+
+def hash_extractor(request: HashExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
     doc = nlp(text)
     regex = re.compile(r"#(\w+)")
     regex.findall(text)
 
-    spans = []
+    hashtags = []
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end)
-        spans.append([span.start, span.end, span.text])
+        hashtags.append([span.start, span.end, span.text])
 
-    return {"spans": spans}
+    return {"hashtags": hashtags}
