@@ -5,6 +5,7 @@ from .python_functions import (
     reading_time,
     sentence_complexity,
     syllable_count,
+    textblob_subjectivity,
 )
 
 router = APIRouter()
@@ -28,3 +29,7 @@ def api_sentence_complexity(request:sentence_complexity.SentenceComplexityModel)
 @router.post('/syllable_count')
 def api_syllable_count(request: syllable_count.SyllableCountModel):
     return syllable_count.fn_syllable_count(request)
+
+@router.post('/textblob_subjectivity')
+def api_textblob_subjectivity(request: textblob_subjectivity.TextblobSentimentModel):
+    return textblob_subjectivity.fn_textblob_subjectivity(request)
