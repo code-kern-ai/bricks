@@ -15,7 +15,7 @@ We have structured this repository into two main folders:
 - `extractors`: this is where modules will go into that are used to extract information from a given text. For example, a module that extracts the author of a text would go into this folder.
 
 In each folder, you will find further directories, typically in this structure:
-- `python_functions`: functions you would write as labeling functions in refinery. Think of very simplistic Python snippets.
+- `python_functions`: functions you would write as labeling functions in refinery. Think of very simplistic Python snippets. Each python function is implemented as a directory, containing an `__init__.py` file with the endpoint function and a `code_snippet.md` file with a description of the function.
 - `active_learning`: this will contain configuration files for active learning. You can use these to train your models in refinery.
 - `zero_shot`: this is where we'll add configurations for zero-shot models as soon as refinery has a programmable zero-shot interface (atm it is no-code, but we'll change that in the near future).
 - `premium`: those are modules that require some sort of API key. We will add them here, but only the request code, not the API key itself. We will add a `README.md` file in this folder that explains how to get the API key and how to use it.
@@ -31,7 +31,7 @@ If you have an idea for a new module/heuristic, please open an issue in the repo
 5. Create a pull request to the `main` branch of the repository. Please make sure to add a description of your module and why you think it is useful for the community.
 
 ### How to implement a module
-All modules follow a similar structure. The following is a template for a module:
+All modules follow a similar structure. The following is a template for a module, which you can add as a directory with an `__init__.py` file and a `code_snippet.md` file. The `__init__.py` for the `language_detection` module looks like this:
 
 ```python
 # These are the import statements. Please make sure to add them here.
@@ -69,29 +69,30 @@ def fn_language_detection(request: LanguageDetectionModel):
     text = request.text
     language = detect(text)
     return {"language": language}
-
-# This is how the actual module will be displayed in the library.
-# 
-# from typing import Dict, Any
-# from langdetect import detect
-
-# def fn_language_detection(record: Dict[str, Any]) -> str:
-#     """Detect language of text
-        
-#     Args:
-#         record (Dict): one single record you want to process
-
-#     Returns:
-#         str: Language of your text
-#     """
-
-#     text = record["your-text"]
-#     language = detect(text)
-#     return language
 ```
 
-Some things to note:
-- Please make sure that the endpoint logic returns a dictionary; and in this dictionary, simply name the keys as lowercase, i.e. `{"language": language}` instead of `{"Language": language}`.
+And the `code_snippet.md` file looks like this:
+
+```python
+This is how the actual module will be displayed in the library.
+
+from typing import Dict, Any
+from langdetect import detect
+
+def fn_language_detection(record: Dict[str, Any]) -> str:
+    """Detect language of text
+        
+    Args:
+        record (Dict): one single record you want to process
+
+    Returns:
+        str: Language of your text
+    """
+
+    text = record["your-text"]
+    language = detect(text)
+    return language
+```
 
 Afterwards, you can add your module to the `__init__.py` file in the respective folder (`classifiers` or `extractors`). This is how the `__init__.py` file looks like:
 
