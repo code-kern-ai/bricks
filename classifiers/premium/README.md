@@ -1,0 +1,1 @@
+In here, we'll add endpoints to premium content for which you'll require an API key (e.g. for 3rd-party modules that must be paid).
