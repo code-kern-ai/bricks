@@ -6,6 +6,7 @@ from .python_functions import (
     name_extraction,
     org_extraction,
     price_extraction,
+    regex_extraction,
     time_extraction,
     url_extraction,
 )
@@ -35,6 +36,10 @@ def api_org_extraction(request: org_extraction.OrganisationExtractionModel):
 @router.post('/price_extraction')
 def api_price_extraction(request: price_extraction.PriceExtractionModel):
     return price_extraction.price_extractor(request)
+
+@router.post('/regex_extraction')
+def api_regex_extraction(request: regex_extraction.RegexExtractionModel):
+    return regex_extraction.extract_by_regex(request)
 
 @router.post('/time_extraction')
 def api_time_extraction(request: time_extraction.TimeExtractionModel):
