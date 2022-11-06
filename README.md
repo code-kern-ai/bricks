@@ -11,7 +11,7 @@ Browse the [content library](https://content-library.kern.ai) to find gold nugge
 Modules that are added in this repository aren't automatically available online; they must be added in our content management system by hand.
 
 ## Table of contents
-- [What are classifiers and extractors?](#what-are-classifiers-and-extractors)] 
+- [What are classifiers and extractors?](#what-are-classifiers-and-extractors)
 - [Getting started](#getting-started)
 - [Contributing](#contributing)
 - [refinery](#refinery)
