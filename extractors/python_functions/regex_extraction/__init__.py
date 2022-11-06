@@ -7,6 +7,7 @@ class RegexExtractionModel(BaseModel):
     text: str
     regex: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
+    yourLabel: str
 
     class Config:
         schema_extra = {
@@ -14,6 +15,7 @@ class RegexExtractionModel(BaseModel):
                 "text": "Check out https://kern.ai!",
                 "regex": "https:\/\/[a-zA-Z0-9.\/]+",
                 "spacyTokenizer": "en_core_web_sm",
+                "yourLabel": "url"
             }
         }
 
@@ -40,6 +42,6 @@ def extract_by_regex(request: RegexExtractionModel):
             
     for start, end in regex_search(request.regex, request.text):
         span = doc.char_span(start, end, alignment_mode="expand")
-        matches.append(["your-label", span.start, span.end])
+        matches.append([request.yourLabel, span.start, span.end])
 
-    return {"your-regex-extraction": matches}
+    return {f"{request.yourLabel}s": matches}
