@@ -5,13 +5,13 @@ import re
 
 class TimeExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {
             "example": {
                 "text": "Right now it is 14:40:37. Three hours ago it was 11:40 am. Two hours and twenty mins from now it will be 5PM.",
-                "spacy_tokenizer": "en_core_web_sm"
+                "spacyTokenizer": "en_core_web_sm"
             }
         }
 
@@ -22,7 +22,7 @@ def time_extractor(request: TimeExtractionModel):
     Invalid formats: "Twelve pm"
     """
     text = request.text
-    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
     regex = re.compile(r"(?:(?:[0-9]{1,2}(?::[0-9]{1,2}(?::[0-9]{1,2}:?)?)?)(?:(?: )?am|(?: )?pm|(?: )?AM|(?: )?PM)?)")
 

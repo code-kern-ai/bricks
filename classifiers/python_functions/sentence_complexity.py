@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Dict, Optional
+from typing import Optional
 import textstat
 
 def setall(d, keys, value):
@@ -54,4 +54,4 @@ def fn_sentence_complexity(request: SentenceComplexityModel):
 
     sentence_complexity_score = textstat.flesch_reading_ease(text)
     sentence_complexity = get_mapping_complexity(sentence_complexity_score)
-    return {"sentence_complexity": sentence_complexity}
+    return {"sentenceComplexity": sentence_complexity}

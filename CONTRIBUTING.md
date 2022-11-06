@@ -120,7 +120,7 @@ def date_extraction(request: DateExtraction):
     text = request.text
     
     # load the spaCy module as a singleton
-    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
 
     # process e.g. via a regular expression

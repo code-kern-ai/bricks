@@ -4,19 +4,19 @@ from extractors.util.spacy import SpacySingleton
 
 class PriceExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {
             "example": {
                 "text": "A desktop with i7 processor costs 950 dollars in the US.",
-                "spacy_tokenizer": "en_core_web_sm"
+                "spacyTokenizer": "en_core_web_sm"
             }
         }
 
 def price_extractor(request: PriceExtractionModel):
     text = request.text
-    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
 
     prices = []

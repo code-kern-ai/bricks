@@ -4,19 +4,19 @@ from extractors.util.spacy import SpacySingleton
 
 class OrganisationExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {
             "example": {
                 "text": "We are developers from Kern.ai",
-                "spacy_tokenizer": "en_core_web_sm",
+                "spacyTokenizer": "en_core_web_sm",
             }
         }
 
 def organisation_extraction(request: OrganisationExtractionModel):
     text = request.text
-    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
 
     organisations = []

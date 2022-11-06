@@ -7,7 +7,7 @@ class ReadingTimeModel(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "text": "This is an english sentence."
+                "text": "This sentence should take less than 1 second to read."
             }
         }
 
@@ -23,5 +23,5 @@ def fn_reading_time(request: ReadingTimeModel):
     """
     text = request.text
     time_to_read = textstat.reading_time(text, ms_per_char=14.69)
-    return {"time": time_to_read}
+    return {"readingTime": time_to_read}
 

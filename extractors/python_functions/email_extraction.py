@@ -5,19 +5,19 @@ import re
 
 class EmailExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {
             "example": {
                 "text": "If you have any questions, please contact johannes.hoetter@kern.ai.",
-                "spacy_tokenizer": "en_core_web_sm"
+                "spacyTokenizer": "en_core_web_sm"
             }
         }
 
 def email_extractor(request: EmailExtractionModel):
     text = request.text
-    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
     regex = re.compile(r"([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)")
 

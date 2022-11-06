@@ -5,19 +5,19 @@ import re
 
 class UrlExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {
             "example": {
                 "text": "Check out https://kern.ai!",
-                "spacy_tokenizer": "en_core_web_sm",
+                "spacyTokenizer": "en_core_web_sm",
             }
         }
 
 def fn_url_extraction(request: UrlExtractionModel):
     text = request.text
-    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
 
     regex_pattern = re.compile(r"(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+")

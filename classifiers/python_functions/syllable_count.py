@@ -7,7 +7,7 @@ class SyllableCountModel(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "text": "This is an english sentence."
+                "text": "This sentence has 8 syllables."
             }
         }
 
@@ -22,5 +22,5 @@ def fn_syllable_count(request: SyllableCountModel):
     """
     text = request.text
     syllables = textstat.syllable_count(text)
-    return {"Syllables": syllables}
+    return {"syllableCount": syllables}
 

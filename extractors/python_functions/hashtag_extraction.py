@@ -5,19 +5,19 @@ import re
 
 class HashExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_web_core_sm"
+    spacyTokenizer: Optional[str] = "en_web_core_sm"
 
     class Config:
         schema_extra = {
             "example": {
                 "text": "In tech industry, #devrel is a very hot topic",
-                "spacy_tokenizer": "en_core_web_sm",
+                "spacyTokenizer": "en_core_web_sm",
             }
         }
 
 def hash_extractor(request: HashExtractionModel):
     text = request.text
-    nlp = SpacySingleton.get_nlp(request.spacy_tokenizer)
+    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
     regex = re.compile(r"#(\w+)")
     regex.findall(text)
