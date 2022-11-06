@@ -1,5 +1,6 @@
 from fastapi import APIRouter
 from .python_functions import (
+    aspect_matcher,
     date_extraction,
     email_extraction,
     hashtag_extraction,
@@ -13,6 +14,10 @@ from .python_functions import (
 )
 
 router = APIRouter()
+
+@router.post("/aspect_matcher")
+async def api_aspect_matcher(request: aspect_matcher.AspectMatcherModel):
+    return aspect_matcher.aspect_matcher(request)
 
 @router.post('/date_extraction')
 def api_date_extraction(request: date_extraction.DateExtractionModel):
