@@ -1,28 +1,30 @@
 from fastapi import APIRouter
-from .python_functions.language_detection import LanguageDetectionModel, fn_language_detection
-from .python_functions.sentence_complexity import SentenceComplexityModel, fn_sentence_complexity
-from .python_functions.reading_time import ReadingTimeModel, fn_reading_time
-from .python_functions.syllable_count import SyllableCountModel, fn_syllable_count
-from .python_functions.levenshtein_distance import LevenshteinDistanceModel, fn_levenshtein_distance
+from .python_functions import (
+    language_detection,
+    levenshtein_distance,
+    reading_time,
+    sentence_complexity,
+    syllable_count,
+)
 
 router = APIRouter()
 
 @router.post('/language_detection')
-def language_detection(request: LanguageDetectionModel):
-    return fn_language_detection(request)
-
-@router.post('/sentence_complexity')
-def sentence_complexity(request: SentenceComplexityModel):
-    return fn_sentence_complexity(request)
-
-@router.post('/reading_time')
-def reading_time(request: ReadingTimeModel):
-    return fn_reading_time(request)
-
-@router.post('/syllable_count')
-def syllable_count(request: SyllableCountModel):
-    return fn_syllable_count(request)
+def api_language_detection(request: language_detection.LanguageDetectionModel):
+    return language_detection.fn_language_detection(request)
 
 @router.post('/levenshtein_distance')
-def levenshtein_distance(request: LevenshteinDistanceModel):
-    return fn_levenshtein_distance(request)
+def api_levenshtein_distance(request: levenshtein_distance.LevenshteinDistanceModel):
+    return levenshtein_distance.fn_levenshtein_distance(request)
+
+@router.post('/reading_time')
+def api_reading_time(request: reading_time.ReadingTimeModel):
+    return reading_time.fn_reading_time(request)
+
+@router.post('/sentence_complexity')
+def api_sentence_complexity(request:sentence_complexity.SentenceComplexityModel):
+    return sentence_complexity.fn_sentence_complexity(request)
+
+@router.post('/syllable_count')
+def api_syllable_count(request: syllable_count.SyllableCountModel):
+    return syllable_count.fn_syllable_count(request)
