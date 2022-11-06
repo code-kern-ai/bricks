@@ -10,6 +10,12 @@ Browse the [content library](https://content-library.kern.ai) to find gold nugge
 
 Modules that are added in this repository aren't automatically available online; they must be added in our content management system by hand.
 
+## Table of contents
+- [Getting started](#getting-started)
+- [Contributing](#contributing)
+- [Regular updates and newsletter](#regular-updates-and-newsletter)
+- [License](#license)
+
 ## Getting started
 You can access the modules of this repository in our online [content-library](https://content-library.kern.ai). If you want to host the modules yourself, you can do so by following the steps below.
 
