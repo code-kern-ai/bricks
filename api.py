@@ -23,7 +23,7 @@ async def root():
     """
     return HTMLResponse(content=html_content, status_code=200) 
 
-api.include_router(classifiers.router, prefix='/classifiers')
-api.include_router(extractors.router, prefix='/extractors')
+api.include_router(classifiers.router, prefix='/classifiers', tags=['classifiers'])
+api.include_router(extractors.router, prefix='/extractors', tags=['extractors'])
 
 download_all_models()
