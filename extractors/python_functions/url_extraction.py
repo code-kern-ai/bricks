@@ -23,10 +23,10 @@ def fn_url_extraction(request: UrlExtractionModel):
     regex_pattern = re.compile(r"(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+")
     regex_pattern.findall(text)
 
-    spans = []
+    urls = []
     for match in regex_pattern.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end)
-        spans.append([span.start, span.end, span.text])
+        urls.append([span.start, span.end, span.text])
 
-    return {"extracted urls": spans}
+    return {"urls": urls}
