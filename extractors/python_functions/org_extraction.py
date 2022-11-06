@@ -4,13 +4,13 @@ from extractors.util.spacy import SpacySingleton
 
 class OrganisationExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: str[Optional] = "en_core_web_lg"
+    spacy_tokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema = {
             "example": {
                 "text": "We are developers from Kern.ai",
-                "spacy_tokenizer": "en_core_web_lg",
+                "spacy_tokenizer": "en_core_web_sm",
             }
         }
 

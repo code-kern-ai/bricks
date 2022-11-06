@@ -39,5 +39,5 @@ def org_extraction(request: OrganisationExtractionModel):
     return organisation_extraction(request)
 
 @router.post('/name_extraction')
-def name_extraction(request:NameExtractionModel):
+def name_extraction(request: NameExtractionModel):
     return name_extractor(request)

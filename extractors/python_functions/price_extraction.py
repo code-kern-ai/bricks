@@ -5,13 +5,13 @@ import re
 
 class PriceExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_lg"
+    spacy_tokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema = {
             "example": {
                 "text": "A desktop with i7 processor costs 800 euros in Germany. In the US, it costs 950 dollars.",
-                "spacy_tokenizer": "en_core_web_lg"
+                "spacy_tokenizer": "en_core_web_sm"
             }
         }
 
