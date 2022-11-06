@@ -1,100 +1,40 @@
-# content-library-endpoints
-Code for the deployment of content library endpoints. These are _only_ the endpoints, i.e. if an endpoint is added here, it isn't directly available in the content library, which is managed via a Strapi backend.
+![](identifier.svg)
 
-## Calling endpoints
-The endpoints are available at route `/docs`. On your local machine, you can run e.g. `localhost:8000/docs`.
+<p align="center">
+    <b>Open-source natural language enrichments at your fingertips.</b>
+</p>
 
-## Different types of endpoints
-Generally, there are four types of endpoints:
+Browse the [content library](https://content-library.kern.ai) to find gold nuggets for your projects; enrich your texts e.g. with sentence complexity estimations, sentiment analysis, and more.
 
-- Python functions
-- Active learning configurations
-- Zero shot configurations
-- Pre-trained models
+![](hero.svg)
 
-See in each subsection how to add them to the content library.
+Modules that are added in this repository aren't automatically available online; they must be added in our content management system by hand.
 
-### Python functions
-- **Maintain source code in Strapi**
-- **Available as endpoint**
+## Table of contents
+- [Getting started](#getting-started)
+- [Contributing](#contributing)
+- [refinery](#refinery)
+- [Regular updates and newsletter](#regular-updates-and-newsletter)
+- [License](#license)
 
-For instance to detect languages in texts via existing libraries, such as the language detection endpoint:
-```python
-from pydantic import BaseModel
-from langdetect import detect, DetectorFactory 
-DetectorFactory.seed = 0
+## Getting started
+You can access the modules of this repository in our online [content-library](https://content-library.kern.ai). If you want to host the modules yourself, you can do so by following the steps below.
 
-class LanguageDetectionModel(BaseModel):
-    text: str
+1. Clone this repository
+2. (optional) Create a virtual environment
+3. Install the dependencies (`pip install -r requirements.txt`)
+4. Run the FastAPI server (`uvicorn api:api`)
 
-    class Config:
-        schema_extra = {
-            "example": {
-                "text": "This is an english sentence."
-            }
-        }
+## Contributing
+Please look into our [contribution guidelines](CONTRIBUTING.md) to get started. If you have any questions, please reach out to us anytime on [Discord](https://discord.gg/qf4rGCEphW).
 
+If the content of this repository is helpful, please leave a star ⭐️. Also, make sure to check out [refinery](#refinery).
 
-def fn_language_detection(request: LanguageDetectionModel):
-    """Detect language of text
-        
-    Args:
-        request (LanguageDetectionModel): schema of request body
+## refinery
+Check out our main product [refinery](https://github.com/code-kern-ai/refinery), which is another open-source project helping you to scale, assess and maintain your training data. You can use the modules from the content library right away in refinery.
 
-    Returns:
-        dict: Language of text
-    """
+## Regular updates and newsletter
+We regularly update the content library with new modules (we aim to add two modules per week, if not more). If you want to stay up to date, you can subscribe to our [newsletter](https://www.kern.ai/#email-address).
 
-    text = request.text
-    language = detect(text)
-    return {"language": language}
-```
-
-Which is available as a `POST` endpoint at `/classifiers/language_detection/`.
-
-They are available as endpoints in the playground, i.e. you can just call them right away with your inputs. Users of the content library however should be able to modify this code. Hence, when importing the module from the library, they have access to the direct source code instead of a request to an endpoint. This source code is maintained in Strapi. 
-
-#### Source code structure
-_The source code differs from the one used in the endpoint w.r.t. structure!_ For instance, above listed endpoint would look as follows in Strapi:
-```python
-from typing import Dict, Any
-from langdetect import detect
-
-def fn_language_detection(record: Dict[str, Any]) -> str:
-    """Detect language of text
-        
-    Args:
-        record (Dict): one single record you want to process
-
-    Returns:
-        str: Language of your text
-    """
-
-    text = record["your-text"]
-    language = detect(text)
-    return language
-
-```
-
-### Active learning configurations
-- **Maintain source code in Strapi**
-- **Not available as endpoint**
-
-Active learning implies that the module needs access to the labeled training data of the project. For that reason, active learning can't be executed in the playground. All configurations for active learning are maintained in Strapi.
-
-### Zero shot configurations
-- **Maintain source code in Strapi**
-- **Available as endpoint**
-
-Zero shot modules will be callable from the playground, and for that reason will also have some endpoints in this repository.
-
-Currently, we don't have programmable zero shot modules. When we'll add a programming interface for zero shot, we'll look into these configurations further.
-
-### Pre-trained models and 3rd party providers
-- **Closed source**
-- **Available as endpoint**
-
-We will offer "premium" endpoints, which can be accessed only via the endpoint (i.e. the source code is not available). This is either because the module calls a paid 3rd-party, or because the module uses a proprietary model maintained by Kern AI.
-
-## Contributing new endpoints
-To add a new endpoint, please open a dedicated pull request containing _only_ this one endpoint. Each endpoint should have a dedicated file, such that merging should become trivial if done correctly.
+## License
+This repository is licensed under the Apache License, Version 2.0. View a copy of the [License file](LICENSE).

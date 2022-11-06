@@ -15,7 +15,6 @@ class NameExtractionModel(BaseModel):
         }
 
 def name_extractor(request: NameExtractionModel):
-
     """
     Returns a dictionary of the extracted names from a given text.
     """

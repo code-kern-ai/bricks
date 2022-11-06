@@ -5,7 +5,7 @@ import re
 
 class HashExtractionModel(BaseModel):
     text: str
-    spacy_tokenizer: Optional[str] = "en_core_web_sm"
+    spacy_tokenizer: Optional[str] = "en_web_core_sm"
 
     class Config:
         schema_extra = {
