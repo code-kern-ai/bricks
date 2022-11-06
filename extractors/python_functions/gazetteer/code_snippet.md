@@ -1,4 +1,7 @@
 ```python
+# the lookup list values can also come from a knowledge base, e.g.:
+# from knowledge import my_lookup_list
+
 def gazetter(record):
     YOUR_ATTRIBUTE = "details"
     YOUR_LABEL = "PERSON"
