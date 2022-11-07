@@ -7,6 +7,7 @@ from typing import Dict, Any
 from util.paths import camel_case_to_snake_case, snake_case_to_camel_case
 from util.enums import State
 import fire
+from wasabi import msg
 
 
 load_dotenv()
@@ -18,12 +19,12 @@ class CMS:
     """Synchronizes this repository with a CMS instance.
 
     How to use:
-    - Get a list of new modules that are not yet in the CMS: `python cms.py list_new_modules`
-    - Publish new modules to the CMS: `python cms.py publish_new_modules`
-    - Update existing modules in the CMS: `python cms.py update_existing_modules <module_dir>`
+    - Get a list of new modules that are not yet in the CMS: `python cms.py ls_private`
+    - Publish new modules to the CMS: `python cms.py publish`
+    - Update existing modules in the CMS: `python cms.py update <module_dir>`
     """
 
-    def list_new_modules(self) -> None:
+    def ls_private(self) -> None:
         """Fetches all modules from the CMS and lists all modules that are not yet in the CMS."""
         drafts = []
         ready_to_publish = []
@@ -52,15 +53,15 @@ class CMS:
             for draft in drafts:
                 print(f"\t{draft}")
         else:
-            print("No drafts found")
+            msg.info("No drafts found")
         if len(ready_to_publish) > 0:
             print("Ready to publish:")
             for module in ready_to_publish:
                 print(f"\t{module}")
         else:
-            print("No modules ready to publish found")
+            msg.info("No modules ready to publish found")
 
-    def publish_new_modules(self, verbose: bool = True) -> None:
+    def publish(self, verbose: bool = True) -> None:
         """Publishes new modules to the CMS, if their state is PUBLIC.
 
         Args:
@@ -88,9 +89,9 @@ class CMS:
                                     print(json.dumps(config, indent=4))
                                 response = post_module(config)
                                 if response.status_code == 200:
-                                    print("Success")
+                                    msg.good("Success")
                                 else:
-                                    print("Failed")
+                                    msg.fail("Failed")
                                     print(response.text)
                             else:
                                 if verbose:
@@ -101,7 +102,7 @@ class CMS:
                         if verbose:
                             print()
 
-    def update_existing_modules(self, module_dir: str, verbose: bool = True) -> None:
+    def update(self, module_dir: str, verbose: bool = True) -> None:
         """Updates existing modules in the CMS, if their state is PUBLIC.
 
         Args:
@@ -130,9 +131,9 @@ class CMS:
                         print(json.dumps(config, indent=4))
                     response = update_module(config)
                     if response.status_code == 200:
-                        print("Success")
+                        msg.good("Success")
                     else:
-                        print("Failed")
+                        msg.fail("Failed")
                         print(response.text)
                 else:
                     if verbose:
