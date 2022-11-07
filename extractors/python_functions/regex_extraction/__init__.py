@@ -1,27 +1,27 @@
-from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
+
+INPUT_EXAMPLE = {
+    "text": "Check out https://kern.ai!",
+    "regex": "https:\/\/[a-zA-Z0-9.\/]+",
+    "spacyTokenizer": "en_core_web_sm",
+    "yourLabel": "url",
+}
 
 
 class RegexExtractionModel(BaseModel):
     text: str
     regex: str
-    spacyTokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: str = "en_core_web_sm"
     yourLabel: str
 
     class Config:
-        schema_extra = {
-            "example": {
-                "text": "Check out https://kern.ai!",
-                "regex": "https:\/\/[a-zA-Z0-9.\/]+",
-                "spacyTokenizer": "en_core_web_sm",
-                "yourLabel": "url",
-            }
-        }
+        schema_extra = {"example": INPUT_EXAMPLE}
 
 
 def regex_extraction(request: RegexExtractionModel):
+    """Detects regex matches in a given text."""
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(request.text)
 

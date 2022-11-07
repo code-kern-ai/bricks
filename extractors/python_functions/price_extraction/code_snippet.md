@@ -1,27 +1,10 @@
-from typing import Optional
-from pydantic import BaseModel
-import spacy
+```python
+from typing import Dict, List, Tuple, Any
 
-class PriceExtractionModel(BaseModel):
-    text: str
-    spacyTokenizer: Optional[str] = "en_core_web_sm"
+def price_extractor(record: Dict[str, Any]) -> List[Tuple[str, int, int]]:
+    text = record["text"]
 
-    class Config:
-        schema_extra = {
-            "example": {
-                "text": "A desktop with i7 processor costs 950 dollars in the US.",
-                "spacyTokenizer": "en_core_web_sm"
-            }
-        }
-
-def price_extractor(request: PriceExtractionModel):
-    text = request.text
-    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
-    doc = nlp(text)
-
-    prices = []
-    for entity in doc.ents:
+    for entity in text.ents:
         if entity.label_ == 'MONEY':
-            prices.append((entity.start, entity.end, entity.text))
-
-    return {"prices": prices}
+            yield "price", entity.start, entity.end
+```

@@ -1,23 +1,23 @@
-from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
 
+INPUT_EXAMPLE = {
+    "text": "Check out https://kern.ai!",
+    "spacyTokenizer": "en_core_web_sm",
+}
+
 
 class UrlExtractionModel(BaseModel):
     text: str
-    spacyTokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: str = "en_core_web_sm"
 
     class Config:
-        schema_extra = {
-            "example": {
-                "text": "Check out https://kern.ai!",
-                "spacyTokenizer": "en_core_web_sm",
-            }
-        }
+        schema_extra = {"example": INPUT_EXAMPLE}
 
 
 def url_extraction(request: UrlExtractionModel):
+    """Extracts urls from a given text."""
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
@@ -29,6 +29,6 @@ def url_extraction(request: UrlExtractionModel):
     for match in regex_pattern.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end)
-        urls.append([span.start, span.end, span.text])
+        urls.append(["url", span.start, span.end])
 
     return {"urls": urls}

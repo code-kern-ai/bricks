@@ -1,4 +1,3 @@
-from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
@@ -11,7 +10,7 @@ INPUT_EXAMPLE = {
 
 class EmailExtractionModel(BaseModel):
     text: str
-    spacyTokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: str = "en_core_web_sm"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
@@ -28,6 +27,6 @@ def email_extraction(request: EmailExtractionModel):
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end)
-        emails.append([span.start, span.end, span.text])
+        emails.append(["email", span.start, span.end])
 
     return {"emails": emails}

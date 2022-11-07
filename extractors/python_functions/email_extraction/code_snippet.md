@@ -8,5 +8,5 @@ def email_extractor(record: Dict[str, Any]) -> List[Tuple[str, int, int]]:
     for match in regex.finditer(record["your-text"].text):
         start, end = match.span()
         span = record["your-text"].char_span(start, end)
-        emails.append([span.start, span.end, span.text])
+        emails.append(["email", span.start, span.end])
 ```
