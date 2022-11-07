@@ -1,0 +1,1 @@
+A conditional random fields tagger to detect spans during active transfer learning. Requires token-level embeddings, which can be generated in refinery.
