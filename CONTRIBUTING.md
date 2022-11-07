@@ -25,10 +25,10 @@ If you have an idea for a new module/heuristic, please open an issue in the repo
 
 ## How to contribute modules
 1. As stated above, please first add the idea as an issue. We'll use this to document the origin of the module, and will use it to help you during the contribution.
-2. Fork the repository
-3. Create a new branch, specifically with the name of the module you want to add. Please do **not** add multiple modules in one branch.
-4. Add your module to the respective folder. If you are not sure where to put your module, please reach out to us on [Discord](https://discord.gg/qf4rGCEphW). For further details on _how_ to implement the module, see the section below.
-5. Create a pull request to the `main` branch of the repository. Please make sure to add a description of your module and why you think it is useful for the community.
+2. Create a new branch with the name of the module you want to add. Please do **not** add multiple modules in one branch.
+3. Add a directory to the file system fitting your request, e.g. `classifiers/python_functions/your_module_name`. Inside it, add an `__init__.py` file with the endpoint function and a `code_snippet.md` file with a description of the function. Also add a `README.md` file with a description of the module. You can use the other modules as a template, or reach out to us on [Discord](https://discord.gg/qf4rGCEphW).
+4. For further details on _how_ to implement the module, see the section below.
+5. Create a pull request to the `main` branch of the repository. We will review your code and merge it into the repository, and add a `config.py` file which will be used to push your module to the library.
 
 ### How to implement a module
 All modules follow a similar structure. The following is a template for a module, which you can add as a directory with an `__init__.py` file and a `code_snippet.md` file. The `__init__.py` for the `language_detection` module looks like this:
@@ -53,17 +53,9 @@ class LanguageDetectionModel(BaseModel):
         }
 
 # This is the actual module. It takes the request data as input and returns the output.
-# Please make sure to prefix the function with fn_.
-def fn_language_detection(request: LanguageDetectionModel):
+def language_detection(request: LanguageDetectionModel):
     # If you want to, you can add a docstring. We'll be loving you for that :D
-    """Detect language of text
-        
-    Args:
-        request (LanguageDetectionModel): schema of request body
-
-    Returns:
-        dict: Language of text
-    """
+    """Detect language of text."""
 
     # This is where the logic goes. Please note: the endpoint logic can look slightly different to the code that is displayed in the module itself, as requests work different than plain Python.
     text = request.text
@@ -74,7 +66,7 @@ def fn_language_detection(request: LanguageDetectionModel):
 And the `code_snippet.md` file looks like this:
 
 ```python
-This is how the actual module will be displayed in the library.
+# This is how the actual module will be displayed in the library.
 
 from typing import Dict, Any
 from langdetect import detect
@@ -98,13 +90,13 @@ Afterwards, you can add your module to the `__init__.py` file in the respective 
 
 ```python
 from fastapi import APIRouter
-from .python_functions.language_detection import LanguageDetectionModel, fn_language_detection
+from .python_functions import language_detection
 
 router = APIRouter()
 
-@router.post('/language_detection')
-def language_detection(request: LanguageDetectionModel):
-    return fn_language_detection(request)
+@router.post(f"/{language_detection.language_detection.__name__.lower()}")
+def api_language_detection(request: language_detection.LanguageDetectionModel):
+    return language_detection.language_detection(request)
 ```
 
 Lastly, we'd be really thankful if you update the `requirements.txt` of the repository to include the libraries needed for your module. For the above code, this would be:
