@@ -5,6 +5,7 @@ from Levenshtein import distance as levenshtein_distance
 def fn_levenshtein_distance(record: Dict[str, Any]):
     str_01 = record["text_first"] 
     str_02 = record["text_second"]
+    
     weights = record.get("weights")
 
     if weights is not None:
