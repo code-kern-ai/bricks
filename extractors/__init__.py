@@ -12,6 +12,7 @@ from .python_functions import (
     time_extraction,
     url_extraction,
     window_search,
+    ISBN_extraction,
 )
 
 router = APIRouter()
@@ -63,3 +64,7 @@ def api_url_extraction(request: url_extraction.UrlExtractionModel):
 @router.post('/window_search')
 def api_window_search(request: window_search.WindowSearchModel):
     return window_search.window_search(request)
+
+@router.post('/isbn_extraction')
+def api_isbn_extraction(request: ISBN_extraction.ISBNExtractionModel):
+    return ISBN_extraction.isbn_extractor(request)
