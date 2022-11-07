@@ -1,14 +1,30 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-
 import classifiers
 import extractors
 from extractors.util.spacy import download_all_models
 
 api = FastAPI()
 
-@api.get("/")
+origins = [
+    "http://127.0.0.1",
+    "http://127.0.0.1:3000",
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:8000",
+]
 
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@api.get("/")
 async def root():
     html_content = """
     <html>
@@ -21,9 +37,10 @@ async def root():
         </body>
     </html>
     """
-    return HTMLResponse(content=html_content, status_code=200) 
+    return HTMLResponse(content=html_content, status_code=200)
 
-api.include_router(classifiers.router, prefix='/classifiers')
-api.include_router(extractors.router, prefix='/extractors')
+
+api.include_router(classifiers.router, prefix="/classifiers", tags=["classifiers"])
+api.include_router(extractors.router, prefix="/extractors", tags=["extractors"])
 
 download_all_models()

@@ -1,43 +1,84 @@
 from fastapi import APIRouter
-from .python_functions.url_extraction import fn_url_extraction, UrlExtractionModel
-from .python_functions.hashtag_extraction import hash_extractor, HashExtractionModel
-from .python_functions.email_extraction import email_extractor, EmailExtractionModel
-from .python_functions.date_extraction import date_extractor, DateExtractionModel
-from .python_functions.time_extraction import time_extractor, TimeExtractionModel
-from .python_functions.price_extraction import price_extractor, PriceExtractionModel
-from .python_functions.org_extraction import organisation_extraction, OrganisationExtractionModel
-from .python_functions.name_extraction import name_extractor, NameExtractionModel
+from .python_functions import (
+    aspect_matcher,
+    date_extraction,
+    email_extraction,
+    gazetteer,
+    hashtag_extraction,
+    name_extraction,
+    org_extraction,
+    price_extraction,
+    regex_extraction,
+    time_extraction,
+    url_extraction,
+    window_search,
+    ip_extractor
+)
 
 router = APIRouter()
 
-@router.post('/url_extraction')
-def url_extraction(request: UrlExtractionModel):
-    return fn_url_extraction(request)
 
-@router.post('/hashtag_extraction')
-def hash_extraction(request: HashExtractionModel):
-    return hash_extractor(request)
+@router.post(f"/{aspect_matcher.aspect_matcher.__name__.lower()}")
+def api_language_detection(request: aspect_matcher.AspectMatcherModel):
+    return aspect_matcher.aspect_matcher(request)
 
-@router.post('/email_extraction')
-def email_extraction(request: EmailExtractionModel):
-    return email_extractor(request)
 
-@router.post('/date_extraction')
-def date_extraction(request: DateExtractionModel):
-    return date_extractor(request)
+@router.post(f"/{date_extraction.date_extraction.__name__.lower()}")
+def api_language_detection(request: date_extraction.DateExtractionModel):
+    return date_extraction.date_extraction(request)
 
-@router.post('/time_extraction')
-def time_extraction(request: TimeExtractionModel):
-    return time_extractor(request)
-    
-@router.post('/price_extraction')
-def price_extraction(request: PriceExtractionModel):
-    return price_extractor(request)
-    
-@router.post('/org_extraction')
-def org_extraction(request: OrganisationExtractionModel):
-    return organisation_extraction(request)
 
-@router.post('/name_extraction')
-def name_extraction(request:NameExtractionModel):
-    return name_extractor(request)
+@router.post(f"/{email_extraction.email_extraction.__name__.lower()}")
+def api_language_detection(request: email_extraction.EmailExtractionModel):
+    return email_extraction.email_extraction(request)
+
+
+@router.post(f"/{gazetteer.gazetteer.__name__.lower()}")
+def api_language_detection(request: gazetteer.GazetteerModel):
+    return gazetteer.gazetteer(request)
+
+
+@router.post(f"/{hashtag_extraction.hashtag_extraction.__name__.lower()}")
+def api_language_detection(request: hashtag_extraction.HashtagExtractionModel):
+    return hashtag_extraction.hashtag_extraction(request)
+
+
+@router.post(f"/{name_extraction.name_extraction.__name__.lower()}")
+def api_language_detection(request: name_extraction.NameExtractionModel):
+    return name_extraction.name_extraction(request)
+
+
+@router.post(f"/{org_extraction.org_extraction.__name__.lower()}")
+def api_language_detection(request: org_extraction.OrgExtractionModel):
+    return org_extraction.org_extraction(request)
+
+
+@router.post(f"/{price_extraction.price_extraction.__name__.lower()}")
+def api_language_detection(request: price_extraction.PriceExtractionModel):
+    return price_extraction.price_extraction(request)
+
+
+@router.post(f"/{regex_extraction.regex_extraction.__name__.lower()}")
+def api_language_detection(request: regex_extraction.RegexExtractionModel):
+    return regex_extraction.regex_extraction(request)
+
+
+@router.post(f"/{time_extraction.time_extraction.__name__.lower()}")
+def api_language_detection(request: time_extraction.TimeExtractionModel):
+    return time_extraction.time_extraction(request)
+
+
+@router.post(f"/{url_extraction.url_extraction.__name__.lower()}")
+def api_language_detection(request: url_extraction.UrlExtractionModel):
+    return url_extraction.url_extraction(request)
+
+
+@router.post(f"/{window_search.window_search.__name__.lower()}")
+def api_language_detection(request: window_search.WindowSearchModel):
+    return window_search.window_search(request)
+
+
+@router.post('/ip_extractor')
+def api_window_search(request: ip_extractor.IpExtractionModel):
+    return ip_extractor.fn_ip_extractor(request)
+
