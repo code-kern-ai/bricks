@@ -20,7 +20,6 @@ def hash_extractor(request: HashExtractionModel):
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
     regex = re.compile(r"#(\w+)")
-    regex.findall(text)
 
     hashtags = []
     for match in regex.finditer(text):
