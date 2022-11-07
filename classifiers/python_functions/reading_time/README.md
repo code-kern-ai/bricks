@@ -1,0 +1,1 @@
+Calculates the reading time of a text, based on following paper: https://homepages.inf.ed.ac.uk/keller/papers/cognition08a.pdf.

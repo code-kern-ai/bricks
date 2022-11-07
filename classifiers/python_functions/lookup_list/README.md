@@ -1,0 +1,1 @@
+Looks up whether values of a given list are in a text, and if so, returns the desired label.

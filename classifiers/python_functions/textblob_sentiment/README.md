@@ -1,0 +1,1 @@
+Calculates the sentiment of a given text in English using Textblob.

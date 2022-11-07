@@ -1,0 +1,1 @@
+Counts the number of sylabbles in a text.
