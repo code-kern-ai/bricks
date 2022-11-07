@@ -12,6 +12,7 @@ from .python_functions import (
     time_extraction,
     url_extraction,
     window_search,
+    ip_extractor
 )
 
 router = APIRouter()
@@ -63,3 +64,7 @@ def api_url_extraction(request: url_extraction.UrlExtractionModel):
 @router.post('/window_search')
 def api_window_search(request: window_search.WindowSearchModel):
     return window_search.window_search(request)
+
+@router.post('/ip_extractor')
+def api_window_search(request: ip_extractor.IpExtractionModel):
+    return ip_extractor.fn_ip_extractor(request)

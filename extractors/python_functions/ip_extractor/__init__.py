@@ -15,7 +15,7 @@ class IpExtractionModel(BaseModel):
             }
         }
 
-def ip_extractor(request: IpExtractionModel):
+def fn_ip_extractor(request: IpExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
