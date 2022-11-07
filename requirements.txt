@@ -2,6 +2,7 @@ fastapi==0.85.1
 gunicorn==20.1.0
 langdetect==1.0.9
 pip-chill==1.0.1
+python-dotenv==0.21.0
 python-levenshtein==0.20.8
 textblob==0.17.1
 textstat==0.7.3

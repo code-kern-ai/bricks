@@ -12,6 +12,7 @@ origins = [
     "http://127.0.0.1:3000",
     "http://localhost",
     "http://localhost:3000",
+    "http://localhost:8000",
 ]
 
 api.add_middleware(
@@ -36,9 +37,10 @@ async def root():
         </body>
     </html>
     """
-    return HTMLResponse(content=html_content, status_code=200) 
+    return HTMLResponse(content=html_content, status_code=200)
 
-api.include_router(classifiers.router, prefix='/classifiers', tags=['classifiers'])
-api.include_router(extractors.router, prefix='/extractors', tags=['extractors'])
+
+api.include_router(classifiers.router, prefix="/classifiers", tags=["classifiers"])
+api.include_router(extractors.router, prefix="/extractors", tags=["extractors"])
 
 download_all_models()

@@ -1,29 +1,21 @@
 from pydantic import BaseModel
-from langdetect import detect, DetectorFactory 
+from langdetect import detect, DetectorFactory
+
 DetectorFactory.seed = 0
+
+INPUT_EXAMPLE = {"text": "This is an english sentence."}
+
 
 class LanguageDetectionModel(BaseModel):
     text: str
 
     class Config:
-        schema_extra = {
-            "example": {
-                "text": "This is an english sentence."
-            }
-        }
+        schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def fn_language_detection(request: LanguageDetectionModel):
-    """Detect language of text
-        
-    Args:
-        request (LanguageDetectionModel): schema of request body
-
-    Returns:
-        dict: Language of text
-    """
+def language_detection(request: LanguageDetectionModel):
+    """Detects the language of a given text."""
 
     text = request.text
     language = detect(text)
     return {"language": language}
-
