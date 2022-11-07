@@ -3,19 +3,22 @@ from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
 
-class HashExtractionModel(BaseModel):
+INPUT_EXAMPLE = {
+    "text": "In tech industry, #devrel is a very hot topic",
+    "spacyTokenizer": "en_core_web_sm",
+}
+
+
+class HashtagExtractionModel(BaseModel):
     text: str
     spacyTokenizer: Optional[str] = "en_web_core_sm"
 
     class Config:
-        schema_extra = {
-            "example": {
-                "text": "In tech industry, #devrel is a very hot topic",
-                "spacyTokenizer": "en_core_web_sm",
-            }
-        }
+        schema_extra = {"example": INPUT_EXAMPLE}
 
-def hash_extractor(request: HashExtractionModel):
+
+def hashtag_extraction(request: HashtagExtractionModel):
+    """Detects hashtags in a text and returns them in a list."""
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)

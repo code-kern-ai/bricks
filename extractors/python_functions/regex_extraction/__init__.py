@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
 
+
 class RegexExtractionModel(BaseModel):
     text: str
     regex: str
@@ -15,15 +16,17 @@ class RegexExtractionModel(BaseModel):
                 "text": "Check out https://kern.ai!",
                 "regex": "https:\/\/[a-zA-Z0-9.\/]+",
                 "spacyTokenizer": "en_core_web_sm",
-                "yourLabel": "url"
+                "yourLabel": "url",
             }
         }
 
-def extract_by_regex(request: RegexExtractionModel):
+
+def regex_extraction(request: RegexExtractionModel):
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(request.text)
-    
+
     matches = []
+
     def regex_search(pattern, string):
         """
         some helper function to easily iterate over regex matches
@@ -39,7 +42,7 @@ def extract_by_regex(request: RegexExtractionModel):
 
             prev_end += end
             string = string[end:]
-            
+
     for start, end in regex_search(request.regex, request.text):
         span = doc.char_span(start, end, alignment_mode="expand")
         matches.append([request.yourLabel, span.start, span.end])

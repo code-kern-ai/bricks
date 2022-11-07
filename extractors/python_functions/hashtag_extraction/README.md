@@ -1,0 +1,1 @@
+Detects hashtags in a given text, e.g. #datacentricai.
