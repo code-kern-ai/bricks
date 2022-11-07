@@ -9,7 +9,7 @@ INPUT_EXAMPLE = {
 }
 
 
-class PhonenumExtractorModel(BaseModel):
+class PhoneNumberExtractionModel(BaseModel):
     text: str
     spacyTokenizer: str = "en_core_web_sm"
 
@@ -17,7 +17,7 @@ class PhonenumExtractorModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def phone_number_extraction(request: PhonenumExtractorModel):
+def phone_number_extraction(request: PhoneNumberExtractionModel):
     """Detects phone numbers in a given text."""
     text = request.text
 
