@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
 
+
 class UrlExtractionModel(BaseModel):
     text: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
@@ -15,7 +16,8 @@ class UrlExtractionModel(BaseModel):
             }
         }
 
-def fn_url_extraction(request: UrlExtractionModel):
+
+def url_extraction(request: UrlExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)

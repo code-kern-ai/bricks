@@ -5,11 +5,17 @@ from Levenshtein import distance as levenshtein_distance
 def fn_levenshtein_distance(record: Dict[str, Any]):
     str_01 = record["text_first"] 
     str_02 = record["text_second"]
-    weights = record["weights"]
+    
+    weights = record.get("weights")
 
     if weights is not None:
-        ls_distance = levenshtein_distance(str_01, str_02, weights=weights)
+        weights_tuple = (
+            weights["insertion"],
+            weights["deletion"],
+            weights["substitution"],
+        )
+        ls_distance = levenshtein_distance(str_01, str_02, weights=weights_tuple)
     else:
         ls_distance = levenshtein_distance(str_01, str_02)
-    return {"Levenshtein distance": ls_distance}
+    return ls_distance
 ```

@@ -1,6 +1,7 @@
 ```python
 from typing import Dict, Any
 from pydantic import BaseModel
+import spacy
 import re
 
 def ip_extractor(request: Dict[str, Any]):

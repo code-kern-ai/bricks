@@ -12,34 +12,42 @@ from .python_functions import (
 
 router = APIRouter()
 
-@router.post('/language_detection')
+
+@router.post(f"/{language_detection.language_detection.__name__.lower()}")
 def api_language_detection(request: language_detection.LanguageDetectionModel):
-    return language_detection.fn_language_detection(request)
+    return language_detection.language_detection(request)
 
-@router.post('/levenshtein_distance')
+
+@router.post(f"/{levenshtein_distance.levenshtein_distance.__name__.lower()}")
 def api_levenshtein_distance(request: levenshtein_distance.LevenshteinDistanceModel):
-    return levenshtein_distance.fn_levenshtein_distance(request)
+    return levenshtein_distance.levenshtein_distance(request)
 
-@router.post('/lookup_list')
+
+@router.post(f"/{lookup_list.lookup_list.__name__.lower()}")
 def api_lookup_list(request: lookup_list.LookupListModel):
-    return lookup_list.fn_lookup_list(request)
+    return lookup_list.lookup_list(request)
 
-@router.post('/reading_time')
+
+@router.post(f"/{reading_time.reading_time.__name__.lower()}")
 def api_reading_time(request: reading_time.ReadingTimeModel):
-    return reading_time.fn_reading_time(request)
+    return reading_time.reading_time(request)
 
-@router.post('/sentence_complexity')
-def api_sentence_complexity(request:sentence_complexity.SentenceComplexityModel):
-    return sentence_complexity.fn_sentence_complexity(request)
 
-@router.post('/syllable_count')
+@router.post(f"/{sentence_complexity.sentence_complexity.__name__.lower()}")
+def api_sentence_complexity(request: sentence_complexity.SentenceComplexityModel):
+    return sentence_complexity.sentence_complexity(request)
+
+
+@router.post(f"/{syllable_count.syllable_count.__name__.lower()}")
 def api_syllable_count(request: syllable_count.SyllableCountModel):
-    return syllable_count.fn_syllable_count(request)
+    return syllable_count.syllable_count(request)
 
-@router.post('/textblob_sentiment')
+
+@router.post(f"/{textblob_sentiment.textblob_sentiment.__name__.lower()}")
 def api_textblob_sentiment(request: textblob_sentiment.TextblobSentimentModel):
-    return textblob_sentiment.fn_textblob_sentiment(request)
+    return textblob_sentiment.textblob_sentiment(request)
 
-@router.post('/textblob_subjectivity')
+
+@router.post(f"/{textblob_subjectivity.textblob_subjectivity.__name__.lower()}")
 def api_textblob_subjectivity(request: textblob_subjectivity.TextblobSentimentModel):
-    return textblob_subjectivity.fn_textblob_subjectivity(request)
+    return textblob_subjectivity.textblob_subjectivity(request)

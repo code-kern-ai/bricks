@@ -1,0 +1,1 @@
+Calculates the subjectivity of a given text in English using Textblob.

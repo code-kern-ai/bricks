@@ -1,26 +1,18 @@
-from pydantic import BaseModel 
+from pydantic import BaseModel
 import textstat
+
+INPUT_EXAMPLE = {"text": "This sentence has 7 syllables."}
+
 
 class SyllableCountModel(BaseModel):
     text: str
 
     class Config:
-        schema_extra = {
-            "example": {
-                "text": "This sentence has 8 syllables."
-            }
-        }
+        schema_extra = {"example": INPUT_EXAMPLE}
 
-def fn_syllable_count(request: SyllableCountModel):
-    """Counts the number of sylabbles in a text. 
 
-    Args:
-        request (SyllableCountModel): schema of request body
-
-    Returns:
-        dict: Syllables of a text
-    """
+def syllable_count(request: SyllableCountModel):
+    """Counts the number of sylabbles in a text."""
     text = request.text
     syllables = textstat.syllable_count(text)
     return {"syllableCount": syllables}
-

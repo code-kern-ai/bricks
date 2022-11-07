@@ -2,7 +2,8 @@ from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 
-class OrganisationExtractionModel(BaseModel):
+
+class OrgExtractionModel(BaseModel):
     text: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
 
@@ -14,7 +15,8 @@ class OrganisationExtractionModel(BaseModel):
             }
         }
 
-def organisation_extraction(request: OrganisationExtractionModel):
+
+def org_extraction(request: OrgExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
@@ -22,7 +24,7 @@ def organisation_extraction(request: OrganisationExtractionModel):
     organisations = []
 
     for entity in doc.ents:
-        if entity.label_ == 'ORG':
+        if entity.label_ == "ORG":
             organisations.append((entity.start, entity.end, entity.text))
 
     return {"organisations": organisations}
