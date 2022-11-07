@@ -1,0 +1,1 @@
+Every function is built as a separate directory, containing the `__init__.py` file and a `code_snippet.md`.

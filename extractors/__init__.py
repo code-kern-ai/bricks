@@ -1,43 +1,65 @@
 from fastapi import APIRouter
-from .python_functions.url_extraction import fn_url_extraction, UrlExtractionModel
-from .python_functions.hashtag_extraction import hash_extractor, HashExtractionModel
-from .python_functions.email_extraction import email_extractor, EmailExtractionModel
-from .python_functions.date_extraction import date_extractor, DateExtractionModel
-from .python_functions.time_extraction import time_extractor, TimeExtractionModel
-from .python_functions.price_extraction import price_extractor, PriceExtractionModel
-from .python_functions.org_extraction import organisation_extraction, OrganisationExtractionModel
-from .python_functions.name_extraction import name_extractor, NameExtractionModel
+from .python_functions import (
+    aspect_matcher,
+    date_extraction,
+    email_extraction,
+    gazetteer,
+    hashtag_extraction,
+    name_extraction,
+    org_extraction,
+    price_extraction,
+    regex_extraction,
+    time_extraction,
+    url_extraction,
+    window_search,
+)
 
 router = APIRouter()
 
-@router.post('/url_extraction')
-def url_extraction(request: UrlExtractionModel):
-    return fn_url_extraction(request)
-
-@router.post('/hashtag_extraction')
-def hash_extraction(request: HashExtractionModel):
-    return hash_extractor(request)
-
-@router.post('/email_extraction')
-def email_extraction(request: EmailExtractionModel):
-    return email_extractor(request)
+@router.post("/aspect_matcher")
+async def api_aspect_matcher(request: aspect_matcher.AspectMatcherModel):
+    return aspect_matcher.aspect_matcher(request)
 
 @router.post('/date_extraction')
-def date_extraction(request: DateExtractionModel):
-    return date_extractor(request)
+def api_date_extraction(request: date_extraction.DateExtractionModel):
+    return date_extraction.date_extractor(request)
 
-@router.post('/time_extraction')
-def time_extraction(request: TimeExtractionModel):
-    return time_extractor(request)
-    
-@router.post('/price_extraction')
-def price_extraction(request: PriceExtractionModel):
-    return price_extractor(request)
-    
-@router.post('/org_extraction')
-def org_extraction(request: OrganisationExtractionModel):
-    return organisation_extraction(request)
+@router.post('/email_extraction')
+def api_email_extraction(request: email_extraction.EmailExtractionModel):
+    return email_extraction.email_extractor(request)
+
+@router.post('/gazetteer')
+def api_gazetteer(request: gazetteer.GazetteerModel):
+    return gazetteer.gazetteer(request)
+
+@router.post('/hashtag_extraction')
+def api_hash_extraction(request: hashtag_extraction.HashExtractionModel):
+    return hashtag_extraction.hash_extractor(request)
 
 @router.post('/name_extraction')
-def name_extraction(request:NameExtractionModel):
-    return name_extractor(request)
+def api_name_extraction(request: name_extraction.NameExtractionModel):
+    return name_extraction.name_extractor(request)
+
+@router.post('/org_extraction')
+def api_org_extraction(request: org_extraction.OrganisationExtractionModel):
+    return org_extraction.organisation_extraction(request)
+
+@router.post('/price_extraction')
+def api_price_extraction(request: price_extraction.PriceExtractionModel):
+    return price_extraction.price_extractor(request)
+
+@router.post('/regex_extraction')
+def api_regex_extraction(request: regex_extraction.RegexExtractionModel):
+    return regex_extraction.extract_by_regex(request)
+
+@router.post('/time_extraction')
+def api_time_extraction(request: time_extraction.TimeExtractionModel):
+    return time_extraction.time_extractor(request)
+
+@router.post('/url_extraction')
+def api_url_extraction(request: url_extraction.UrlExtractionModel):
+    return url_extraction.fn_url_extraction(request)
+
+@router.post('/window_search')
+def api_window_search(request: window_search.WindowSearchModel):
+    return window_search.window_search(request)
