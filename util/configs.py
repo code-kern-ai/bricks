@@ -25,6 +25,24 @@ def build_classifier_function_config(
     )
 
 
+def build_extractor_function_config(
+    function: Callable,
+    input_example: Dict[str, Any],
+    data_type: str,
+    issue_id: int,
+    state: str,
+):
+    return build_config(
+        module_type="extractor",
+        execution_type="pythonFunction",
+        function=function,
+        input_example=input_example,
+        data_type=data_type,
+        issue_id=issue_id,
+        state=state,
+    )
+
+
 def build_config(
     module_type: str,
     execution_type: str,
