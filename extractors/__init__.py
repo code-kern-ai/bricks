@@ -12,7 +12,7 @@ from .python_functions import (
     time_extraction,
     url_extraction,
     window_search,
-    ip_extractor
+    ip_extractor,
 )
 
 router = APIRouter()
@@ -78,7 +78,7 @@ def api_language_detection(request: window_search.WindowSearchModel):
     return window_search.window_search(request)
 
 
-@router.post('/ip_extractor')
+@router.post(f"/{ip_extractor.fn_ip_extractor.__name__.lower()}")
 def api_window_search(request: ip_extractor.IpExtractionModel):
     return ip_extractor.fn_ip_extractor(request)
 
