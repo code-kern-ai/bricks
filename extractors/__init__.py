@@ -15,6 +15,8 @@ from .python_functions import (
     url_extraction,
     window_search,
     address_extraction,
+    metric_detector,
+    path_extractor,
 )
 
 router = APIRouter()
@@ -35,6 +37,8 @@ for module in [
     url_extraction,
     window_search,
     address_extraction,
+    metric_detector,
+    path_extractor,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
