@@ -2,7 +2,7 @@
 from sklearn.tree import DecisionTreeClassifier
 # you can find further models here: https://scikit-learn.org/stable/supervised_learning.html#supervised-learning
 
-class MyLR(LearningClassifier):
+class MyDT(LearningClassifier):
 
     def __init__(self):
         self.model = DecisionTreeClassifier()
