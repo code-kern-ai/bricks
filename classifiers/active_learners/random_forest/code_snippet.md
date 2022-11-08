@@ -1,11 +1,11 @@
 ```python
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 # you can find further models here: https://scikit-learn.org/stable/supervised_learning.html#supervised-learning
 
-class MyLR(LearningClassifier):
+class MyRF(LearningClassifier):
 
     def __init__(self):
-        self.model = DecisionTreeClassifier()
+        self.model = RandomForestClassifier()
 
     @params_fit(
         embedding_name = "your-embedding", # pick this from the options above
