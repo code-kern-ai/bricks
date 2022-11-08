@@ -1,0 +1,1 @@
+Detects prices from texts.

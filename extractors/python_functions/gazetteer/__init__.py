@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import List
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 
@@ -12,7 +12,7 @@ INPUT_EXAMPLE = {
 
 class GazetteerModel(BaseModel):
     text: str
-    spacyTokenizer: Optional[str] = "en_core_web_sm"
+    spacyTokenizer: str = "en_core_web_sm"
     lookupValues: List[str]
     yourLabel: str
 

@@ -1,4 +1,3 @@
-from typing import Optional
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
@@ -11,7 +10,7 @@ INPUT_EXAMPLE = {
 
 class HashtagExtractionModel(BaseModel):
     text: str
-    spacyTokenizer: Optional[str] = "en_web_core_sm"
+    spacyTokenizer: str = "en_web_core_sm"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
@@ -29,6 +28,6 @@ def hashtag_extraction(request: HashtagExtractionModel):
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end)
-        hashtags.append([span.start, span.end, span.text])
+        hashtags.append(["hashtag", span.start, span.end])
 
     return {"hashtags": hashtags}

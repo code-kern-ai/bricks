@@ -4,7 +4,7 @@ from textblob import TextBlob
 INPUT_EXAMPLE = {"text": "Wow, this is awesome!"}
 
 
-class TextblobSentimentModel(BaseModel):
+class TextblobSubjectivityModel(BaseModel):
     text: str
 
     class Config:
@@ -33,7 +33,7 @@ def get_mapping_subjectivity(score):
     return OUTCOMES[int(score)]
 
 
-def textblob_subjectivity(request: TextblobSentimentModel):
+def textblob_subjectivity(request: TextblobSubjectivityModel):
     """Calculate subjectivity of a text."""
     blob = TextBlob(request.text)
 

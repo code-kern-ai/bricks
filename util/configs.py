@@ -25,6 +25,23 @@ def build_classifier_function_config(
     )
 
 
+def build_classifier_learner_config(
+    function: Callable,
+    data_type: str,
+    issue_id: int,
+    state: str,
+):
+    return build_config(
+        module_type="classifier",
+        execution_type="activeLearner",
+        function=function,
+        input_example={"dummy": None},
+        data_type=data_type,
+        issue_id=issue_id,
+        state=state,
+    )
+
+
 def build_extractor_function_config(
     function: Callable,
     input_example: Dict[str, Any],
@@ -42,6 +59,21 @@ def build_extractor_function_config(
         state=state,
     )
 
+def build_extractor_learner_config(
+    function: Callable,
+    data_type: str,
+    issue_id: int,
+    state: str,
+):
+    return build_config(
+        module_type="extractor",
+        execution_type="activeLearner",
+        function=function,
+        input_example={"dummy": None},
+        data_type=data_type,
+        issue_id=issue_id,
+        state=state,
+    )
 
 def build_config(
     module_type: str,

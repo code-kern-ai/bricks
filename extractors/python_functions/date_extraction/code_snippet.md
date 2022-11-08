@@ -10,5 +10,5 @@ def date_extractor(record: Dict[str, Any]) -> List[Tuple[str, int, int]]:
     for match in regex.finditer(record["your-text"].text):
         start, end = match.span()
         span = record["your-text"].char_span(start, end)
-        dates.append([span.start, span.end, span.text])
+        dates.append(["date", span.start, span.end])
 ```

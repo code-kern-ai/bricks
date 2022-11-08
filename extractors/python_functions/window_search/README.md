@@ -1,0 +1,1 @@
+In a given text, a window search looks for cue words inside frame of tokens. E.g. in a 6-window search, 3 token left and right are searched. "Max" can be extracted from "Max joined Kern AI in September." if "join" is one of the cue words.

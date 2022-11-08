@@ -1,0 +1,1 @@
+Extracts URL links from a given text.
