@@ -1,5 +1,5 @@
-# Welcome to the contributions guideline for the content library
-This is the official repository to add further modules/heuristics to the content library maintained mostly by Kern AI. Please refer to this document if you want to add your own modules/heuristics to the library.
+# Welcome to the contributions guideline for bricks
+This is the official repository to add further modules/heuristics to bricks maintained mostly by Kern AI. Please refer to this document if you want to add your own modules/heuristics to the library.
 
 ## Table of contents
 - [Structure of this repository](#structure-of-this-repository)

@@ -29,11 +29,11 @@ async def root():
     html_content = """
     <html>
         <head>
-            <title>Kern AI - Content Library Endpoints</title>
+            <title>Kern AI - Bricks</title>
         </head>
         <body>
-            <h1>Endpoints for the <a href="https://kern.ai" target="_blank">Kern AI</a> Content Library</h1>
-            <p>Please look into the content library to see how to use these endpoints.</p>
+            <h1>Endpoints for <a href="https://kern.ai" target="_blank">Kern AI</a> bricks</h1>
+            <p>Please look into bricks to see how to use these endpoints.</p>
         </body>
     </html>
     """
