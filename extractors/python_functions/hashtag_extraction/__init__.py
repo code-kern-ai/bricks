@@ -7,7 +7,6 @@ INPUT_EXAMPLE = {
     "spacyTokenizer": "en_core_web_sm",
 }
 
-
 class HashtagExtractionModel(BaseModel):
     text: str
     spacyTokenizer: str = "en_web_core_sm"
