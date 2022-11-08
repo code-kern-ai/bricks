@@ -1,0 +1,1 @@
+A random forest model as the classification head for active transfer learning, using a pre-trained model to generate embeddings.
