@@ -13,6 +13,7 @@ origins = [
     "http://localhost",
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://bricks.kern.ai",
 ]
 
 api.add_middleware(
