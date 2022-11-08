@@ -8,9 +8,8 @@ Browse [bricks](https://bricks.kern.ai) to find gold nuggets for your projects; 
 
 ![](hero.svg)
 
-Modules that are added in this repository aren't automatically available online; they must be added in our content management system by hand.
-
 ## Table of contents
+- [Why bricks?](#why-bricks)
 - [What are classifiers and extractors?](#what-are-classifiers-and-extractors)
 - [Getting started](#getting-started)
 - [Contributing](#contributing)
@@ -18,17 +17,27 @@ Modules that are added in this repository aren't automatically available online;
 - [Regular updates and newsletter](#regular-updates-and-newsletter)
 - [License](#license)
 
+## Why bricks?
+We're aiming to build a library of off-the-shelf natural language enrichments that can be used in any project. We're building `bricks` to make it easier for developers to build better products. That's where the name comes from.
+
 ## What are classifiers and extractors?
 We generally summarize them as modules in this repository.
 
 ### Classifiers
-Classifiers are modules that summarizes a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
+Classifiers are modules that summarize a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
 
 ### Extractors
 Extractors are modules that retrieve specific information from a given text. For example, a module that extracts the author of a text would go into this folder.
 
 ### Other modules
 In the future, we'll also add modules such as generators, which create new content based on a given text, or filtersets for refinery with pre-defined content.
+
+## Structure of modules
+Each module has a folder with the following structure:
+- `__init__.py`: if the module can be executed as a script, this file contains the entry point
+- `README.md`: a description of the module, which is displayed on the platform on the detail page of the module
+- `code_snippet.md`: the displayed code snippet on the detail page of the module
+- `config.py`: a config script to synchronize this repository with the online platform
 
 ## Getting started
 You can access the modules of this repository in [bricks](https://bricks.kern.ai). If you want to host the modules yourself, you can do so by following the steps below.
@@ -37,9 +46,10 @@ You can access the modules of this repository in [bricks](https://bricks.kern.ai
 2. (optional) Create a virtual environment
 3. Install the dependencies (`pip install -r requirements.txt`)
 4. Run the FastAPI server (`uvicorn api:api`)
+5. Go to `http://localhost:8000/docs` to see the documentation
 
 ## Contributing
-Please look into our [contribution guidelines](CONTRIBUTING.md) to get started. If you have any questions, please reach out to us anytime on [Discord](https://discord.gg/qf4rGCEphW).
+Modules added in this repository are added to the online platform by us continuously. If you want to add your own module, please follow the [contribution guidelines](CONTRIBUTING.md). If you have any questions, please reach out to us anytime on [Discord](https://discord.gg/qf4rGCEphW).
 
 If the content of this repository is helpful, please leave a star ⭐️. Also, make sure to check out [refinery](#refinery).
 
