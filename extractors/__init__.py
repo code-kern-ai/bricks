@@ -1,6 +1,9 @@
 from fastapi import APIRouter
 from .python_functions import (
+    address_extraction,
     aspect_matcher,
+    book_extraction,
+    credit_card_extraction,
     date_extraction,
     email_extraction,
     gazetteer,
@@ -14,7 +17,7 @@ from .python_functions import (
     time_extraction,
     url_extraction,
     window_search,
-    address_extraction,
+    isbn_extraction,
     metric_detector,
     path_extractor,
 )
@@ -22,7 +25,10 @@ from .python_functions import (
 router = APIRouter()
 
 for module in [
+    address_extraction,
     aspect_matcher,
+    book_extraction,
+    credit_card_extraction,
     date_extraction,
     email_extraction,
     gazetteer,
@@ -36,7 +42,7 @@ for module in [
     time_extraction,
     url_extraction,
     window_search,
-    address_extraction,
+    isbn_extraction,
     metric_detector,
     path_extractor,
 ]:

@@ -15,6 +15,7 @@ class AddressExtractionModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
+
 def address_extraction(request: AddressExtractionModel):
     """Detects the location/addresses and returns them in a list."""
 
@@ -35,12 +36,12 @@ def address_extraction(request: AddressExtractionModel):
             print(start, end)
             span = doc.char_span(start, end)
             print(span)
-            addresses.append([span.start, span.end, span.text])
+            addresses.append(["address", span.start, span.end, span.text])
     if regex_2.findall(text):
         for match in regex_2.finditer(text):
             start, end = match.span()
             span = doc.char_span(start, end)
             print(span)
-            addresses.append([span.start, span.end, span.text])
+            addresses.append(["address", span.start, span.end])
 
     return {"addresses": addresses}

@@ -1,4 +1,5 @@
 fastapi==0.85.1
+fire==0.4.0
 gunicorn==20.1.0
 langdetect==1.0.9
 pip-chill==1.0.1

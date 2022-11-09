@@ -8,6 +8,6 @@ def get_config():
         function=address_extraction,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=21,
+        issue_id=62,
         state=State.PUBLIC,
     )
