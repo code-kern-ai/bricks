@@ -14,7 +14,7 @@ from .python_functions import (
     time_extraction,
     url_extraction,
     window_search,
-    isbn_extraction
+    isbn_extraction,
     metric_detector,
     path_extractor,
 )

@@ -8,14 +8,15 @@ INPUT_EXAMPLE = {
 }
 
 
-class ISBNExtractionModel(BaseModel):
+class IsbnExtractionModel(BaseModel):
     text: str
     spacyTokenizer: str = "en_core_web_sm"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def isbn_extraction(request: ISBNExtractionModel):
+
+def isbn_extraction(request: IsbnExtractionModel):
     """Extracts the ISBN from a text"""
 
     text = request.text

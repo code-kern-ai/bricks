@@ -8,6 +8,6 @@ def get_config():
         function=isbn_extraction,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=34,
+        issue_id=29,
         state=State.PUBLIC,
     )
