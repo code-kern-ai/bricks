@@ -14,7 +14,7 @@ class MetricDetectorModel(BaseModel):
 
 
 def metric_detector(request: MetricDetectorModel):
-    """Extracts metrics like KG or meters from a text."""
+    """Detects metric values in a text, e.g. kilos, meters, etc."""
     text = request.text
     quants = parser.parse(text)
     return {"metrics": quants}
