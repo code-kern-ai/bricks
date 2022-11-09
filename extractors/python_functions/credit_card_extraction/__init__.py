@@ -15,7 +15,8 @@ class CreditCardExtractionModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def credit_extraction(request: CreditCardExtractionModel):
+
+def credit_card_extraction(request: CreditCardExtractionModel):
     """Extracts the credit/debit card number from a text."""
 
     text = request.text
@@ -29,4 +30,4 @@ def credit_extraction(request: CreditCardExtractionModel):
         span = doc.char_span(start, end)
         credit.append([span.start, span.end, span.text])
 
-    return {"cardDetails": credit}
+    return {"creditCard": credit}

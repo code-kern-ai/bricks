@@ -1,13 +1,13 @@
 ---
 name: Module request
-about: Suggest a module for the content library
+about: Suggest a module for bricks
 title: "[MODULE] - Your module idea"
 labels: enhancement
 assignees: jhoetter
 
 ---
 
-**Please describe the module you would like to add to the content library**
+**Please describe the module you would like to add to bricks**
 Either go in detail, or just share a sketch of an idea here
 
 **Do you already have an implementation?**
