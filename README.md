@@ -34,6 +34,8 @@ Each module has a folder with the following structure:
 - `code_snippet.md`: the displayed code snippet on the detail page of the module. This is exactly how you can run the code in [refinery](#refinery).
 - `config.py`: a config script to synchronize this repository with the online platform.
 
+If you want to add a new module, please look into our [contributing guidelines](#contributing).
+
 ## Getting started
 You can access the modules of this repository in [bricks](https://bricks.kern.ai). If you want to host the modules yourself, you can do so by following the steps below.
 
