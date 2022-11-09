@@ -1,2 +1,2 @@
-def my_tagger():
+def _template():
     """My description of the tagger."""

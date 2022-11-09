@@ -1,2 +1,2 @@
-def my_clf():
+def _template():
     """A description for my classifier"""

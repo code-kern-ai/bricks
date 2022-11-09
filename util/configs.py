@@ -59,6 +59,7 @@ def build_extractor_function_config(
         state=state,
     )
 
+
 def build_extractor_learner_config(
     function: Callable,
     data_type: str,
@@ -74,6 +75,7 @@ def build_extractor_learner_config(
         issue_id=issue_id,
         state=state,
     )
+
 
 def build_config(
     module_type: str,

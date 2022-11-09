@@ -19,7 +19,7 @@ class MyTaggerModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def my_tagger(request: MyTaggerModel):
+def _template(request: MyTaggerModel):
     """my docstring to describe what the function does"""
 
     text = request.text
