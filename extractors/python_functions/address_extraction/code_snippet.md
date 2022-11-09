@@ -10,11 +10,11 @@ def location(record):
         for match in regex_1.finditer(record["your-text"].text):
             start, end = match.span()
             span = record["your-text"].char_span(start, end)
-            yield "address", span.start, span.end, span.text
+            yield "address", span.start, span.end
 
     if regex_2.findall(record["your-text"].text):
         for match in regex_2.finditer(record["your-text"].text):
             start, end = match.span()
             span = record["your-text"].char_span(start, end)
-            yield "address", span.start, span.end, span.text
+            yield "address", span.start, span.end
 ```

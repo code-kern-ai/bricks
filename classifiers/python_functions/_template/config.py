@@ -1,12 +1,10 @@
-from util.configs import (
-    build_classifier_learner_config,
-)  # you might need to change this line, depending on your module and extractor type
+from util.configs import build_classifier_function_config
 from util.enums import State
 from . import my_lf, INPUT_EXAMPLE
 
 
 def get_config():
-    return build_classifier_learner_config(
+    return build_classifier_function_config(
         function=my_lf,
         input_example=INPUT_EXAMPLE,
         data_type="text",
