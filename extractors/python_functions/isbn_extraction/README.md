@@ -1,0 +1,1 @@
+Extracts the ISBN from a given text.
