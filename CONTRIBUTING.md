@@ -25,10 +25,10 @@ In each folder, you will find further directories, typically in this structure:
 
 ### Structure of modules: `__init__.py`, `README.md`, `code_snippet.md` and `config.py`
 Each module has a folder with the following structure:
-- `__init__.py`: if the module can be executed as a script, this file contains the entry point
-- `README.md`: a description of the module, which is displayed on the platform on the detail page of the module
-- `code_snippet.md`: the displayed code snippet on the detail page of the module
-- `config.py`: a config script to synchronize this repository with the online platform
+- `__init__.py`: if the module can be executed as a script, this file contains the entry point.
+- `README.md`: a description of the module, which is displayed on the platform on the detail page of the module.
+- `code_snippet.md`: the displayed code snippet on the detail page of the module.
+- `config.py`: a config script to synchronize this repository with the online platform.
 
 We use that structure to a) standardize module implementations, making it easier to maintain the underlying code of modules, and b) to synchronize the repository with the online platform. This means that if you add a new module to the repository, it will be added to the platform via a script that reads the `config.py` file.
 
@@ -38,77 +38,18 @@ If you have an idea for a new module/heuristic, please [open an issue](https://g
 ## How to contribute modules
 1. As stated above, please first add the idea as an issue. We'll use this to document the origin of the module, and will use it to help you during the contribution.
 2. Create a new branch with the name of the module you want to add. Please do **not** add multiple modules in one branch.
-3. Add a directory to the file system fitting your request, e.g. `classifiers/python_functions/your_module_name`. Inside it, add an `__init__.py` file with the endpoint function and a `code_snippet.md` file with a description of the function. Also add a `README.md` file with a description of the module. You can use the other modules as a template, or reach out to us on [Discord](https://discord.gg/qf4rGCEphW).
-4. For further details on _how_ to implement the module, see the section below.
-5. Create a pull request to the `main` branch of the repository. We will review your code and merge it into the repository, and add a `config.py` file which will be used to push your module to the platform.
+3. Copy the `_template` directory from the `classifiers` or `extractors` folder into the folder of the module type you want to add. Rename the folder to the name of your module.
+4. Start by changing the `config.py` file by updating the issueId to the issue you created in step 1.
+5. Implement the `__init__.py` file. This is the entry point of the module, and will be executed when the module is run.
+6. Modify `code_snippet.md`, and keep in mind that this must fit the interface of refinery. If you copied from the `_template` directory, you will already see the expected interface.
+7. Write something in the `README.md` file. This will be displayed on the detail page of the module.
+8. Finally, update the last changes to the `config.py`, by updating the name of the function you implemented in this module. Make sure that the function name is the same as the directory name!
+9. Create a pull request to the `main` branch of the repository. Add a comment `implements #<your-issue-id>` to the pull request, so that we can link the pull request to the issue.
 
-### How to implement a module
-All modules follow a similar structure. The following is a template for a module, which you can add as a directory with an `__init__.py` file and a `code_snippet.md` file. The `__init__.py` for the `language_detection` module looks like this:
+If you have any questions along the way, please don't hesitate to reach out to us, either in the issue you created, or via [Discord](https://discord.gg/qf4rGCEphW).
 
-```python
-# These are the import statements. Please make sure to add them here.
-from pydantic import BaseModel
-from langdetect import detect, DetectorFactory 
-DetectorFactory.seed = 0
-
-# This is how the endpoint will understand request data. Simply think of this as a function signature. The below code would look as follows in "pure Python":
-# def module_name(text: str):
-#    pass
-class LanguageDetectionModel(BaseModel):
-    text: str
-
-    class Config:
-        schema_extra = {
-            "example": {
-                "text": "This is an english sentence."
-            }
-        }
-
-# This is the actual module. It takes the request data as input and returns the output.
-def language_detection(request: LanguageDetectionModel):
-    # We will parse docstrings of this function as descriptions for the module overview on the platform
-    """Detect language of text."""
-
-    # This is where the logic goes. Please note: the endpoint logic can look slightly different to the code that is displayed in the module itself, as requests work different than plain Python.
-    text = request.text
-    language = detect(text)
-    return {"language": language}
-```
-
-And the `code_snippet.md` file looks like this:
-
-```python
-# This is how the actual module will be displayed in the library.
-
-from typing import Dict, Any
-from langdetect import detect
-
-def fn_language_detection(record: Dict[str, Any]) -> str:
-    """Detect language of text
-        
-    Args:
-        record (Dict): one single record you want to process
-
-    Returns:
-        str: Language of your text
-    """
-
-    text = record["your-text"]
-    language = detect(text)
-    return language
-```
-
-Afterwards, you can add your module to the `__init__.py` file in the respective folder (`classifiers` or `extractors`). Just import the file in the `__init__.py` file and add it to the for-loop. This will make sure that the module is available as an endpoint.
-
-Lastly, we'd be really thankful if you update the `requirements.txt` of the repository to include the libraries needed for your module. For the above code, this would be:
-```
-langdetect
-```
-
-If you're not sure, no worries, we're already incredibly thankful for your contribution! We'll add this to the requirements file ourselves.
-
-### spaCy for extractor modules
-We use spaCy for extractor modules, as it helps to put texts into correct tokens. Please use spaCy for extractor modules, and match character returns with token-level returns. For instance:
+### spaCy in `extractors`
+We use spaCy for extractor modules, as it helps to put texts into correct tokens. Please use spaCy for extractor modules, and match character returns with token-level returns. For instance, in the `__init__.py` file:
 ```python
 def date_extraction(request: DateExtraction):
     text = request.text
