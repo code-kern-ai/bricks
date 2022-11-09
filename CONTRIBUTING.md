@@ -1,5 +1,5 @@
-# Welcome to the contributions guideline for the content library
-This is the official repository to add further modules/heuristics to the content library maintained mostly by Kern AI. Please refer to this document if you want to add your own modules/heuristics to the library.
+# Welcome to the contributions guideline for bricks
+Please refer to this document if you want to add your own modules/heuristics to the library.
 
 ## Table of contents
 - [Structure of this repository](#structure-of-this-repository)
@@ -10,25 +10,37 @@ This is the official repository to add further modules/heuristics to the content
 
 
 ## Structure of this repository
+
+### Module types: `classifiers` and `extractors`
 We have structured this repository into two main folders:
 - `classifiers`: this is where modules will go into that are used to classify a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
 - `extractors`: this is where modules will go into that are used to extract information from a given text. For example, a module that extracts the author of a text would go into this folder.
 
+### Execution types: `python_functions`, `active_learners`, `zero_shot` and `premium`
 In each folder, you will find further directories, typically in this structure:
-- `python_functions`: functions you would write as labeling functions in refinery. Think of very simplistic Python snippets. Each python function is implemented as a directory, containing an `__init__.py` file with the endpoint function and a `code_snippet.md` file with a description of the function.
-- `active_learning`: this will contain configuration files for active learning. You can use these to train your models in refinery.
-- `zero_shot`: this is where we'll add configurations for zero-shot models as soon as refinery has a programmable zero-shot interface (atm it is no-code, but we'll change that in the near future).
-- `premium`: those are modules that require some sort of API key. We will add them here, but only the request code, not the API key itself. We will add a `README.md` file in this folder that explains how to get the API key and how to use it.
+- `python_functions`: functions you would write as labeling functions in refinery. Think of very simplistic Python snippets.
+- `active_learners`: contains code snippets you can use in refinery to train an active learning module.
+- `zero_shot`: _not yet relevant_; this is where we'll add configurations for zero-shot models as soon as refinery has a programmable zero-shot interface (atm it is no-code, but we'll change that in the near future).
+- `premium`: _not yet relevant_; those are modules that require some sort of API key. We will add them here, but only the request code, not the API key itself.
+
+### Structure of modules: `__init__.py`, `README.md`, `code_snippet.md` and `config.py`
+Each module has a folder with the following structure:
+- `__init__.py`: if the module can be executed as a script, this file contains the entry point
+- `README.md`: a description of the module, which is displayed on the platform on the detail page of the module
+- `code_snippet.md`: the displayed code snippet on the detail page of the module
+- `config.py`: a config script to synchronize this repository with the online platform
+
+We use that structure to a) standardize module implementations, making it easier to maintain the underlying code of modules, and b) to synchronize the repository with the online platform. This means that if you add a new module to the repository, it will be added to the platform via a script that reads the `config.py` file.
 
 ## How to contribute ideas
-If you have an idea for a new module/heuristic, please open an issue in the repository. We will discuss the idea and if it is a good fit for the library, we will add it to the library. This means you don't _have to write_ the code yourself, but you can still contribute to the library.
+If you have an idea for a new module/heuristic, please [open an issue](https://github.com/code-kern-ai/bricks/issues) in the repository. We will discuss the idea and if it is a good fit for the library, we will add it to the library. This means you don't _have to write_ the code yourself, but you can still contribute to the library. If you want to write the code yourself, please refer to the next section.
 
 ## How to contribute modules
 1. As stated above, please first add the idea as an issue. We'll use this to document the origin of the module, and will use it to help you during the contribution.
 2. Create a new branch with the name of the module you want to add. Please do **not** add multiple modules in one branch.
 3. Add a directory to the file system fitting your request, e.g. `classifiers/python_functions/your_module_name`. Inside it, add an `__init__.py` file with the endpoint function and a `code_snippet.md` file with a description of the function. Also add a `README.md` file with a description of the module. You can use the other modules as a template, or reach out to us on [Discord](https://discord.gg/qf4rGCEphW).
 4. For further details on _how_ to implement the module, see the section below.
-5. Create a pull request to the `main` branch of the repository. We will review your code and merge it into the repository, and add a `config.py` file which will be used to push your module to the library.
+5. Create a pull request to the `main` branch of the repository. We will review your code and merge it into the repository, and add a `config.py` file which will be used to push your module to the platform.
 
 ### How to implement a module
 All modules follow a similar structure. The following is a template for a module, which you can add as a directory with an `__init__.py` file and a `code_snippet.md` file. The `__init__.py` for the `language_detection` module looks like this:
@@ -54,7 +66,7 @@ class LanguageDetectionModel(BaseModel):
 
 # This is the actual module. It takes the request data as input and returns the output.
 def language_detection(request: LanguageDetectionModel):
-    # If you want to, you can add a docstring. We'll be loving you for that :D
+    # We will parse docstrings of this function as descriptions for the module overview on the platform
     """Detect language of text."""
 
     # This is where the logic goes. Please note: the endpoint logic can look slightly different to the code that is displayed in the module itself, as requests work different than plain Python.
@@ -86,18 +98,7 @@ def fn_language_detection(record: Dict[str, Any]) -> str:
     return language
 ```
 
-Afterwards, you can add your module to the `__init__.py` file in the respective folder (`classifiers` or `extractors`). This is how the `__init__.py` file looks like:
-
-```python
-from fastapi import APIRouter
-from .python_functions import language_detection
-
-router = APIRouter()
-
-@router.post(f"/{language_detection.language_detection.__name__.lower()}")
-def api_language_detection(request: language_detection.LanguageDetectionModel):
-    return language_detection.language_detection(request)
-```
+Afterwards, you can add your module to the `__init__.py` file in the respective folder (`classifiers` or `extractors`). Just import the file in the `__init__.py` file and add it to the for-loop. This will make sure that the module is available as an endpoint.
 
 Lastly, we'd be really thankful if you update the `requirements.txt` of the repository to include the libraries needed for your module. For the above code, this would be:
 ```
@@ -131,8 +132,10 @@ def date_extraction(request: DateExtraction):
     return {"spans": spans}
 ```
 
+Note that spaCy doesn't have to be used in the `code_snippet.md` file, as this is only used for the code snippet in the library. refinery uses spaCy under the hood, such that all records are already tokenized.
+
 ## Quality assurance
 We want to make sure that things work nicely and that the modules are of high quality. Therefore, when we will review your submission, we'll do blackbox tests and will check the above criteria. Again, this is about collaboration, so please don't worry about this too much. We'll help you with this!
 
 ## What happens next?
-We have a content management system up and running, in which we enter newly registered endpoints. As soon as your endpoint is merged into the `main` branch, we'll add it to the CMS. This triggers a task for our dev rel team, so it usually doesn't take too long. You can then find it in our online library :)
+We have a content management system up and running, in which we enter newly registered endpoints. As soon as your endpoint is merged into the `main` branch, we'll add it to the CMS. This triggers a task for our dev rel team, so it usually doesn't take too long. You can then find it in our online platform :)

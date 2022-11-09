@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from .python_functions import (
     aspect_matcher,
+    book_extraction,
     date_extraction,
     email_extraction,
     gazetteer,
@@ -14,13 +15,15 @@ from .python_functions import (
     time_extraction,
     url_extraction,
     window_search,
-    book_extraction,
+    metric_detector,
+    path_extractor,
 )
 
 router = APIRouter()
 
 for module in [
     aspect_matcher,
+    book_extraction,
     date_extraction,
     email_extraction,
     gazetteer,
@@ -34,7 +37,8 @@ for module in [
     time_extraction,
     url_extraction,
     window_search,
-    book_extraction,
+    metric_detector,
+    path_extractor,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
