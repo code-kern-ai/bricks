@@ -18,4 +18,5 @@ def path_extractor(request: PathExtractorModel):
     '''Extracts paths from a given text.'''
     text = request.text
     sep = os.sep if request.sep is None else request.sep
-    return [x for x in text.split() if len(x.split(sep)) > 1]
+    paths = [x for x in text.split() if len(x.split(sep)) > 1]
+    return {"filePaths": paths}

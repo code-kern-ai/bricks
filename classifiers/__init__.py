@@ -7,7 +7,7 @@ from .python_functions import (
     sentence_complexity,
     syllable_count,
     textblob_sentiment,
-    textblob_subjectivity,
+    textblob_subjectivity
 )
 
 router = APIRouter()
