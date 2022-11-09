@@ -18,26 +18,21 @@ Browse [bricks](https://bricks.kern.ai) to find gold nuggets for your projects; 
 - [License](#license)
 
 ## Why bricks?
-We're aiming to build a library of off-the-shelf natural language enrichments that can be used in any project. We're building `bricks` to make it easier for developers to build better products. That's where the name comes from.
+We're aiming to build a library of off-the-shelf natural language enrichments that can be used in any project. We're building `bricks` to make it easier for developers to build better products. That's where the name comes from. `bricks` is a library not in the sense that you `pip install` it in your repository, but that you can copy-paste the code from the online platform.
 
 ## What are classifiers and extractors?
 We generally summarize them as modules in this repository.
+- `classifiers` are modules that summarize a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
+- `extractors` are modules that retrieve specific information from a given text. For example, a module that extracts the author of a text would go into this folder.
 
-### Classifiers
-Classifiers are modules that summarize a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
-
-### Extractors
-Extractors are modules that retrieve specific information from a given text. For example, a module that extracts the author of a text would go into this folder.
-
-### Other modules
 In the future, we'll also add modules such as generators, which create new content based on a given text, or filtersets for refinery with pre-defined content.
 
 ## Structure of modules
 Each module has a folder with the following structure:
-- `__init__.py`: if the module can be executed as a script, this file contains the entry point
-- `README.md`: a description of the module, which is displayed on the platform on the detail page of the module
-- `code_snippet.md`: the displayed code snippet on the detail page of the module
-- `config.py`: a config script to synchronize this repository with the online platform
+- `__init__.py`: if the module can be executed as a script, this file contains the entry point.
+- `README.md`: a description of the module, which is displayed on the platform on the detail page of the module.
+- `code_snippet.md`: the displayed code snippet on the detail page of the module. This is exactly how you can run the code in [refinery](#refinery).
+- `config.py`: a config script to synchronize this repository with the online platform.
 
 ## Getting started
 You can access the modules of this repository in [bricks](https://bricks.kern.ai). If you want to host the modules yourself, you can do so by following the steps below.
