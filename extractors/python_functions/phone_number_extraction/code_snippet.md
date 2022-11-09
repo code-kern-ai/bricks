@@ -1,11 +1,9 @@
 ```python
 import re
-from typing import Dict, Optional, Any
-from pydantic import BaseModel
 import spacy
 import phonenumbers
 
-def validate_phone_number(record: Dict[str, Any]):
+def validate_phone_number(record):
     text = record["text"]
 
     regex = re.compile(r"[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}")

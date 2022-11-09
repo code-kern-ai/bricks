@@ -1,10 +1,8 @@
 ```python
-from typing import Dict, Any
-from pydantic import BaseModel
 import spacy
 import re
 
-def ip_extractor(request: Dict[str, Any]):
+def ip_extractor(request):
     text = request["text"]
     nlp = spacy.load(request["spacyTokenizer"])
     doc = nlp(text)
