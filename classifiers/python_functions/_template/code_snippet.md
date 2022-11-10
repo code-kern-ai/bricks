@@ -2,6 +2,7 @@
 def my_clf(record): 
     return "label"
 ```
+
 _Notes, remove them when you're finished_:
 - The record is a dictionary, you can retrieve text e.g. as `record["text"].text`, as the record is already tokenized by spaCy.
 - The function `return`s a single label
