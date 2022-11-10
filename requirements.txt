@@ -2,6 +2,7 @@ fastapi==0.85.1
 fire==0.4.0
 gunicorn==20.1.0
 langdetect==1.0.9
+nltk==3.7
 pip-chill==1.0.1
 phonenumbers==8.13.0
 python-dotenv==0.21.0
