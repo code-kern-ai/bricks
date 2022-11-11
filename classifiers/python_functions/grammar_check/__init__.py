@@ -6,7 +6,7 @@ nltk.download('words')
 from nltk.corpus import words
 
 INPUT_EXAMPLE = {
-    "text": "This text contains sme gramatical errors."
+    "text": "This text have some gramatical errors."
 }
 
 
