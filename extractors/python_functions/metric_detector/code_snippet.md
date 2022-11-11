@@ -1,10 +1,15 @@
 ```python
-from typing import Dict, Any
 from quantulum3 import parser
 
-def metric_extractor(request: Dict[str, Any]):
-    '''Extracts units of measurement and metrics from a text.'''
-    text = request["text"]
+YOUR_ATTRIBUTE = "text" # choose any available attribute here
+
+def metric_detector(record):
+    text = record["text"]
+    
     quants = parser.parse(text)
-    return quants
+    for quant in quants:
+        span = quant.span
+        name = quant.unit.name
+
+        yield name, span[0], span[1]
 ```
