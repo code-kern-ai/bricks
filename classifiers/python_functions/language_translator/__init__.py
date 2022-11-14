@@ -12,7 +12,7 @@ INPUT_EXAMPLE = {
     "apiKey": "<api-key>",
     }
 
-class LangTranslatorModel(BaseModel):
+class LanguageTranslatorModel(BaseModel):
     text: str
     fromLang: List[str]
     toLang: List[str]
@@ -23,7 +23,7 @@ class LangTranslatorModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def language_translator(req: LangTranslatorModel):
+def language_translator(req: LanguageTranslatorModel):
     '''Function to transalte text using DeepL or Microsoft.'''
     provider = req.provider
 

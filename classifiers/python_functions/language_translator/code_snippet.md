@@ -44,10 +44,9 @@ def lang_translator(record):
             headers=headers, 
             json=body
         )
-        response = request.json()
 
-        yield "translation", response[0]["translations"]
-
+        yield "translation", request.json()
+        
     elif provider == "deepl":
         deepl_url = "https://api.deepl.com/v2/translate"
 
