@@ -3,7 +3,6 @@ from typing import Optional, List
 import requests, uuid
 
 from translate import Translator
-import deepl
 
 INPUT_EXAMPLE = {
     "text": "Hallo, guten Tag.",
@@ -59,21 +58,29 @@ def lang_translator(req: LangTranslatorModel):
 
         # You can pass more than one object in body.
         body = [{
-            'text': req.toLang
+            'text': req.text
         }]
 
-        request = requests.post(endpoint, params=params, headers=headers, json=body)
-        response = request.json()
+        request = requests.post(
+            endpoint, 
+            params=params, 
+            headers=headers, 
+            json=body
+        )
 
-        return response[0]["translations"]
+        return {"translation": request.json()}
 
     elif provider == "deepl":
-        api_key = req.apiKey
-        string_to_translate = req.text
-        target_lang = req.toLang[0]
+        deepl_url = "https://api.deepl.com/v2/translate"
+        params={ 
+            "auth_key": req.apiKey, 
+            "target_lang": req.toLang[0], 
+            "text": req.text, 
+        }
 
-        translator = deepl.Translator(api_key) 
-        result = translator.translate_text(string_to_translate, target_lang=target_lang) 
-        translated_text = result.text
+        deepl_result = requests.get(
+        deepl_url, 
+        params=params
+        ) 
 
-        return {"translation": translated_text, "to": target_lang}
+        return {"translation", deepl_result.json()}
