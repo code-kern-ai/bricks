@@ -9,6 +9,7 @@ from .python_functions import (
     textblob_sentiment,
     textblob_subjectivity,
     grammar_check,
+    lang_translator
 )
 
 router = APIRouter()
@@ -23,6 +24,7 @@ for module in [
     textblob_sentiment,
     textblob_subjectivity,
     grammar_check,
+    lang_translator
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

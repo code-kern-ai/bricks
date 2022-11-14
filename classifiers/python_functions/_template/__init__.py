@@ -14,7 +14,6 @@ class MyClfModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-
 def _template(request: MyClfModel):
     """Detects the language of a given text."""
 
