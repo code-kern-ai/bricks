@@ -14,17 +14,9 @@ def substring_detector(request):
     duplicate = SequenceMatcher(None, string1, string2, autojunk=False).get_matching_blocks()
 
     found_substrings = []
-    for match in substring:
-        # Only get matches that are not spaces or punctuation. Change if 
-        if match.size >= 1:
-            try:
-                start, end = match.b, match.size
-                span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-                yield "duplicate", span.start, span.end
-                
-            # Only detects duplicates from the initial string found in duplicate string, not the other way around. 
-            except:
-                pass
-
-    
+    for match in duplicate:
+        if match.size >= request.minLengthSubstring:
+            start, end = match.b, match.b+match.size
+            span = doc.char_span(start, end, alignment_mode="expand")
+            yield "substring", span.start, span.end
 ```

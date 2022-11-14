@@ -6,18 +6,20 @@ from extractors.util.spacy import SpacySingleton
 INPUT_EXAMPLE = {
     "textInitial": "Hello this is my house. This is not a duplicate. It's good to see you.", 
     "textDuplicate": "Hello this is my flat. This is a duplicate. It's good to see you.",
+    "minLengthSubstring": 10,
     "spacyTokenizer": "en_core_web_sm"
 }
 
 class SubstringExtractorModel(BaseModel):
     textInitial: str
     textDuplicate: str
+    minLengthSubstring: int
     spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def substring_extractor(request: SubstringDetectorModel):
+def substring_extractor(request: SubstringExtractorModel):
     '''Extracts one or multiple substring found between two strings.'''
 
     string1 = request.textInitial
@@ -30,15 +32,9 @@ def substring_extractor(request: SubstringDetectorModel):
 
     found_duplicates = []
     for match in duplicate:
-        # Only get matches that are not spaces or punctuation. Change if 
-        if match.size >= 1:
-            try:
-                start, end = match.b, match.size
-                span = doc.char_span(start, end, alignment_mode="expand")
-                found_duplicates.append(["substring", span.start, span.end])
-
-            # Only detects duplicates from the initial string found in duplicate string, not the other way around. 
-            except:
-                pass
+        if match.size >= request.minLengthSubstring:
+            start, end = match.b, match.b+match.size
+            span = doc.char_span(start, end, alignment_mode="expand")
+            found_duplicates.append(["substring", span.start, span.end])
 
     return {"substrings": found_duplicates}
