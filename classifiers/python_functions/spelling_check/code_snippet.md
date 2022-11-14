@@ -25,11 +25,10 @@ def spelling_check(record: Dict[str, Any]):
     for word in misspells:
         temp = [(jaccard_distance(set(ngrams(word, 2)), set(ngrams(w, 2))), w) for w in word_list if w[0] == word[0]]
         suggestions.append([i[1] for i in sorted(temp, key=lambda val:val[0])[0:20]])
-    
-    count = Counter(suggestions[0])
 
     for i, _ in enumerate(text_original):
         for j, _ in enumerate(misspells):
+            count = Counter(suggestions[j])
             if text_original[i] == misspells[j]:
                 text_original[i] = count.most_common(1)[0][0]
     
