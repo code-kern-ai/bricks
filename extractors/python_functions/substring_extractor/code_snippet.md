@@ -4,6 +4,7 @@ import spacy
 
 YOUR_ATTRIBUTE_01 = "originals"
 YOUR_ATTRIBUTE_02 = "duplicates"
+MIN_LEN_SUBSTRING = 10
 
 def substring_detector(request):
     '''Extracts one or multiple common substrings between two strings.'''
@@ -15,7 +16,7 @@ def substring_detector(request):
 
     found_substrings = []
     for match in duplicate:
-        if match.size >= request.minLengthSubstring:
+        if match.size >= MIN_LEN_SUBSTRING:
             start, end = match.b, match.b+match.size
             span = doc.char_span(start, end, alignment_mode="expand")
             yield "substring", span.start, span.end
