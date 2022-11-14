@@ -23,7 +23,7 @@ class LangTranslatorModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def lang_translator(req: LangTranslatorModel):
+def language_translator(req: LangTranslatorModel):
     '''Function to transalte text using DeepL or Microsoft.'''
     provider = req.provider
 
