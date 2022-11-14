@@ -6,7 +6,7 @@ from nltk.corpus import words
 from nltk.corpus import brown
 
 INPUT_EXAMPLE = {
-    "text": "This text have some gramatical errors."
+    "text": "The sun is shinng brigt today."
 }
 
 
