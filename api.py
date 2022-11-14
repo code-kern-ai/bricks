@@ -4,6 +4,7 @@ from fastapi.responses import HTMLResponse
 import classifiers
 import extractors
 from extractors.util.spacy import download_all_models
+from extractors.util.nltk import download_all_modules
 
 api = FastAPI()
 
@@ -45,3 +46,4 @@ api.include_router(classifiers.router, prefix="/classifiers", tags=["classifiers
 api.include_router(extractors.router, prefix="/extractors", tags=["extractors"])
 
 download_all_models()
+download_all_modules()
