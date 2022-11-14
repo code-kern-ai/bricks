@@ -1,1 +1,1 @@
-This module checks for grammatical errors in a given string.
+This module checks for spelling errors in a given string.

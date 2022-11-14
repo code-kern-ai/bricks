@@ -1,9 +1,7 @@
 from pydantic import BaseModel
 from collections import Counter
-import nltk
 from nltk.metrics.distance import jaccard_distance
 from nltk.util import ngrams
-nltk.download('words', 'brown')
 from nltk.corpus import words
 from nltk.corpus import brown
 
