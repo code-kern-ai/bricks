@@ -9,7 +9,7 @@ INPUT_EXAMPLE = {
     "fromLang": ["de"],
     "toLang": ["en"],
     "provider": "free",
-    "apiKey": "<api-key",
+    "apiKey": "<api-key>",
     }
 
 class LangTranslatorModel(BaseModel):
