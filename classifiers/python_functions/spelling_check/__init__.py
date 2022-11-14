@@ -53,6 +53,6 @@ def spelling_check(request: SpellingCheckModel):
 
     return {
         "misspelledWords": misspelled,
-        "suggestedCorrections": sugg[0:3],
+        "suggestedCorrections": sugg,
         "correctText": text_corr,
     }
