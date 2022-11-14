@@ -1,8 +1,10 @@
 import nltk
 
+
 def download_all_modules():
     modules = [
-        "wordnet"
+        "wordnet",
+        "omw-1.4",
     ]
 
     for i in modules:
