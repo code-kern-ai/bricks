@@ -35,19 +35,24 @@ def spelling_check(request: SpellingCheckModel):
     suggestions = []
     for word in misspelled:
         temp = [(jaccard_distance(set(ngrams(word, 2)), set(ngrams(w, 2))), w) for w in word_list if w[0] == word[0]]
-        suggestions.append([i[1] for i in sorted(temp, key=lambda val:val[0])[0:20]])
-
-    count = Counter(suggestions[0])
+        suggestions.append([i[1] for i in sorted(temp, key=lambda val:val[0])[0:15]])
 
     for i, _ in enumerate(text_list_original):
         for j, _ in enumerate(misspelled):
+            count = Counter(suggestions[j])
             if text_list_original[i] == misspelled[j]:
                 text_list_original[i] = count.most_common(1)[0][0]
 
     text_corr = " ".join(text_list_original)
 
+    sugg = []
+    for word in suggestions:
+        for i in word:
+            if i not in sugg:
+                sugg.append(i)
+
     return {
         "misspelledWords": misspelled,
-        "suggestedCorrections": set(suggestions[0]),
+        "suggestedCorrections": sugg[0:3],
         "correctText": text_corr,
     }
