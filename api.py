@@ -5,14 +5,17 @@ import classifiers
 import extractors
 from extractors.util.spacy import download_all_models
 from classifiers.util.nltk import download_corpora
+from extractors.util.nltk import download_all_modules
 
 api = FastAPI()
 
 origins = [
     "http://127.0.0.1",
     "http://127.0.0.1:3000",
+    "http://127.0.0.1:3001",
     "http://localhost",
     "http://localhost:3000",
+    "http://localhost:3001",
     "http://localhost:8000",
     "https://bricks.kern.ai",
 ]
@@ -47,3 +50,4 @@ api.include_router(extractors.router, prefix="/extractors", tags=["extractors"])
 
 download_all_models()
 download_corpora()
+download_all_modules()

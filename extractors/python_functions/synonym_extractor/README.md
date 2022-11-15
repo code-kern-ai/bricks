@@ -1,0 +1,1 @@
+Extracts synonyms of a specified word using Wordnet.
