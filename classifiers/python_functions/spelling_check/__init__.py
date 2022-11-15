@@ -1,9 +1,5 @@
 from pydantic import BaseModel
-from collections import Counter
-from nltk.metrics.distance import jaccard_distance
-from nltk.util import ngrams
-from nltk.corpus import words
-from nltk.corpus import brown
+from nltk.corpus import words, brown
 
 INPUT_EXAMPLE = {
     "text": "The sun is shinng brigt today."
@@ -32,27 +28,6 @@ def spelling_check(request: SpellingCheckModel):
         if text_list_lower[i] not in word_list and text_list_original[i] not in word_list:
             misspelled.append(text_list_original[i])
 
-    suggestions = []
-    for word in misspelled:
-        temp = [(jaccard_distance(set(ngrams(word, 2)), set(ngrams(w, 2))), w) for w in word_list if w[0] == word[0]]
-        suggestions.append([i[1] for i in sorted(temp, key=lambda val:val[0])[0:15]])
-
-    for i, _ in enumerate(text_list_original):
-        for j, _ in enumerate(misspelled):
-            count = Counter(suggestions[j])
-            if text_list_original[i] == misspelled[j]:
-                text_list_original[i] = count.most_common(1)[0][0]
-
-    text_corr = " ".join(text_list_original)
-
-    sugg = []
-    for word in suggestions:
-        for i in word:
-            if i not in sugg:
-                sugg.append(i)
-
     return {
-        "misspelledWords": misspelled,
-        "suggestedCorrections": sugg,
-        "correctText": text_corr,
+        "spellingErrors": len(misspelled),
     }
