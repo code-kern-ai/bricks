@@ -7,9 +7,7 @@ from .python_functions import (
     sentence_complexity,
     syllable_count,
     textblob_sentiment,
-    textblob_subjectivity,
-    grammar_check,
-    lang_translator
+    textblob_subjectivity
 )
 
 router = APIRouter()
@@ -22,9 +20,7 @@ for module in [
     sentence_complexity,
     syllable_count,
     textblob_sentiment,
-    textblob_subjectivity,
-    grammar_check,
-    lang_translator
+    textblob_subjectivity
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
