@@ -10,17 +10,7 @@ import re
 # As HWB values (CSS4)
 
 INPUT_EXAMPLE = {
-    "text": """
-        #p3 {background-color: rgb(0, 0, 255);}   /* blue */
-        #p3a {background-color: #0000ff80;}   /* blue transparency */
-        #p1 {background-color: rgba(255, 0, 0, 0.3);}   /* red with opacity */
-        #p1 {background-color: hsl(120, 100%, 50%);}   /* green */
-        #p4 {background-color: hsla(120, 60%, 70%, 0.3);}    /* pastel green with opacity */
-        #myDIV {
-            color: blue; /* Blue text color */
-            border: 10px solid currentcolor; /* Blue border color */
-        }
-    """,
+    "text": "There are more than 42 #colors you could use in CSS, e.g. #ff00ff, hsl(0, 0%, 0%), or rgba(255, 0, 0, 0.3) if you want to use alpha values.",
     "spacyTokenizer": "en_core_web_sm"
 }
 
