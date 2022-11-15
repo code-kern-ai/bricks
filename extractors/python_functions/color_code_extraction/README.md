@@ -1,0 +1,1 @@
+This function extracts all level 3 and some level 4 CSS color codes from the given text, except named colors, e.g. 'blue' or 'currentColor'.
