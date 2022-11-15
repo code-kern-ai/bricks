@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 from .python_functions import (
-    language_detection,
     levenshtein_distance,
     lookup_list,
     reading_time,
@@ -9,12 +8,12 @@ from .python_functions import (
     textblob_sentiment,
     textblob_subjectivity,
     language_translator,
+    emotionality_detection,
 )
 
 router = APIRouter()
 
 for module in [
-    language_detection,
     levenshtein_distance,
     lookup_list,
     reading_time,
@@ -23,6 +22,7 @@ for module in [
     textblob_sentiment,
     textblob_subjectivity,
     language_translator,
+    emotionality_detection,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
