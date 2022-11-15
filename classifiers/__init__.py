@@ -7,7 +7,6 @@ from .python_functions import (
     sentence_complexity,
     syllable_count,
     textblob_sentiment,
-    zipcode_extractor,
     textblob_subjectivity,
     language_translator,
 )
@@ -22,7 +21,6 @@ for module in [
     sentence_complexity,
     syllable_count,
     textblob_sentiment,
-    zipcode_extractor,
     textblob_subjectivity,
     language_translator,
 ]:
