@@ -33,4 +33,4 @@ def zipcode_extractor(req: ZipcodeExtractorModel):
     start, end = match.span()
     span = doc.char_span(start, end, alignment_mode="expand")
 
-    return {country_id : [span.start, span.end]}
+    return {country_id : ["zip code", span.start, span.end]}

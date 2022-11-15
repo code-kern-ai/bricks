@@ -17,5 +17,5 @@ def zipcode_extractor(record):
     start, end = match.span()
     span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
 
-    return {country_id : [span.start, span.end]}
+    yield f"{country_id} zip code", span.start, span.end
 ```
