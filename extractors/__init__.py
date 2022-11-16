@@ -22,8 +22,7 @@ from .python_functions import (
     path_extractor,
     synonym_extractor,
     substring_extractor,
-    zipcode_extractor,
-    color_code_extraction
+    zipcode_extractor
 )
 
 router = APIRouter()
@@ -51,8 +50,7 @@ for module in [
     path_extractor,
     synonym_extractor,
     substring_extractor,
-    zipcode_extractor,
-    color_code_extraction
+    zipcode_extractor
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
