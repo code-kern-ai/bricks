@@ -4,7 +4,7 @@ from . import _template
 
 
 def get_config():
-    return build_classifier_learner_config(
+    return build_generator_learner_config(
         function=_template,
         data_type="text",
         issue_id=-1,  # you need to look this up in the issues https://github.com/code-kern-ai/bricks/issues
