@@ -12,7 +12,8 @@ else:
 def download_corpora():
     corpora = [
         "words",
-        "brown"
+        "brown",
+        "punkt",
     ]
 
     for i in corpora:

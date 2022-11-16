@@ -1,0 +1,1 @@
+Examines the emotions from a given text.
