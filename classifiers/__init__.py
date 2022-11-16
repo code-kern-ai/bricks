@@ -8,6 +8,7 @@ from .python_functions import (
     syllable_count,
     textblob_sentiment,
     textblob_subjectivity,
+    spelling_check,
     language_translator,
 )
 
@@ -22,6 +23,7 @@ for module in [
     syllable_count,
     textblob_sentiment,
     textblob_subjectivity,
+    spelling_check,
     language_translator,
 ]:
     module_name = module.__name__.split(".")[-1]
