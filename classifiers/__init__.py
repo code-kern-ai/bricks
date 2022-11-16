@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 from .python_functions import (
     levenshtein_distance,
+    language_detection,
     lookup_list,
     reading_time,
     sentence_complexity,
@@ -15,6 +16,7 @@ router = APIRouter()
 
 for module in [
     levenshtein_distance,
+    language_detection,
     lookup_list,
     reading_time,
     sentence_complexity,
