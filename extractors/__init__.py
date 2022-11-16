@@ -22,6 +22,7 @@ from .python_functions import (
     path_extractor,
     synonym_extractor,
     substring_extractor,
+    zipcode_extractor,
     color_code_extraction
 )
 
@@ -50,6 +51,7 @@ for module in [
     path_extractor,
     synonym_extractor,
     substring_extractor,
+    zipcode_extractor,
     color_code_extraction
 ]:
     module_name = module.__name__.split(".")[-1]
