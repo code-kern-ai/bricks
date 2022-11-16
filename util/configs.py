@@ -76,6 +76,40 @@ def build_extractor_learner_config(
         state=state,
     )
 
+def build_generator_function_config(
+    function: Callable,
+    input_example: Dict[str, Any],
+    data_type: str,
+    issue_id: int,
+    state: str,
+):
+    return build_config(
+        module_type="generator",
+        execution_type="pythonFunction",
+        function=function,
+        input_example=input_example,
+        data_type=data_type,
+        issue_id=issue_id,
+        state=state,
+    )
+
+
+def build_generator_learner_config(
+    function: Callable,
+    data_type: str,
+    issue_id: int,
+    state: str,
+):
+    return build_config(
+        module_type="generator",
+        execution_type="activeLearner",
+        function=function,
+        input_example={"dummy": None},
+        data_type=data_type,
+        issue_id=issue_id,
+        state=state,
+    )
+
 
 def build_config(
     module_type: str,
