@@ -28,7 +28,7 @@ class CMS:
         """Fetches all modules from the CMS and lists all modules that are not yet in the CMS."""
         drafts = []
         ready_to_publish = []
-        for moduleType in ["classifier", "extractor"]:
+        for moduleType in ["classifier", "extractor", "generator"]:
             for executionType in ["pythonFunction", "activeLearner"]:
                 relative_dir = os.path.join(
                     f"{moduleType}s", f"{camel_case_to_snake_case(executionType)}s"
@@ -67,7 +67,7 @@ class CMS:
         Args:
             verbose: If True, prints more information.
         """
-        for moduleType in ["classifier", "extractor"]:
+        for moduleType in ["classifier", "extractor", "generator"]:
             for executionType in ["pythonFunction", "activeLearner"]:
                 relative_dir = os.path.join(
                     f"{moduleType}s", f"{camel_case_to_snake_case(executionType)}s"
