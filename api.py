@@ -3,7 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 import classifiers
 import extractors
+import generators
 from extractors.util.spacy import download_all_models
+from classifiers.util.nltk import download_corpora
 from extractors.util.nltk import download_all_modules
 
 api = FastAPI()
@@ -46,6 +48,8 @@ async def root():
 
 api.include_router(classifiers.router, prefix="/classifiers", tags=["classifiers"])
 api.include_router(extractors.router, prefix="/extractors", tags=["extractors"])
+api.include_router(generators.router, prefix="/generators", tags=["generators"])
 
 download_all_models()
+download_corpora()
 download_all_modules()

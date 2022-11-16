@@ -1,28 +1,12 @@
 from fastapi import APIRouter
 from .python_functions import (
-    levenshtein_distance,
-    lookup_list,
-    reading_time,
-    sentence_complexity,
-    syllable_count,
-    textblob_sentiment,
-    textblob_subjectivity,
-    emotionality_detection,
-    spelling_check,
+    language_translator
 )
 
 router = APIRouter()
 
 for module in [
-    levenshtein_distance,
-    lookup_list,
-    reading_time,
-    sentence_complexity,
-    syllable_count,
-    textblob_sentiment,
-    textblob_subjectivity,
-    emotionality_detection,
-    spelling_check,
+    language_translator
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
