@@ -3,8 +3,8 @@ import requests
 
 YOUR_PROVIDER = "<proivder-goes-here>" # microsoft or deepl
 
-MSFT_API = "<api-goes-here>
-MSFT_REGION
+API = "<api-key-goes-here>
+REGION
 
 DEEPL_API = "<api-goes-here>
 YOUR_ATTRIBUTE = "text"
@@ -16,8 +16,8 @@ def lang_translator(record):
     elif provider == "microsoft":
 
         # Add your key and endpoint
-        key = MSFT_API
-        location = MSFT_REGION # required if you're using a multi-service or regional (not global) resource.
+        key = API
+        location = REGION # required if you're using a multi-service or regional (not global) resource.
         endpoint = "https://api.cognitive.microsofttranslator.com/translate"
 
         params = {
