@@ -26,7 +26,7 @@ def spelling_correction(request: SpellingCorrectionModel):
     brown_corpus = brown.words()
     word_list = words_corpus + brown_corpus
     text_lower = text.replace(',', '').replace('.', '').lower().split()
-    text_original = text.replace(',', '').replace('.', '').split()
+    text_original = text.replace('"', '').split()
 
     misspelled = []
     for i, _ in enumerate(text_lower):
