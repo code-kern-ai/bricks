@@ -4,7 +4,7 @@ from typing import List
 import requests, uuid
 
 YOUR_ATTRIBUTE = "text"
-API_KEY = "<api-key-goes-here"
+API_KEY = "<api-key-goes-here>"
 
 def microsoft_translator(record):
     endpoint = "https://api.cognitive.microsofttranslator.com/translate"
