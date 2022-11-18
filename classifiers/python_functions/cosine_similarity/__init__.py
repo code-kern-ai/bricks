@@ -6,17 +6,17 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 INPUT_EXAMPLE = {
     "textOne": "Ten amazing pasta recipes.",
-    "textTwo": "Delicious pasta recipes to try."
+    "textTwo": "Ten amazing steak recepes."
 }
 
-class CosineSimilaritryModel(BaseModel):
+class CosineSimilarityModel(BaseModel):
     textOne: str
     textTwo: str
 
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
-def cosine_similarity(req: CosineSimilaritryModel):
+def cosine_similarity(req: CosineSimilarityModel):
     '''Claculates the cosine similarity between to sentences.'''
 
     text_one = req.textOne
