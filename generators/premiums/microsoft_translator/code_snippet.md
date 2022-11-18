@@ -31,5 +31,8 @@ def microsoft_translator(record):
         json=body
     )
 
-    yield request.json()
+    request_json = request.json()
+    translation = request_json[0]["translations"][0]["text"]
+
+    return translation
 ```

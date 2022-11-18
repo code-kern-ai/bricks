@@ -1,15 +1,15 @@
 ```python
 import requests
 
-YOUR_ATTRIBUTE = "text"
-API_KEY = "<key-goes-here>"
+YOUR_ATTRIBUTE = "headline"
+API_KEY = "e70ff374-eb55-2dba-f8ca-77b72fff562f" 
 
 def deepl_translator(record):
     '''Uses DeepL API to translate texts.'''
     deepl_url = "https://api.deepl.com/v2/translate"
     params={ 
         "auth_key": API_KEY, 
-        "target_lang": "en", # Change this to the language of your choice
+        "target_lang": "de", # Change this to the language of your choice
         "text": record[YOUR_ATTRIBUTE].text, 
     }
 
@@ -17,6 +17,8 @@ def deepl_translator(record):
     deepl_url, 
     params=params
     ) 
+    deepl_result_json= deepl_result.json()
+    translation = deepl_result_json["translations"][0]["text"]
 
-    yield deepl_result.json()
+    return translation
 ```
