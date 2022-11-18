@@ -1,0 +1,1 @@
+Extracts all the farewell greetings from a text.
