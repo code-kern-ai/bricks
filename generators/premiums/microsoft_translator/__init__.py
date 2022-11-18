@@ -49,4 +49,4 @@ def microsoft_translator(req: MicrosoftTranslatorModel):
         json=body
     )
 
-    return {"translation": request.json()}
+    return request.json()

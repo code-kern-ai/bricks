@@ -5,15 +5,13 @@ import requests, uuid
 INPUT_EXAMPLE = {
     "text": "Hallo, guten Tag.",
     "toLang": "en",
-    "apiKey": "<api-key-goes-here",
+    "apiKey": "<api-key-goes-here>",
     }
 
 class DeeplTranslatorModel(BaseModel):
     text: str
-    fromLang: List[str]
-    toLang: List[str]
+    toLang: str
     apiKey: str
-    resourceRegion: str
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
@@ -32,4 +30,4 @@ def deepl_translator(req: DeeplTranslatorModel ):
     params=params
     ) 
 
-    return {"translation", deepl_result.json()}
+    return deepl_result.json()

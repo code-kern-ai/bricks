@@ -1,7 +1,5 @@
 ```python
-from pydantic import BaseModel
-from typing import List
-import requests, uuid
+import requests
 
 YOUR_ATTRIBUTE = "text"
 API_KEY = "<key-goes-here>"
@@ -20,5 +18,5 @@ def deepl_translator(record):
     params=params
     ) 
 
-    return {"translation", deepl_result.json()}
+    yield deepl_result.json()
 ```

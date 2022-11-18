@@ -1,6 +1,4 @@
 ```python
-from pydantic import BaseModel
-from typing import List
 import requests, uuid
 
 YOUR_ATTRIBUTE = "text"
