@@ -110,6 +110,21 @@ def build_generator_learner_config(
         state=state,
     )
 
+def build_generator_premium_config(
+    function: Callable,
+    data_type: str,
+    issue_id: int,
+    state: str,
+):
+    return build_config(
+        module_type="generator",
+        execution_type="premium",
+        function=function,
+        input_example={"dummy": None},
+        data_type=data_type,
+        issue_id=issue_id,
+        state=state,
+    )
 
 def build_config(
     module_type: str,

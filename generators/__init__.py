@@ -2,11 +2,17 @@ from fastapi import APIRouter
 from .python_functions import (
     language_translator
 )
+from .premium import (
+    microsoft_translator,
+    deepl_translator
+)
 
 router = APIRouter()
 
 for module in [
-    language_translator
+    language_translator,
+    microsoft_translator,
+    deepl_translator
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

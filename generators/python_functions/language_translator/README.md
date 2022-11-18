@@ -1,1 +1,1 @@
-Uses provider such as DeepL or Microsoft to translate texts.
+Uses the free Translate library to translate texts.
