@@ -112,6 +112,7 @@ def build_generator_learner_config(
 
 def build_generator_premium_config(
     function: Callable,
+    input_example: Dict[str, Any],
     data_type: str,
     issue_id: int,
     state: str,
@@ -120,7 +121,7 @@ def build_generator_premium_config(
         module_type="generator",
         execution_type="premium",
         function=function,
-        input_example={"dummy": None},
+        input_example=input_example,
         data_type=data_type,
         issue_id=issue_id,
         state=state,

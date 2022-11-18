@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from .python_functions import (
     language_translator
 )
-from .premium import (
+from .premiums import (
     microsoft_translator,
     deepl_translator
 )

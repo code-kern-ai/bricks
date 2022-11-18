@@ -6,8 +6,8 @@ INPUT_EXAMPLE = {
     "text": "Hallo, guten Tag.",
     "fromLang": ["de"],
     "toLang": ["en"],
-    "apiKey": "<api-key-goes-here",
-    "resourceRegion": "northeurope"
+    "apiKey": "<api-key-goes-here>",
+    "region": "northeurope"
     }
 
 class MicrosoftTranslatorModel(BaseModel):
@@ -15,7 +15,7 @@ class MicrosoftTranslatorModel(BaseModel):
     fromLang: List[str]
     toLang: List[str]
     apiKey: str
-    resourceRegion: str
+    region: str
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
