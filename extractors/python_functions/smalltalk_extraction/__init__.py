@@ -26,7 +26,7 @@ class SmalltalkExtractionModel(BaseModel):
 
 
 def smalltalk_extraction(request: SmalltalkExtractionModel):
-    """Removes the irrelevant information from the chats"""
+    """Detects smalltalk languages from chats"""
 
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
