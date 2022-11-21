@@ -4,11 +4,17 @@ from .python_functions import (
     soundex_generator,
     spelling_correction,
 )
+from .premiums import (
+    microsoft_translator,
+    deepl_translator
+)
 
 router = APIRouter()
 
 for module in [
     language_translator,
+    microsoft_translator,
+    deepl_translator,
     soundex_generator,
     spelling_correction,
 ]:
