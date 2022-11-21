@@ -16,7 +16,7 @@ class HammingDistanceModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def hamming_distance(req: HammingDistanceModel):
-    '''Calculates the Hamming distance between to embeddings to find similar sentences.'''
+    '''Calculates the Hamming distance between two embeddings to find similar sentences.'''
 
     text_one = req.textOne
     text_two = req.textTwo
