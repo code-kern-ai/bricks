@@ -1,0 +1,1 @@
+Translates texts using Microsofts cognitive services.

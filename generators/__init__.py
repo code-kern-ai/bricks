@@ -1,14 +1,24 @@
 from fastapi import APIRouter
 from .python_functions import (
     language_translator,
-    html_cleanser
+    html_cleanser,
+    soundex_generator,
+    spelling_correction,
+)
+from .premiums import (
+    microsoft_translator,
+    deepl_translator,
 )
 
 router = APIRouter()
 
 for module in [
     language_translator,
-    html_cleanser
+    html_cleanser,
+    microsoft_translator,
+    deepl_translator,
+    soundex_generator,
+    spelling_correction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

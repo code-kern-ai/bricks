@@ -1,0 +1,1 @@
+Extracts the quotes from a given text string.

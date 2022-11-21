@@ -11,6 +11,7 @@ textblob==0.17.1
 textstat==0.7.3
 translate==3.6.1
 uvicorn==0.19.0
+scikit-learn==1.1.3
 spacy==3.4.2
 quantulum3==0.7.11
 language_tool_python==2.7.1

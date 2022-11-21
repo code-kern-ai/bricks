@@ -29,7 +29,7 @@ class CMS:
         drafts = []
         ready_to_publish = []
         for moduleType in ["classifier", "extractor", "generator"]:
-            for executionType in ["pythonFunction", "activeLearner"]:
+            for executionType in ["pythonFunction", "activeLearner", "premium"]:
                 relative_dir = os.path.join(
                     f"{moduleType}s", f"{camel_case_to_snake_case(executionType)}s"
                 )
@@ -68,7 +68,7 @@ class CMS:
             verbose: If True, prints more information.
         """
         for moduleType in ["classifier", "extractor", "generator"]:
-            for executionType in ["pythonFunction", "activeLearner"]:
+            for executionType in ["pythonFunction", "activeLearner", "premium"]:
                 relative_dir = os.path.join(
                     f"{moduleType}s", f"{camel_case_to_snake_case(executionType)}s"
                 )
