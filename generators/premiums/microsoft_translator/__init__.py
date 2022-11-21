@@ -49,4 +49,7 @@ def microsoft_translator(req: MicrosoftTranslatorModel):
         json=body
     )
 
-    return request.json()
+    try:
+        return request.json()
+    except:
+        return "That didn't work. Maybe the API key is wrong?"

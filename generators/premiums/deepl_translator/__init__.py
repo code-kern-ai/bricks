@@ -18,6 +18,7 @@ class DeeplTranslatorModel(BaseModel):
 
 def deepl_translator(req: DeeplTranslatorModel ):
     '''Uses DeepL API to translate texts.'''
+
     deepl_url = "https://api.deepl.com/v2/translate"
     params={ 
         "auth_key": req.apiKey, 
@@ -29,5 +30,9 @@ def deepl_translator(req: DeeplTranslatorModel ):
     deepl_url, 
     params=params
     ) 
+    try:
+        deepl_result_json = deepl_result.json()
+    except:
+        return "That didn't work. Maybe the API key is wrong?"
 
-    return deepl_result.json()
+    return deepl_result_json
