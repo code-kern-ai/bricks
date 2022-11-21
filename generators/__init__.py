@@ -3,6 +3,7 @@ from .python_functions import (
     language_translator,
     soundex_generator,
     spelling_correction,
+    smalltalk_truncation,
 )
 from .premiums import (
     microsoft_translator,
@@ -17,6 +18,7 @@ for module in [
     deepl_translator,
     soundex_generator,
     spelling_correction,
+    smalltalk_truncation,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

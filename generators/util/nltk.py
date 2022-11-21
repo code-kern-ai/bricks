@@ -13,6 +13,7 @@ def download_corpora():
     corpora = [
         "words",
         "brown",
+        "stopwords",
     ]
 
     for i in corpora:
