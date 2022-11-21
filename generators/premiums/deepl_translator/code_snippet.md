@@ -2,7 +2,7 @@
 import requests
 
 YOUR_ATTRIBUTE = "headline"
-API_KEY = "e70ff374-eb55-2dba-f8ca-77b72fff562f" 
+API_KEY = "<api-key-goes-here>" 
 
 def deepl_translator(record):
     '''Uses DeepL API to translate texts.'''
