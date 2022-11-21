@@ -25,6 +25,7 @@ from .python_functions import (
     zipcode_extractor,
     color_code_extraction,
     pos_tagger,
+    goodbye_extraction,
     quote_extraction,
 )
 
@@ -56,6 +57,7 @@ for module in [
     zipcode_extractor,
     color_code_extraction,
     pos_tagger,
+    goodbye_extraction,
     quote_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
