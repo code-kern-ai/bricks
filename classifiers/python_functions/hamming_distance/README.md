@@ -1,0 +1,1 @@
+Calculates the Hamming distance between to embeddings to find similar sentences.
