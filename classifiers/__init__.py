@@ -10,7 +10,8 @@ from .python_functions import (
     textblob_subjectivity,
     emotionality_detection,
     spelling_check,
-    cosine_similarity
+    cosine_similarity,
+    hamming_distance
 )
 
 router = APIRouter()
@@ -26,7 +27,8 @@ for module in [
     textblob_subjectivity,
     emotionality_detection,
     spelling_check,
-    cosine_similarity
+    cosine_similarity,
+    hamming_distance
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
