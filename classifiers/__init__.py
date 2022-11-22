@@ -11,7 +11,8 @@ from .python_functions import (
     emotionality_detection,
     spelling_check,
     cosine_similarity,
-    hamming_distance
+    hamming_distance,
+    profanity_detection,
 )
 
 router = APIRouter()
@@ -28,7 +29,8 @@ for module in [
     emotionality_detection,
     spelling_check,
     cosine_similarity,
-    hamming_distance
+    hamming_distance,
+    profanity_detection,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
