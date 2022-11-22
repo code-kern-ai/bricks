@@ -27,6 +27,7 @@ from .python_functions import (
     pos_tagger,
     goodbye_extraction,
     quote_extraction,
+    smalltalk_extraction,
 )
 
 router = APIRouter()
@@ -59,6 +60,7 @@ for module in [
     pos_tagger,
     goodbye_extraction,
     quote_extraction,
+    smalltalk_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
