@@ -7,6 +7,6 @@ def get_config():
     return build_classifier_learner_config(
         function=random_forest,
         data_type="text",
-        issue_id=49,
+        issue_id=51,
         state=State.PUBLIC,
     )
