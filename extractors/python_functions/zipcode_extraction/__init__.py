@@ -9,7 +9,7 @@ INPUT_EXAMPLE = {
     "countryId": "GB",
 }
 
-class ZipcodeExtractorModel(BaseModel):
+class ZipcodeExtractionModel(BaseModel):
     text: str
     countryId: str
 
@@ -17,10 +17,10 @@ class ZipcodeExtractorModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 # Load JSON file with all zip code regex patterns
-with open('extractors/python_functions/zipcode_extractor/zip_codes.json') as f:
+with open('extractors/python_functions/zipcode_extraction/zip_codes.json') as f:
     zip_codes_json = json.load(f)
 
-def zipcode_extractor(req: ZipcodeExtractorModel):
+def zipcode_extraction(req: ZipcodeExtractionModel):
     '''Extracts a zipcode from a string using regex.'''
     country_id = req.countryId
     text = req.text

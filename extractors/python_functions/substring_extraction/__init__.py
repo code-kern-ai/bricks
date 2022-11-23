@@ -10,7 +10,7 @@ INPUT_EXAMPLE = {
     "spacyTokenizer": "en_core_web_sm"
 }
 
-class SubstringExtractorModel(BaseModel):
+class SubstringExtractionModel(BaseModel):
     textInitial: str
     textDuplicate: str
     minLengthSubstring: int
@@ -19,7 +19,7 @@ class SubstringExtractorModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def substring_extractor(request: SubstringExtractorModel):
+def substring_extraction(request: SubstringExtractionModel):
     '''Extracts one or multiple substring found between two strings.'''
 
     string1 = request.textInitial

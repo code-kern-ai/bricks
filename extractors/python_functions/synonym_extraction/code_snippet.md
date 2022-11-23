@@ -5,7 +5,7 @@ import re
 TARGET_WORD = "soccer"
 YOUR_ATTRIBUTE = "sentences"
 
-def synonym_extractor(record):
+def synonym_extraction(record):
     # Find synonyms to a word using Wordnet
     synonyms = []
     for syn in wordnet.synsets(TARGET_WORD):
