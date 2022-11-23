@@ -1,4 +1,6 @@
 ```python
+import re
+
 zip_codes ={
     "US": r"\d{5}([ \-]\d{4})?",
     "CA": r"[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d",
@@ -8,7 +10,7 @@ zip_codes ={
 YOUR_ATTRIBUTE = "text"
 COUNTRY_ID = "US" # Or CA, DE. Visit GitHub for extensive list of country zip-codes
 
-def zipcode_extractor(record):
+def zipcode_extraction(record):
     country_id = COUNTRY_ID
     text = record[YOUR_ATTRIBUTE].text
 

@@ -5,13 +5,13 @@ INPUT_EXAMPLE = {
     "text": "My weight is 82 kilos. The eifel tower is 187 meters high.",
 }
 
-class MetricDetectorModel(BaseModel):
+class MetricDetectionModel(BaseModel):
     text: str
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def metric_detector(request: MetricDetectorModel):
+def metric_detection(request: MetricDetectionModel):
     '''Extracts units of measurement from a string.'''
     text = request.text
     
