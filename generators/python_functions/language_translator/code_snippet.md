@@ -1,15 +1,15 @@
 ```python
 from translate import Translator
 
-YOUR_ATTRIBUTE = "text"
+YOUR_ATTRIBUTE:str = "text" #only text attributes
+YOUR_ORIGINAL_LANGUAGE:str = "en" #only iso format
+YOUR_TARGET_LANGUAGE:str = "de" #only iso format
 
 def language_translator(record):
 
-    origin_lang = "en"
-    target_lang = "de" 
     string_to_translate = record[YOUR_ATTRIBUTE].text
 
-    translator = Translator(from_lang=origin_lang, to_lang=target_lang)
+    translator = Translator(from_lang=YOUR_ORIGINAL_LANGUAGE, to_lang=YOUR_TARGET_LANGUAGE)
     translation = translator.translate(string_to_translate)
-    yield translation
+    return translation
 ```
