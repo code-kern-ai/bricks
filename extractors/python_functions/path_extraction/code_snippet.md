@@ -5,7 +5,7 @@ import re
 YOUR_ATTRIBUTE = "details" # choose any available attribute here
 YOUR_LABEL = "path"
 
-def path_extractor(record, sep=None):
+def path_extraction(record, sep=None):
     sep = os.sep if record.sep is None else sep
     text = record[YOUR_ATTRIBUTE].text
 

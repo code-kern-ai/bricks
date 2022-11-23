@@ -12,7 +12,7 @@ INPUT_EXAMPLE = {
     "spacyTokenizer": "en_core_web_sm",
 }
 
-class SynonymExtractorModel(BaseModel):
+class SynonymExtractionModel(BaseModel):
     targetWord: str
     text: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
@@ -21,10 +21,10 @@ class SynonymExtractorModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def synonym_extractor(SynonymExtractorModel):
+def synonym_extraction(SynonymExtractionModel):
     '''Finds and extracts synonyms using Wordnet.'''
     # Word that we would like to find synonyms to
-    target_word = SynonymExtractorModel.targetWord
+    target_word = SynonymExtractionModel.targetWord
 
     # Find synonyms using wordnet
     synonyms = []
@@ -33,7 +33,7 @@ def synonym_extractor(SynonymExtractorModel):
             synonyms.append(i.name())
 
     # The text we would like to go through
-    text = SynonymExtractorModel.text
+    text = SynonymExtractionModel.text
 
     # Word are sometimes connected by a _, which we want to remove      
     split_synonyms = [item.split(sep="_") for item in synonyms]
@@ -41,7 +41,7 @@ def synonym_extractor(SynonymExtractorModel):
     # Break up potential list of lists into a single list
     combined_synonyms = [item for sublist in split_synonyms for item in sublist]
 
-    nlp = SpacySingleton.get_nlp(SynonymExtractorModel.spacyTokenizer)
+    nlp = SpacySingleton.get_nlp(SynonymExtractionModel.spacyTokenizer)
     doc = nlp(text)
 
     # Get the span of found matches

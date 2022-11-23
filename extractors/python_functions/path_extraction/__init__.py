@@ -11,7 +11,7 @@ INPUT_EXAMPLE = {
     "yourLabel": "path"
 }
 
-class PathExtractorModel(BaseModel):
+class PathExtractionModel(BaseModel):
     text: str
     sep: Optional[str] 
     spacyTokenizer: str
@@ -20,7 +20,7 @@ class PathExtractorModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def path_extractor(request: PathExtractorModel):
+def path_extraction(request: PathExtractionModel):
     '''Extracts a path from a string.'''
     sep = os.sep if request.sep is None else request.sep
     text = request.text

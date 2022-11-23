@@ -1,0 +1,1 @@
+This module checks if the text contains profanity words. It uses a list of profanity words to detect if the text contains any of them. The list of profanity words can be found in [here](https://github.com/snguyenthanh/better_profanity/blob/master/better_profanity/profanity_wordlist.txt). This module will not work in refinery for versions <= 1.6.

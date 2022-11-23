@@ -1,5 +1,6 @@
 ```python
 from typing import Dict, Any, List, Tuple
+import re
 
 def email_extractor(record: Dict[str, Any]) -> List[Tuple[str, int, int]]:
     regex = re.compile(r"([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)")

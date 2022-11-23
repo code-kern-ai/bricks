@@ -1,0 +1,1 @@
+Removes HTML tags from a text.

@@ -18,15 +18,16 @@ from .python_functions import (
     url_extraction,
     window_search,
     isbn_extraction,
-    metric_detector,
-    path_extractor,
-    synonym_extractor,
-    substring_extractor,
-    zipcode_extractor,
+    metric_detection,
+    path_extraction,
+    synonym_extraction,
+    substring_extraction,
+    zipcode_extraction,
     color_code_extraction,
     pos_tagger,
     goodbye_extraction,
     quote_extraction,
+    smalltalk_extraction,
 )
 
 router = APIRouter()
@@ -50,15 +51,16 @@ for module in [
     url_extraction,
     window_search,
     isbn_extraction,
-    metric_detector,
-    path_extractor,
-    synonym_extractor,
-    substring_extractor,
-    zipcode_extractor,
+    metric_detection,
+    path_extraction,
+    synonym_extraction,
+    substring_extraction,
+    zipcode_extraction,
     color_code_extraction,
     pos_tagger,
     goodbye_extraction,
     quote_extraction,
+    smalltalk_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

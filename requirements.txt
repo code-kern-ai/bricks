@@ -16,3 +16,4 @@ spacy==3.4.2
 quantulum3==0.7.11
 language_tool_python==2.7.1
 LeXmo==0.1.4
+better_profanity==0.7.0

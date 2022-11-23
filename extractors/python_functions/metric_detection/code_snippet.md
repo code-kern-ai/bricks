@@ -3,7 +3,7 @@ from quantulum3 import parser
 
 YOUR_ATTRIBUTE = "text" # choose any available attribute here
 
-def metric_detector(record):
+def metric_detection(record):
     text = record["text"]
     
     quants = parser.parse(text)
