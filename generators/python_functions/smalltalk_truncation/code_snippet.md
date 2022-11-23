@@ -20,5 +20,5 @@ def smalltalk_truncation(record):
         if (len(new_text) > 0.5*len(chat) or len(stop_words) > 8) and not len(chat) < 3:
             removed_smalltalk.append(" ".join(chat))
 
-    return {"smalltalkRemoved": removed_smalltalk}
+    return removed_smalltalk
 ```
