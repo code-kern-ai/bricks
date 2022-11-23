@@ -13,8 +13,9 @@ Please refer to this document if you want to add your own modules/heuristics to 
 
 ### Module types: `classifiers` and `extractors`
 We have structured this repository into two main folders:
-- `classifiers`: this is where modules will go into that are used to classify a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
-- `extractors`: this is where modules will go into that are used to extract information from a given text. For example, a module that extracts the author of a text would go into this folder.
+- `classifiers`: this is where the modules will go into that are used to classify a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
+- `extractors`: this is where the modules will go into that are used to extract information from a given text. For example, a module that extracts the author of a text would go into this folder.
+- `generators`: this is where the modules will go that are used to produce values based on the provided text. For example, a module that corrects spelling mistakes whill take an incorrect text and generate the corrected text.
 
 ### Execution types: `python_functions`, `active_learners`, `zero_shot` and `premium`
 In each folder, you will find further directories, typically in this structure:
@@ -41,8 +42,8 @@ If you have an idea for a new module/heuristic, please [open an issue](https://g
 3. Copy the `_template` directory from the `classifiers` or `extractors` folder into the folder of the module type you want to add. Rename the folder to the name of your module.
 4. Start by changing the `config.py` file by updating the issueId to the issue you created in step 1.
 5. Implement the `__init__.py` file. This is the entry point of the module, and will be executed when the module is run.
-6. Modify `code_snippet.md`, and keep in mind that this must fit the interface of refinery. If you copied from the `_template` directory, you will already see the expected interface.
-7. Write something in the `README.md` file. This will be displayed on the detail page of the module.
+6. Modify `code_snippet.md`, and keep in mind that this must fit the interface of refinery. If you copied from the `_template` directory, you will already see the expected interface. All the variables holding the user defined inputs shall be in block letters, since it improves the readability of the code.
+7. Write something in the `README.md` file. This will be displayed on the detail page of the module. Make sure the module description in `README.md` tails the description from the docstring in `__init__.py`.
 8. Finally, update the last changes to the `config.py`, by updating the name of the function you implemented in this module. Make sure that the function name is the same as the directory name!
 9. Create a pull request to the `main` branch of the repository. Add a comment `implements #<your-issue-id>` to the pull request, so that we can link the pull request to the issue.
 
