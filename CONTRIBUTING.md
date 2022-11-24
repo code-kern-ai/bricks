@@ -1,6 +1,11 @@
 # Welcome to the contributions guideline for bricks
 Please refer to this document if you want to add your own modules/heuristics to the library.
 
+## Note: 
+Before diving deep into how the components of this repository work, there are some points of notice:
+- For implementing new modules, we have to follow a standardized structure which can consist of fine details. However, there is nothing to worry about since all the necessary steps to implement new modules are explained below.
+- Every little contribution counts - We are aware that not all the users checking `bricks` out would be proficient in python or any programming language for that matter. This shouldn't discourage anyone from contributing their ideas. For example, just opening a new issue consisting of some new idea is considered a valid contribution. The implementation will then be taken care of by us.
+
 ## Table of contents
 - [Structure of this repository](#structure-of-this-repository)
 - [How to contribute ideas](#how-to-contribute-ideas)
