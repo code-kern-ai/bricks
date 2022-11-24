@@ -8,5 +8,5 @@ def get_config():
         function=_template,
         data_type="text",
         issue_id=-1,  # you need to look this up in the issues https://github.com/code-kern-ai/bricks/issues
-        state=State.DRAFT,  # make this State.PUBLIC when you are ready to publish
+        state=State.DRAFT, # in the actual module, set this to PUBLIC before pushing to main!
     )

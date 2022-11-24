@@ -1,4 +1,4 @@
-![](identifier.svg)
+![](images/identifier.svg)
 
 <p align="center">
     <b>Open-source natural language enrichments at your fingertips.</b>
@@ -6,7 +6,7 @@
 
 Browse [bricks](https://bricks.kern.ai) to find gold nuggets for your projects; enrich your texts e.g. with sentence complexity estimations, sentiment analysis, and more.
 
-![](hero.svg)
+![](images/hero.svg)
 
 ## Table of contents
 - [Why bricks?](#why-bricks)
@@ -18,14 +18,13 @@ Browse [bricks](https://bricks.kern.ai) to find gold nuggets for your projects; 
 - [License](#license)
 
 ## Why bricks?
-We're aiming to build a library of off-the-shelf natural language enrichments that can be used in any project. We're building `bricks` to make it easier for developers to build better products. That's where the name comes from. `bricks` is a library not in the sense that you `pip install` it in your repository, but that you can copy-paste the code from the online platform.
+We're aiming to build a library of off-the-shelf natural language enrichments that can be used in any project as well as directly in our main project [refinery](https://github.com/code-kern-ai/refinery). We're building `bricks` to make it easier for developers to build better products. That's where the name comes from. `bricks` is a library not in the sense that you `pip install` it in your repository, but that you can copy-paste the code from the online platform. 
 
-## What are classifiers and extractors?
+## What are classifiers, extractors and generators?
 We generally summarize them as modules in this repository.
 - `classifiers` are modules that summarize a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
 - `extractors` are modules that retrieve specific information from a given text. For example, a module that extracts the author of a text would go into this folder.
-
-In the future, we'll also add modules such as generators, which create new content based on a given text, or filtersets for refinery with pre-defined content.
+- `generators` create new content based on a given text, or filtersets for refinery with pre-defined content. For example, a module that translates one language into another language would be a generator.
 
 ## Structure of modules
 Each module has a folder with the following structure:
