@@ -1,0 +1,1 @@
+Extracts names from a given text using spaCy.

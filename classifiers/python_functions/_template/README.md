@@ -1,0 +1,2 @@
+This is a crazy template for a crazy module. The text from the README.md file is used as the module description in the 
+details, whereas the docstring in the __init__.py file is used as the module description in the module overview.

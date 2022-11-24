@@ -1,0 +1,1 @@
+Extracts IP addresses from texts.

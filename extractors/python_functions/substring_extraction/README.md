@@ -1,0 +1,1 @@
+Extracts substrings using the build-in difflib library. 

@@ -1,0 +1,1 @@
+Detects aspects in a given text. For instance something like "It has a really great battery life, but I hate the window size...". This should detect "a really great battery life" as something positive, and "I hate the window size" as something negative.

@@ -1,0 +1,1 @@
+This module checks for spelling errors in a text and returns the corrected text.

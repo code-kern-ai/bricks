@@ -1,0 +1,1 @@
+Detects locations/addresses in a given text.

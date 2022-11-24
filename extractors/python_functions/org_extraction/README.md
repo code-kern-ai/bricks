@@ -1,0 +1,1 @@
+Extracts orgs from a given text using spaCy.

@@ -1,0 +1,1 @@
+Removes all the irrelevant information from passages or chats.

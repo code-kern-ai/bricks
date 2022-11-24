@@ -1,0 +1,2 @@
+Computes the complexity of a sentence using the Flesch-ease reading ease formula.
+The score is categorized, where 0 is the most difficult and 122 is the easiest. It can be used to compare the complexity of different texts.

@@ -1,0 +1,1 @@
+We don't support active learning in the endpoints, such that we only provide the markdowns. You can use the code snippets to implement your own active learning in refinery.

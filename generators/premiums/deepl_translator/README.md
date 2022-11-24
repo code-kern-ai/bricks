@@ -1,0 +1,1 @@
+Translates texts with DeepL.

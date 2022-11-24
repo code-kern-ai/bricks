@@ -1,0 +1,1 @@
+Detects spaCy tokens that fit a regex pattern and extracts them.

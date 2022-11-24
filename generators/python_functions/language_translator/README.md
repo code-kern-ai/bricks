@@ -1,0 +1,1 @@
+Uses the free Translate library to translate texts.
