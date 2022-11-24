@@ -3,7 +3,7 @@ name: Module request
 about: Suggest a module for bricks
 title: "[MODULE] - Your module idea"
 labels: enhancement
-assignees: jhoetter
+assignees: ''
 
 ---
 
