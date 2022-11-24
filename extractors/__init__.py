@@ -28,7 +28,8 @@ from .python_functions import (
     goodbye_extraction,
     quote_extraction,
     smalltalk_extraction,
-    digit_extraction
+    digit_extraction,
+    keyword_extraction,
 )
 
 router = APIRouter()
@@ -62,7 +63,8 @@ for module in [
     goodbye_extraction,
     quote_extraction,
     smalltalk_extraction,
-    digit_extraction
+    digit_extraction,
+    keyword_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
