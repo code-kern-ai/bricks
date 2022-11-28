@@ -1,13 +1,16 @@
 ```python
+import re
+
+YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here
+
 def time_extraction(record):
-    """Extracts times from a given text."""
-    text = record["text"]
     regex = re.compile(
         r"(?:(?:[0-9]{1,2}(?::[0-9]{1,2}(?::[0-9]{1,2}:?)?)?)(?:(?: )?am|(?: )?pm|(?: )?AM|(?: )?PM)?)"
     )
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
-    for match in regex.finditer(text.text):
+    for match in regex.finditer(text):
         start, end = match.span()
-        span = doc.char_span(start, end)
+        span = record[YOUR_ATTRIBUTE].char_span(start, end)
         yield "time", span.start, span.end
 ```
