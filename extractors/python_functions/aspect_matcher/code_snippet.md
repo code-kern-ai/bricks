@@ -1,12 +1,13 @@
 ```python
 from textblob import TextBlob
 
+YOUR_ATTRIBUTE = "details"
+YOUR_WINDOW = 4 # choose any window size here
+YOUR_SENSITIVITY = 0.5 # choose any value between 0 and 1
+NEGATIVE_LABEL = "negative"
+POSITIVE_LABEL = "positive"
+
 def aspect_matcher(record):
-    YOUR_ATTRIBUTE = "details"
-    YOUR_WINDOW = 4 # choose any window size here
-    YOUR_SENSITIVITY = 0.5 # choose any value between 0 and 1
-    NEGATIVE_LABEL = "negative"
-    POSITIVE_LABEL = "positive"
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
         left_bound = max(chunk.sent.start, chunk.start - (YOUR_WINDOW // 2) +1)
         right_bound = min(chunk.sent.end, chunk.end + (YOUR_WINDOW // 2) + 1)
