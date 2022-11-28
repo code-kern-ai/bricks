@@ -2,12 +2,12 @@
 import unicodedata
 from pydantic import BaseModel
 
-YOUR_ATTRIBUTE = "word"
+YOUR_ATTRIBUTE = "word" # Choose any available attribute here.
 
 def soundex_generator(record):
     '''Converts an english word into a phonetic SoundEx representation, for example to store names.'''
 
-    word = record[YOUR_ATTRIBUTE]
+    word = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string. 
     word = unicodedata.normalize("NFKD", word)
     word = name.upper()
 
@@ -46,5 +46,5 @@ def soundex_generator(record):
             break
 
     result += "0" * (4 - count)
-    yield {"SoundEx", "".join(result)}
+    yield "".join(result)
 ```
