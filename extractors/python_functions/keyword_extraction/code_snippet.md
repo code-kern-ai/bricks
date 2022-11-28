@@ -6,7 +6,7 @@ YOUR_KEYWORDS = ["keyword1", "keyword2", "keyword3"]
 
 def keyword_extraction(record):
     
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
     keyword_processor = KeywordProcessor()
     keyword_processor.add_keywords_from_list(YOUR_KEYWORDS)
     keywords_found = keyword_processor.extract_keywords(text, span_info=True)
