@@ -1,0 +1,1 @@
+This is the description of your generator module.

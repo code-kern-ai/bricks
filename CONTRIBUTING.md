@@ -1,10 +1,16 @@
 # Welcome to the contributions guideline for bricks
 Please refer to this document if you want to add your own modules/heuristics to the library.
 
+## Note: 
+Before diving deep into how the components of this repository work, there are some points of notice:
+- For implementing new modules, we have to follow a standardized structure which can consist of fine details. However, there is nothing to worry about since all the necessary steps to implement new modules are explained below.
+- Every little contribution counts - We are aware that not all the users checking `bricks` out would be proficient in python or any programming language for that matter. This shouldn't discourage anyone from contributing their ideas. For example, just opening a new issue consisting of some new idea is considered a valid contribution. The implementation will then be taken care of by us.
+
 ## Table of contents
 - [Structure of this repository](#structure-of-this-repository)
 - [How to contribute ideas](#how-to-contribute-ideas)
 - [How to contribute modules](#how-to-contribute-modules)
+- [Test your module](#test-your-module)
 - [Quality assurance](#quality-assurance)
 - [What happens next?](#what-happens-next)
 
@@ -73,6 +79,70 @@ def date_extraction(request: DateExtraction):
 ```
 
 Note that spaCy doesn't have to be used in the `code_snippet.md` file, as this is only used for the code snippet in the library. refinery uses spaCy under the hood, such that all records are already tokenized.
+
+### Desired output 
+The output that is expected by the actual endpoint in bricks and the source code for refinery differ a bit. This section should provide a guideline on how the output of the modules should look like.
+
+**Classifiers:**
+The output that is returned in the function in `__init__.py` will be displayed on bricks and should look similar to this:
+```python
+...
+return {"label-name-here": output}
+```
+
+The output that is returned in the function of the source code in `code_snippet.md` should be usable in refinery and should look like this:
+```python
+...
+return output
+```
+
+
+**Extractors:**
+The extractors should return the span at the position of the text in which the desired part of the text can be found. 
+
+The output that is returned in the function in `__init__.py` will be displayed on bricks and should look similar to this:
+```python
+...
+return {"labels": ["label-name-here", span.start, span.end]}
+```
+
+The output that is returned in the function of the source code in `code_snippet.md` should be usable in refinery. To label individual tokens, please use `yield` instead of `return`. Similar to this:
+```python
+...
+yield "label-name-here", span.start, span.end
+```
+
+
+**Generators:**
+The output that is returned in the generator function in `__init__.py` will be displayed on bricks and should look similar to this:
+```python
+...
+return {"Output": output}
+```
+
+The output that is returned in the function of the source code in `code_snippet.md` should be usable in refinery should look like this:
+```python
+...
+return output
+```
+
+## Test your module
+Testing the correct functioning can be done by using FastAPI. With FastAPI you can use a provided interface to test out the module as an actual endpoint, but on your local machine. To start FastAPI, type:
+```
+uvicorn api:api --reload
+```
+THis will start up FastAPI and automatically reload the API once you saved any changes made to your code.
+
+After starting FastAPI, head over to `http://localhost:8000/docs` where you can access all of the created modules. Search for the module that you have created and click on it. On the right side, you will see a button stating `try it out`. 
+
+![](images/fastapi_testing_01.png)
+
+If you have filled the `__init__.py` file of your module correctly, the example request body should already be filled with an example text from the `EXAMPLE_INPUT` in the `__init__.py`. Click on execute, and the respone will be a response code as well as a response body. If everything works well, the response code will be `200`. 
+
+![](images/fastapi_testing_02.png)
+
+### Finding errors
+If you get different response codes, your module probably need some rework. There are many possible errors that can occur. [Here is a list of all response codes.](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). 
 
 ## Quality assurance
 We want to make sure that things work nicely and that the modules are of high quality. Therefore, when we will review your submission, we'll do blackbox tests and will check the above criteria. Again, this is about collaboration, so please don't worry about this too much. We'll help you with this!
