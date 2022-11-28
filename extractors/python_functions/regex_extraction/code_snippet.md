@@ -1,15 +1,12 @@
 ```python
 import re
 
-def detect_money_regex(record):
-    YOUR_REGEX = "\$[0-9]+" # choose any regex here
-    YOUR_ATTRIBUTE = "details" # choose any available attribute here
-    YOUR_LABEL = "MONEY"
+def regex_extraction(record):
+    YOUR_REGEX = r"\$[0-9]+" # Choose any regex here
+    YOUR_ATTRIBUTE = "details" # Choose any available attribute here
+    YOUR_LABEL = "MONEY" # Choose any available label here
 
     def regex_search(pattern, string):
-        """
-        some helper function to easily iterate over regex matches
-        """
         prev_end = 0
         while True:
             match = re.search(pattern, string)
