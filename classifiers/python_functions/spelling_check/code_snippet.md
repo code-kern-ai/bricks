@@ -1,13 +1,15 @@
 ```python
-from typing import Dict, Any
 import nltk
 from nltk.corpus import words, brown
 
+YOUR_ATTRIBUTE = "text"
 
-def spelling_check(record: Dict[str, Any]):
-    text = record["your_text"]
+def spelling_check(record):
+    text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
+
     words_corpus = words.words()
     brown_corpus = brown.words()
+
     word_list = words_corpus + brown_corpus
     text_lower = text.replace(',', '').replace('.', '').lower().split()
     text_original = text.replace(',', '').replace('.', '').split()
