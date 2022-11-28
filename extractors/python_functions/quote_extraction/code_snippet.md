@@ -1,12 +1,14 @@
 ```python
 import re
 
-def quote_extraction(record):
-    
-    regex = re.compile(r"\".*?\"")
+YOUR_ATTRIBUTE = "your-text" # Choose any available attribute her
 
-    for match in regex.finditer(record["your-text"].text):
+def quote_extraction(record):
+    regex = re.compile(r"\".*?\"")
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
+
+    for match in regex.finditer(text):
         start, end = match.span()
-        span = record["your-text"].char_span(start, end)
+        span = record[YOUR_ATTRIBUTE].char_span(start, end)
         yield "quote", span.start, span.end
 ```
