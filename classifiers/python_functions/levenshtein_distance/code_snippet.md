@@ -1,12 +1,11 @@
 ```python
-from typing import Dict
 from Levenshtein import distance as levenshtein_distance
 
 BASE_SENTENCE = "This is a base sentence to compare to."
 YOUR_ATTRIBUTE = "text
 WEIGHTS = (1, 1, 1) # Optional, for (insertion, deletion, substitution).
 
-def fn_levenshtein_distance(record: Dict[str, Any]):
+def fn_levenshtein_distance(record):
     str_01 = BASE_SENTENCE
     str_02 = record[YOUR_ATTRIBUTE].text
     
