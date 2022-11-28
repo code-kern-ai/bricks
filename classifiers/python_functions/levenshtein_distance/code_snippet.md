@@ -7,7 +7,7 @@ WEIGHTS = (1, 1, 1) # Optional, for (insertion, deletion, substitution).
 
 def fn_levenshtein_distance(record):
     str_01 = BASE_SENTENCE
-    str_02 = record[YOUR_ATTRIBUTE].text
+    str_02 = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
     
     weights = WEIGHTS
 

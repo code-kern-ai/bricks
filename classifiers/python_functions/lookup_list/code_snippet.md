@@ -9,6 +9,6 @@ YOUR_LABEL = "ham"
 def lkp_known_sender(record):
     for known_sender in YOUR_LOOKUP_LIST:
         # knowledge.senders might look like this: ["johannes.hoetter@kern.ai", "henrik.wenck@kern.ai", ...]
-        if known_sender.lower() in record[YOUR_ATTRIBUTE].text.lower():
+        if known_sender.lower() in record[YOUR_ATTRIBUTE].text.lower(): # SpaCy document, hence we need to call .text to get the string
             return "ham"
 ```

@@ -27,7 +27,7 @@ def get_mapping_complexity(score):
     return OUTCOMES[int(score)]
 
 def fn_sentence_complexity(record):
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 
     language = TARGET_LANGUAGE
     if language is not None:
