@@ -3,7 +3,7 @@ from nltk.corpus import wordnet
 import re
 
 TARGET_WORD = "soccer"
-YOUR_ATTRIBUTE = "sentences"
+YOUR_ATTRIBUTE = "sentences" # Choose any available attribute here.
 
 def synonym_extraction(record):
     # Find synonyms to a word using Wordnet
@@ -16,7 +16,7 @@ def synonym_extraction(record):
     split_synonyms = [item.split(sep="_") for item in synonyms]
     combined_synonyms = [item for sublist in split_synonyms for item in sublist]
 
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
     # Word are sometimes connected by a _, which we want to remove   
     for word in combined_synonyms:
