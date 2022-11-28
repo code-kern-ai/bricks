@@ -2,15 +2,17 @@
 import re
 from nltk.corpus import stopwords
 
+YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here
+
 def smalltalk_extraction(record):
-    
     sw = stopwords.words("english")
     regex = re.compile(r"\".*?\"")
-    smalltalk = []
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
-    for match in regex.finditer(record["your-text"].text):
+    smalltalk = []
+    for match in regex.finditer(): 
         start, end = match.span()
-        span = record["your-text"].char_span(start, end)
+        span = record[YOUR_ATTRIBUTE].char_span(start, end)
         text_list_original = span.text.replace('"', '').replace(',', '').split()
         new_text = []
         stop_words = []
