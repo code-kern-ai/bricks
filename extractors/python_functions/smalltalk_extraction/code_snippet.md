@@ -23,5 +23,5 @@ def smalltalk_extraction(record):
                 stop_words.append(token)
         if len(new_text) < 0.5*len(text_list_original) or len(stop_words) < 8:
             smalltalk.append(["span.text", span.start, span.end])
-    return {"smalltalk": smalltalk}
+    return smalltalk
 ```
