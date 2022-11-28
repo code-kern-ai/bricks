@@ -1,10 +1,10 @@
 ```python
 from quantulum3 import parser
 
-YOUR_ATTRIBUTE = "text" # choose any available attribute here
+YOUR_ATTRIBUTE = "your_text" # choose any available attribute here
 
 def metric_detection(record):
-    text = record["text"]
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
     
     quants = parser.parse(text)
     for quant in quants:
