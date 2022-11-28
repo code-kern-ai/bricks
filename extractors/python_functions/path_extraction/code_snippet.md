@@ -7,7 +7,7 @@ YOUR_LABEL = "path"
 
 def path_extraction(record, sep=None):
     sep = os.sep if record.sep is None else sep
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[YOUR_ATTRIBUTE].text # SpaCy do , hence we need to use .text to get the string.
 
     # Extracts the paths from the texts
     paths = [x for x in text.split() if len(x.split(sep)) > 1]
