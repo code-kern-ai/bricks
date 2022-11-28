@@ -4,9 +4,11 @@ from numpy import dot
 from numpy.linalg import norm
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+YOUR_ATTRIBUTE = "your-text"
+
 def cosine_similarity(record):
     text_one = "10 amazing pasta recipes." # Change this to whatever you want to find similarities to
-    text_two = record["headline"].text
+    text_two = record[YOUR_ATTRIBUTE].text
 
     # Transform sentences to a vector
     tfidf = TfidfVectorizer()
