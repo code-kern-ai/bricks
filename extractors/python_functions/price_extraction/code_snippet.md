@@ -1,8 +1,8 @@
 ```python
-from typing import Dict, List, Tuple, Any
+YOUR_ATTRIBUTE = "your-text"
 
-def price_extractor(record: Dict[str, Any]) -> List[Tuple[str, int, int]]:
-    text = record["text"]
+def price_extractor(record):
+    text = record[YOUR_ATTRIBUTE]
 
     for entity in text.ents:
         if entity.label_ == 'MONEY':
