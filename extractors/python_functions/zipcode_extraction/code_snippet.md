@@ -1,18 +1,12 @@
 ```python
 import re
 
-zip_codes ={
-    "US": r"\d{5}([ \-]\d{4})?",
-    "CA": r"[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ ]?\d[ABCEGHJ-NPRSTV-Z]\d",
-    "DE": r"\d{5}"
-}
-
-YOUR_ATTRIBUTE = "text"
+YOUR_ATTRIBUTE = "text" # Choose any attribute here.
 COUNTRY_ID = "US" # Or CA, DE. Visit GitHub for extensive list of country zip-codes
 
 def zipcode_extraction(record):
     country_id = COUNTRY_ID
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
     match = re.search(zip_codes_json[country_id], text)
 

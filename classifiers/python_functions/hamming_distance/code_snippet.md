@@ -10,7 +10,7 @@ YOUR_ATTRIBUTE = "text"
 def hamming_distance(record):
 
     text_one = BASE_SENTENCE
-    text_two = record[YOUR_ATTRIBUTE].text
+    text_two = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 
     tfidf = TfidfVectorizer().fit_transform([text_one, text_two])
 

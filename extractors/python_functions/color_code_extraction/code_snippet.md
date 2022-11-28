@@ -1,6 +1,10 @@
 ```python
+import re
+
+YOUR_ATTRIBUTE = "text"
+
 def my_tagger(record):
-    text = record["text-attribute"].text
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 
     hexcolor_regex = re.compile(r"#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{4}|[0-9a-fA-F]{3})(?![0-9a-fA-F])")
     rgb_regex = re.compile(r"(rgba|rgb)\([^\)]*\)")

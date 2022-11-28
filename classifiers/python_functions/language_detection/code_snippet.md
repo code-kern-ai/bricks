@@ -1,9 +1,10 @@
-
 ```python
-from typing import Dict, Any
 from langdetect import detect
-def fn_language_detection(record: Dict[str, Any]) -> str:
-    text = record["your-text"].text
+
+YOUR_ATTRIBUTE = "text"
+
+def language_detection(record):
+    text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
     language = detect(text)
     return language # e.g. "en"
 ```

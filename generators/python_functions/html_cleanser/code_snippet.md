@@ -1,10 +1,10 @@
 ```python
 from bs4 import BeautifulSoup
 
-YOUR_ATTRIBUTE = "html"
+YOUR_ATTRIBUTE = "html" # Choose any available attribute here.
 
 def html_cleanser(record):
-    html = record[YOUR_ATTRIBUTE].text
+    html = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
     soup = BeautifulSoup(html, "html.parser")
     text = soup.text 

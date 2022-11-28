@@ -1,13 +1,15 @@
 ```python
-from typing import Dict, Any, List, Tuple
 import re
 
-def email_extractor(record: Dict[str, Any]) -> List[Tuple[str, int, int]]:
+YOUR_ATTRIBUTE = "your-text"
+
+def email_extractor(record):
     regex = re.compile(r"([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)")
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 
     emails = []
-    for match in regex.finditer(record["your-text"].text):
+    for match in regex.finditer(text):
         start, end = match.span()
-        span = record["your-text"].char_span(start, end)
+        span = record[YOUR_ATTRIBUTE].char_span(start, end)
         emails.append(["email", span.start, span.end])
 ```

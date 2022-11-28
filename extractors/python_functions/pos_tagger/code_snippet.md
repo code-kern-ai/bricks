@@ -2,7 +2,7 @@
 import spacy
 import re
 
-YOUR_ATTRIBUTE = "headline"
+YOUR_ATTRIBUTE = "headline" # Choose any available attribute here
 
 def pos_tagger_leo(record):
     '''Yields POS tags using spaCy.'''

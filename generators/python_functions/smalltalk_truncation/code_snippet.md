@@ -2,12 +2,15 @@
 import re
 from nltk.corpus import stopwords
 
+YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here
+
 def smalltalk_truncation(record):
-    
     sw = stopwords.words("english")
     regex = re.compile(r"\".*?\"")
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get string.
+
     removed_smalltalk = []
-    for message in regex.findall(record["your-text"].text):
+    for message in regex.findall(text):
         chat = message.replace('"','')
         chat = chat.split()
         new_text = []

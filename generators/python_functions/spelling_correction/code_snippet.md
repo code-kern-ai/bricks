@@ -1,13 +1,13 @@
 ```python
-from typing import Dict, Any
 from collections import Counter
 from nltk.metrics.distance import jaccard_distance
 from nltk.util import ngrams
 from nltk.corpus import words, brown
 
+YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here.
 
-def spelling_corretion(record: Dict[str, Any]):
-    text = record["your_text"]
+def spelling_corretion(record):
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
     words_corpus = words.words()
     brown_corpus = brown.words()
     word_list = words_corpus + brown_corpus
@@ -31,5 +31,5 @@ def spelling_corretion(record: Dict[str, Any]):
                 text_original[i] = count.most_common(1)[0][0]
                 
     text_corr = " ".join(text_original)
-    return {"correctedText": text_corr}
+    return text_corr
 ```

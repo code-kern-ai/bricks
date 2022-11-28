@@ -5,7 +5,7 @@ YOUR_ATTRIBUTE = "text"
 YOUR_NUM_AMOUNT = 4
 
 def digit_extraction(record):
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
     number = YOUR_NUM_AMOUNT
 
     num_string = "{"+f"{number}"+"}"

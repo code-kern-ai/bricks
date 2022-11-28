@@ -1,13 +1,9 @@
 ```python
-from typing import Dict, Any, List, Tuple
+YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here
 
-def name_extraction(record: Dict[str, Any]) -> List[Tuple[str, int, int]]:
-    """
-    Returns a dictionary of the extracted names from a given text.
-    """
-
-    text = record["your-text"]
-    for entity in doc.ents:
+def name_extraction(record):
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
+    for entity in record[YOUR_ATRRIBUTE].ents:
         if entity.label_ == "PERSON":
             yield "person", entity.start, entity.end
 ```

@@ -1,6 +1,9 @@
 ```python
-from typing import Dict, Any
 import textstat
+
+# Change these according to your attribute names
+YOUR_ATTRIBUTE = "text"
+TARGET_LANGUAGE = "en"
 
 def setall(d, keys, value):
     for k in keys:
@@ -23,10 +26,10 @@ def get_mapping_complexity(score):
         return OUTCOMES[MIN_SCORE]
     return OUTCOMES[int(score)]
 
-def fn_sentence_complexity(record: Dict[str, Any]) -> str:
-    text = record["text"]
+def fn_sentence_complexity(record):
+    text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 
-    language = record["language"]
+    language = TARGET_LANGUAGE
     if language is not None:
         textstat.set_lang(language)
     
