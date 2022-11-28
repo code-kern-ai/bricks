@@ -1,6 +1,8 @@
 ```python
 from textblob import TextBlob
 
+YOUR_ATTRIBUTE = "text"
+
 def setall(d, keys, value):
     for k in keys:
         d[k] = value
@@ -21,6 +23,6 @@ def get_mapping_sentiment(score):
     return OUTCOMES[int(score)]
 
 def textblob_sentiment(record):
-    blob = TextBlob(record["your-text"])
+    blob = TextBlob(record[YOUR_ATTRIBUTE].text) # SpaCy document, hence we need to call .text to get the string
     return get_mapping_sentiment(blob.sentiment.polarity * 100)
 ```
