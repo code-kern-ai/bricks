@@ -1,1 +1,1 @@
-Provides the part-of-speech tags using spaCy.
+Provides the part-of-speech tags using spaCy. The entities can have labels `PNOUN`, `ADJ`, `NOUN`, etc.

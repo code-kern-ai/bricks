@@ -1,1 +1,1 @@
-Extracts the quotes from a given text string.
+This module extracts the quotes and dialogues from a given text string using regular expressions. 

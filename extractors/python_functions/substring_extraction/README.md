@@ -1,1 +1,1 @@
-Extracts substrings using the build-in difflib library. 
+Extracts substrings using the build-in `difflib` library. It takes two strings as inputs and looks for common substring occurrences in both the strings depending on the size of minimum pre-defined length of the substring. 

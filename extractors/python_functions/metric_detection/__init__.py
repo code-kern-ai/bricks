@@ -12,7 +12,7 @@ class MetricDetectionModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def metric_detection(request: MetricDetectionModel):
-    '''Extracts units of measurement from a string.'''
+    """Extracts units of measurement from a string."""
     text = request.text
     
     quants = parser.parse(text)

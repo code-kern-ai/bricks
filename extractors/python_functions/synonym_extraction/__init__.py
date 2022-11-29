@@ -22,7 +22,7 @@ class SynonymExtractionModel(BaseModel):
 
 
 def synonym_extraction(SynonymExtractionModel):
-    '''Finds and extracts synonyms using Wordnet.'''
+    """Finds and extracts synonyms using Wordnet."""
     # Word that we would like to find synonyms to
     target_word = SynonymExtractionModel.targetWord
 

@@ -1,1 +1,1 @@
-Detects hashtags in a given text, e.g. #datacentricai.
+This module detects hashtags from a given text. For example, `"The world needs to act now on the global increase in temperature #climatechange #globalwarming #fridaysforfuture"` will be extracted as `["#climatechange", "#globalwarming", "#fridaysforfuture"]`.

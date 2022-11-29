@@ -1,1 +1,1 @@
-Calculates the Hamming distance between two embeddings to find similar sentences.
+Hamming distance between two strings is the measure of the minimum number of substitutions required to change one string to another, or minimum number of errors that could have transformed one string into another. This modules returns a `float` value for hamming distance.

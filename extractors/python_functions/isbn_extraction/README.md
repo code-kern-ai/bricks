@@ -1,1 +1,1 @@
-Extracts the ISBN from a given text.
+This module extracts the ISBN from a given text. ISBN stands for **International Standard Book Number**. Until 2007, the ISBN consisted of 10 digits, broken into four parts separated by hyphens. Since January 01, 2007 it consists of 13 digits, broken into five parts separated by hyphens. 

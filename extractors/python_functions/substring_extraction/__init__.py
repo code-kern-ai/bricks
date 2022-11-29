@@ -20,7 +20,7 @@ class SubstringExtractionModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def substring_extraction(request: SubstringExtractionModel):
-    '''Extracts one or multiple substring found between two strings.'''
+    """Extracts one or multiple substring found between two strings."""
 
     string1 = request.textInitial
     string2 = request.textDuplicate

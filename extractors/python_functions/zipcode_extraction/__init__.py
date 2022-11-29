@@ -21,7 +21,7 @@ with open('extractors/python_functions/zipcode_extraction/zip_codes.json') as f:
     zip_codes_json = json.load(f)
 
 def zipcode_extraction(req: ZipcodeExtractionModel):
-    '''Extracts a zipcode from a string using regex.'''
+    """Extracts a zipcode from a string using regex."""
     country_id = req.countryId
     text = req.text
 

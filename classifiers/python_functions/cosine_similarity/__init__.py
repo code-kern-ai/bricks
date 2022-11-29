@@ -17,7 +17,7 @@ class CosineSimilarityModel(BaseModel):
         schema_example = {"example": INPUT_EXAMPLE}
 
 def cosine_similarity(req: CosineSimilarityModel):
-    '''Claculates the cosine similarity between to sentences.'''
+    """Calculates the cosine similarity between two sentences."""
 
     text_one = req.textOne
     text_two = req.textTwo

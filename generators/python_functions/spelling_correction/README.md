@@ -1,1 +1,1 @@
-This module checks for spelling errors in a text and returns the corrected text.
+This module checks for spelling errors in a text and returns the corrected text. It uses the concept of `jaccard_distance` which is the measure of how similar the two words (sentences) are. For more information, check [jaccard similarity](https://studymachinelearning.com/jaccard-similarity-text-similarity-metric-in-nlp/).

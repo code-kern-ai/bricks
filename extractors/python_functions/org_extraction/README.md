@@ -1,1 +1,1 @@
-Extracts orgs from a given text using spaCy.
+This module extracts company/organization names from a given text using spaCy. It uses entity labelling to match entities labelled as `ORG`.

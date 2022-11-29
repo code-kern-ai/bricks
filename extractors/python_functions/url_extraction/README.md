@@ -1,1 +1,1 @@
-Extracts URL links from a given text.
+This module extracts URL links from a given text using regular expressions. 
