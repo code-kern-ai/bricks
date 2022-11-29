@@ -2,15 +2,15 @@
 import re
 from nltk.corpus import stopwords
 
-YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here
+YOUR_ATTRIBUTE: str = "text" # Choose any available attribute here
+YOUR_LABEL: str = "smalltalk"
 
 def smalltalk_extraction(record):
     sw = stopwords.words("english")
     regex = re.compile(r"\".*?\"")
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
-    smalltalk = []
-    for match in regex.finditer(): 
+    for match in regex.finditer(text): 
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end)
         text_list_original = span.text.replace('"', '').replace(',', '').split()
@@ -22,6 +22,7 @@ def smalltalk_extraction(record):
             else:
                 stop_words.append(token)
         if len(new_text) < 0.5*len(text_list_original) or len(stop_words) < 8:
-            smalltalk.append(["span.text", span.start, span.end])
-    return smalltalk
+            yield YOUR_LABEL, span.start, span.end
+        else:
+            pass
 ```

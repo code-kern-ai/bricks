@@ -1,7 +1,8 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE = "your-text"
+YOUR_ATTRIBUTE: str = "text"
+YOUR_LABEL: str = "cardNumber"
 
 def credit_extractor(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to use .text to the the string.
@@ -13,5 +14,5 @@ def credit_extractor(record):
     for match in regex.finditer(text):
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end)
-        yield "creditCard", span.start, span.end
+        yield YOUR_LABEL, span.start, span.end
 ```

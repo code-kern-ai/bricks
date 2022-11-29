@@ -2,8 +2,9 @@
 from nltk.corpus import wordnet
 import re
 
-TARGET_WORD = "soccer"
-YOUR_ATTRIBUTE = "sentences" # Choose any available attribute here.
+TARGET_WORD: str = "soccer"
+YOUR_ATTRIBUTE: str = "text" # Choose any available attribute here.
+YOUR_LABEL: str = "synonym"
 
 def synonym_extraction(record):
     # Find synonyms to a word using Wordnet
@@ -26,7 +27,7 @@ def synonym_extraction(record):
 
             start, end = match.span()
             span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-            yield "synonym", span.start, span.end
+            yield YOUR_LABEL, span.start, span.end
         except:
             pass
 ```

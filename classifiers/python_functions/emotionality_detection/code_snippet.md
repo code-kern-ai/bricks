@@ -4,7 +4,7 @@ from LeXmo import LeXmo
 import nltk
 nltk.download('punkt')
 
-YOUR_ATTRIBUTE = "text-attribute"
+YOUR_ATTRIBUTE: str = "text"
 
 def emotionality_detection(record: Dict[str, Any]):
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
@@ -12,5 +12,5 @@ def emotionality_detection(record: Dict[str, Any]):
     emo.pop("text", None)
     emo = max(emo, key=emo.get)
     
-    return {"emotions": emo}
+    return emo
 ```

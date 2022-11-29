@@ -1,7 +1,8 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE = "text"
+YOUR_ATTRIBUTE: str = "text"
+YOUR_LABEL: str = "color"
 
 def my_tagger(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
@@ -11,10 +12,9 @@ def my_tagger(record):
     hsl_regex = re.compile(r"(hsla|hsl)\([^\)]*\)")
     hwb_regex = re.compile(r"hwb\([^\)]*\)")
 
-    color_codes = []
     for regex in [hexcolor_regex, rgb_regex, hsl_regex, hwb_regex]:
         for match in regex.finditer(text):
             start, end = match.span()
             span = doc.char_span(start, end)
-            yield "color", span.start, span.end 
+            yield YOUR_LABEL, span.start, span.end 
 ```

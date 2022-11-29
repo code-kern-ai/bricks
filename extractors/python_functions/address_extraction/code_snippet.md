@@ -1,7 +1,8 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE = "your-text"
+YOUR_ATTRIBUTE: str = "your-text"
+YOUR_LABEL: str = "address"
 
 def location(record): 
     regex_1 = re.compile(r"(?:\d{1,5}(?:[A-Z ]+[ ]?)+(?:[A-Za-z-]+[ ]?)+(?:Avenue|Lane|Road|Boulevard|Drive|Street|Ave|Dr(?:\.)?|Rd(?:\.)?|Blvd(?:\.)?|Ln(?:\.)?|St(?:\.)?|Strasse|Hill|Alley|Alle|City)[,](?:[ A-Za-z0-9,]+[ ]?)?)")
@@ -20,5 +21,5 @@ def location(record):
         for match in regex_2.finditer(text):
             start, end = match.span()
             span = record[YOUR_ATTRIBUTE].char_span(start, end)
-            yield "address", span.start, span.end
+            yield YOUR_LABEL, span.start, span.end
 ```

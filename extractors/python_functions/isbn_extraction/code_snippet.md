@@ -1,7 +1,8 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE = "your-text"
+YOUR_ATTRIBUTE: str = "your-text"
+YOUR_LABEL: str = "isbn"
 
 def isbn_ext(record):
     regex = re.compile(r"(?:[\d-]{17}|[\d-]{13})")
@@ -10,5 +11,5 @@ def isbn_ext(record):
     for match in regex.finditer(text):
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end)
-        yield "isbn", span.start, span.end
+        yield YOUR_LABEL, span.start, span.end
 ```

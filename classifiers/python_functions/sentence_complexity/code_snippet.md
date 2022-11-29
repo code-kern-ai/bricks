@@ -1,18 +1,19 @@
 ```python
 import textstat
+from typing import Dict
 
 # Change these according to your attribute names
-YOUR_ATTRIBUTE = "text"
-TARGET_LANGUAGE = "en"
+YOUR_ATTRIBUTE: str = "text"
+TARGET_LANGUAGE: str = "en"
 
 def setall(d, keys, value):
     for k in keys:
         d[k] = value
 
-MAX_SCORE = 122
-MIN_SCORE = 0
+MAX_SCORE: int = 122
+MIN_SCORE: int = 0
 
-OUTCOMES = {}
+OUTCOMES: Dict = {}
 setall(OUTCOMES, range(90, MAX_SCORE), "very easy")
 setall(OUTCOMES, range(80, 90), "easy")
 setall(OUTCOMES, range(70, 80), "fairly easy")

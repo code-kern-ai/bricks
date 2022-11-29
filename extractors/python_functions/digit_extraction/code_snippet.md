@@ -1,8 +1,9 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE = "text"
-YOUR_NUM_AMOUNT = 4
+YOUR_ATTRIBUTE: str = "text"
+YOUR_NUM_AMOUNT: int = 4
+YOUR_LABEL: str = "digit"
 
 def digit_extraction(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
@@ -14,5 +15,5 @@ def digit_extraction(record):
     for match in regex.finditer(text):
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-        yield "Number", span.start, span.end
+        yield YOUR_LABEL, span.start, span.end
 ```

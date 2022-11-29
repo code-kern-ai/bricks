@@ -1,7 +1,7 @@
 ```python
 import textstat
 
-YOUR_ATTRIBUTE = "text"
+YOUR_ATTRIBUTE: str = "text"
 
 def fn_syllable_count(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string

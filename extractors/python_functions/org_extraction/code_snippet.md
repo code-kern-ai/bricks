@@ -1,9 +1,10 @@
 ```python
-YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here
+YOUR_ATTRIBUTE: str = "text" # Choose any available attribute here
+YOUR_LABEL: str = "ORG"
 
 def org_extraction(record):
-    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to extract the text.
-    for entity in record[YOUR_ATRRIBUTE].ents:
+    
+    for entity in record[YOUR_ATTRIBUTE].ents:
         if entity.label_ == "ORG":
-            yield "org", entity.start, entity.end
+            yield YOUR_LABEL, entity.start, entity.end
 ```

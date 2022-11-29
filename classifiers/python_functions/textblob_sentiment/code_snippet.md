@@ -1,16 +1,17 @@
 ```python
 from textblob import TextBlob
+from typing import Dict
 
-YOUR_ATTRIBUTE = "text"
+YOUR_ATTRIBUTE: str = "text"
 
 def setall(d, keys, value):
     for k in keys:
         d[k] = value
 
-MAX_SCORE = 100
-MIN_SCORE = -100
+MAX_SCORE: int = 100
+MIN_SCORE: int = -100
 
-OUTCOMES = {}
+OUTCOMES: Dict = {}
 setall(OUTCOMES, range(60, MAX_SCORE + 1), "very positive")
 setall(OUTCOMES, range(20, 60), "positive")
 setall(OUTCOMES, range(-20, 20), "neutral")

@@ -1,8 +1,8 @@
 ```python
 from Levenshtein import distance as levenshtein_distance
 
-BASE_SENTENCE = "This is a base sentence to compare to."
-YOUR_ATTRIBUTE = "text
+BASE_SENTENCE: str = "This is a base sentence to compare to."
+YOUR_ATTRIBUTE: str = "text"
 WEIGHTS = (1, 1, 1) # Optional, for (insertion, deletion, substitution).
 
 def fn_levenshtein_distance(record):

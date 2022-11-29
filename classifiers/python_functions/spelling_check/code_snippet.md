@@ -1,8 +1,7 @@
 ```python
-import nltk
 from nltk.corpus import words, brown
 
-YOUR_ATTRIBUTE = "text"
+YOUR_ATTRIBUTE: str = "text"
 
 def spelling_check(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
@@ -19,6 +18,5 @@ def spelling_check(record):
         if text_lower[i] not in word_list and text_original[i] not in word_list:
             misspells.append(text_original[i])
 
-    return {"spellingErrors": len(misspells)}
-
+    return len(misspells)
 ```

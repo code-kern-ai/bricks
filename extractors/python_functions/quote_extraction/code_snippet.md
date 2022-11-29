@@ -1,7 +1,8 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE = "your-text" # Choose any available attribute her
+YOUR_ATTRIBUTE: str = "text" # Choose any available attribute her
+YOUR_LABEL: str = "quote"
 
 def quote_extraction(record):
     regex = re.compile(r"\".*?\"")
@@ -10,5 +11,5 @@ def quote_extraction(record):
     for match in regex.finditer(text):
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end)
-        yield "quote", span.start, span.end
+        yield YOUR_LABEL, span.start, span.end
 ```

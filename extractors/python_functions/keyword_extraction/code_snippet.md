@@ -1,8 +1,9 @@
 ```python
 from flashtext import KeywordProcessor
+from typing import List
 
-YOUR_ATTRIBUTE = "text"
-YOUR_KEYWORDS = ["keyword1", "keyword2", "keyword3"]
+YOUR_ATTRIBUTE: str = "text"
+YOUR_KEYWORDS: List[str] = ["keyword1", "keyword2", "keyword3"]
 
 def keyword_extraction(record):
     

@@ -1,1 +1,1 @@
-This module checks for spelling errors in a given string.
+This module checks for spelling errors in a given string. The function return the number of words that contain spelling mistakes. For example, `"The wether is good toda. I might go for cyclng."` would return `3` as the output.
