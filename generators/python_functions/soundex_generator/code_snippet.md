@@ -1,7 +1,10 @@
 ```python
 import unicodedata
 
-YOUR_ATTRIBUTE: str = "text" # Choose any available attribute here.
+#currently only english language is supported here
+#reach out to us if this should be extended for other languages
+
+YOUR_ATTRIBUTE: str = "text" #only text attributes
 
 def soundex_generator(record):
     """Converts an english word into a phonetic SoundEx representation, for example to store names."""
