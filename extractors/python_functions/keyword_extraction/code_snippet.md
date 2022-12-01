@@ -1,4 +1,5 @@
 ```python
+import re
 from flashtext import KeywordProcessor
 from typing import List
 
@@ -12,5 +13,8 @@ def keyword_extraction(record):
     keyword_processor.add_keywords_from_list(YOUR_KEYWORDS)
     keywords_found = keyword_processor.extract_keywords(text, span_info=True)
     
-    return keywords_found
+    for keyword in keyword_found:
+        start, end = re.match(rf"({keyword})").span()
+        span = record[YOUR_ATTRIBUTE].char_span(start, end)
+        yield keyword, span.start, span.end
 ```
