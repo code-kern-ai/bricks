@@ -11,6 +11,6 @@ def emotionality_detection(record: Dict[str, Any]):
     emo = LeXmo.LeXmo(text)
     emo.pop("text", None)
     emo = max(emo, key=emo.get)
-    
-    return emo
+
+    return emo # Possible emotions to get returned are: [anger, fear, anticipation, trust, surprise, sadness, joy, disgust]
 ```
