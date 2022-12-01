@@ -7,7 +7,7 @@ INPUT_EXAMPLE = {
 }
 
 
-class BookExtractionModel(BaseModel):
+class WorkOfArtExtractionModel(BaseModel):
     text: str
     spacyTokenizer: str = "en_core_web_sm"
 
@@ -15,16 +15,16 @@ class BookExtractionModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def book_extraction(request: BookExtractionModel):
+def work_of_art_extraction(request: WorkOfArtExtractionModel):
     """Extracts the name of the book from a text."""
 
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
-    books = []
+    found = []
 
     for entity in doc.ents:
         if entity.label_ == "WORK_OF_ART":
-            books.append(["book", entity.start, entity.end])
+            found.append(["work of art", entity.start, entity.end])
 
-    return {"books": books}
+    return {"works of art": found}
