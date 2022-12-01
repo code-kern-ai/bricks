@@ -2,10 +2,10 @@
 import re
 import phonenumbers
 
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "PHONE_NUMBER"
 
-def validate_phone_number(record):
+def phone_number_extractor(record):
     regex = re.compile(r"[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}")
     text = record[YOUR_ATTRIBUTE].text
 

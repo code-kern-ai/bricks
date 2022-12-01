@@ -1,7 +1,7 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE: str = "text" # Choose any available attribute her
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "quote"
 
 def quote_extraction(record):

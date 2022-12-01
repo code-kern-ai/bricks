@@ -1,7 +1,7 @@
 ```python
-YOUR_ATTRIBUTE: str = "text" # Choose any available attribute here
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 
-def pos_tagger_leo(record):
+def pos_tagger(record):
     """Yields POS tags using spaCy."""
 
     doc = record[YOUR_ATTRIBUTE]
