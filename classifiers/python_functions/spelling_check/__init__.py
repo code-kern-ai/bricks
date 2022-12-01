@@ -27,7 +27,7 @@ def spelling_check(request: SpellingCheckModel):
     for i, _ in enumerate(text_list_lower):
         if text_list_lower[i] not in word_list and text_list_original[i] not in word_list:
             misspelled.append(text_list_original[i])
-
-    return {
-        "spellingErrors": len(misspelled),
-    }
+    if len(misspelled) > 0:
+        return {"mistakes": "contains spelling errors"}
+    else:
+        return {"mistakes": "no spelling errors"}

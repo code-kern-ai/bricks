@@ -4,9 +4,14 @@ from nltk.metrics.distance import jaccard_distance
 from nltk.util import ngrams
 from nltk.corpus import words, brown
 
-YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here.
+#currently only english language is supported here
+#reach out to us if this should be extended for other languages
 
-def spelling_corretion(record):
+YOUR_ATTRIBUTE: str = "text" # only text attributes
+
+def spelling_correction(record):
+    """Corrects the spelling of a word in a record and returns the corrected sentence."""
+    
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
     words_corpus = words.words()
     brown_corpus = brown.words()

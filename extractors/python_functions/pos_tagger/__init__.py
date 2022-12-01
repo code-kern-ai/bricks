@@ -16,7 +16,7 @@ class PosTaggerModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def pos_tagger(req: PosTaggerModel):
-    '''Yields POS tags using spaCy.'''
+    """Yields POS tags using spaCy."""
     text = req.text
 
     nlp = SpacySingleton.get_nlp(req.spacyTokenizer)

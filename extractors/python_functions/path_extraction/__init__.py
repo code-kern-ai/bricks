@@ -21,7 +21,8 @@ class PathExtractionModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def path_extraction(request: PathExtractionModel):
-    '''Extracts a path from a string.'''
+    """Extracts a path from a string."""
+
     sep = os.sep if request.sep is None else request.sep
     text = request.text
     tokenizer = request.spacyTokenizer

@@ -13,7 +13,7 @@ class SoundexGeneratorModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def soundex_generator(req: SoundexGeneratorModel):
-    '''Converts an english word into a phonetic SoundEx representation, for example to store names.'''
+    """Converts an english word into a phonetic SoundEx representation, for example to store names."""
 
     word = req.word
     word = unicodedata.normalize("NFKD", word)

@@ -1,1 +1,1 @@
-Removes HTML tags from a text.
+This module removes HTML tags from a text. For example, the text "This is a <b>test</b>" will be converted to "This is a test". The module is based on the HTMLParser from `BeautifulSoup`.

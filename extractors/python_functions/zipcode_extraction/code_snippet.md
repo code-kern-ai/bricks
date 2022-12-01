@@ -1,19 +1,21 @@
 ```python
 import re
+from typing import List
 
-YOUR_ATTRIBUTE = "text" # Choose any attribute here.
-COUNTRY_ID = "US" # Or CA, DE. Visit GitHub for extensive list of country zip-codes
+YOUR_ATTRIBUTE: str = "text" # only text attributes.
+YOUR_COUNTRY_IDS: List[str] = ["US"] # Or CA, DE. Visit GitHub for extensive list of country zip-codes
+YOUR_LABEL: str = "zip code"
 
 def zipcode_extraction(record):
-    country_id = COUNTRY_ID
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
-    match = re.search(zip_codes_json[country_id], text)
+    for country_id in YOUR_COUNTRY_IDS:
+        match = re.search(zip_codes_json[country_id], text)
 
-    start, end = match.span()
-    span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
+        start, end = match.span()
+        span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
 
-    yield f"{country_id} zip code", span.start, span.end
+        yield YOUR_LABEL, span.start, span.end
 
 zip_codes = {
     "GB": r"GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BH|BL|BN|BR|BS|BT|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\\d[\\dA-Z]?[ ]?\\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\\d{1,4}",

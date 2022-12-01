@@ -1,1 +1,1 @@
-Calculates the cosine similarity.
+Cosine similarity is a metric to measure the similarity between two entities (texts in this case). A word is represented into a vector form, while the text documents are represented in n-dimentional vector space. The cosine similarity always ranges between 0 and 1.

@@ -2,7 +2,10 @@
 import re
 from nltk.corpus import stopwords
 
-YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here
+#currently only english language is supported here
+#reach out to us if this should be extended for other languages
+
+YOUR_ATTRIBUTE: str = "text" #only text attributes
 
 def smalltalk_truncation(record):
     sw = stopwords.words("english")

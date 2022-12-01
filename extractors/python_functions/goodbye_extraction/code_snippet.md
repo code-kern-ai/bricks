@@ -1,7 +1,11 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE = "your-text"
+#currently only english language is supported here
+#reach out to us if this should be extended for other languages
+
+YOUR_ATTRIBUTE: str = "text" # only text attributes
+YOUR_LABEL: str = "goodbye"
 
 def goodbye_extraction(record):
     regex = re.compile(r"((?:(good|Good)(?:[ ])?)?(bye|Bye)|Ciao|ciao|(?:(see you|See you)(?:[ ]?)(tomorrow|later|soon)?))")
@@ -10,5 +14,5 @@ def goodbye_extraction(record):
     for match in regex.finditer(text):
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end)
-        yield "goodbye", span.start, span.end
+        yield YOUR_LABEL, span.start, span.end
 ```

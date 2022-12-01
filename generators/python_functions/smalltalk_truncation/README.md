@@ -1,1 +1,1 @@
-Removes all the irrelevant information from passages or chats.
+This module removes all the unnecessary and irrelevant information form chats or dialogues to the best of its accuracy. 

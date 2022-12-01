@@ -16,7 +16,7 @@ class LanguageTranslatorModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def language_translator(req: LanguageTranslatorModel):
-    '''Function to translate text using a free library.'''
+    """Function to translate text."""
 
     origin_lang = req.fromLang
     target_lang = req.toLang

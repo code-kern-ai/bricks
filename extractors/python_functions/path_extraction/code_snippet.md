@@ -2,8 +2,8 @@
 import os
 import re
 
-YOUR_ATTRIBUTE = "details" # choose any available attribute here
-YOUR_LABEL = "path"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
+YOUR_LABEL: str = "path"
 
 def path_extraction(record, sep=None):
     sep = os.sep if record.sep is None else sep
@@ -14,9 +14,7 @@ def path_extraction(record, sep=None):
 
     # We need to add an \ before sparators to use them in regex
     regex_paths = [i.replace(sep, "\\"+sep) for i in paths]
-    print(regex_paths)
     
-    matches = []
     for path in regex_paths:
         pattern = rf"({path})"
         match = re.search(pattern, text)

@@ -1,10 +1,11 @@
 ```python
 import re
 
+YOUR_REGEX: str = r"\$[0-9]+" # Choose any regex here
+YOUR_ATTRIBUTE: str = "text" # only text attributes
+YOUR_LABEL: str = "MONEY" # Choose any available label here
+
 def regex_extraction(record):
-    YOUR_REGEX = r"\$[0-9]+" # Choose any regex here
-    YOUR_ATTRIBUTE = "details" # Choose any available attribute here
-    YOUR_LABEL = "MONEY" # Choose any available label here
 
     def regex_search(pattern, string):
         prev_end = 0
@@ -13,11 +14,11 @@ def regex_extraction(record):
             if not match:
                 break
 
-            start, end = match.span()
-            yield start + prev_end, end + prev_end
+            start_, end_ = match.span()
+            yield start_ + prev_end, end_ + prev_end
 
-            prev_end += end
-            string = string[end:]
+            prev_end += end_
+            string = string[end_:]
             
     for start, end in regex_search(YOUR_REGEX, record[YOUR_ATTRIBUTE].text):
         span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")

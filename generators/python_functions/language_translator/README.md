@@ -1,1 +1,1 @@
-Uses the free Translate library to translate texts.
+This module uses the free `translate` library to translate texts to any specified language. 

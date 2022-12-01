@@ -18,7 +18,7 @@ class DigitExtractionModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def digit_extraction(req: DigitExtractionModel):
-    '''Extracts digits of variable length.'''
+    """Extracts digits of variable length."""
     text = req.text
     number = req.digitLength
 

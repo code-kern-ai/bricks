@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from typing import Optional, List
 from bs4 import BeautifulSoup
 
 INPUT_EXAMPLE = {
@@ -24,7 +23,7 @@ class HtmlCleanserModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def html_cleanser(req: HtmlCleanserModel):
-    '''Removes the HTML tags from a text.'''
+    """Removes the HTML tags from a text."""
     html = req.html
 
     soup = BeautifulSoup(html, "html.parser")

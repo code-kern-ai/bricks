@@ -1,7 +1,8 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE = "your-text" # Choose any available attribute here
+YOUR_ATTRIBUTE: str = "text" # only text attributes
+YOUR_LABEL: str = "time"
 
 def time_extraction(record):
     regex = re.compile(
@@ -12,5 +13,5 @@ def time_extraction(record):
     for match in regex.finditer(text):
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end)
-        yield "time", span.start, span.end
+        yield YOUR_LABEL, span.start, span.end
 ```
