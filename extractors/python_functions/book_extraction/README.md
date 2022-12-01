@@ -1,1 +1,0 @@
-This module detects the name of book from a given text. It uses the `WORK_OF_ART` label for identify entities corresponding to book names.

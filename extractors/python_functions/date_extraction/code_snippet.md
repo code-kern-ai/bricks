@@ -1,7 +1,10 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE: str = "text"
+#currently only english language is supported here
+#reach out to us if this should be extended for other languages
+
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "date"
 
 def date_extractor(record):

@@ -1,0 +1,1 @@
+This module detects the name of works of art from a given text. It uses the `WORK_OF_ART` label for identify entities.
