@@ -1,11 +1,12 @@
 ```python
+#expects labeling task to have labels ["Not similar", "Somewhat similar", "Very similar"]
 import numpy as np 
 from numpy import dot
 from numpy.linalg import norm
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-YOUR_ATTRIBUTE: str = "text"
-YOUR_SUBJECT_TEXT: str = "Ten amazing facts about the sun" # Change this to whatever you want to find similarities to
+YOUR_ATTRIBUTE: str = "text" # only text attributes
+YOUR_SUBJECT_TEXT: str = "Ten amazing facts about the sun"
 
 def cosine_similarity(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
