@@ -14,7 +14,7 @@ def aspect_matcher(record):
         window_doc = record[YOUR_ATTRIBUTE][left_bound: right_bound]
         sentiment = TextBlob(window_doc.text).polarity
         if sentiment < -(1 - YOUR_SENSITIVITY):
-            yield NEGATIVE_LABEL, chunk.start, chunk.end
+            yield YOUR_NEGATIVE_LABEL, chunk.start, chunk.end
         elif sentiment > (1 - YOUR_SENSITIVITY):
-            yield POSITIVE_LABEL, chunk.start, chunk.end
+            yield YOUR_POSITIVE_LABEL, chunk.start, chunk.end
 ```
