@@ -1,5 +1,5 @@
 ```python
-YOUR_ATTRIBUTE: str = "text" # Choose any available attribute here
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "name"
 
 def name_extraction(record):

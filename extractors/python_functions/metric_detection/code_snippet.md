@@ -1,7 +1,7 @@
 ```python
 from quantulum3 import parser
 
-YOUR_ATTRIBUTE: str = "your_text" # choose any available attribute here
+YOUR_ATTRIBUTE: str = "your_text" # only text attributes
 YOUR_LABEL: str = "metric"
 
 def metric_detection(record):

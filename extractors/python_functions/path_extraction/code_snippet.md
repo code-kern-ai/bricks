@@ -2,7 +2,7 @@
 import os
 import re
 
-YOUR_ATTRIBUTE: str = "text" # choose any available attribute here
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "path"
 
 def path_extraction(record, sep=None):
@@ -14,7 +14,6 @@ def path_extraction(record, sep=None):
 
     # We need to add an \ before sparators to use them in regex
     regex_paths = [i.replace(sep, "\\"+sep) for i in paths]
-    print(regex_paths)
     
     for path in regex_paths:
         pattern = rf"({path})"
