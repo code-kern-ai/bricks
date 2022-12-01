@@ -4,8 +4,8 @@
 import textstat
 from typing import Dict
 
-YOUR_ATTRIBUTE: str = "text" #only text attributes
-YOUR_TARGET_LANGUAGE: str = "en" #iso codes
+YOUR_ATTRIBUTE: str = "text" # only text attributes
+YOUR_TARGET_LANGUAGE: str = "en" # iso codes
 
 YOUR_MAX_SCORE: int = 100
 YOUR_MIN_SCORE: int = 0
@@ -27,10 +27,8 @@ def get_mapping_complexity(score):
         return outcomes[YOUR_MAX_SCORE]
     return outcomes[int(score)]
 
-
-language = YOUR_TARGET_LANGUAGE
-if language is not None:
-    textstat.set_lang(language)
+if YOUR_TARGET_LANGUAGE is not None:
+    textstat.set_lang(YOUR_TARGET_LANGUAGE)
 
 outcomes: Dict = {}
 set_all(outcomes, range(90, YOUR_MAX_SCORE + 1), "very easy")
