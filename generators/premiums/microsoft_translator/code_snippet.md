@@ -1,15 +1,17 @@
 ```python
 import requests, uuid
 
-YOUR_ATTRIBUTE = "text"
-API_KEY = "<api-key-goes-here>"
+YOUR_ATTRIBUTE: str = "text" #only text attributes
+YOUR_API_KEY: str = "<api-key-goes-here>" #Microsoft API key
+YOUR_ORIGINAL_LANGUAGE: str = "en" #only iso format
+YOUR_TARGET_LANGUAGE: str = "de" #only iso format
 
 def microsoft_translator(record):
     endpoint = "https://api.cognitive.microsofttranslator.com/translate"
     params = {
         'api-version': '3.0',
-        'from': ["de"],
-        'to': ["en"] # You can translate to multiple languages by adding languages to the list
+        'from': [YOUR_ORIGINAL_LANGUAGE],
+        'to': [YOUR_TARGET_LANGUAGE] 
     }
 
     headers = {
