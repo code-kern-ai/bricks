@@ -1,39 +1,43 @@
 ```python
+#expects labeling task to have labels ["very easy", "easy" ,"fairly easy", "standard", "fairly difficult", "difficult", "very difficult"]
+
 import textstat
 from typing import Dict
 
-# Change these according to your attribute names
-YOUR_ATTRIBUTE: str = "text"
-TARGET_LANGUAGE: str = "en"
+YOUR_ATTRIBUTE: str = "text" #only text attributes
+YOUR_TARGET_LANGUAGE: str = "en" #iso codes
 
-MAX_SCORE: int = 122
-MIN_SCORE: int = 0
+YOUR_MAX_SCORE: int = 100
+YOUR_MIN_SCORE: int = 0
 
-def fn_sentence_complexity(record):
+def sentence_complexity(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
-
-def setall(d, keys, value):
-    for k in keys:
-        d[k] = value
-    language = TARGET_LANGUAGE
-    if language is not None:
-        textstat.set_lang(language)
-    
-def get_mapping_complexity(score):
-    if score < MIN_SCORE:
-        return OUTCOMES[MIN_SCORE]
-    return OUTCOMES[int(score)]
-
     sentence_complexity_score = textstat.flesch_reading_ease(text)
     sentence_complexity = get_mapping_complexity(sentence_complexity_score)
     return sentence_complexity
 
-OUTCOMES: Dict = {}
-setall(OUTCOMES, range(90, MAX_SCORE), "very easy")
-setall(OUTCOMES, range(80, 90), "easy")
-setall(OUTCOMES, range(70, 80), "fairly easy")
-setall(OUTCOMES, range(60, 70), "standard")
-setall(OUTCOMES, range(50, 60), "fairly difficult")
-setall(OUTCOMES, range(30, 50), "difficult")
-setall(OUTCOMES, range(MIN_SCORE, 30), "very difficult")
+def set_all(d, keys, value):
+    for k in keys:
+        d[k] = value
+    
+def get_mapping_complexity(score):
+    if score < YOUR_MIN_SCORE:
+        return outcomes[YOUR_MIN_SCORE]
+    if score > YOUR_MAX_SCORE:
+        return outcomes[YOUR_MAX_SCORE]
+    return outcomes[int(score)]
+
+
+language = YOUR_TARGET_LANGUAGE
+if language is not None:
+    textstat.set_lang(language)
+
+outcomes: Dict = {}
+set_all(outcomes, range(90, YOUR_MAX_SCORE + 1), "very easy")
+set_all(outcomes, range(80, 90), "easy")
+set_all(outcomes, range(70, 80), "fairly easy")
+set_all(outcomes, range(60, 70), "standard")
+set_all(outcomes, range(50, 60), "fairly difficult")
+set_all(outcomes, range(30, 50), "difficult")
+set_all(outcomes, range(YOUR_MIN_SCORE, 30), "very difficult")
 ```
