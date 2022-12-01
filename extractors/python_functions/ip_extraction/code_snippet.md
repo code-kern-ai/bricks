@@ -1,7 +1,7 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "ipAddress"
 
 def ip_extractor(record):
@@ -11,5 +11,5 @@ def ip_extractor(record):
     for match in regex.finditer(text):
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end)
-        yield "ip_address", span.start, span.end
+        yield YOUR_LABEL, span.start, span.end
 ```

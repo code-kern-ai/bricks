@@ -1,7 +1,7 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE: str = "your-text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "isbn"
 
 def isbn_ext(record):
