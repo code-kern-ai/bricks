@@ -1,10 +1,10 @@
 ```python
-# expects labelingtask to have labels ["subjective", "rather subjective" ,"neutral", "rather objective", "objective"]
+# expects labeling task to have labels ["subjective", "rather subjective" ,"neutral", "rather objective", "objective"]
 from textblob import TextBlob
 from typing import Dict
 
 
-YOUR_ATTRIBUTE: str = "headline" #only text attributes
+YOUR_ATTRIBUTE: str = "text" #only text attributes
 YOUR_MAX_SCORE: int = 100
 YOUR_MIN_SCORE: int = 0
 
