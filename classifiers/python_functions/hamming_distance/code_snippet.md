@@ -3,7 +3,7 @@ import numpy as np
 from scipy.spatial.distance import hamming
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-BASE_SENTENCE: str = "This is the base sentence you want to find the distances to." 
+YOUR_BASE_SENTENCE: str = "This is the base sentence you want to find the distances to." 
 YOUR_ATTRIBUTE: str = "text"
 
 def hamming_distance(record):
