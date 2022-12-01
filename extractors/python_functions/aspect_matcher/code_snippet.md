@@ -1,11 +1,11 @@
 ```python
 from textblob import TextBlob
 
-YOUR_ATTRIBUTE: str = "details"
+YOUR_ATTRIBUTE: str = "details" # only text attributes
 YOUR_WINDOW: int = 4 # choose any window size here
 YOUR_SENSITIVITY: float = 0.5 # choose any value between 0 and 1
-NEGATIVE_LABEL: str = "negative"
-POSITIVE_LABEL: str = "positive"
+YOUR_NEGATIVE_LABEL: str = "negative"
+YOUR_POSITIVE_LABEL: str = "positive"
 
 def aspect_matcher(record):
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:

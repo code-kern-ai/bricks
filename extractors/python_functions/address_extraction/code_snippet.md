@@ -1,7 +1,7 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE: str = "your-text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "address"
 
 def location(record): 
@@ -15,7 +15,7 @@ def location(record):
         for match in regex_1.finditer(text):
             start, end = match.span()
             span = record[YOUR_ATTRIBUTE].char_span(start, end)
-            yield "address", span.start, span.end
+            yield YOUR_LABEL, span.start, span.end
 
     if regex_2.findall(text):
         for match in regex_2.finditer(text):
