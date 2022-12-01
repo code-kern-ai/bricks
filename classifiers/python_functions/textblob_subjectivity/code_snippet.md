@@ -19,6 +19,8 @@ def set_all(d, keys, value):
 def get_mapping_subjectivity(score):
     if score < YOUR_MIN_SCORE:
         return outcomes[YOUR_MIN_SCORE]
+    if score > YOUR_MAX_SCORE:
+        return outcomes[YOUR_MAX_SCORE]
     return outcomes[int(score)]
 
 
