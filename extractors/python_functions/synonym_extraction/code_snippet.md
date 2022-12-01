@@ -2,14 +2,17 @@
 from nltk.corpus import wordnet
 import re
 
-TARGET_WORD: str = "soccer"
-YOUR_ATTRIBUTE: str = "text" # Choose any available attribute here.
+#currently only english language is supported here
+#reach out to us if this should be extended for other languages
+
+YOUR_TARGET_WORD: str = "soccer"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "synonym"
 
 def synonym_extraction(record):
     # Find synonyms to a word using Wordnet
     synonyms = []
-    for syn in wordnet.synsets(TARGET_WORD):
+    for syn in wordnet.synsets(YOUR_TARGET_WORD):
         for i in syn.lemmas():
             synonyms.append(i.name())
             

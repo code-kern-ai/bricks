@@ -4,6 +4,9 @@ from nltk.metrics.distance import jaccard_distance
 from nltk.util import ngrams
 from nltk.corpus import words, brown
 
+#currently only english language is supported here
+#reach out to us if this should be extended for other languages
+
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def spelling_correction(record):

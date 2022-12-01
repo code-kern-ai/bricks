@@ -3,7 +3,7 @@ import requests
 
 YOUR_ATTRIBUTE: str = "headline" # only text attributes
 YOUR_API_KEY: str = "<api-key-goes-here>" # Deepl API Key
-YOUR_TARGET_LANGUAGE: str = "de" #only iso format
+YOUR_TARGET_LANGUAGE: str = "de" # only iso format
 
 def deepl_translator(record):
     '''Uses DeepL API to translate texts.'''
