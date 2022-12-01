@@ -4,7 +4,7 @@ from typing import List
 YOUR_WINDOW: int = 4 # choose any window size here
 YOUR_LABEL: str = "PERSON"
 YOUR_ATTRIBUTE: str = "text" # choose any available attribute here
-LOOKUP_VALUES: List[str] = ["join"] # this could also be coming from a knowledge base via `import knowledge`
+YOUR_LOOKUP_VALUES: List[str] = ["join"] # this could also be coming from a knowledge base via `import knowledge`
 
 def window_cue_search(record):
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
