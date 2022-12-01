@@ -1,9 +1,9 @@
 ```python
 from Levenshtein import distance as levenshtein_distance
 
-BASE_SENTENCE: str = "This is a base sentence to compare to."
+YOUR_BASE_SENTENCE: str = "This is a base sentence to compare to."
 YOUR_ATTRIBUTE: str = "text"
-WEIGHTS = (1, 1, 1) # Optional, for (insertion, deletion, substitution).
+YOUR_WEIGHTS = (1, 1, 1) # Optional, for (insertion, deletion, substitution).
 
 def fn_levenshtein_distance(record):
     str_01 = BASE_SENTENCE
