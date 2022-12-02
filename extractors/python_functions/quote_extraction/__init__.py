@@ -26,7 +26,7 @@ def quote_extraction(request: QuoteExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
-    regex = re.compile(r'"(.+?)"')
+    regex = re.compile(r'\"(.+?)"|\'(.*?)\'')
 
     quotes = []
     for match in regex.finditer(text):

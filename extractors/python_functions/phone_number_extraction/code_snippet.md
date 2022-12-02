@@ -14,7 +14,7 @@ def phone_number_extractor(record):
             parsed_num = phonenumbers.parse(match.group(0), None)
             if phonenumbers.is_valid_number(parsed_num):
                 start, end = match.span()
-                span = record[YOUR_ATTRIBUTE].char_span(start, end)
+                span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
                 yield YOUR_LABEL, span.start, span.end
         except phonenumbers.phonenumberutil.NumberParseException:
             pass 
