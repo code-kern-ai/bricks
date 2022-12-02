@@ -30,6 +30,7 @@ from .python_functions import (
     smalltalk_extraction,
     digit_extraction,
     keyword_extraction,
+    iban_extraction,
 )
 
 router = APIRouter()
@@ -65,6 +66,7 @@ for module in [
     smalltalk_extraction,
     digit_extraction,
     keyword_extraction,
+    iban_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

@@ -3,7 +3,7 @@ from extractors.util.spacy import SpacySingleton
 import re
 
 INPUT_EXAMPLE = {
-    "text": "The IBANs are 22 characters long. The first two characters are the country code, the next two are the check digits, the next four are the bank code, and the rest is the account number.",
+    "text": "DE89370400440532013000",
     "spacyTokenizer": "en_core_web_sm",
 }
 
@@ -28,5 +28,5 @@ def iban_extraction(request: IbanExtractionModel):
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end)
-        isbn.append([span.start, span.end, span.text])
+        isbn.append([span.start, span.end, "IBAN"])
     return {"iban": isbn}
