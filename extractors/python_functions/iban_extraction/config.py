@@ -9,5 +9,5 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=143,
-        state=State.DRAFT,  # in the actual module, set this to PUBLIC before pushing to main!
+        state=State.PUBLIC,
     )
