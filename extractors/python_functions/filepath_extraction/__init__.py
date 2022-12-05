@@ -12,7 +12,7 @@ INPUT_EXAMPLE = {
 
 class FilepathExtractionModel(BaseModel):
     text: str
-    sep: Optional[str] 
+    separator: Optional[str] 
     spacyTokenizer: str
     yourLabel: str
 
@@ -22,7 +22,7 @@ class FilepathExtractionModel(BaseModel):
 def filepath_extraction(request: FilepathExtractionModel):
     """Extracts a path from a string."""
 
-    sep = request.sep
+    sep = request.separator
     text = request.text
     tokenizer = request.spacyTokenizer
 
