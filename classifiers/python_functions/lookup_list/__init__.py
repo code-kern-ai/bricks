@@ -16,7 +16,6 @@ class LookupListModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-
 def lookup_list(request: LookupListModel):
     """Checks if a given text contains any of the given lookup values."""
 
