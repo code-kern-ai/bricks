@@ -1,1 +1,1 @@
-Uses the quantulum3 library to detect metrics like distances or units of measurement.
+Uses the quantulum3 library to detect metrics like distances or units of measurement. Currently working on english text only.
