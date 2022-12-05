@@ -2,8 +2,8 @@
 import re
 from nltk.corpus import stopwords
 
-#currently only english language is supported here
-#reach out to us if this should be extended for other languages
+# currently only english language is supported here
+# reach out to us if you would like to request other languages to be supported
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "smalltalk"
@@ -15,7 +15,7 @@ def smalltalk_extraction(record):
 
     for match in regex.finditer(text): 
         start, end = match.span()
-        span = record[YOUR_ATTRIBUTE].char_span(start, end)
+        span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
         text_list_original = span.text.replace('"', '').replace(',', '').split()
         new_text = []
         stop_words = []
