@@ -5,8 +5,8 @@ from pydantic import BaseModel
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 INPUT_EXAMPLE = {
-    "textOne": "Ten amazing pasta recipes.",
-    "textTwo": "Ten amazing steak recepes."
+    "textOne": "Ten amazing facts about planet Mars.",
+    "textTwo": "Ten amazing facts about the sun"
 }
 
 class CosineSimilarityModel(BaseModel):
