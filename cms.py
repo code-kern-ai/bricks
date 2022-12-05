@@ -205,7 +205,10 @@ def check_module_exists(config: Dict[str, Any]):
             "Authorization": f"Bearer {CMS_API_KEY}",
         },
     )
-    return response.json()["data"] != [], response.json()["data"]
+    if response.status_code == 200:
+        return response.json()["data"] != [], response.json()["data"]
+    else:
+        raise Exception(response.text)
 
 
 if __name__ == "__main__":
