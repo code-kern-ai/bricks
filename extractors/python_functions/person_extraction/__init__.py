@@ -7,7 +7,7 @@ INPUT_EXAMPLE = {
 }
 
 
-class NameExtractionModel(BaseModel):
+class PersonExtractionModel(BaseModel):
     text: str
     spacyTokenizer: str = "en_core_web_sm"
 
@@ -15,9 +15,9 @@ class NameExtractionModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def name_extraction(request: NameExtractionModel):
+def person_extraction(request: PersonExtractionModel):
     """
-    Returns a dictionary of the extracted names from a given text.
+    Returns the occurrences of names of people in a dictionary.
     """
 
     text = request.text
