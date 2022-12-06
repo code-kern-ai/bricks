@@ -3,7 +3,6 @@
 from typing import Dict, Any
 from LeXmo import LeXmo
 import nltk
-nltk.download('punkt')
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
