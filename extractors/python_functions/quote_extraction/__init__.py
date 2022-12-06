@@ -31,7 +31,7 @@ def quote_extraction(request: QuoteExtractionModel):
     quotes = []
     for match in regex.finditer(text):
         start, end = match.span()
-        span = doc.char_span(start, end)
+        span = doc.char_span(start, end, alignment_mode="expand")
         quotes.append(["quote", span.start, span.end])
 
     return {"quote": quotes}

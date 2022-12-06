@@ -12,6 +12,6 @@ def time_extraction(record):
 
     for match in regex.finditer(text):
         start, end = match.span()
-        span = record[YOUR_ATTRIBUTE].char_span(start, end)
+        span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
         yield YOUR_LABEL, span.start, span.end
 ```
