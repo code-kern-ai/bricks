@@ -4,7 +4,7 @@ from textblob import TextBlob
 from typing import Dict
 
 
-YOUR_ATTRIBUTE: str = "text" #only text attributes
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_MAX_SCORE: int = 100
 YOUR_MIN_SCORE: int = 0
 
