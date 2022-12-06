@@ -1,1 +1,1 @@
-Hamming distance between two strings is the measure of the minimum number of substitutions required to change one string to another, or minimum number of errors that could have transformed one string into another. This modules returns a `float` value for hamming distance.
+Calculates the hamming distance between vector representations of two strings. The hamming distance is the proportion of disagreeing components in two vectors, 1.0 being very dissimilar and 0.0 meaning completely the same. This modules returns a `float` value for hamming distance.

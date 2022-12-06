@@ -1,13 +1,13 @@
 from util.configs import build_extractor_function_config
 from util.enums import State
-from . import metric_detection, INPUT_EXAMPLE
+from . import filepath_extraction, INPUT_EXAMPLE
 
 
 def get_config():
     return build_extractor_function_config(
-        function=metric_detection,
+        function=filepath_extraction,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=52,
+        issue_id=56,
         state=State.PUBLIC,
     )

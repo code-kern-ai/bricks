@@ -8,14 +8,14 @@ INPUT_EXAMPLE = {
     "spacyTokenizer": "en_core_web_sm"
 }
 
-class PosTaggerModel(BaseModel):
+class PartOfSpeechExtractorModel(BaseModel):
     text: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def pos_tagger(req: PosTaggerModel):
+def part_of_speech_extractor(req: PartOfSpeechExtractorModel):
     """Yields POS tags using spaCy."""
     text = req.text
 

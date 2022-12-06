@@ -1,1 +1,1 @@
-SoundEx algorithm that converts names into phonetic representations.
+SoundEx algorithm that converts words, for example names, into phonetic representations.

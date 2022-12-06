@@ -1,13 +1,13 @@
 from util.configs import build_extractor_function_config
 from util.enums import State
-from . import aspect_matcher, INPUT_EXAMPLE
+from . import part_of_speech_extractor, INPUT_EXAMPLE
 
 
 def get_config():
     return build_extractor_function_config(
-        function=aspect_matcher,
+        function=part_of_speech_extractor,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=30,
+        issue_id=53,
         state=State.PUBLIC,
     )

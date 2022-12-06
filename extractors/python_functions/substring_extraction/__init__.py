@@ -4,37 +4,33 @@ from difflib import SequenceMatcher
 from extractors.util.spacy import SpacySingleton
 
 INPUT_EXAMPLE = {
-    "textInitial": "Hello this is my house. This is not a duplicate. It's good to see you.", 
-    "textDuplicate": "Hello this is my flat. This is a duplicate. It's good to see you.",
-    "minLengthSubstring": 10,
+    "text": "Hello this is my flat. This is a duplicate.", 
+    "substring": "This is a duplicate.",
     "spacyTokenizer": "en_core_web_sm"
 }
 
 class SubstringExtractionModel(BaseModel):
-    textInitial: str
-    textDuplicate: str
-    minLengthSubstring: int
+    text: str
+    substring: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def substring_extraction(request: SubstringExtractionModel):
-    """Extracts one or multiple substring found between two strings."""
+def substring_extraction(req: SubstringExtractionModel):
+    """Extracts a common substring between two strings."""
 
-    string1 = request.textInitial
-    string2 = request.textDuplicate
+    string1 = req.text # SpaCy doc, hence we need to use .text to get the string.
+    string2 = req.substring
 
-    nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
-    doc = nlp(string2)
+    start_index = string1.find(string2)
+    end_index = start_index + len(string2)
 
-    duplicate = SequenceMatcher(None, string1, string2, autojunk=False).get_matching_blocks()
+    nlp = SpacySingleton.get_nlp(req.spacyTokenizer)
+    doc = nlp(string1)
 
-    found_duplicates = []
-    for match in duplicate:
-        if match.size >= request.minLengthSubstring:
-            start, end = match.b, match.b+match.size
-            span = doc.char_span(start, end, alignment_mode="expand")
-            found_duplicates.append(["substring", span.start, span.end])
-
-    return {"substrings": found_duplicates}
+    if start_index != -1:
+        span = doc.char_span(start_index, end_index, alignment_mode="expand")
+        return {"Substring": [span.start, span.end]}
+    else:
+        return "No substring found!"
