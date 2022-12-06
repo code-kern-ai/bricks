@@ -1,0 +1,1 @@
+This module extracts the IBAN from a given text. IBAN stands for **International Bank Account Number**. The IBANs are 22 characters long. The first two characters are the country code, the next two are the check digits, the next four are the bank code, and the rest is the account number.
