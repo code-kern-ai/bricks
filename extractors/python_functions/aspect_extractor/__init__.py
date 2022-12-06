@@ -11,7 +11,7 @@ INPUT_EXAMPLE = {
 }
 
 
-class AspectMatcherModel(BaseModel):
+class AspectExtractorModel(BaseModel):
     text: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
     windowSize: int
@@ -21,7 +21,7 @@ class AspectMatcherModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def aspect_matcher(request: AspectMatcherModel):
+def aspect_extractor(request: AspectExtractorModel):
     """Matches aspects in a text to positive or negative sentiment."""
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(request.text)

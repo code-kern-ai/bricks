@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from .python_functions import (
     address_extraction,
-    aspect_matcher,
+    aspect_extractor,
     work_of_art_extraction,
     credit_card_extraction,
     date_extraction,
@@ -36,7 +36,7 @@ router = APIRouter()
 
 for module in [
     address_extraction,
-    aspect_matcher,
+    aspect_extractor,
     work_of_art_extraction,
     credit_card_extraction,
     date_extraction,
