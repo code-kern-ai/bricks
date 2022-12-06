@@ -1,8 +1,6 @@
 ```python
 #expects labeling task to have labels ["very easy", "easy" ,"fairly easy", "standard", "fairly difficult", "difficult", "very difficult"]
-
 import textstat
-from typing import Dict
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_TARGET_LANGUAGE: str = "en" # iso codes
