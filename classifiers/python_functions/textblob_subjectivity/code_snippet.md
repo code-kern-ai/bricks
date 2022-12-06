@@ -30,5 +30,4 @@ set_all(outcomes, range(60, 80), "rather subjective")
 set_all(outcomes, range(40, 60), "neutral")
 set_all(outcomes, range(20, 40), "rather objective")
 set_all(outcomes, range(YOUR_MIN_SCORE, 20), "objective")
-
 ```
