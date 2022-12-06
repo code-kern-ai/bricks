@@ -39,7 +39,7 @@ def color_code_extraction(request: ColorCodeExtractionModel):
     for regex in [hexcolor_regex, rgb_regex, hsl_regex, hwb_regex]:
         for match in regex.finditer(text):
             start, end = match.span()
-            span = doc.char_span(start, end)
+            span = doc.char_span(start, end, alignment_mode="expand")
             color_codes.append(["color", span.start, span.end])
 
     return {"extractedColorCodes": color_codes}
