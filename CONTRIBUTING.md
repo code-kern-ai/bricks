@@ -40,18 +40,20 @@ Each module has a folder with the following structure:
 We use that structure to a) standardize module implementations, making it easier to maintain the underlying code of modules, and b) to synchronize the repository with the online platform. This means that if you add a new module to the repository, it will be added to the platform via a script that reads the `config.py` file.
 
 ## How to contribute ideas
-If you have an idea for a new module/heuristic, please [open an issue](https://github.com/code-kern-ai/bricks/issues) in the repository. We will discuss the idea and if it is a good fit for the library, we will add it to the library. This means you don't _have to write_ the code yourself, but you can still contribute to the library. If you want to write the code yourself, please refer to the next section.
+If you have an idea for a new module/heuristic, please [open an issue](https://github.com/code-kern-ai/bricks/issues) in this repository. We will discuss the idea and if it is a good fit for the library, we will add it to the library. This means you don't _have to_ write the code yourself and can still contribute to the library. If you want to write the code yourself, please refer to the next section.
 
 ## How to contribute modules
 1. As stated above, please first add the idea as an issue. We'll use this to document the origin of the module, and will use it to help you during the contribution.
 2. Create a new branch with the name of the module you want to add. Please do **not** add multiple modules in one branch.
-3. Copy the `_template` directory from the `classifiers` or `extractors` folder into the folder of the module type you want to add. Rename the folder to the name of your module.
+3. Duplicate the `_template` directory of the type of module you want to add (e.g. `extractors/python_functions/_template`) and rename the directory to the name of your module.
 4. Start by changing the `config.py` file by updating the issueId to the issue you created in step 1.
-5. Implement the `__init__.py` file. This is the entry point of the module, and will be executed when the module is run.
-6. Modify `code_snippet.md`, and keep in mind that this must fit the interface of refinery. If you copied from the `_template` directory, you will already see the expected interface. All the variables holding the user defined inputs shall be in block letters, since it improves the readability of the code.
-7. Write something in the `README.md` file. This will be displayed on the detail page of the module. Make sure the module description in `README.md` tails the description from the docstring in `__init__.py`.
-8. Finally, update the last changes to the `config.py`, by updating the name of the function you implemented in this module. Make sure that the function name is the same as the directory name!
-9. Create a pull request to the `main` branch of the repository. Add a comment `implements #<your-issue-id>` to the pull request, so that we can link the pull request to the issue.
+5. Implement the `__init__.py` file. This is the entry point of the module, and will be executed when the module is run. If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
+6. Add your function to the top-level `__init__.py` of your module type, so either in `extractors/__init.py__` or `classifiers/__init.py__`.
+7. [Test](#test-your-module) your module.
+8. Modify `code_snippet.md`, and keep in mind that this must fit the interface of refinery. If you copied from the `_template` directory, you will already see the expected interface. All the variables holding the user defined inputs shall be defined as constants (all capital letters). If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
+9. Document and describe your function in the `README.md` file. This will be displayed on the detail page of the module, which means you can go more into detail with your description. Make sure the module description in `README.md` tails the description from the docstring you wrote in `__init__.py`.
+10. Finally, make your last changes to the `config.py` by updating the name of the function you implemented in this module. Make sure that the function name is the same as the directory name!
+11. Create a pull request to the `main` branch of the repository. Add a comment `implements #<your-issue-id>` to the pull request, so that we can link the pull request to the issue.
 
 If you have any questions along the way, please don't hesitate to reach out to us, either in the issue you created, or via [Discord](https://discord.gg/qf4rGCEphW).
 
@@ -81,24 +83,24 @@ def date_extraction(request: DateExtraction):
 Note that spaCy doesn't have to be used in the `code_snippet.md` file, as this is only used for the code snippet in the library. refinery uses spaCy under the hood, such that all records are already tokenized.
 
 ### Desired output 
-The output that is expected by the actual endpoint in bricks and the source code for refinery differ a bit. This section should provide a guideline on how the output of the modules should look like.
+The output that is expected by the actual endpoint in bricks (your `__init__.py`) and the source code for refinery (your `code_snippet.md`) differ a bit. This section should provide a guideline on how the output of the modules should look like.
 
 **Classifiers:**
 The output that is returned in the function in `__init__.py` will be displayed on bricks and should look similar to this:
 ```python
 ...
-return {"label-name-here": output}
+return {"name-of-classifiation-task": classification_result}
 ```
 
 The output that is returned in the function of the source code in `code_snippet.md` should be usable in refinery and should look like this:
 ```python
 ...
-return output
+return classification_result
 ```
 
 
 **Extractors:**
-The extractors should return the span at the position of the text in which the desired part of the text can be found. 
+The extractors should return the span at the position of the text in which the desired part of the text can be found.
 
 The output that is returned in the function in `__init__.py` will be displayed on bricks and should look similar to this:
 ```python
@@ -106,7 +108,7 @@ The output that is returned in the function in `__init__.py` will be displayed o
 return {"labels": ["label-name-here", span.start, span.end]}
 ```
 
-The output that is returned in the function of the source code in `code_snippet.md` should be usable in refinery. To label individual tokens, please use `yield` instead of `return`. Similar to this:
+The output of the function in `code_snippet.md` should be usable in refinery. To label individual tokens, please use `yield` instead of `return`. Similar to this:
 ```python
 ...
 yield "label-name-here", span.start, span.end
@@ -117,35 +119,37 @@ yield "label-name-here", span.start, span.end
 The output that is returned in the generator function in `__init__.py` will be displayed on bricks and should look similar to this:
 ```python
 ...
-return {"Output": output}
+return {"output": output}
 ```
 
-The output that is returned in the function of the source code in `code_snippet.md` should be usable in refinery should look like this:
+The output that is returned in the function of the source code in `code_snippet.md` should be usable in refinery and should look like this:
 ```python
 ...
 return output
 ```
 
 ## Test your module
-Testing the correct functioning can be done by using FastAPI. With FastAPI you can use a provided interface to test out the module as an actual endpoint, but on your local machine. To start FastAPI, type:
+Testing the correct functioning can be done by using FastAPI, which let's you interact with an interface to test out the module as an actual endpoint on your local machine. To start FastAPI, type:
 ```
 uvicorn api:api --reload
 ```
-THis will start up FastAPI and automatically reload the API once you saved any changes made to your code.
+This will start up FastAPI and automatically reload the API once you saved any changes made to your code.
+
+Please note that you have to have your function registered at the top-level `__init__.py` of your module type. Otherwise it will not show up in the FastAPI web interface.
 
 After starting FastAPI, head over to `http://localhost:8000/docs` where you can access all of the created modules. Search for the module that you have created and click on it. On the right side, you will see a button stating `try it out`. 
 
 ![](images/fastapi_testing_01.png)
 
-If you have filled the `__init__.py` file of your module correctly, the example request body should already be filled with an example text from the `EXAMPLE_INPUT` in the `__init__.py`. Click on execute, and the respone will be a response code as well as a response body. If everything works well, the response code will be `200`. 
+If you correctly filled in the `__init__.py` file of your module, the example request body should already contain an example text you specified as the `EXAMPLE_INPUT` in the `__init__.py`. Click on execute, and the response will contain a response code as well as a response body. If everything works well, the response code will be `200`. 
 
 ![](images/fastapi_testing_02.png)
 
 ### Finding errors
-If you get different response codes, your module probably need some rework. There are many possible errors that can occur. [Here is a list of all response codes.](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). 
+If you get different response codes, your module probably needs some rework. There are many possible errors that can occur. [Here is a list of all response codes.](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). 
 
 ## Quality assurance
-We want to make sure that things work nicely and that the modules are of high quality. Therefore, when we will review your submission, we'll do blackbox tests and will check the above criteria. Again, this is about collaboration, so please don't worry about this too much. We'll help you with this!
+We want to make sure that things work nicely and that the modules are of high quality. Therefore, when reviewing your submission, we'll do blackbox tests and check for the above criteria. Again, this is about collaboration, so please don't worry about this too much. We'll help you with this!
 
 ## What happens next?
-We have a content management system up and running, in which we enter newly registered endpoints. As soon as your endpoint is merged into the `main` branch, we'll add it to the CMS. This triggers a task for our dev rel team, so it usually doesn't take too long. You can then find it in our online platform :)
+We have a content management system up and running, in which we enter newly registered endpoints. As soon as your endpoint is merged into the `main` branch, we'll add it to the CMS. This triggers a task for our dev rel team, so it usually doesn't take too long. You can then find it on our [online platform](https://bricks.kern.ai/) :)
