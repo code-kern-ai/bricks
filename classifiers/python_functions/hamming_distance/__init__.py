@@ -26,5 +26,9 @@ def hamming_distance(req: HammingDistanceModel):
     dense = tfidf.toarray()
     vect_one, vect_two = np.squeeze(dense[0]), np.squeeze(dense[1])
 
-    hamming_distance = hamming(vect_one, vect_two)
-    return {"Hamming distance": hamming_distance}
+    if vect_one.shape == () or vect_two.shape == ():
+        print("The input vectors are null. Make sure that at least one input is longer than a single word.")
+
+    else:
+        hamming_distance = hamming(vect_one, vect_two)
+        return {"Hamming distance": hamming_distance}

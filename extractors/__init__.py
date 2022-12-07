@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from .python_functions import (
     address_extraction,
-    aspect_matcher,
+    aspect_extractor,
     work_of_art_extraction,
     credit_card_extraction,
     date_extraction,
@@ -18,25 +18,26 @@ from .python_functions import (
     url_extraction,
     window_search,
     isbn_extraction,
-    metric_detection,
-    path_extraction,
+    metric_extraction,
+    filepath_extraction,
     synonym_extraction,
     substring_extraction,
     zipcode_extraction,
     color_code_extraction,
-    pos_tagger,
+    part_of_speech_extractor,
     goodbye_extraction,
     quote_extraction,
     smalltalk_extraction,
     digit_extraction,
     keyword_extraction,
+    iban_extraction,
 )
 
 router = APIRouter()
 
 for module in [
     address_extraction,
-    aspect_matcher,
+    aspect_extractor,
     work_of_art_extraction,
     credit_card_extraction,
     date_extraction,
@@ -53,18 +54,19 @@ for module in [
     url_extraction,
     window_search,
     isbn_extraction,
-    metric_detection,
-    path_extraction,
+    metric_extraction,
+    filepath_extraction,
     synonym_extraction,
     substring_extraction,
     zipcode_extraction,
     color_code_extraction,
-    pos_tagger,
+    part_of_speech_extractor,
     goodbye_extraction,
     quote_extraction,
     smalltalk_extraction,
     digit_extraction,
     keyword_extraction,
+    iban_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

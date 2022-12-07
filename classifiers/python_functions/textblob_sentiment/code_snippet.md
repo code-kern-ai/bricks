@@ -23,7 +23,7 @@ def get_mapping_sentiment(score):
         return outcomes[YOUR_MAX_SCORE]
     return outcomes[int(score)]
 
-outcomes: Dict = {}
+outcomes = {}
 set_all(outcomes, range(60, YOUR_MAX_SCORE + 1), "very positive")
 set_all(outcomes, range(20, 60), "positive")
 set_all(outcomes, range(-20, 20), "neutral")
