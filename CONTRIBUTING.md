@@ -17,7 +17,7 @@ Before diving deep into how the components of this repository work, there are so
 
 ## Structure of this repository
 
-### Module types: `classifiers` and `extractors`
+### Module types: `classifiers`, `extractors`, and `generators`
 We have structured this repository into two main folders:
 - `classifiers`: this is where the modules will go into that are used to classify a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
 - `extractors`: this is where the modules will go into that are used to extract information from a given text. For example, a module that extracts the author of a text would go into this folder.
@@ -48,7 +48,7 @@ If you have an idea for a new module/heuristic, please [open an issue](https://g
 3. Duplicate the `_template` directory of the type of module you want to add (e.g. `extractors/python_functions/_template`) and rename the directory to the name of your module.
 4. Start by changing the `config.py` file by updating the issueId to the issue you created in step 1.
 5. Implement the `__init__.py` file. This is the entry point of the module, and will be executed when the module is run. If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
-6. Add your function to the top-level `__init__.py` of your module type, so either in `extractors/__init.py__` or `classifiers/__init.py__`.
+6. Add your function to the top-level `__init__.py` of your module type, so either in `extractors/__init.py__`, `classifiers/__init.py__`, or `generators/__init.py__`.
 7. [Test](#test-your-module) your module.
 8. Modify `code_snippet.md`, and keep in mind that this must fit the interface of refinery. If you copied from the `_template` directory, you will already see the expected interface. All the variables holding the user defined inputs shall be defined as constants (all capital letters). If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
 9. Document and describe your function in the `README.md` file. This will be displayed on the detail page of the module, which means you can go more into detail with your description. Make sure the module description in `README.md` tails the description from the docstring you wrote in `__init__.py`.
