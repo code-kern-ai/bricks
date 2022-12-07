@@ -28,7 +28,7 @@ def time_extraction(request: TimeExtractionModel):
     times = []
     for match in regex.finditer(text):
         start, end = match.span()
-        span = doc.char_span(start, end)
+        span = doc.char_span(start, end, alignment_mode="expand")
         times.append(["time", span.start, span.end])
 
     return {"times": times}

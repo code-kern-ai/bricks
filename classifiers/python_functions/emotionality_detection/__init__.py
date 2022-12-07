@@ -22,8 +22,14 @@ def emotionality_detection(request: EmotionalityDetectionModel):
     """Fetches emotions from a given text"""
 
     text = request.text
-    emo = LeXmo.LeXmo(text)
-    emo.pop('text', None)
-    emo = max(emo, key=emo.get)
-
-    return {"emotion": emo}
+    try:
+        emo = LeXmo.LeXmo(text)
+        emo.pop('text', None)
+        unique = dict(zip(emo.values(), emo.keys()))
+        if len(unique) == 1:
+            return "Cannot determine emotion"
+        else:
+            emo = max(emo, key=emo.get)
+            return {"emotion": emo}
+    except ValueError:
+        return "Valid text required"

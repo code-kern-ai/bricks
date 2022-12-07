@@ -27,7 +27,7 @@ def ip_extraction(request: IpExtractionModel):
     ip_addresses = []
     for match in regex.finditer(text):
         start, end = match.span()
-        span = doc.char_span(start, end)
+        span = doc.char_span(start, end, alignment_mode="expand")
         ip_addresses.append(["ip_address", span.start, span.end])
 
     return {"ip_addresses": ip_addresses}

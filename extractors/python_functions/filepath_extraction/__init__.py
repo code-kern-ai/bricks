@@ -32,7 +32,7 @@ def filepath_extraction(request: FilepathExtractionModel):
     # Extracts the paths from the texts
     paths = [x for x in text.split() if len(x.split(sep)) > 1]
 
-    # We need to add an \ before sparators to use them in regex
+    # We need to add an \ before separators to use them in regex
     regex_paths = [i.replace(sep, "\\"+sep) for i in paths]
     print(regex_paths)
     

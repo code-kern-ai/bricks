@@ -10,7 +10,6 @@ def metric_detection(record):
     quants = parser.parse(text)
     for quant in quants:
         span = quant.span
-        name = quant.unit.name
 
         yield YOUR_LABEL, span[0], span[1]
 ```

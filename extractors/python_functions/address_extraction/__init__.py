@@ -34,13 +34,13 @@ def address_extraction(request: AddressExtractionModel):
         for match in regex_1.finditer(text):
             start, end = match.span()
             print(start, end)
-            span = doc.char_span(start, end)
+            span = doc.char_span(start, end, alignment_mode="expand")
             print(span)
             addresses.append(["address", span.start, span.end, span.text])
     if regex_2.findall(text):
         for match in regex_2.finditer(text):
             start, end = match.span()
-            span = doc.char_span(start, end)
+            span = doc.char_span(start, end, alignment_mode="expand")
             print(span)
             addresses.append(["address", span.start, span.end])
 

@@ -28,7 +28,7 @@ def url_extraction(request: UrlExtractionModel):
     urls = []
     for match in regex_pattern.finditer(text):
         start, end = match.span()
-        span = doc.char_span(start, end)
+        span = doc.char_span(start, end, alignment_mode="expand")
         urls.append(["url", span.start, span.end])
 
     return {"urls": urls}
