@@ -3,14 +3,14 @@ import re
 from typing import List
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes.
-YOUR_COUNTRY_IDS: List[str] = ["US"] # Or CA, DE. Visit GitHub for extensive list of country zip-codes
+YOUR_COUNTRY_IDS: List[str] = ["US"] # see list below for more countries
 YOUR_LABEL: str = "zip code"
 
 def zipcode_extraction(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
     for country_id in YOUR_COUNTRY_IDS:
-        match = re.search(zip_codes_json[country_id], text)
+        match = re.search(zip_codes[country_id], text)
 
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
