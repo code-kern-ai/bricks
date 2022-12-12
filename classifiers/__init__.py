@@ -14,6 +14,9 @@ from .python_functions import (
     hamming_distance,
     profanity_detection,
 )
+from .premiums import (
+    gpt3_classifier
+)
 
 router = APIRouter()
 
@@ -31,6 +34,7 @@ for module in [
     cosine_similarity,
     hamming_distance,
     profanity_detection,
+    gpt3_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
