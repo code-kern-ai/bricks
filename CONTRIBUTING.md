@@ -21,7 +21,7 @@ Before diving deep into how the components of this repository work, there are so
 We have structured this repository into two main folders:
 - `classifiers`: this is where the modules will go into that are used to classify a given text into a specific category. For example, a module that classifies a text into the category `news` or `blog` would go into this folder. It can also be about enrichments, e.g. to detect languages and such.
 - `extractors`: this is where the modules will go into that are used to extract information from a given text. For example, a module that extracts the author of a text would go into this folder.
-- `generators`: this is where the modules will go that are used to produce values based on the provided text. For example, a module that corrects spelling mistakes whill take an incorrect text and generate the corrected text.
+- `generators`: this is where the modules will go that are used to produce values based on the provided text. For example, a module that corrects spelling mistakes while take an incorrect text and generate the corrected text.
 
 ### Execution types: `python_functions`, `active_learners`, `zero_shot` and `premium`
 In each folder, you will find further directories, typically in this structure:
