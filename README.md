@@ -10,7 +10,7 @@ Browse [bricks](https://bricks.kern.ai) to find gold nuggets for your projects; 
 
 ## Table of contents
 - [Why bricks?](#why-bricks)
-- [What are classifiers and extractors?](#what-are-classifiers-and-extractors)
+- [What are classifiers, extractors and generators?](#what-are-classifiers-extractors-and-generators)
 - [Getting started](#getting-started)
 - [Contributing](#contributing)
 - [refinery](#refinery)
