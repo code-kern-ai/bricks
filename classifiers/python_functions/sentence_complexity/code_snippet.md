@@ -25,7 +25,7 @@ def get_mapping_complexity(score):
 if YOUR_TARGET_LANGUAGE is not None:
     textstat.set_lang(YOUR_TARGET_LANGUAGE)
 
-outcomes: Dict = {}
+outcomes = {}
 set_all(outcomes, range(90, 100 + 1), "very easy")
 set_all(outcomes, range(80, 90), "easy")
 set_all(outcomes, range(70, 80), "fairly easy")
