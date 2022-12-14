@@ -3,7 +3,7 @@ import re
 
 YOUR_REGEX: str = r"\$[0-9]+" # Choose any regex here
 YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_LABEL: str = "MONEY" # Choose any available label here
+YOUR_LABEL: str = "money" # Choose any available label here
 
 def regex_extraction(record):
 

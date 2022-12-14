@@ -26,12 +26,12 @@ def quote_extraction(request: QuoteExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
-    regex = re.compile(r'"(.+?)"')
+    regex = re.compile(r'\"(.+?)"|\'(.*?)\'')
 
     quotes = []
     for match in regex.finditer(text):
         start, end = match.span()
-        span = doc.char_span(start, end)
+        span = doc.char_span(start, end, alignment_mode="expand")
         quotes.append(["quote", span.start, span.end])
 
     return {"quote": quotes}

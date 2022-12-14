@@ -2,7 +2,7 @@
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "name"
 
-def name_extraction(record):
+def person_extraction(record):
     
     for entity in record[YOUR_ATTRIBUTE].ents:
         if entity.label_ == "PERSON":

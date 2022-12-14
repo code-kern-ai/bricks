@@ -1,6 +1,5 @@
-import re 
-import json 
-
+import re
+import json
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 
@@ -9,6 +8,7 @@ INPUT_EXAMPLE = {
     "countryId": "GB",
 }
 
+
 class ZipcodeExtractionModel(BaseModel):
     text: str
     countryId: str
@@ -16,9 +16,11 @@ class ZipcodeExtractionModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
+
 # Load JSON file with all zip code regex patterns
 with open('extractors/python_functions/zipcode_extraction/zip_codes.json') as f:
     zip_codes_json = json.load(f)
+
 
 def zipcode_extraction(req: ZipcodeExtractionModel):
     """Extracts a zipcode from a string using regex."""
@@ -30,7 +32,10 @@ def zipcode_extraction(req: ZipcodeExtractionModel):
 
     match = re.search(zip_codes_json[country_id], text)
 
-    start, end = match.span()
-    span = doc.char_span(start, end, alignment_mode="expand")
+    try:
+        start, end = match.span()
+        span = doc.char_span(start, end, alignment_mode="expand")
+    except AttributeError:
+        return "No zipcodes found"
 
-    return {country_id : ["zip code", span.start, span.end]}
+    return {country_id: ["zipcode", span.start, span.end]}

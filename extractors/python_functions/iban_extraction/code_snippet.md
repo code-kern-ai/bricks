@@ -2,15 +2,12 @@
 import re
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_LABEL: str = "cardNumber"
+YOUR_LABEL: str = "iban"
 
-def credit_extractor(record):
-    text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to use .text to the string.
+def iban_ext(record):
+    regex = re.compile(r"[A-Z]{2}\d{2} ?\d{4} ?\d{4} ?\d{4} ?\d{4} ?[\d]{0,2}")
+    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 
-    regex = re.compile(
-        r"(\d{4}[-\s]?){3}\d{3,4}"
-    )
-    
     for match in regex.finditer(text):
         start, end = match.span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")

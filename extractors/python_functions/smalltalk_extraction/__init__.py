@@ -37,7 +37,7 @@ def smalltalk_extraction(request: SmalltalkExtractionModel):
     smalltalk = []
     for match in regex.finditer(text):
         start, end = match.span()
-        span = doc.char_span(start, end)
+        span = doc.char_span(start, end, alignment_mode="expand")
         text_list_original = span.text.replace('"', '').replace(',', '').split()
         new_text = []
         stop_words = []

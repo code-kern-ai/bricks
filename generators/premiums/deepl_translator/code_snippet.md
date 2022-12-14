@@ -1,7 +1,7 @@
 ```python
 import requests
 
-YOUR_ATTRIBUTE: str = "headline" # only text attributes
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_API_KEY: str = "<api-key-goes-here>" # Deepl API Key
 YOUR_TARGET_LANGUAGE: str = "de" # only iso format
 

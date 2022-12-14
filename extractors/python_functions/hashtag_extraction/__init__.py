@@ -20,13 +20,13 @@ def hashtag_extraction(request: HashtagExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
-    regex = re.compile(r"#(\w+)")
+    regex = re.compile(r"#(\w*)")
     regex.findall(text)
 
     hashtags = []
     for match in regex.finditer(text):
         start, end = match.span()
-        span = doc.char_span(start, end)
+        span = doc.char_span(start, end, alignment_mode="expand")
         hashtags.append(["hashtag", span.start, span.end])
 
     return {"hashtags": hashtags}

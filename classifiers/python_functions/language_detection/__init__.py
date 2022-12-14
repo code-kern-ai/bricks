@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from langdetect import detect, DetectorFactory
+from langdetect import detect, DetectorFactory, LangDetectException
 
 DetectorFactory.seed = 0
 
@@ -17,5 +17,8 @@ def language_detection(request: LanguageDetectionModel):
     """Detects the language of a given text."""
 
     text = request.text
-    language = detect(text)
-    return {"language": language}
+    try:
+        language = detect(text)
+        return {"language": language}
+    except LangDetectException:
+        return "No language detected."
