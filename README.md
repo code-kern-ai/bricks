@@ -4,13 +4,27 @@
     <b>Open-source natural language enrichments at your fingertips.</b>
 </p>
 
+<p align=center>
+    <a href="https://github.com/code-kern-ai/refinery/blob/master/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-success" alt="Apache 2.0 License"></a>
+    <a href="https://github.com/code-kern-ai/bricks/discussions"><img src="https://img.shields.io/badge/Discussions-gray.svg?logo=github" alt="GitHub Discussions"></a>
+    <a href="https://discord.gg/qf4rGCEphW"><img src="https://img.shields.io/badge/Discord-gray.svg?logo=discord" alt="Discord"></a>
+    <a href="https://twitter.com/MeetKern"><img src="https://img.shields.io/badge/Twitter-white.svg?logo=twitter" alt="Twitter"></a>
+    <a href="https://www.linkedin.com/company/kern-ai"><img src="https://img.shields.io/badge/LinkedIn-0A66C2.svg?logo=linkedin" alt="LinkedIn"></a>
+    <a href="https://www.youtube.com/channel/UCru-6X24b76TRsL6KWMFEFg"><img src="https://img.shields.io/badge/YouTube-FF0000.svg?logo=youtube" alt="YouTube"></a>
+    <a href="https://github.com/orgs/code-kern-ai/projects/7"><img src="https://img.shields.io/badge/Roadmap-yellow.svg" alt="Roadmap"></a>
+    <a href="https://demo.kern.ai/"><img src="https://img.shields.io/badge/Demo-white.svg" alt="Playground"></a>
+    <a href="https://bricks.kern.ai/"><img src="https://img.shields.io/badge/Web-white.svg" alt="Website"></a>
+</p>
+
 Browse [bricks](https://bricks.kern.ai) to find gold nuggets for your projects; enrich your texts e.g. with sentence complexity estimations, sentiment analysis, and more.
 
 ![](images/hero.svg)
 
 ## Table of contents
 - [Why bricks?](#why-bricks)
+- [Demo](#demo)
 - [What are classifiers and extractors?](#what-are-classifiers-and-extractors)
+- [Structure of modules](#structure-of-modules)
 - [Getting started](#getting-started)
 - [Contributing](#contributing)
 - [refinery](#refinery)
@@ -19,6 +33,10 @@ Browse [bricks](https://bricks.kern.ai) to find gold nuggets for your projects; 
 
 ## Why bricks?
 We're aiming to build a library of off-the-shelf natural language enrichments that can be used in any project as well as directly in our main project [refinery](https://github.com/code-kern-ai/refinery). We're building `bricks` to make it easier for developers to build better products. That's where the name comes from. `bricks` is a library not in the sense that you `pip install` it in your repository, but that you can copy-paste the code from the online platform. 
+
+## Demo
+![https://www.youtube.com/watch?v=Wcbdwwr5AI8&ab_channel=KernAI](images/thumbnail-bricks.png)
+Click on the image or [here](https://www.youtube.com/watch?v=Wcbdwwr5AI8&ab_channel=KernAI) to watch the demo.
 
 ## What are classifiers, extractors and generators?
 We generally summarize them as modules in this repository.
