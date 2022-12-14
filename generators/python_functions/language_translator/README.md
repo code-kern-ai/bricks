@@ -1,1 +1,1 @@
-This module uses the free `translate` library to translate texts to any specified language. 
+This module uses the free `translate` library to translate texts to any specified language. The library is limited to to 5000 chars/day. Please note that on app.kern.ai, this quota might be shared with other users as well. If you need to translate large volumes of text, please take a look at the premium translation modules. Feel free to contact the Kern team if you require further support at info@kern.ai or join our Discord channel: https://discord.com/invite/qf4rGCEphW
