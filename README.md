@@ -35,8 +35,9 @@ Browse [bricks](https://bricks.kern.ai) to find gold nuggets for your projects; 
 We're aiming to build a library of off-the-shelf natural language enrichments that can be used in any project as well as directly in our main project [refinery](https://github.com/code-kern-ai/refinery). We're building `bricks` to make it easier for developers to build better products. That's where the name comes from. `bricks` is a library not in the sense that you `pip install` it in your repository, but that you can copy-paste the code from the online platform. 
 
 ## Demo
-![https://www.youtube.com/watch?v=Wcbdwwr5AI8&ab_channel=KernAI](images/thumbnail-bricks.png)
+[![Demo](images/thumbnail-bricks.png)](https://www.youtube.com/watch?v=Wcbdwwr5AI8&ab_channel=KernAI)
 Click on the image or [here](https://www.youtube.com/watch?v=Wcbdwwr5AI8&ab_channel=KernAI) to watch the demo.
+
 
 ## What are classifiers, extractors and generators?
 We generally summarize them as modules in this repository.
