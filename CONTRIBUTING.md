@@ -146,7 +146,7 @@ If you correctly filled in the `__init__.py` file of your module, the example re
 ![](images/fastapi_testing_02.png)
 
 ### Finding errors
-If you get different response codes, your module probably needs some rework. There are many possible errors that can occur. [Here is a list of all response codes.](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). 
+If you get different response codes, your module probably needs some rework. There are many possible errors that can occur. [Here is a list of all response codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). 
 
 ## Quality assurance
 We want to make sure that things work nicely and that the modules are of high quality. Therefore, when reviewing your submission, we'll do blackbox tests and check for the above criteria. Again, this is about collaboration, so please don't worry about this too much. We'll help you with this!
