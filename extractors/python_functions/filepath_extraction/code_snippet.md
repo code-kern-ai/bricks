@@ -1,11 +1,12 @@
 ```python
 import re
+from typing import List, Tuple
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "path"
 YOUR_SEPARATOR: str = "/" # use "\\" for Windows paths
 
-def filepath_extraction(record):
+def filepath_extraction(record) -> List[Tuple[str, int, int]]:
     text = record[YOUR_ATTRIBUTE].text # SpaCy do , hence we need to use .text to get the string.
 
     # Extracts the paths from the texts

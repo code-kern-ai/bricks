@@ -1,5 +1,5 @@
 ```python
-from typing import List
+from typing import List, Tuple
 import knowledge
 
 
@@ -16,7 +16,7 @@ if YOUR_LOOKUP_LISTS:
 if YOUR_LOOKUP_VALUES:
     final_list += YOUR_LOOKUP_VALUES
 
-def window_cue_search(record):
+def window_cue_search(record) -> List[Tuple[str, int, int]]:
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
         left_bound = max(chunk.sent.start, chunk.start - (YOUR_WINDOW // 2) +1)
         right_bound = min(chunk.sent.end, chunk.end + (YOUR_WINDOW // 2) + 1)

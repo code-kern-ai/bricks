@@ -6,7 +6,7 @@ import unicodedata
 
 YOUR_ATTRIBUTE: str = "text" #only text attributes
 
-def soundex_generator(record):
+def soundex_generator(record) -> str:
     """Converts an english word into a phonetic SoundEx representation, for example to store names."""
 
     sentence = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string. 

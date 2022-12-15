@@ -1,11 +1,12 @@
 ```python
 import re
+from typing import List, Tuple
 
 YOUR_REGEX: str = r"\$[0-9]+" # Choose any regex here
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "money" # Choose any available label here
 
-def regex_extraction(record):
+def regex_extraction(record) -> List[Tuple[str, int, int]]:
 
     def regex_search(pattern, string):
         prev_end = 0

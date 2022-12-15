@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_SUBJECT_TEXT: str = "Ten amazing facts about the sun"
 
-def cosine_similarity(record):
+def cosine_similarity(record) -> str:
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 
     # Transform sentences to a vector

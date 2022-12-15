@@ -1,10 +1,11 @@
 ```python
 import re
+from typing import List, Tuple
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "cardNumber"
 
-def credit_extractor(record):
+def credit_extractor(record) -> List[Tuple[str, int, int]]:
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to use .text to the string.
 
     regex = re.compile(
