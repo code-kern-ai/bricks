@@ -7,7 +7,7 @@ INPUT_EXAMPLE = {
     "classifyBy": "emotional sentiment",
     "temperature": 0,
     "maxTokens": 64,
-    "top_p": 0.0,
+    "top_p": 1.0,
     "frequencyPenalty": 0.0, 
     "presencePenalty": 0.0
 }

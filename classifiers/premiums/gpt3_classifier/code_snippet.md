@@ -6,7 +6,7 @@ YOUR_ATTRIBUTE: str = "text"
 YOUR_CLASSIFY_BY: str = "emotional sentiment"
 YOUR_TEMPERATURE: int = 0
 YOUR_MAX_TOKENS: int = 64
-YOUR_TOP_P: float = 0.0
+YOUR_TOP_P: float = 1.0
 YOUR_FREQUENCY_PENALTY: float = 0.0
 YOUR_PRESENCE_PENALTY: float = 0.0
 
