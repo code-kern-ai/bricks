@@ -1,0 +1,1 @@
+Translates texts using the IBM watson language translator. Requires a paid API key. IBM offers a plan with 1 million free characters per month. Please contact the Kern AI Team if you need further support at info@kern.ai or join our Discord channel: https://discord.gg/WAnAgQEv 

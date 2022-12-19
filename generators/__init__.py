@@ -9,6 +9,7 @@ from .python_functions import (
 from .premiums import (
     microsoft_translator,
     deepl_translator,
+    ibm_translator,
 )
 
 router = APIRouter()
@@ -21,6 +22,7 @@ for module in [
     soundex_generator,
     spelling_correction,
     smalltalk_truncation,
+    ibm_translator,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
