@@ -13,7 +13,7 @@ class MyRandom(LearningClassifier):
             'min_samples_leaf': [1, 2, 4],
             'bootstrap': [True, False]
         } # the hyperparameters can be tuned by the user
-        self.model = RandomizedSearchCV(self.base_classifier, self.param_grid)
+        self.model = RandomizedSearchCV(self.base_classifier, self.param_grid, n_iter=100) # n_iter is the number of iterations and can be modified by the user
 
     @params_fit(
         embedding_name = "your-embedding", # pick this from the options above
