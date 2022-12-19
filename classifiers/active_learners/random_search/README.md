@@ -1,0 +1,1 @@
+`sklearn` based implementation of the Random Search Active Learning algorithm. The random search, instead of searching for all the hyperparameters sets in the search space, it evaluates a specific number of hyperparameter sets at random, the number of which is determined by the user.
