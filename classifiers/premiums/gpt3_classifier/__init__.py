@@ -7,7 +7,7 @@ INPUT_EXAMPLE = {
     "classifyBy": "emotional sentiment",
     "temperature": 0,
     "maxTokens": 64,
-    "top_p": 0.0,
+    "top_p": 1.0,
     "frequencyPenalty": 0.0, 
     "presencePenalty": 0.0
 }
@@ -28,19 +28,23 @@ class Gpt3ClassifierModel(BaseModel):
 def gpt3_classifier(req: Gpt3ClassifierModel):
     '''GPT-3 model which can be used to classify text inputs.'''
     # Access openai via API key
-    openai.api_key = req.apiKey
+    try: 
+        openai.api_key = req.apiKey
 
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=f"""
-            The following sentence will be classfied by {req.classifyBy}:\n\n
-            {req.prompt}\n
-            {req.classifyBy}:""",
-        temperature=req.temperature,
-        max_tokens=req.maxTokens,
-        top_p=req.top_p,
-        frequency_penalty=req.frequencyPenalty,
-        presence_penalty=req.presencePenalty
-    )
+        response = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=f"""
+                The following sentence will be classfied by {req.classifyBy}:\n\n
+                {req.prompt}\n
+                {req.classifyBy}:""",
+            temperature=req.temperature,
+            max_tokens=req.maxTokens,
+            top_p=req.top_p,
+            frequency_penalty=req.frequencyPenalty,
+            presence_penalty=req.presencePenalty
+        )
 
-    return {"Classification": response["choices"][0]["text"]}
+        return {"Classification": response["choices"][0]["text"]}
+    
+    except: 
+        return "That didn't work. Did you provide an OpenAI API key?"
