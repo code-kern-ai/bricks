@@ -8,5 +8,5 @@ def get_config():
         function=grid_search,
         data_type="text",
         issue_id=48,
-        state=State.DRAFT,
+        state=State.PUBLIC,
     )
