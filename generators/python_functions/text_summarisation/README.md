@@ -1,0 +1,1 @@
+This module is useful if the text is too huge to read. It provides a short summary for the input text. The module uses spacy in order to tokenize the sentences and calculate scores based on the tokenization. 
