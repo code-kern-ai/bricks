@@ -33,6 +33,10 @@ from .python_functions import (
     iban_extraction,
 )
 
+from .premiums import (
+    gpt3_information_extraction
+)
+
 router = APIRouter()
 
 for module in [
@@ -67,6 +71,7 @@ for module in [
     digit_extraction,
     keyword_extraction,
     iban_extraction,
+    gpt3_information_extraction
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
