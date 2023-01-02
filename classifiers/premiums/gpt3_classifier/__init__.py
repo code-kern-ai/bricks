@@ -2,7 +2,7 @@ import openai
 from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
-    "apiKey": "<API_KEY_GOES_HERE",
+    "apiKey": "<API_KEY_GOES_HERE>",
     "prompt": "I had a really great day today!",
     "classifyBy": "emotional sentiment",
     "temperature": 0,
@@ -26,7 +26,7 @@ class Gpt3ClassifierModel(BaseModel):
         schema_example = {"example": INPUT_EXAMPLE}
 
 def gpt3_classifier(req: Gpt3ClassifierModel):
-    '''GPT-3 model which can be used to classify text inputs.'''
+    '''GPT-3 model which can be used to correct the grammar of text inputs.'''
     # Access openai via API key
     try: 
         openai.api_key = req.apiKey
