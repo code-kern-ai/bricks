@@ -2,9 +2,8 @@ import openai
 from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
-    "apiKey": "<API_KEY_GOES_HERE>",
-    "prompt": "I had a really great day today!",
-    "classifyBy": "emotional sentiment",
+    "apiKey": "<API_KEY_GOES_HERE",
+    "prompt": "Named must be your fear before banish it you can.",
     "temperature": 0,
     "maxTokens": 64,
     "top_p": 1.0,
@@ -12,10 +11,9 @@ INPUT_EXAMPLE = {
     "presencePenalty": 0.0
 }
 
-class Gpt3ClassifierModel(BaseModel):
+class Gpt3GrammarCorrectionModel(BaseModel):
     apiKey: str
     prompt: str
-    classifyBy: str
     temperature: int
     maxTokens: int
     top_p: float
@@ -25,8 +23,8 @@ class Gpt3ClassifierModel(BaseModel):
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
-def gpt3_classifier(req: Gpt3ClassifierModel):
-    '''GPT-3 model which can be used to correct the grammar of text inputs.'''
+def gpt3_grammar_correction(req: Gpt3GrammarCorrectionModel):
+    '''GPT-3 model which can be used to classify text inputs.'''
     # Access openai via API key
     try: 
         openai.api_key = req.apiKey
@@ -34,9 +32,8 @@ def gpt3_classifier(req: Gpt3ClassifierModel):
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=f"""
-                The following sentence will be classfied by {req.classifyBy}:\n\n
-                {req.prompt}\n
-                {req.classifyBy}:""",
+                Correct this to standard English:\n\n
+                {req.prompt}""",
             temperature=req.temperature,
             max_tokens=req.maxTokens,
             top_p=req.top_p,
@@ -44,7 +41,7 @@ def gpt3_classifier(req: Gpt3ClassifierModel):
             presence_penalty=req.presencePenalty
         )
 
-        return {"Classification": response["choices"][0]["text"]}
+        return {"Corrected sentence": response["choices"][0]["text"]}
     
     except: 
         return "That didn't work. Did you provide an OpenAI API key?"

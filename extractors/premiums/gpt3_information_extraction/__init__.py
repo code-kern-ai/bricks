@@ -3,8 +3,8 @@ from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
     "apiKey": "<API_KEY_GOES_HERE>",
-    "prompt": "I had a really great day today!",
-    "classifyBy": "emotional sentiment",
+    "prompt": "The Beatles were an English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr.",
+    "extractionKeyword": "names",
     "temperature": 0,
     "maxTokens": 64,
     "top_p": 1.0,
@@ -12,10 +12,10 @@ INPUT_EXAMPLE = {
     "presencePenalty": 0.0
 }
 
-class Gpt3ClassifierModel(BaseModel):
+class Gpt3InformationExtractionModel(BaseModel):
     apiKey: str
     prompt: str
-    classifyBy: str
+    extractionKeyword: str
     temperature: int
     maxTokens: int
     top_p: float
@@ -25,8 +25,8 @@ class Gpt3ClassifierModel(BaseModel):
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
-def gpt3_classifier(req: Gpt3ClassifierModel):
-    '''GPT-3 model which can be used to correct the grammar of text inputs.'''
+def gpt3_information_extraction(req: Gpt3InformationExtractionModel):
+    '''Uses OpenAI's GPT-3 model to extract keyword from a text.'''
     # Access openai via API key
     try: 
         openai.api_key = req.apiKey
@@ -34,9 +34,8 @@ def gpt3_classifier(req: Gpt3ClassifierModel):
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=f"""
-                The following sentence will be classfied by {req.classifyBy}:\n\n
-                {req.prompt}\n
-                {req.classifyBy}:""",
+                Extract all {req.extractionKeyword} from this text:\n\n
+                {req.prompt}""",
             temperature=req.temperature,
             max_tokens=req.maxTokens,
             top_p=req.top_p,
