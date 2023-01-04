@@ -27,7 +27,7 @@ for module in [
     smalltalk_truncation,
     ibm_translator,
     text_summarisation,
-    gpt3_grammar_correction
+    gpt3_grammar_correction,
     gpt3_tldr_summarization,
 ]:
     module_name = module.__name__.split(".")[-1]
