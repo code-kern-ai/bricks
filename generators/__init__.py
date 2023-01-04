@@ -5,6 +5,7 @@ from .python_functions import (
     soundex_generator,
     spelling_correction,
     smalltalk_truncation,
+    text_summarisation,
 )
 from .premiums import (
     microsoft_translator,
@@ -25,7 +26,8 @@ for module in [
     spelling_correction,
     smalltalk_truncation,
     ibm_translator,
-    gpt3_grammar_correction,
+    text_summarisation,
+    gpt3_grammar_correction
     gpt3_tldr_summarization,
 ]:
     module_name = module.__name__.split(".")[-1]
