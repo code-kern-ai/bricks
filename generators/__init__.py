@@ -10,7 +10,8 @@ from .premiums import (
     microsoft_translator,
     deepl_translator,
     ibm_translator,
-    gpt3_grammar_correction
+    gpt3_grammar_correction,
+    gpt3_tldr_summarization,
 )
 
 router = APIRouter()
@@ -24,7 +25,8 @@ for module in [
     spelling_correction,
     smalltalk_truncation,
     ibm_translator,
-    gpt3_grammar_correction
+    gpt3_grammar_correction,
+    gpt3_tldr_summarization,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
