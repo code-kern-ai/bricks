@@ -3,7 +3,7 @@ import openai
 
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
 YOUR_ATTRIBUTE: str = "text"
-YOUR_CLASSIFY_BY: str = "emotional sentiment"
+YOUR_EXTRACTION_KEYWORD: str = "names"
 YOUR_TEMPERATURE: int = 0
 YOUR_MAX_TOKENS: int = 64
 YOUR_TOP_P: float = 1.0
@@ -17,9 +17,8 @@ def gpt3_classifier(record):
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"""
-            The following sentence will be classfied by {YOUR_CLASSIFY_BY}:\n\n
-            {record[YOUR_ATTRIBUTE].text}\n
-            {YOUR_CLASSIFY_BY}:""",
+            Extract all {YOUR_EXTRACTION_KEYWORD} from this text:\n\n 
+            {record[YOUR_ATTRIBUTE].text}""", 
         temperature=YOUR_TEMPERATURE,
         max_tokens=YOUR_MAX_TOKENS,
         top_p=YOUR_TOP_P,

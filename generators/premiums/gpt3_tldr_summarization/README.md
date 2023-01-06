@@ -1,0 +1,1 @@
+Uses OpenAI's `text-davinci-003` GPT-3 model to summarise a given text in a few lines. An API key can be provided by us or be obtained directly from OpenAI. Contact us at info@kern.ai if you require an API key or need any support from us.

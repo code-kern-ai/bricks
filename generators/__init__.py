@@ -9,12 +9,14 @@ from .python_functions import (
     levenshtein_distance,
     reading_time,
     syllable_count,
-
-
+    text_summarisation,
 )
 from .premiums import (
     microsoft_translator,
     deepl_translator,
+    ibm_translator,
+    gpt3_grammar_correction,
+    gpt3_tldr_summarization,
 )
 
 router = APIRouter()
@@ -31,6 +33,10 @@ for module in [
     levenshtein_distance,
     reading_time,
     syllable_count,
+    ibm_translator,
+    text_summarisation,
+    gpt3_grammar_correction,
+    gpt3_tldr_summarization,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
