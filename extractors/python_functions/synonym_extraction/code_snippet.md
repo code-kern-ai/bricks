@@ -1,6 +1,7 @@
 ```python
 from nltk.corpus import wordnet
 import re
+from typing import List, Tuple
 
 # currently only english language is supported here
 # reach out to us if this should be extended for other languages
@@ -9,7 +10,7 @@ YOUR_TARGET_WORD: str = "soccer"
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "synonym"
 
-def synonym_extraction(record):
+def synonym_extraction(record) -> List[Tuple[str, int, int]]:
     # find synonyms to a word using Wordnet
     synonyms = []
     for syn in wordnet.synsets(YOUR_TARGET_WORD):

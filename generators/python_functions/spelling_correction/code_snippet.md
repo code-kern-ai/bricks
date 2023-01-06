@@ -9,7 +9,7 @@ from nltk.corpus import words, brown
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
-def spelling_correction(record):
+def spelling_correction(record) -> str:
     """Corrects the spelling of a word in a record and returns the corrected sentence."""
     
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.

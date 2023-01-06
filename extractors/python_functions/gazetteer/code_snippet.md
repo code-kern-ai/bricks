@@ -1,5 +1,5 @@
 ```python
-from typing import List
+from typing import List, Tuple
 import knowledge
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
@@ -14,7 +14,7 @@ if YOUR_LOOKUP_LISTS:
 if YOUR_LOOKUP_VALUES:
     final_list += YOUR_LOOKUP_VALUES
 
-def gazetter(record):
+def gazetter(record) -> List[Tuple[str, int, int]]:
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
         if any([chunk.text in trie or trie in chunk.text for trie in final_list]):
             yield YOUR_LABEL, chunk.start, chunk.end

@@ -5,7 +5,7 @@ import textstat
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_TARGET_LANGUAGE: str = "en" # iso codes
 
-def sentence_complexity(record):
+def sentence_complexity(record) -> str:
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
     sentence_complexity_score = textstat.flesch_reading_ease(text)
     sentence_complexity = get_mapping_complexity(sentence_complexity_score)

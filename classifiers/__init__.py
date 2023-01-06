@@ -1,17 +1,13 @@
 from fastapi import APIRouter
 from .python_functions import (
-    levenshtein_distance,
     language_detection,
     lookup_list,
-    reading_time,
     sentence_complexity,
-    syllable_count,
     textblob_sentiment,
     textblob_subjectivity,
     emotionality_detection,
     spelling_check,
     cosine_similarity,
-    hamming_distance,
     profanity_detection,
 )
 from .premiums import (
@@ -21,18 +17,14 @@ from .premiums import (
 router = APIRouter()
 
 for module in [
-    levenshtein_distance,
     language_detection,
     lookup_list,
-    reading_time,
     sentence_complexity,
-    syllable_count,
     textblob_sentiment,
     textblob_subjectivity,
     emotionality_detection,
     spelling_check,
     cosine_similarity,
-    hamming_distance,
     profanity_detection,
     gpt3_classifier
 ]:

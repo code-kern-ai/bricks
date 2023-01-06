@@ -7,7 +7,7 @@ YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_MAX_SCORE: int = 100
 YOUR_MIN_SCORE: int = -100
 
-def textblob_sentiment(record):
+def textblob_sentiment(record) -> str:
     blob = TextBlob(record[YOUR_ATTRIBUTE].text) # SpaCy document, hence we need to call .text to get the string
     return get_mapping_sentiment(blob.sentiment.polarity * 100)
 

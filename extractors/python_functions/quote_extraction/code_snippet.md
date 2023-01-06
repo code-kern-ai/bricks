@@ -1,10 +1,11 @@
 ```python
 import re
+from typing import List, Tuple
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "quote"
 
-def quote_extraction(record):
+def quote_extraction(record) -> List[Tuple[str, int, int]]:
     regex = re.compile(r"\".*?\"|\'.*?\'")
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 

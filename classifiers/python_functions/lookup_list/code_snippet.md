@@ -14,7 +14,7 @@ if YOUR_LOOKUP_VALUES:
     for value in YOUR_LOOKUP_VALUES:
         YOUR_LOOKUP_LIST.append(value)
 
-def lkp_known_sender(record):
+def lkp_known_sender(record) -> str:
     for known_sender in YOUR_LOOKUP_LIST:
         if known_sender.lower() in record[YOUR_ATTRIBUTE].text.lower(): # SpaCy document, hence we need to call .text to get the string
             return YOUR_LABEL

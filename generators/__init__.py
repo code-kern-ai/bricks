@@ -5,6 +5,10 @@ from .python_functions import (
     soundex_generator,
     spelling_correction,
     smalltalk_truncation,
+    hamming_distance,
+    levenshtein_distance,
+    reading_time,
+    syllable_count,
     text_summarisation,
 )
 from .premiums import (
@@ -25,6 +29,10 @@ for module in [
     soundex_generator,
     spelling_correction,
     smalltalk_truncation,
+    hamming_distance,
+    levenshtein_distance,
+    reading_time,
+    syllable_count,
     ibm_translator,
     text_summarisation,
     gpt3_grammar_correction,

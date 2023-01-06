@@ -6,7 +6,7 @@ import nltk
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
-def emotionality_detection(record: Dict[str, Any]):
+def emotionality_detection(record: Dict[str, Any]) -> str:
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
     emo = LeXmo.LeXmo(text)
     emo.pop("text", None)
