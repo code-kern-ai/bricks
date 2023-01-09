@@ -31,6 +31,7 @@ from .python_functions import (
     digit_extraction,
     keyword_extraction,
     iban_extraction,
+    noun_match_extraction,
 )
 
 from .premiums import (
@@ -71,7 +72,8 @@ for module in [
     digit_extraction,
     keyword_extraction,
     iban_extraction,
-    gpt3_information_extraction
+    gpt3_information_extraction,
+    noun_match_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
