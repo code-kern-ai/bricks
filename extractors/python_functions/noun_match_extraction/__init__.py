@@ -7,14 +7,12 @@ INPUT_EXAMPLE = {
     "spacyTokenizer": "en_core_web_sm",
 }
 
-
 class NounMatchExtractionModel(BaseModel):
     text: str
     spacyTokenizer: str = "en_core_web_sm"
 
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
-
 
 def noun_match_extraction(req: NounMatchExtractionModel):
     """Extracts all similar noun chunks from a text"""
