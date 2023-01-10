@@ -2,6 +2,8 @@
 from sequencelearn.sequence_tagger import CRFTagger
 # you can find further models here: https://github.com/code-kern-ai/sequence-learn
 
+YOUR_EMBEDDING: str = "text-extraction-distilbert-base-uncased" # pick this from the options above
+
 class MyActiveLearner(LearningExtractor):
 
     def __init__(self):
@@ -14,7 +16,7 @@ class MyActiveLearner(LearningExtractor):
         )
 
     @params_fit(
-        embedding_name = "your-embedding", # pick this from the options above
+        embedding_name = YOUR_EMBEDDING, 
         train_test_split = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
     )
     def fit(self, embeddings, labels):

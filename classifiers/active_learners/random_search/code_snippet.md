@@ -2,6 +2,8 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import RandomizedSearchCV
 
+YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" # pick this from the options above
+
 class MyRandom(LearningClassifier):
     
     def __init__(self):
@@ -16,7 +18,7 @@ class MyRandom(LearningClassifier):
         self.model = RandomizedSearchCV(self.base_classifier, self.param_grid, n_iter=100) # n_iter is the number of iterations and can be modified by the user
 
     @params_fit(
-        embedding_name = "your-embedding", # pick this from the options above
+        embedding_name = YOUR_EMBEDDING, 
         train_test_split = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
     )
 
