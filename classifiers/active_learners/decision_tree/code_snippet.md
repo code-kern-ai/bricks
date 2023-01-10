@@ -2,13 +2,15 @@
 from sklearn.tree import DecisionTreeClassifier
 # you can find further models here: https://scikit-learn.org/stable/supervised_learning.html#supervised-learning
 
+YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" 
+
 class MyDT(LearningClassifier):
 
     def __init__(self):
         self.model = DecisionTreeClassifier()
 
     @params_fit(
-        embedding_name = "your-embedding", # pick this from the options above
+        embedding_name = YOUR_EMBEDDING, 
         train_test_split = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
     )
     def fit(self, embeddings, labels):

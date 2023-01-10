@@ -3,6 +3,8 @@ from sklearn.ensemble import RandomForestClassifier
 from bayes_opt import BayesianOptimization
 from sklearn.model_selection import cross_val_score
 
+YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" # pick this from the options above
+
 class MyBayesian(LearningClassifier):
     
     def __init__(self, n_iter=10, cv=5, random_state=42):
@@ -13,7 +15,7 @@ class MyBayesian(LearningClassifier):
                                                       n_estimators=100, max_depth=3)
         
     @params(
-        embedding_name = "your_embedding",
+        embedding_name = YOUR_EMBEDDING,
         train_test_split = 0.5
     )
     
