@@ -2,7 +2,7 @@
 import requests
 import json
 
-YOUR_ATTRIBUTE: str = "headline"
+YOUR_ATTRIBUTE: str = "text"
 YOUR_API_KEY: str = "<API-KEY-GOES-HERE>"
 YOUR_RESPONSE_SIZE: str = "full" # choose "compact" to only get text snippet of the first result
 
