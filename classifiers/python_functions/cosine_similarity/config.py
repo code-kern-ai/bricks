@@ -9,5 +9,6 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=79,
+        tabler_icon="Contrast2",
         state=State.PUBLIC
     )

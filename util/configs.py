@@ -12,6 +12,7 @@ def build_classifier_function_config(
     input_example: Dict[str, Any],
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -21,6 +22,7 @@ def build_classifier_function_config(
         input_example=input_example,
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
     
@@ -30,6 +32,7 @@ def build_classifier_premium_config(
     input_example: Dict[str, Any],
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -39,6 +42,7 @@ def build_classifier_premium_config(
         input_example=input_example,
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
 
@@ -47,6 +51,7 @@ def build_classifier_learner_config(
     function: Callable,
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -56,6 +61,7 @@ def build_classifier_learner_config(
         input_example={"dummy": None},
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
 
@@ -65,6 +71,7 @@ def build_extractor_function_config(
     input_example: Dict[str, Any],
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -74,6 +81,7 @@ def build_extractor_function_config(
         input_example=input_example,
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
 
@@ -82,6 +90,7 @@ def build_extractor_premium_config(
     input_example: Dict[str, Any],
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -91,6 +100,7 @@ def build_extractor_premium_config(
         input_example=input_example,
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
 
@@ -99,6 +109,7 @@ def build_extractor_learner_config(
     function: Callable,
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -108,6 +119,7 @@ def build_extractor_learner_config(
         input_example={"dummy": None},
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
 
@@ -116,6 +128,7 @@ def build_generator_function_config(
     input_example: Dict[str, Any],
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -125,6 +138,7 @@ def build_generator_function_config(
         input_example=input_example,
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
 
@@ -133,6 +147,7 @@ def build_generator_learner_config(
     function: Callable,
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -142,6 +157,7 @@ def build_generator_learner_config(
         input_example={"dummy": None},
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
 
@@ -150,6 +166,7 @@ def build_generator_premium_config(
     input_example: Dict[str, Any],
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     return build_config(
@@ -159,6 +176,7 @@ def build_generator_premium_config(
         input_example=input_example,
         data_type=data_type,
         issue_id=issue_id,
+        tabler_icon=tabler_icon,
         state=state,
     )
 
@@ -169,6 +187,7 @@ def build_config(
     input_example: Dict[str, Any],
     data_type: str,
     issue_id: int,
+    tabler_icon: str,
     state: str,
 ):
     markdown_description_path = os.path.join(
@@ -204,6 +223,7 @@ def build_config(
         {"input_example": input_example},
         {"data_type": data_type},
         {"issue_id": issue_id},
+        {"tabler_icon": tabler_icon},
         {"state": state},
     ]:
         if not list(mandatory_field.values())[0]:
@@ -223,6 +243,7 @@ def build_config(
         "registeredDate": datetime.now().isoformat(),
         "endpoint": function.__name__,
         "inputExample": json.dumps(input_example, indent=4),
+        "tablerIcon": tabler_icon,
     }
 
     return config, state
