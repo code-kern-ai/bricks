@@ -21,5 +21,5 @@ def bing_search(record):
     if YOUR_RESPONSE_SIZE == "full":
         return json.dumps(search_results) # returns full response
     elif YOUR_RESPONSE_SIZE == "compact":
-        return response_description = search_results["value"][0]["description"] # only returns text of first response
+        return search_results["value"][0]["description"] # only returns text of first response
 ```
