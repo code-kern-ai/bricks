@@ -1,0 +1,1 @@
+Uses Bing to retrieve search results. Requires an API key to use. Please contact the Kern AI Team if you need further support at info@kern.ai or join our Discord channel: https://discord.gg/WAnAgQEv 
