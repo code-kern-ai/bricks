@@ -1,6 +1,6 @@
 from util.configs import build_generator_premium_config
 from util.enums import State
-from . import bing_search, INPUT_EXAMPLE
+from . import bing_news_search, INPUT_EXAMPLE
 
 
 def get_config():
