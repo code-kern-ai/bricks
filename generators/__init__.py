@@ -17,7 +17,6 @@ from .premiums import (
     ibm_translator,
     gpt3_grammar_correction,
     gpt3_tldr_summarization,
-    nyt_news_search,
 )
 
 router = APIRouter()
@@ -38,7 +37,6 @@ for module in [
     text_summarisation,
     gpt3_grammar_correction,
     gpt3_tldr_summarization,
-    nyt_news_search
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
