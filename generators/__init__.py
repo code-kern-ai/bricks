@@ -20,6 +20,7 @@ from .premiums import (
     nyt_news_search,
     bing_news_search,
     bing_search,
+    google_search,
 )
 
 router = APIRouter()
@@ -43,6 +44,7 @@ for module in [
     nyt_news_search,
     bing_news_search,
     bing_search,
+    google_search,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
