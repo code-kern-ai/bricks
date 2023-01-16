@@ -9,6 +9,6 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=206,
-        tabler_icon="BrandGoogle",
+        # tabler_icon="BrandGoogle",
         state=State.PUBLIC
     )

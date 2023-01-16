@@ -5,7 +5,7 @@ INPUT_EXAMPLE = {
     "searchTerm": "code kern ai",
     "location": "Germany",
     "language": "en",
-    "geoLocation": "us",
+    "geoLocation": "de",
     "apiKey": "<api-key-goes-here>",
 }
 
