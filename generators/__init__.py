@@ -18,6 +18,9 @@ from .premiums import (
     gpt3_grammar_correction,
     gpt3_tldr_summarization,
     gpt3_restaurant_review,
+    nyt_news_search,
+    bing_news_search,
+    bing_search,
 )
 
 router = APIRouter()
@@ -39,6 +42,9 @@ for module in [
     gpt3_grammar_correction,
     gpt3_tldr_summarization,
     gpt3_restaurant_review,
+    nyt_news_search,
+    bing_news_search,
+    bing_search,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
