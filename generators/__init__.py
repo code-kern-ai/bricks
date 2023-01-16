@@ -17,6 +17,7 @@ from .premiums import (
     ibm_translator,
     gpt3_grammar_correction,
     gpt3_tldr_summarization,
+    nyt_news_search,
     bing_news_search,
     bing_search,
 )
@@ -39,6 +40,7 @@ for module in [
     text_summarisation,
     gpt3_grammar_correction,
     gpt3_tldr_summarization,
+    nyt_news_search,
     bing_news_search,
     bing_search,
 ]:
