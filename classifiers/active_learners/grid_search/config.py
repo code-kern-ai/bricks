@@ -8,5 +8,6 @@ def get_config():
         function=grid_search,
         data_type="text",
         issue_id=48,
+        tabler_icon="ChartGridDots",
         state=State.PUBLIC,
     )

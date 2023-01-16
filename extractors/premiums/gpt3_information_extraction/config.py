@@ -7,6 +7,7 @@ def get_config():
         function=gpt3_information_extraction,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=193,  
+        issue_id=193,
+        tabler_icon="FileInfo",
         state=State.PUBLIC
     )

@@ -8,5 +8,6 @@ def get_config():
         function=random_search,
         data_type="text",
         issue_id=49,
+        tabler_icon="ArrowsRandom",
         state=State.PUBLIC,
     )

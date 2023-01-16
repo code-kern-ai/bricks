@@ -8,6 +8,7 @@ def get_config():
         function=soundex_generator,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=107,  
+        issue_id=107,
+        tabler_icon="Volume",
         state=State.PUBLIC
     )

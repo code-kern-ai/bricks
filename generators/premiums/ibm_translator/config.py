@@ -8,6 +8,7 @@ def get_config():
         function=ibm_translator,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=175,  
+        issue_id=175,
+        tabler_icon="LanguageHiragana",
         state=State.PUBLIC
     )

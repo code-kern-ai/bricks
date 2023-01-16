@@ -8,6 +8,7 @@ def get_config():
         function=gpt3_grammar_correction,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=190,  
+        issue_id=190,
+        tabler_icon="Checks",
         state=State.PUBLIC
     )
