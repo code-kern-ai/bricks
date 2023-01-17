@@ -8,6 +8,6 @@ def get_config():
         function=decision_tree,
         data_type="text",
         issue_id=50,
-        tabler_icon="BinaryTree",
+        tabler_icon="Template",
         state=State.PUBLIC,
     )
