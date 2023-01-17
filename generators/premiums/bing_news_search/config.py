@@ -8,6 +8,7 @@ def get_config():
         function=bing_news_search,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=207,  
+        issue_id=207,
+        tabler_icon="ReportSearch",
         state=State.PUBLIC
     )

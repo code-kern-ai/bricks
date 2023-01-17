@@ -8,5 +8,6 @@ def get_config():
         function=crf_tagger,
         data_type="text",
         issue_id=43,
+        tabler_icon="BracketsContain",
         state=State.PUBLIC,
     )

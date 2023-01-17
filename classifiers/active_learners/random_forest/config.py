@@ -8,5 +8,6 @@ def get_config():
         function=random_forest,
         data_type="text",
         issue_id=51,
+        tabler_icon="BinaryTree2",
         state=State.PUBLIC,
     )
