@@ -8,5 +8,6 @@ def get_config():
         function=logistic_regression,
         data_type="text",
         issue_id=42,
+        tabler_icon="Contrast2",
         state=State.PUBLIC,
     )

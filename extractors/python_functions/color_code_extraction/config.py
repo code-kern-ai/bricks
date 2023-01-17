@@ -9,5 +9,6 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=60,  # you need to look this up in the issues https://github.com/code-kern-ai/bricks/issues
+        tabler_icon="ColorSwatch",
         state=State.PUBLIC,  # make this State.PUBLIC when you are ready to publish
     )

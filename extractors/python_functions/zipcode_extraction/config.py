@@ -8,6 +8,7 @@ def get_config():
         function=zipcode_extraction,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=47,  
+        issue_id=47,
+        tabler_icon="Zip",
         state=State.PUBLIC,  
     )

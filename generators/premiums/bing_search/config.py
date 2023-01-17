@@ -8,6 +8,7 @@ def get_config():
         function=bing_search,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=208,  
+        issue_id=208,
+        tabler_icon="BrandBing",
         state=State.PUBLIC
     )

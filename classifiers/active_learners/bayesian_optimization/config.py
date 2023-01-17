@@ -8,5 +8,6 @@ def get_config():
         function=bayesian_optimization,
         data_type="text",
         issue_id=188,
+        tabler_icon="ChartDots",
         state=State.PUBLIC,
     )

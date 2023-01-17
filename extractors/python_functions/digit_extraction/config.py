@@ -8,6 +8,7 @@ def get_config():
         function=digit_extraction,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=46, 
+        issue_id=46,
+        tabler_icon="Number",
         state=State.PUBLIC,
     )
