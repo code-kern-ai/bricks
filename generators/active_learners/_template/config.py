@@ -8,6 +8,6 @@ def get_config():
         function=_template,
         data_type="text",
         issue_id=-1,  # you need to look this up in the issues https://github.com/code-kern-ai/bricks/issues
-        tabler_icon="Template",  # Add any fitting icon from tabler-icons.io
+        tabler_icon="Template",  # Add any fitting icons from https://tabler-icons-react.vercel.app/
         state=State.DRAFT,  # in the actual module, set this to PUBLIC before pushing to main!
     )
