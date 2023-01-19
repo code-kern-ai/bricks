@@ -2,7 +2,7 @@
 import requests
 import json
 
-YOUR_ATTRIBUTE: str = "author"
+YOUR_ATTRIBUTE: str = "text"
 YOUR_API_KEY: str = "<api-key-goes-here>" # go here for free API key https://developer.nytimes.com/
 YOUR_OUTPUT_SIZE: str = "full" # choose "compact" to only get the text of the first result
 
