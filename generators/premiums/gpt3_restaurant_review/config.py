@@ -9,6 +9,6 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=202,
-        tabler_icon="Meat",
-        state=State.PUBLIC
+        tabler_icon="ChefHat",
+        state=State.PUBLIC,
     )
