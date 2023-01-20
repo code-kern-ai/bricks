@@ -6,10 +6,10 @@ YOUR_ATTRIBUTE: str = "text"
 YOUR_API_KEY: str = "<api-key-goes-here>" # go here for free API key https://developer.nytimes.com/
 YOUR_OUTPUT_SIZE: str = "full" # choose "compact" to only get the text of the first result
 
-def nyt_news_search(req: NytNewsSearchModel ):
+def nyt_news_search(record):
     '''Searches through news articles of the New York Times.'''
-    query = req.query
-    key = req.apiKey
+    query = record[YOUR_ATTRIBUTE]
+    key = YOUR_API_KEY
 
     req = requests.get(f"https://api.nytimes.com/svc/search/v2/articlesearch.json?q={query}&api-key={key}")
     search_results = req.json()
