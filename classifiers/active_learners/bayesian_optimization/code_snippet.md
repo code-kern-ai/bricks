@@ -4,6 +4,8 @@ from bayes_opt import BayesianOptimization
 from sklearn.model_selection import cross_val_score
 
 YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" # pick this from the options above
+YOUR_TRAIN_TEST_SPLIT: float = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
+YOUR_MIN_CONFIDENCE: float = 0.8
 
 class MyBayesian(LearningClassifier):
     
@@ -16,7 +18,7 @@ class MyBayesian(LearningClassifier):
         
     @params(
         embedding_name = YOUR_EMBEDDING,
-        train_test_split = 0.5
+        train_test_split = YOUR_TRAIN_TEST_SPLIT
     )
     
     def fit(self, embeddings, labels):
@@ -53,7 +55,7 @@ class MyBayesian(LearningClassifier):
         return cross_val_score(self.model, embeddings, labels, cv=self.cv).mean()
     
     @params_inference(
-        min_confidence = 0.8,
+        min_confidence = YOUR_MIN_CONFIDENCE,
         label_names = None
     )
     
