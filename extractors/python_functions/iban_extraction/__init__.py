@@ -28,5 +28,5 @@ def iban_extraction(request: IbanExtractionModel):
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end, alignment_mode="expand")
-        isbn.append([span.start, span.end, "IBAN"])
+        isbn.append(["IBAN", span.start, span.end])
     return {"iban": isbn}
