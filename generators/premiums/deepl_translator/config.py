@@ -8,6 +8,7 @@ def get_config():
         function=deepl_translator,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=114,  
+        issue_id=114,
+        tabler_icon="LanguageKatakana",
         state=State.PUBLIC
     )

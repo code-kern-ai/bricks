@@ -8,6 +8,7 @@ def get_config():
         function=language_translator,
         input_example=INPUT_EXAMPLE,
         data_type="text",
-        issue_id=81,  
+        issue_id=81,
+        tabler_icon="Language",
         state=State.PUBLIC
     )

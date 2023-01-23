@@ -9,5 +9,6 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=37,
+        tabler_icon="CurrencyEuro",
         state=State.PUBLIC,
     )
