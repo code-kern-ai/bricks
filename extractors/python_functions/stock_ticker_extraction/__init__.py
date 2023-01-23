@@ -16,7 +16,7 @@ class StockTickerExtractionModel(BaseModel):
 
 
 def stock_ticker_extraction(req: StockTickerExtractionModel):
-    """Detects phone numbers in a given text."""
+    """Stock tickers from a texts."""
     with open("tickers.txt", "r") as f:
         tickers = f.read().splitlines()
 
