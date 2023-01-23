@@ -22,4 +22,5 @@ LeXmo==0.1.4
 better_profanity==0.7.0
 flashtext==2.7
 openai==0.25.0
+vaderSentiment==3.3.2
 google-search-results==2.4.1

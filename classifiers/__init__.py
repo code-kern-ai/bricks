@@ -9,6 +9,7 @@ from .python_functions import (
     spelling_check,
     cosine_similarity,
     profanity_detection,
+    vader_sentiment,
 )
 from .premiums import (
     gpt3_classifier
@@ -26,7 +27,8 @@ for module in [
     spelling_check,
     cosine_similarity,
     profanity_detection,
-    gpt3_classifier
+    gpt3_classifier,
+    vader_sentiment,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
