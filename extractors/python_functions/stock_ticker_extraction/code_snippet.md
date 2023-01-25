@@ -1,7 +1,6 @@
 ```python
 from itertools import compress   
 import requests
-from pydantic import BaseModel
 
 YOUR_ATTRIBUTE: str = "Headline"
 YOUR_LABEL: str = "Ticker"
