@@ -9,5 +9,6 @@ def get_config():
         data_type="text",
         issue_id=193,
         tabler_icon="FileInfo",
+        min_refinery_version="1.8.0",
         state=State.PUBLIC
     )

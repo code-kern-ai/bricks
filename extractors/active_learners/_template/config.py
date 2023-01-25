@@ -9,5 +9,6 @@ def get_config():
         data_type="text",
         issue_id=-1,  # you need to look this up in the issues https://github.com/code-kern-ai/bricks/issues
         tabler_icon="Template", # Add any fitting icon from tabler-icons.io
+        min_refinery_version="x.x.x", # Add the minimum version of the refinery to run this module
         state=State.DRAFT, # in the actual module, set this to PUBLIC before pushing to main!
     )
