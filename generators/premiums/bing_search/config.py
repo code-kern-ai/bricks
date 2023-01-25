@@ -10,5 +10,6 @@ def get_config():
         data_type="text",
         issue_id=208,
         tabler_icon="BrandBing",
+        min_refinery_version="1.8.0",
         state=State.PUBLIC
     )
