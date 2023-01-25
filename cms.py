@@ -162,6 +162,7 @@ def post_module(config: Dict[str, Any]):
                 "registeredDate": config["registeredDate"],
                 "markdownDescription": config["markdownDescription"],
                 "sourceCode": config["sourceCode"],
+                "minRefineryVersion": config["minRefineryVersion"],
             }
         },
         headers={
@@ -189,6 +190,7 @@ def update_module(config: Dict[str, Any]):
                 "registeredDate": config["registeredDate"],
                 "markdownDescription": config["markdownDescription"],
                 "sourceCode": config["sourceCode"],
+                "minRefineryVersion": config["minRefineryVersion"],
             }
         },
         headers={

@@ -13,6 +13,7 @@ def build_classifier_function_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -23,6 +24,7 @@ def build_classifier_function_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
     
@@ -33,6 +35,7 @@ def build_classifier_premium_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -43,6 +46,7 @@ def build_classifier_premium_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
 
@@ -52,6 +56,7 @@ def build_classifier_learner_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -62,6 +67,7 @@ def build_classifier_learner_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
 
@@ -72,6 +78,7 @@ def build_extractor_function_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -82,6 +89,7 @@ def build_extractor_function_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
 
@@ -91,6 +99,7 @@ def build_extractor_premium_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -101,6 +110,7 @@ def build_extractor_premium_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
 
@@ -110,6 +120,7 @@ def build_extractor_learner_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -120,6 +131,7 @@ def build_extractor_learner_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
 
@@ -129,6 +141,7 @@ def build_generator_function_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -139,6 +152,7 @@ def build_generator_function_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
 
@@ -148,6 +162,7 @@ def build_generator_learner_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -158,6 +173,7 @@ def build_generator_learner_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
 
@@ -167,6 +183,7 @@ def build_generator_premium_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     return build_config(
@@ -177,6 +194,7 @@ def build_generator_premium_config(
         data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
+        min_refinery_version=min_refinery_version,
         state=state,
     )
 
@@ -188,6 +206,7 @@ def build_config(
     data_type: str,
     issue_id: int,
     tabler_icon: str,
+    min_refinery_version: str,
     state: str,
 ):
     markdown_description_path = os.path.join(
@@ -224,6 +243,7 @@ def build_config(
         {"data_type": data_type},
         {"issue_id": issue_id},
         {"tabler_icon": tabler_icon},
+        {"min_refinery_version": min_refinery_version},
         {"state": state},
     ]:
         if not list(mandatory_field.values())[0]:
@@ -244,6 +264,7 @@ def build_config(
         "endpoint": function.__name__,
         "inputExample": json.dumps(input_example, indent=4),
         "tablerIcon": tabler_icon,
+        "minRefineryVersion": min_refinery_version,
     }
 
     return config, state

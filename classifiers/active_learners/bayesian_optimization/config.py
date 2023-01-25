@@ -9,5 +9,6 @@ def get_config():
         data_type="text",
         issue_id=188,
         tabler_icon="ChartDots",
+        min_refinery_version="1.7.1",
         state=State.PUBLIC,
     )
