@@ -19,8 +19,11 @@ class StockTickerExtractionModel(BaseModel):
 def stock_ticker_extraction(req: StockTickerExtractionModel):
     """Stock tickers from a texts."""
     # Import tickers from bricks github repo
-    req = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/stock_ticker_extraction/extractors/python_functions/stock_ticker_extraction/tickers.txt")
-    tickers = req.text.split("\n")
+    try:
+        req_obj = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/stock_ticker_extraction/extractors/python_functions/stock_ticker_extraction/tickers.txt")
+    except:
+        req_obj = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/main/extractors/python_functions/stock_ticker_extraction/tickers.txt")
+    tickers = req_obj.text.split("\n")
 
     text = req.text
     is_ticker = [True if word in tickers and word.isupper() else False for word in text.replace("(", " ").replace(")", " ").replace(":", " ").split(sep=" ")]
@@ -37,7 +40,7 @@ def stock_ticker_extraction(req: StockTickerExtractionModel):
         span = doc.char_span(start, end)
         results.append([span.text, span.start, span.end])
 
-    return {results}
+    return {"Tickers": results}
 
              
 
