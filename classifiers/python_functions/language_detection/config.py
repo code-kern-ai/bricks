@@ -10,6 +10,6 @@ def get_config():
         data_type="text",
         issue_id=1,
         tabler_icon="AlphabetGreek",
-        min_refinery_version="1.7.0",
+        
         state=State.PUBLIC,
     )

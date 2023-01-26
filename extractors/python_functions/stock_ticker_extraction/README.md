@@ -1,0 +1,1 @@
+Extracts stock tickers from a text. Is limited to mainly stocks from north america. 
