@@ -10,5 +10,6 @@ def get_config():
         data_type="text",
         issue_id=22,
         tabler_icon="SquareRoundedLetterL",
+        min_refinery_version="1.7.0",
         state=State.PUBLIC,
     )

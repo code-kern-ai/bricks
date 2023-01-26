@@ -9,5 +9,6 @@ def get_config():
         data_type="text",
         issue_id=48,
         tabler_icon="ChartGridDots",
+        min_refinery_version="1.7.0",
         state=State.PUBLIC,
     )

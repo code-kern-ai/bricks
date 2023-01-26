@@ -11,4 +11,5 @@ def get_config():
         issue_id=41,
         tabler_icon="AppWindow",
         state=State.PUBLIC,
+        min_refinery_version="1.7.0",
     )

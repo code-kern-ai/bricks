@@ -10,5 +10,6 @@ def get_config():
         data_type="text",
         issue_id=1,
         tabler_icon="AlphabetGreek",
+        
         state=State.PUBLIC,
     )
