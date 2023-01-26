@@ -10,5 +10,6 @@ def get_config():
         data_type="text",
         issue_id=21,
         tabler_icon="ClockStop",
+        min_refinery_version="1.7.0",
         state=State.PUBLIC,
     )

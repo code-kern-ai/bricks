@@ -9,5 +9,6 @@ def get_config():
         data_type="text",
         issue_id=51,
         tabler_icon="BinaryTree2",
+        min_refinery_version="1.7.0",
         state=State.PUBLIC,
     )

@@ -10,5 +10,6 @@ def get_config():
         data_type="text",
         issue_id=-1,  # you need to look this up in the issues https://github.com/code-kern-ai/bricks/issues
         tabler_icon="Template", # Add any fitting icon from tabler-icons.io
+        min_refinery_version="x.x.x",  # you need to look this up in the issues
         state=State.DRAFT, # in the actual module, set this to PUBLIC before pushing to main!
     )

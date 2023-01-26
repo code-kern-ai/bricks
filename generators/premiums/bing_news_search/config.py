@@ -10,5 +10,6 @@ def get_config():
         data_type="text",
         issue_id=207,
         tabler_icon="ReportSearch",
+        min_refinery_version="1.8.0",
         state=State.PUBLIC
     )
