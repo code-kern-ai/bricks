@@ -4,7 +4,7 @@ import openai
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
 YOUR_ATTRIBUTE: str = "text" # Allows string inputs only
 YOUR_CLASSIFY_BY: str = "emotional sentiment"
-YOUR_TEMPERATURE: float = 0 
+YOUR_TEMPERATURE: float = 0.0 
 YOUR_MAX_TOKENS: int = 64 
 YOUR_TOP_P: float = 1.0 
 YOUR_FREQUENCY_PENALTY: float = 0.0 
@@ -41,5 +41,5 @@ def gpt3_classifier(record):
         presence_penalty=YOUR_PRESENCE_PENALTY
     )
 
-    return response
+    return response["choices"][0]["text"]
 ```

@@ -32,6 +32,6 @@ class MyGrid(LearningClassifier):
         label_names = None # you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
     )
 
-    def predict_prob(self, embeddings):
+    def predict_proba(self, embeddings):
         return self.model.predict(embeddings)
 ```
