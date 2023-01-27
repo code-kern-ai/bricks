@@ -5,7 +5,7 @@ INPUT_EXAMPLE = {
     "apiKey": "<API_KEY_GOES_HERE>",
     "prompt": "I had a really great day today!",
     "classifyBy": "emotional sentiment",
-    "temperature": 0,
+    "temperature": 0.0,
     "maxTokens": 64,
     "top_p": 1.0,
     "frequencyPenalty": 0.0, 
@@ -16,7 +16,7 @@ class Gpt3ClassifierModel(BaseModel):
     apiKey: str
     prompt: str
     classifyBy: str
-    temperature: int
+    temperature: float
     maxTokens: int
     top_p: float
     frequencyPenalty: float
