@@ -34,7 +34,7 @@ def gpt3_information_extraction(req: Gpt3InformationExtractionModel):
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=f"""
-                Extract all {req.extractionKeyword} from this text:\n\n
+                Extract all {req.extractionKeyword} from this sentence:\n\n
                 {req.prompt}""",
             temperature=req.temperature,
             max_tokens=req.maxTokens,
@@ -43,7 +43,7 @@ def gpt3_information_extraction(req: Gpt3InformationExtractionModel):
             presence_penalty=req.presencePenalty
         )
 
-        return {"Classification": response["choices"][0]["text"]}
+        return {"Extraction": response["choices"][0]["text"]}
     
     except: 
         return "That didn't work. Did you provide an OpenAI API key?"

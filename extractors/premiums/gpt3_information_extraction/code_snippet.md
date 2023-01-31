@@ -31,7 +31,7 @@ def gpt3_information_extraction(record):
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"""
-            Extract all {YOUR_EXTRACTION_KEYWORD} from this text:\n\n 
+            Extract all {YOUR_EXTRACTION_KEYWORD} from this sentence:\n\n 
             {record[YOUR_ATTRIBUTE].text}""", 
         temperature=YOUR_TEMPERATURE,
         max_tokens=YOUR_MAX_TOKENS,
