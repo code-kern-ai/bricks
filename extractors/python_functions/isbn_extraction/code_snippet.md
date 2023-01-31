@@ -4,7 +4,7 @@ import re
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "isbn"
 
-def isbn_ext(record):
+def iban_extraction(record):
     regex = re.compile(r"(?:[\d-]{17}|[\d-]{13})")
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 

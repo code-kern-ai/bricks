@@ -4,7 +4,7 @@ import re
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "color"
 
-def my_tagger(record):
+def color_code_extraction(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 
     hexcolor_regex = re.compile(r"#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{4}|[0-9a-fA-F]{3})(?![0-9a-fA-F])")
