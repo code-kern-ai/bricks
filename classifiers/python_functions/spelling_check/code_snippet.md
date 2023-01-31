@@ -5,7 +5,7 @@ YOUR_ATTRIBUTE: str = "text"
 YOUR_LABEL_MISTAKES: str = "contains mistakes"
 YOUR_LABEL_CORRECT: str = "no mistakes"
 
-def spelling_check(record) -> str:
+def spelling_check(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 
     words_corpus = words.words()

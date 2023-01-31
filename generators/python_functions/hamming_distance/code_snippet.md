@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 YOUR_BASE_SENTENCE: str = "This is the base sentence you want to find the distances to." 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
-def hamming_distance(record) -> float:
+def hamming_distance(record):
 
     text_one = YOUR_BASE_SENTENCE
     text_two = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string

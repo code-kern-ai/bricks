@@ -1,6 +1,5 @@
 ```python
 from textblob import TextBlob
-from typing import List, Tuple
 
 YOUR_ATTRIBUTE: str = "details" # only text attributes
 YOUR_WINDOW: int = 4 # choose any window size here
@@ -8,7 +7,7 @@ YOUR_SENSITIVITY: float = 0.5 # choose any value between 0 and 1
 YOUR_NEGATIVE_LABEL: str = "negative"
 YOUR_POSITIVE_LABEL: str = "positive"
 
-def aspect_extractor(record) -> List[Tuple[str, int, int]]:
+def aspect_extractor(record):
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
         left_bound = max(chunk.sent.start, chunk.start - (YOUR_WINDOW // 2) +1)
         right_bound = min(chunk.sent.end, chunk.end + (YOUR_WINDOW // 2) + 1)

@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 YOUR_ATTRIBUTE: str = "text" #only text attributes
 
-def html_cleanser(record) -> str:
+def html_cleanser(record):
     html = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
     soup = BeautifulSoup(html, "html.parser")

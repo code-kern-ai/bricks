@@ -1,13 +1,12 @@
 ```python
 import re
 from flashtext import KeywordProcessor
-from typing import List, Tuple
 
 YOUR_ATTRIBUTE: str = "text"
 YOUR_KEYWORDS: List[str] = ["keyword1", "keyword2", "keyword3"]
 YOUR_LABEL: str = "keyword"
 
-def keyword_extraction(record) -> List[Tuple[str, int, int]]:
+def keyword_extraction(record):
     
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
     keyword_processor = KeywordProcessor()

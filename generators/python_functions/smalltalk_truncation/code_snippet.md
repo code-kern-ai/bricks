@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 
 YOUR_ATTRIBUTE: str = "text" #only text attributes
 
-def smalltalk_truncation(record) -> str:
+def smalltalk_truncation(record):
     sw = stopwords.words("english")
     regex = re.compile(r"\".*?\"")
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get string.

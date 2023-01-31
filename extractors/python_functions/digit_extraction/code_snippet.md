@@ -1,12 +1,11 @@
 ```python
 import re
-from typing import List, Tuple
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_MAX_NUMBER_LENGTH: int = 4 #maximum amount of digits to be considered relevant 
 YOUR_LABEL: str = "digit"
 
-def digit_extraction(record) -> List[Tuple[str, int, int]]:
+def digit_extraction(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
     number = YOUR_MAX_NUMBER_LENGTH
 

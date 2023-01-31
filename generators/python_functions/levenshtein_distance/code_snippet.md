@@ -7,7 +7,7 @@ YOUR_WEIGHT_INSERTION: int = 1 # Optional
 YOUR_WEIGHT_DELETION: int = 1 # Optional
 YOUR_WEIGHT_SUBSTITUTION: int = 1 # Optional
 
-def levenshtein_distance_func(record) -> int:
+def levenshtein_distance_func(record):
     str_01 = YOUR_BASE_SENTENCE
     str_02 = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
     

@@ -1,11 +1,10 @@
 ```python
 import re
-from typing import List, Tuple
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "isbn"
 
-def isbn_ext(record) -> List[Tuple[str, int, int]]:
+def isbn_ext(record):
     regex = re.compile(r"(?:[\d-]{17}|[\d-]{13})")
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 
