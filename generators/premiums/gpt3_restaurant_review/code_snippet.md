@@ -9,7 +9,7 @@ YOUR_TOP_P: float = 1.0
 YOUR_FREQUENCY_PENALTY: float = 0.0
 YOUR_PRESENCE_PENALTY: float = 1.0
 
-def restaurant_review(record):
+def gpt3_restaurant_review(record):
     """
     Uses OpenAIs GPT-3 model to classify texts. Visit https://beta.openai.com/docs/api-reference/completions/create for full documentation 
 
