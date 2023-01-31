@@ -1,7 +1,7 @@
 ```python
 from better_profanity import profanity
 
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL_PROFANE: str = "profane"
 YOUR_LABEL_NOT_PROFANE: str = "not_profane"
 

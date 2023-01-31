@@ -2,7 +2,7 @@
 from itertools import compress   
 import requests
 
-YOUR_ATTRIBUTE: str = "Headline"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "Ticker"
 
 def stock_ticker_extraction(record):

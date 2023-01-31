@@ -2,7 +2,7 @@
 import requests
 import json
 
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_API_KEY: str = "<API-KEY-GOES-HERE>"
 YOUR_RESPONSE_SIZE: str = "full" # choose "compact" to only get text snippet of the first result
 

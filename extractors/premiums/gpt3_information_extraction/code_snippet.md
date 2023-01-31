@@ -2,7 +2,7 @@
 import openai
 
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_EXTRACTION_KEYWORD: str = "names"
 YOUR_TEMPERATURE: int = 0.0
 YOUR_MAX_TOKENS: int = 64

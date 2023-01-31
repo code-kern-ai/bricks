@@ -2,7 +2,7 @@
 import requests
 import json
 
-YOUR_ATTRIBUTE: str = "texts"
+YOUR_ATTRIBUTE: str = "texts" # only text attributes
 YOUR_API_KEY: str = "<API-KEY-GOES-HERE>"
 YOUR_MARKET: str = "en-US" # sets language, see all markets here: https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/market-codes
 YOUR_RESPONSE_SIZE: str = "full" # choose "compact" to only get text snippet of the first result

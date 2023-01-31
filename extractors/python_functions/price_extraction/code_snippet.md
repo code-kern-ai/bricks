@@ -2,7 +2,7 @@
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "price"
 
-def price_extractor(record):
+def price_extraction(record):
     doc = record[YOUR_ATTRIBUTE] # SpaCy doc
 
     for entity in doc.ents:

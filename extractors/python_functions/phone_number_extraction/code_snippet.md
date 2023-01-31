@@ -5,7 +5,7 @@ import phonenumbers
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "PHONE_NUMBER"
 
-def phone_number_extractor(record):
+def phone_number_extraction(record):
     regex = re.compile(r"[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}")
     text = record[YOUR_ATTRIBUTE].text
 
