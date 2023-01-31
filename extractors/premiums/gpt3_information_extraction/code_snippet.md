@@ -26,19 +26,27 @@ def gpt3_information_extraction(record):
     - presence_penalty: Value between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     """
     # Access openai via API key
+    text = record[YOUR_ATTRIBUTE].text
     openai.api_key = YOUR_API_KEY
 
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"""
-            Extract all {YOUR_EXTRACTION_KEYWORD} from this sentence:\n\n 
-            {record[YOUR_ATTRIBUTE].text}""", 
+            Extract all {YOUR_EXTRACTION_KEYWORD} from this text:\n\n 
+            {text}\n\n
+            return {YOUR_EXTRACTION_KEYWORD} if something is found, else return NAN!""", 
         temperature=YOUR_TEMPERATURE,
         max_tokens=YOUR_MAX_TOKENS,
         top_p=YOUR_TOP_P,
         frequency_penalty=YOUR_FREQUENCY_PENALTY,
         presence_penalty=YOUR_PRESENCE_PENALTY
     )
-
-    return response["choices"][0]["text"]
+    gpt_response = str(response["choices"][0]["text"])
+    
+    re_comp = re.compile(fr"({gpt_response})")
+    match = re_comp.search( text.lower())
+    if match:
+        start, end = match.start(), match.end()
+        span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
+        yield YOUR_LABEL, span.start, span.end
 ```
