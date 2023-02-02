@@ -3,7 +3,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 INPUT_EXAMPLE = {
     "text": "World peace announced by the United Nations.",
-    "mode": "classification" # use "scores" to only get the sentiment scores as floats
+    "mode": "classification" # Choose "scores" to only get the sentiment scores as floats
 }
 
 class VaderSentimentModel(BaseModel):
