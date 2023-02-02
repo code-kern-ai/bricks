@@ -4,7 +4,7 @@ import re
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "cardNumber"
 
-def credit_extraction(record):
+def credit_card_extraction(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to use .text to the string.
 
     regex = re.compile(
