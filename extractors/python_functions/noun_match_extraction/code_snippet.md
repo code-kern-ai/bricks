@@ -1,7 +1,7 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def similar_noun_extraction(record):
 # instantiate empty lists to store already encountered words and for found matches 

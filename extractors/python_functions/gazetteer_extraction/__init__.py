@@ -10,7 +10,7 @@ INPUT_EXAMPLE = {
 }
 
 
-class GazetteerModel(BaseModel):
+class GazetteerExtractionModel(BaseModel):
     text: str
     spacyTokenizer: str = "en_core_web_sm"
     lookupValues: List[str]
@@ -20,7 +20,7 @@ class GazetteerModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def gazetteer(request: GazetteerModel):
+def gazetteer_extraction(request: GazetteerExtractionModel):
     """Detects full entities in a text based on some hints."""
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(request.text)

@@ -11,5 +11,5 @@ def get_config():
         issue_id=73,
         tabler_icon="TextSpellcheck",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
+        state=State.DRAFT,
     )

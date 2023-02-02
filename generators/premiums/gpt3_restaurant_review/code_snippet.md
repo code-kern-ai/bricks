@@ -2,14 +2,14 @@
 import openai
 
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_TEMPERATURE: float = 0.0
 YOUR_MAX_TOKENS: int = 60
 YOUR_TOP_P: float = 1.0
 YOUR_FREQUENCY_PENALTY: float = 0.0
 YOUR_PRESENCE_PENALTY: float = 1.0
 
-def restaurant_review(record):
+def gpt3_restaurant_review(record):
     """
     Uses OpenAIs GPT-3 model to classify texts. Visit https://beta.openai.com/docs/api-reference/completions/create for full documentation 
 

@@ -2,7 +2,7 @@
 import openai
 
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
-YOUR_ATTRIBUTE: str = "text" # Allows string inputs only
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_CLASSIFY_BY: str = "emotional sentiment"
 YOUR_TEMPERATURE: float = 0.0 
 YOUR_MAX_TOKENS: int = 64 

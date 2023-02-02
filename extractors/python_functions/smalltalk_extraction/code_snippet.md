@@ -1,7 +1,6 @@
 ```python
 import re
 from nltk.corpus import stopwords
-from typing import List, Tuple
 
 # currently only english language is supported here
 # reach out to us if you would like to request other languages to be supported
@@ -9,7 +8,7 @@ from typing import List, Tuple
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "smalltalk"
 
-def smalltalk_extraction(record) -> List[Tuple[str, int, int]]:
+def smalltalk_extraction(record):
     sw = stopwords.words("english")
     regex = re.compile(r"\".*?\"")
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.

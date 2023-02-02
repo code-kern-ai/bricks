@@ -11,7 +11,7 @@ INPUT_EXAMPLE = {
 }
 
 
-class WindowSearchModel(BaseModel):
+class WindowSearchExtractionModel(BaseModel):
     text: str
     lookupValues: List[str]
     windowSize: int
@@ -22,7 +22,7 @@ class WindowSearchModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def window_search(request: WindowSearchModel):
+def window_search_extraction(request: WindowSearchExtractionModel):
     """Searches for a given list of words in a given text and returns the surrounding noun chunks."""
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(request.text)
