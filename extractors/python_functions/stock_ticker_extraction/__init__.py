@@ -19,10 +19,7 @@ class StockTickerExtractionModel(BaseModel):
 def stock_ticker_extraction(req: StockTickerExtractionModel):
     """Stock tickers from a texts."""
     # Import tickers from bricks github repo
-    try:
-        req_obj = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/stock_ticker_extraction/extractors/python_functions/stock_ticker_extraction/tickers.txt")
-    except:
-        req_obj = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/main/extractors/python_functions/stock_ticker_extraction/tickers.txt")
+    req_obj = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/main/extractors/python_functions/stock_ticker_extraction/tickers.txt")
     tickers = req_obj.text.split("\n")
 
     text = req.text
