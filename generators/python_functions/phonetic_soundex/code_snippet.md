@@ -1,24 +1,18 @@
+```python
 import unicodedata
-from pydantic import BaseModel
 
-INPUT_EXAMPLE = {
-    "word": "Viking."
-}
+# Currently only english language is supported here
+# Reach out to us if this should be extended for other languages
 
-class SoundexGeneratorModel(BaseModel):
-    word: str
-    # if required, add more attributes here
+YOUR_ATTRIBUTE: str = "text" #only text attributes
 
-    class Config:
-        schema_extra = {"example": INPUT_EXAMPLE}
-
-def soundex_generator(req: SoundexGeneratorModel):
+def phonetic_soundex(record):
     """Converts an english word into a phonetic SoundEx representation, for example to store names."""
 
-    input_ = req.word
+    sentence = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string. 
 
     soundex_list = []
-    for word in input_.split():
+    for word in sentence.split():
         word = unicodedata.normalize("NFKD", word)
         word = word.upper()
 
@@ -33,7 +27,7 @@ def soundex_generator(req: SoundexGeneratorModel):
         result = [word[0]]
         count = 1
 
-        # find would-be replacment for first character
+        # find would-be replacement for first character
         for lset, sub in replacements:
             if word[0] in lset:
                 last = sub
@@ -58,5 +52,5 @@ def soundex_generator(req: SoundexGeneratorModel):
 
         result += "0" * (4 - count)
         soundex_list.append("".join(result))
-    
-    return {"SoundEx": " ".join(soundex_list)}
+    return " ".join(soundex_list)
+```
