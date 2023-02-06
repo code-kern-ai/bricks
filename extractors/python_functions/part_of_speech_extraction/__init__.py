@@ -8,7 +8,7 @@ INPUT_EXAMPLE = {
     "spacyTokenizer": "en_core_web_sm"
 }
 
-class PartOfSpeechExtractorModel(BaseModel):
+class PartOfSpeechExtractionModel(BaseModel):
     text: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
 
