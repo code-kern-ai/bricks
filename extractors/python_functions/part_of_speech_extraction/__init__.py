@@ -8,14 +8,14 @@ INPUT_EXAMPLE = {
     "spacyTokenizer": "en_core_web_sm"
 }
 
-class PartOfSpeechExtractorModel(BaseModel):
+class PartOfSpeechExtractionModel(BaseModel):
     text: str
     spacyTokenizer: Optional[str] = "en_core_web_sm"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def part_of_speech_extraction(req: PartOfSpeechExtractorModel):
+def part_of_speech_extraction(req: PartOfSpeechExtractionModel):
     """Yields POS tags using spaCy."""
     text = req.text
 

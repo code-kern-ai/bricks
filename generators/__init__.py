@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from .python_functions import (
     language_translator,
     html_cleanser,
-    soundex_generator,
+    phonetic_soundex,
     spelling_correction,
     smalltalk_truncation,
     hamming_distance,
@@ -31,7 +31,7 @@ for module in [
     html_cleanser,
     microsoft_translator,
     deepl_translator,
-    soundex_generator,
+    phonetic_soundex,
     spelling_correction,
     smalltalk_truncation,
     hamming_distance,
