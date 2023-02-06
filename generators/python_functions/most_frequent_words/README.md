@@ -1,0 +1,1 @@
+This module tokenizes the text and generates the most frequent words. This can be useful where the text document is too large and you want to know if it interests you by looking at the most frequent words.
