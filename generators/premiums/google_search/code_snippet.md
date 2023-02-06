@@ -2,7 +2,7 @@
 from serpapi import GoogleSearch
 import json
 
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LOCATION: str = "Germany"
 YOUR_LANGUAGE: str = "en"
 YOUR_GEOLOCATION: str = "de"

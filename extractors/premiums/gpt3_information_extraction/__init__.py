@@ -5,7 +5,7 @@ INPUT_EXAMPLE = {
     "apiKey": "<API_KEY_GOES_HERE>",
     "prompt": "The Beatles were an English rock band, formed in Liverpool in 1960, that comprised John Lennon, Paul McCartney, George Harrison and Ringo Starr.",
     "extractionKeyword": "names",
-    "temperature": 0,
+    "temperature": 0.0,
     "maxTokens": 64,
     "top_p": 1.0,
     "frequencyPenalty": 0.0, 
@@ -16,7 +16,7 @@ class Gpt3InformationExtractionModel(BaseModel):
     apiKey: str
     prompt: str
     extractionKeyword: str
-    temperature: int
+    temperature: float
     maxTokens: int
     top_p: float
     frequencyPenalty: float
@@ -34,7 +34,7 @@ def gpt3_information_extraction(req: Gpt3InformationExtractionModel):
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=f"""
-                Extract all {req.extractionKeyword} from this text:\n\n
+                Extract all {req.extractionKeyword} from this sentence:\n\n
                 {req.prompt}""",
             temperature=req.temperature,
             max_tokens=req.maxTokens,
@@ -43,7 +43,7 @@ def gpt3_information_extraction(req: Gpt3InformationExtractionModel):
             presence_penalty=req.presencePenalty
         )
 
-        return {"Classification": response["choices"][0]["text"]}
+        return {"Extraction": response["choices"][0]["text"]}
     
     except: 
         return "That didn't work. Did you provide an OpenAI API key?"

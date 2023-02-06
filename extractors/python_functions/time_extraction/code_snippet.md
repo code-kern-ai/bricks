@@ -1,11 +1,10 @@
 ```python
 import re
-from typing import List, Tuple
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "time"
 
-def time_extraction(record) -> List[Tuple[str, int, int]]:
+def time_extraction(record):
     regex = re.compile(
         r"(?:(?:[0-9]{1,2}(?::[0-9]{1,2}(?::[0-9]{1,2}:?)?)?)(?:(?: )?am|(?: )?pm|(?: )?AM|(?: )?PM)?)"
     )

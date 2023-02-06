@@ -15,7 +15,6 @@ class StockTickerExtractionModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-
 def stock_ticker_extraction(req: StockTickerExtractionModel):
     """Stock tickers from a texts."""
     # Import tickers from bricks github repo

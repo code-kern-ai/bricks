@@ -1,7 +1,5 @@
 ```python
-from typing import List, Tuple
 import knowledge
-
 
 YOUR_WINDOW: int = 4 # choose any window size here
 YOUR_LABEL: str = "PERSON"
@@ -16,7 +14,7 @@ if YOUR_LOOKUP_LISTS:
 if YOUR_LOOKUP_VALUES:
     final_list += YOUR_LOOKUP_VALUES
 
-def window_cue_search(record) -> List[Tuple[str, int, int]]:
+def window_search_extraction(record):
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
         left_bound = max(chunk.sent.start, chunk.start - (YOUR_WINDOW // 2) +1)
         right_bound = min(chunk.sent.end, chunk.end + (YOUR_WINDOW // 2) + 1)

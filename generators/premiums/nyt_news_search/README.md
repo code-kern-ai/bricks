@@ -1,1 +1,1 @@
-Searches through news articles of the New York Times. Free API key available here: https://developer.nytimes.com/
+Searches through news articles of the New York Times. The API key is available for free here: https://developer.nytimes.com/

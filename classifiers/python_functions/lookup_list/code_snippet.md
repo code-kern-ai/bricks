@@ -1,7 +1,6 @@
 ```python
 # the lookup list values can also come from a knowledge base, e.g.:
 # from knowledge import my_lookup_list
-from typing import List
 import knowledge
 
 YOUR_ATTRIBUTE: str = "text"
@@ -14,7 +13,7 @@ if YOUR_LOOKUP_VALUES:
     for value in YOUR_LOOKUP_VALUES:
         YOUR_LOOKUP_LIST.append(value)
 
-def lkp_known_sender(record) -> str:
+def lkp_known_sender(record):
     for known_sender in YOUR_LOOKUP_LIST:
         if known_sender.lower() in record[YOUR_ATTRIBUTE].text.lower(): # SpaCy document, hence we need to call .text to get the string
             return YOUR_LABEL

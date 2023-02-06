@@ -5,14 +5,14 @@ INPUT_EXAMPLE = {
     "word": "Viking."
 }
 
-class SoundexGeneratorModel(BaseModel):
+class PhoneticSoundexModel(BaseModel):
     word: str
     # if required, add more attributes here
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def soundex_generator(req: SoundexGeneratorModel):
+def phonetic_soundex(req: PhoneticSoundexModel):
     """Converts an english word into a phonetic SoundEx representation, for example to store names."""
 
     input_ = req.word

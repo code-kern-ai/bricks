@@ -2,7 +2,7 @@
 import requests
 from typing import List
 
-YOUR_ATTRIBUTE: str = "text"
+YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
 YOUR_IBM_URL: str = "<RESOURCE_URL_GOES_HERE"
 YOUR_ORIGIN_LANG: str = "en"
