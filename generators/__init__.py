@@ -10,6 +10,7 @@ from .python_functions import (
     reading_time,
     syllable_count,
     text_summarisation,
+    spacy_lemmatizer,
 )
 from .premiums import (
     microsoft_translator,
@@ -47,6 +48,7 @@ for module in [
     bing_news_search,
     bing_search,
     google_search,
+    spacy_lemmatizer,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
