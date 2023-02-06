@@ -15,7 +15,7 @@ class PartOfSpeechExtractionModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def part_of_speech_extraction(req: PartOfSpeechExtractorModel):
+def part_of_speech_extraction(req: PartOfSpeechExtractionModel):
     """Yields POS tags using spaCy."""
     text = req.text
 
