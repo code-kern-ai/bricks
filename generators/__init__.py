@@ -11,6 +11,7 @@ from .python_functions import (
     syllable_count,
     text_summarisation,
     spacy_lemmatizer,
+    most_frequent_words,
 )
 from .premiums import (
     microsoft_translator,
@@ -49,6 +50,7 @@ for module in [
     bing_search,
     google_search,
     spacy_lemmatizer,
+    most_frequent_words,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
