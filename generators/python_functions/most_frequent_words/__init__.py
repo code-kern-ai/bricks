@@ -27,4 +27,4 @@ def most_frequent_words(request: MostFrequentWordsModel):
 
     words = [token.text for token in doc if not token.is_stop and not token.is_punct]
 
-    return {"frequent": Counter(words).most_common(request.n_words)}
+    return {"frequentWords": Counter(words).most_common(request.n_words)}
