@@ -2,7 +2,7 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 
-YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" # pick this from the options above
+YOUR_EMBEDDING: str = "headline-classification-distilbert-base-uncased" # pick this from the options above
 YOUR_TRAIN_TEST_SPLIT: float = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
 YOUR_MIN_CONFIDENCE: float = 0.8
 
@@ -17,7 +17,7 @@ class MyGrid(LearningClassifier):
             "min_samples_leaf": [1, 2, 4],
             "bootstrap": [True, False]
         } # the hyperparameters can be tuned by the user
-        self.model = GridSearchCV(self.base_classifier)
+        self.model = GridSearchCV(self.base_classifier, self.param_grid)
 
     @params_fit(
         embedding_name = YOUR_EMBEDDING, 
@@ -33,5 +33,6 @@ class MyGrid(LearningClassifier):
     )
 
     def predict_proba(self, embeddings):
-        return self.model.predict(embeddings)
+        return self.model.predict_proba(embeddings)
+
 ```
