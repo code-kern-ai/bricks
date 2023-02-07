@@ -33,6 +33,7 @@ from .python_functions import (
     iban_extraction,
     noun_match_extraction,
     stock_ticker_extraction,
+    verb_phrase_extraction,
 )
 
 from .premiums import (
@@ -76,6 +77,7 @@ for module in [
     gpt3_information_extraction,
     noun_match_extraction,
     stock_ticker_extraction,
+    verb_phrase_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

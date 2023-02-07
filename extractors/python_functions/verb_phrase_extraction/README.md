@@ -1,0 +1,1 @@
+A verb phrase is a syntactic unit composed of at least one verb. this verb can be joined by other chunks, such as noun phrases. Verb phrases are useful for understanding the actions that nouns are involved in.
