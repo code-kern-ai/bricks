@@ -1,10 +1,11 @@
 ```python
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
+from typing import List
 
 YOUR_EMBEDDING: str = "headline-classification-distilbert-base-uncased" # pick this from the options above
-YOUR_TRAIN_TEST_SPLIT: float = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
 YOUR_MIN_CONFIDENCE: float = 0.8
+YOUR_LABELS: List[str] = None # optional, you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
 
 class MyGrid(LearningClassifier):
     
@@ -21,7 +22,7 @@ class MyGrid(LearningClassifier):
 
     @params_fit(
         embedding_name = YOUR_EMBEDDING, 
-        train_test_split = YOUR_TRAIN_TEST_SPLIT # we currently have this fixed, but you'll soon be able to specify this individually!
+        train_test_split = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
     )
 
     def fit(self, embeddings, labels):
@@ -29,7 +30,7 @@ class MyGrid(LearningClassifier):
 
     @params_inference(
         min_confidence = YOUR_MIN_CONFIDENCE,
-        label_names = None # you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
+        label_names = YOUR_LABELS 
     )
 
     def predict_proba(self, embeddings):
