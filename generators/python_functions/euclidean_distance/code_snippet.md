@@ -16,5 +16,5 @@ def euclidean_distance(record):
     vect_one, vect_two = np.squeeze(np.asarray(vects[0])), np.squeeze(np.asarray(vects[1]))
 
     # Return the calculated euclidean distance
-    return np.linalg.norm(vect_one - vect_two)
+    return str(np.linalg.norm(vect_one - vect_two))
 ```
