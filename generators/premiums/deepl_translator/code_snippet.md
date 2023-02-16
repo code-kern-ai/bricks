@@ -6,9 +6,7 @@ YOUR_API_KEY: str = "<api-key-goes-here>" # Deepl API Key
 YOUR_TARGET_LANGUAGE: str = "de" # only iso format
 
 def deepl_translator(record):
-    """Uses DeepL API to translate texts."""
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
+    '''Uses DeepL API to translate texts.'''
     deepl_url = "https://api.deepl.com/v2/translate"
     params={ 
         "auth_key": YOUR_API_KEY, 

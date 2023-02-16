@@ -8,8 +8,6 @@ YOUR_NEGATIVE_LABEL: str = "negative"
 YOUR_POSITIVE_LABEL: str = "positive"
 
 def aspect_extraction(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
         left_bound = max(chunk.sent.start, chunk.start - (YOUR_WINDOW // 2) +1)
         right_bound = min(chunk.sent.end, chunk.end + (YOUR_WINDOW // 2) + 1)

@@ -5,8 +5,6 @@ YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "quote"
 
 def quote_extraction(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     regex = re.compile(r"\".*?\"|\'.*?\'")
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 

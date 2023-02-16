@@ -7,8 +7,8 @@ import unicodedata
 YOUR_ATTRIBUTE: str = "text" #only text attributes
 
 def phonetic_soundex(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
+    """Converts an english word into a phonetic SoundEx representation, for example to store names."""
+
     sentence = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string. 
 
     soundex_list = []

@@ -7,8 +7,7 @@ YOUR_BASE_SENTENCE: str = "This is the base sentence you want to find the distan
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def hamming_distance(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
+
     text_one = YOUR_BASE_SENTENCE
     text_two = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 

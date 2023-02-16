@@ -9,8 +9,6 @@ YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_SUBJECT_TEXT: str = "Ten amazing facts about the sun"
 
 def cosine_similarity(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 
     # Transform sentences to a vector

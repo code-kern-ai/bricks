@@ -6,8 +6,6 @@ YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "PHONE_NUMBER"
 
 def phone_number_extraction(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     regex = re.compile(r"[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}")
     text = record[YOUR_ATTRIBUTE].text
 

@@ -11,8 +11,6 @@ YOUR_RESPONSE_SIZE: str = "full" # choose "compact" to only get text snippet of 
 
 def google_search(record):
     """Uses Google search to retrieve search results, given the parameters."""
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     params = {
         "q": record[YOUR_ATTRIBUTE].text,
         "location": YOUR_LOCATION,

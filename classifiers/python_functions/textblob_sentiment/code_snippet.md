@@ -7,8 +7,6 @@ YOUR_MAX_SCORE: int = 100
 YOUR_MIN_SCORE: int = -100
 
 def textblob_sentiment(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     blob = TextBlob(record[YOUR_ATTRIBUTE].text) # SpaCy document, hence we need to call .text to get the string
     return get_mapping_sentiment(blob.sentiment.polarity * 100)
 

@@ -8,8 +8,6 @@ YOUR_WEIGHT_DELETION: int = 1 # Optional
 YOUR_WEIGHT_SUBSTITUTION: int = 1 # Optional
 
 def levenshtein_distance(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     str_01 = YOUR_BASE_SENTENCE
     str_02 = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
     
