@@ -12,6 +12,7 @@ from .python_functions import (
     text_summarisation,
     spacy_lemmatizer,
     most_frequent_words,
+    euclidean_distance,
 )
 from .premiums import (
     microsoft_translator,
@@ -51,6 +52,7 @@ for module in [
     google_search,
     spacy_lemmatizer,
     most_frequent_words,
+    euclidean_distance,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
