@@ -6,8 +6,7 @@ YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "money" # Choose any available label here
 
 def regex_extraction(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
+
     def regex_search(pattern, string):
         prev_end = 0
         while True:

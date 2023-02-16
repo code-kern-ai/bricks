@@ -6,8 +6,6 @@ YOUR_LABEL_PROFANE: str = "profane"
 YOUR_LABEL_NOT_PROFANE: str = "not_profane"
 
 def profanity_detection(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     # SpaCy document, hence we need to call .text on our record to get the string
     return YOUR_LABEL_PROFANE if profanity.contains_profanity(record[YOUR_ATTRIBUTE].text) else YOUR_LABEL_NOT_PROFANE 
 ```

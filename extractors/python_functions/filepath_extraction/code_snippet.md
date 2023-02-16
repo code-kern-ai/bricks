@@ -6,8 +6,6 @@ YOUR_LABEL: str = "path"
 YOUR_SEPARATOR: str = "/" # use "\\" for Windows paths
 
 def filepath_extraction(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     text = record[YOUR_ATTRIBUTE].text # SpaCy do , hence we need to use .text to get the string.
 
     # Extracts the paths from the texts

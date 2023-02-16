@@ -1,6 +1,5 @@
 ```python
 import knowledge
-from typing import List
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "PERSON"
@@ -15,8 +14,6 @@ if YOUR_LOOKUP_VALUES:
     final_list += YOUR_LOOKUP_VALUES
 
 def gazetteer_extraction(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
         if any([chunk.text in trie or trie in chunk.text for trie in final_list]):
             yield YOUR_LABEL, chunk.start, chunk.end

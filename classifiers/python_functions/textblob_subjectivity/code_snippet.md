@@ -7,9 +7,7 @@ YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_MAX_SCORE: int = 100
 YOUR_MIN_SCORE: int = 0
 
-def textblob_subjectivity(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
+def textblob_subjectivity(record):    
     blob = TextBlob(record[YOUR_ATTRIBUTE].text) # SpaCy document, hence we need to call .text to get the string
     return get_mapping_subjectivity(blob.sentiment.subjectivity * 100)
 

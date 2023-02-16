@@ -7,8 +7,6 @@ YOUR_ORIGINAL_LANGUAGE: str = "en" # only iso format
 YOUR_TARGET_LANGUAGE: str = "de" # only iso format
 
 def microsoft_translator(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     endpoint = "https://api.cognitive.microsofttranslator.com/translate"
     params = {
         'api-version': '3.0',

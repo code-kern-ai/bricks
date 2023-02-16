@@ -1,6 +1,5 @@
 ```python
 import openai
-import re
 
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
 YOUR_ATTRIBUTE: str = "text" # only text attributes
@@ -10,7 +9,6 @@ YOUR_MAX_TOKENS: int = 64
 YOUR_TOP_P: float = 1.0
 YOUR_FREQUENCY_PENALTY: float = 0.0
 YOUR_PRESENCE_PENALTY: float = 0.0
-YOUR_LABEL: str = "keyinfo"
 
 def gpt3_information_extraction(record):
     """
@@ -28,8 +26,6 @@ def gpt3_information_extraction(record):
     - presence_penalty: Value between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     """
     # Access openai via API key
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     text = record[YOUR_ATTRIBUTE].text
     openai.api_key = YOUR_API_KEY
 

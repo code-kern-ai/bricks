@@ -5,8 +5,6 @@ YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "IP-address"
 
 def ip_extraction(record):
-    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
-        return "No text string read!"
     regex = re.compile(r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b")
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get string.
 
