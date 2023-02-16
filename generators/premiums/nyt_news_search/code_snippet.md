@@ -7,8 +7,10 @@ YOUR_API_KEY: str = "<api-key-goes-here>" # go here for free API key https://dev
 YOUR_OUTPUT_SIZE: str = "full" # choose "compact" to only get the text of the first result
 
 def nyt_news_search(record):
-    '''Searches through news articles of the New York Times.'''
-    query = record[YOUR_ATTRIBUTE]
+    """Searches through news articles of the New York Times."""
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
+    query = record[YOUR_ATTRIBUTE].text
     key = YOUR_API_KEY
 
     req = requests.get(f"https://api.nytimes.com/svc/search/v2/articlesearch.json?q={query}&api-key={key}")

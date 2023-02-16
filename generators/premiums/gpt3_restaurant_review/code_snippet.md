@@ -24,6 +24,8 @@ def gpt3_restaurant_review(record):
 
     - presence_penalty: Value between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     """
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     # Access openai via API key
     openai.api_key = YOUR_API_KEY
 

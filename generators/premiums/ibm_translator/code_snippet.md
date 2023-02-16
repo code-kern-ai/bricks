@@ -1,6 +1,5 @@
 ```python
 import requests
-from typing import List
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
@@ -10,6 +9,8 @@ YOUR_TARGET_LANG: str = "de"
 
 
 def attribute_4(record):
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     headers = {'Content-Type': 'application/json'}
     data = '{"text":'+f'["{record[YOUR_ATTRIBUTE].text}"], '+'"model_id":'+f'"{YOUR_ORIGIN_LANG}-'+f'{YOUR_TARGET_LANG}"'+'}'
     auth = ('apikey', YOUR_API_KEY)
@@ -24,6 +25,6 @@ def attribute_4(record):
         translation = [i["translation"] for i in response.json()["translations"]]
         return " ".join(translation)
     except:
-        return "Tanslation not possible."
+        return "Translation not possible."
                     
 ```

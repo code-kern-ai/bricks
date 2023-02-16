@@ -6,6 +6,8 @@ from heapq import nlargest
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def summarize(record, per):
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     text=record[YOUR_ATTRIBUTE].text
     word_frequencies={}
     for word in text:

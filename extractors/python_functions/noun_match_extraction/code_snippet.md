@@ -4,6 +4,8 @@ import re
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def similar_noun_extraction(record):
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
 # instantiate empty lists to store already encountered words and for found matches 
     word_repo = []
     matches = []

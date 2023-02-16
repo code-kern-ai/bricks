@@ -6,6 +6,8 @@ YOUR_MAX_NUMBER_LENGTH: int = 4 #maximum amount of digits to be considered relev
 YOUR_LABEL: str = "digit"
 
 def digit_extraction(record):
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
     number = YOUR_MAX_NUMBER_LENGTH
 

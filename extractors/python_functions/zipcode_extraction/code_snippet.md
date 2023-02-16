@@ -1,11 +1,14 @@
 ```python
 import re
+from typing import List
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes.
 YOUR_COUNTRY_IDS: List[str] = ["US"] # see list below for more countries
 YOUR_LABEL: str = "zip code"
 
 def zipcode_extraction(record):
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
 
     for country_id in YOUR_COUNTRY_IDS:

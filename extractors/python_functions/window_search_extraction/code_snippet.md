@@ -1,5 +1,6 @@
 ```python
 import knowledge
+from typing import List
 
 YOUR_WINDOW: int = 4 # choose any window size here
 YOUR_LABEL: str = "PERSON"
@@ -15,6 +16,8 @@ if YOUR_LOOKUP_VALUES:
     final_list += YOUR_LOOKUP_VALUES
 
 def window_search_extraction(record):
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     for chunk in record[YOUR_ATTRIBUTE].noun_chunks:
         left_bound = max(chunk.sent.start, chunk.start - (YOUR_WINDOW // 2) +1)
         right_bound = min(chunk.sent.end, chunk.end + (YOUR_WINDOW // 2) + 1)

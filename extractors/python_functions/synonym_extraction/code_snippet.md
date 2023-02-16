@@ -10,6 +10,8 @@ YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_LABEL: str = "synonym"
 
 def synonym_extraction(record):
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     # find synonyms to a word using Wordnet
     synonyms = []
     for syn in wordnet.synsets(YOUR_TARGET_WORD):

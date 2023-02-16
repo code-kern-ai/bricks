@@ -10,8 +10,8 @@ from nltk.corpus import words, brown
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def spelling_correction(record):
-    """Corrects the spelling of a word in a record and returns the corrected sentence."""
-    
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
     words_corpus = words.words()
     brown_corpus = brown.words()
