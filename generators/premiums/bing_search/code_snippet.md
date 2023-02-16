@@ -7,8 +7,9 @@ YOUR_API_KEY: str = "<API-KEY-GOES-HERE>"
 YOUR_RESPONSE_SIZE: str = "full" # choose "compact" to only get text snippet of the first result
 
 def bing_search(record):
-    '''Uses Microsoft's Bing to retrieve search results.'''
-
+    """Uses Microsoft's Bing to retrieve search results."""
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     search_url = "https://api.bing.microsoft.com/v7.0/search"
 
     headers = {"Ocp-Apim-Subscription-Key" : YOUR_API_KEY}

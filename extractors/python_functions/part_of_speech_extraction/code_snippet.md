@@ -3,8 +3,8 @@
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def part_of_speech_extraction(record):
-    """Yields POS tags using spaCy."""
-
+    if not record[YOUR_ATTRIBUTE] or not record[YOUR_ATTRIBUTE].text:
+        return "No text string read!"
     doc = record[YOUR_ATTRIBUTE]
 
     for token in doc:
