@@ -14,7 +14,7 @@ class TextblobSpellingCorrectionModel(BaseModel):
         }
 
 def textblob_spelling_correction(request: TextblobSpellingCorrectionModel):
-    """Correct spelling mistakes in a text."""
+    """Correct spelling mistakes in a text using the TextBlob library."""
 
     text = request.text
     textblob_text = TextBlob(text)
