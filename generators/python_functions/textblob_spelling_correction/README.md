@@ -1,0 +1,1 @@
+This module checks for spelling errors in a text and returns the corrected text using the TextBlob library. The spellchecker itself is based on the article "How to Write a Spelling Corrector" by Peter Norvig http://norvig.com/spell-correct.html.
