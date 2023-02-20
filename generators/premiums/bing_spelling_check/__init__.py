@@ -38,20 +38,12 @@ def bing_spelling_check(req: BingSpellingCheckModel):
     search_results = response.json()
 
     updated_string = text
-    # check if results are empty, i.e. if no errors were found. Returns original text if true.
-    if len(search_results["flaggedTokens"]) == 0:
-        return text
-    else:
-        for i in range(len(search_results)):
-            try:
-                print(search_results)
-                # retrieve the found token and the suggested token
-                found_token = search_results["flaggedTokens"][i]["token"]
-                suggested_token = search_results["flaggedTokens"][i]["suggestions"][0]["suggestion"]
+    for i in range(len(search_results)):
+        # retrieve the found token and the suggested token
+        found_token = search_results["flaggedTokens"][i]["token"]
+        suggested_token = search_results["flaggedTokens"][i]["suggestions"][0]["suggestion"]
 
-                # updated the original string with each of the suggestions
-                updated_string = updated_string.replace(found_token, suggested_token)
-            except:
-                pass
+        # updated the original string with each of the suggestions
+        updated_string = updated_string.replace(found_token, suggested_token)
 
     return {"correctedText": updated_string}
