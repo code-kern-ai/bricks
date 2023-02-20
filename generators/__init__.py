@@ -25,6 +25,7 @@ from .premiums import (
     bing_news_search,
     bing_search,
     google_search,
+    bing_spelling_check,
 )
 
 router = APIRouter()
@@ -53,6 +54,7 @@ for module in [
     spacy_lemmatizer,
     most_frequent_words,
     euclidean_distance,
+    bing_spelling_check,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
