@@ -3,7 +3,7 @@ import requests
 
 YOUR_ATTRIBUTE: str = "url" # only text attributes
 YOUR_API_KEY: str = "<you-api-key-here>"
-YOUR_RESOURCE_REGION: str = "northeurope"
+YOUR_RESOURCE_REGION: str = "northeurope" # region where your resource is deployed
 YOUR_LANGUAGE: str = "en-US" 
 
 def azure_speech_to_text(record):
