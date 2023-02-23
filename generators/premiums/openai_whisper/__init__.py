@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
     "url":  "https://kern-assets.s3.eu-central-1.amazonaws.com/dev/Aufzeichnung.wav",
-    "apiKey": "<YOUR_KEY_HERE>" , 
+    "apiKey": "<YOUR_KEY_HERE>", 
 }
 
 class OpenaiWhisperModel(BaseModel):
