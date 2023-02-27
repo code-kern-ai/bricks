@@ -1,64 +1,38 @@
 ```python
+from skopt import BayesSearchCV
+from skopt.space import Real, Categorical, Integer
 from sklearn.ensemble import RandomForestClassifier
-from bayes_opt import BayesianOptimization
-from sklearn.model_selection import cross_val_score
+from typing import List
 
 YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" # pick this from the options above
-YOUR_TRAIN_TEST_SPLIT: float = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
 YOUR_MIN_CONFIDENCE: float = 0.8
+YOUR_ITERATIONS: int = 100 # this can be modified by the user
+YOUR_LABELS: List[str] = None # optional, you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
 
 class MyBayesian(LearningClassifier):
-    
-    def __init__(self, n_iter=10, cv=5, random_state=42):
-        self.n_iter = n_iter
-        self.cv = cv
-        self.random_state = random_state
-        self.base_classifier = RandomForestClassifier(random_state=self.random_state, n_jobs=-1,
-                                                      n_estimators=100, max_depth=3)
+    def __init__(self):
+        self.base_classifier = RandomForestClassifier()
+        self.param_grid = {
+            'C': Real(1e-6, 1e+6, prior='log-uniform'),
+            'gamma': Real(1e-6, 1e+1, prior='log-uniform'),
+            'degree': Integer(1,8),
+            'kernel': Categorical(['linear', 'poly', 'rbf']),
+        }   # the hyperparameters can be modified by the user
+        self.model = BayesSearchCV(self.base_classifier, self.param_grid, n_iter=YOUR_ITERATIONS)
         
-    @params(
+    @params_fit(
         embedding_name = YOUR_EMBEDDING,
-        train_test_split = YOUR_TRAIN_TEST_SPLIT
+        train_test_split = 0.5
     )
     
     def fit(self, embeddings, labels):
         self.model.fit(embeddings, labels)
-        self.y_pred = self.model.predict(embeddings)
-        for i in range(self.n_iter):
-            self.optimizer = BayesianOptimization(
-                f=self.cross_validation_score,
-                pbounds={
-                    "max_depth": (3,10),
-                    "n_estimators": (10, 100),
-                    "min_sample_split": (2, 10),
-                    "min_sample_leaf": (1, 10),
-                    "max_features": (0.1, 0.9)
-                },
-                random_state = self.random_state
-            )
-            self.optimizer.maximize(init_points=5, n_iter=10)
-            self.best_params = self.optimizer.max["params"]
-            self.model.set_params(**self.best_params)
-            self.model.fit(embeddings, labels)
-    
         
-    def cross_validation_score(self, max_depth, n_estimators, min_samples_split, min_samples_leaf,
-                               max_features, embeddings, labels):
-        self.model.set_params(
-            max_depth=int(max_depth),
-            n_estimators=int(n_estimators),
-            min_samples_split=int(min_samples_split),
-            min_samples_leaf = int(min_samples_leaf),
-            max_features = max_features
-        )
-        
-        return cross_val_score(self.model, embeddings, labels, cv=self.cv).mean()
-    
     @params_inference(
         min_confidence = YOUR_MIN_CONFIDENCE,
-        label_names = None
+        label_names = YOUR_LABELS
     )
     
-    def predict_prob(self, embeddings):
-        self.model.predict(embeddings)
+    def predict_proba(self, embeddings):
+        return self.model.predict_proba(embeddings)
 ```
