@@ -25,7 +25,6 @@ from .premiums import (
     bing_news_search,
     bing_search,
     google_search,
-    openai_whisper,
 )
 
 router = APIRouter()
@@ -54,7 +53,6 @@ for module in [
     spacy_lemmatizer,
     most_frequent_words,
     euclidean_distance,
-    openai_whisper,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
