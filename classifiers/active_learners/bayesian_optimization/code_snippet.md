@@ -1,7 +1,7 @@
 ```python
 from skopt import BayesSearchCV
 from skopt.space import Real, Categorical, Integer
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 from typing import List
 
 YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" # pick this from the options above
@@ -11,7 +11,7 @@ YOUR_LABELS: List[str] = None # optional, you can specify a list to filter the p
 
 class MyBayesian(LearningClassifier):
     def __init__(self):
-        self.base_classifier = RandomForestClassifier()
+        self.base_classifier = SVC(probability=True)
         self.param_grid = {
             'C': Real(1e-6, 1e+6, prior='log-uniform'),
             'gamma': Real(1e-6, 1e+1, prior='log-uniform'),
