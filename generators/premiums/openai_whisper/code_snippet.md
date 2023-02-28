@@ -3,7 +3,7 @@ import requests
 import json
 
 YOUR_ATTRIBUTE: str =  "url"
-YOUR_API_KEY: str = "<YOUR_API_KEY_HERE" 
+YOUR_API_KEY: str = "<YOUR_API_KEY_HERE>" 
 
 def openai_whisper(record):
     headers = {
