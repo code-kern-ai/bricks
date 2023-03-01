@@ -25,6 +25,7 @@ from .premiums import (
     bing_news_search,
     bing_search,
     google_search,
+    azure_speech_to_text,
 )
 
 router = APIRouter()
@@ -53,6 +54,7 @@ for module in [
     spacy_lemmatizer,
     most_frequent_words,
     euclidean_distance,
+    azure_speech_to_text,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
