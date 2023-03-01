@@ -9,7 +9,7 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=250,
-        tabler_icon="BrandWindows",
+        tabler_icon="Speakerphone",
         min_refinery_version="1.7.0",
         state=State.PUBLIC
     )
