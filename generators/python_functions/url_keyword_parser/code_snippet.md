@@ -13,11 +13,11 @@ YOUR_REMOVE_NONE_ENGLISH:bool = False # only uses words that are part of nltk.co
 YOUR_REMOVE_STOPWORDS:bool = True # only uses words that are not part of nltk.corpus stopwords
 YOUR_REMOVE_HEX_LIKE:bool = True # remove things that look like hex or numbers
 YOUR_TEXT_SEPERATOR:str = ", "
-YOUR_SPLIT_REGEX:str = "\W" #possible regex, default is any none word char e.g. [^\w]|_ to include underscores
+YOUR_SPLIT_REGEX:str = "\W" # possible regex, default is any none word char e.g. [^\w]|_ to include underscores
 YOUR_WORD_WHITE_LIST:List[str] = ["heuristics"]
 
-def url_parser(record):
-    url = record[YOUR_ATTRIBUTE].text
+def url_keyword_parser(record):
+    url = record[YOUR_ATTRIBUTE]
     if YOUR_CHECK_VALID_URL and not valid_url(url):
         return ""
     url_obj = urlparse(url)
@@ -69,6 +69,4 @@ split_regex = re.compile(YOUR_SPLIT_REGEX)
 english_words = set(words.words())
 english_stopwords = set(stopwords.words("english"))
 white_list = set(YOUR_WORD_WHITE_LIST)
-
-
 ```

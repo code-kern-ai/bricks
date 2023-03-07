@@ -13,6 +13,7 @@ from .python_functions import (
     spacy_lemmatizer,
     most_frequent_words,
     euclidean_distance,
+    url_keyword_parser,
 )
 from .premiums import (
     microsoft_translator,
@@ -55,6 +56,7 @@ for module in [
     most_frequent_words,
     euclidean_distance,
     azure_speech_to_text,
+    url_keyword_parser,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
