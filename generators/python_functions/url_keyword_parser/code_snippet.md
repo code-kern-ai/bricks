@@ -5,16 +5,16 @@ from nltk.corpus import words
 from nltk.corpus import stopwords
 from typing import List
 
-YOUR_ATTRIBUTE:str = "url"
-YOUR_INCLUDE_DOMAIN:bool = True
-YOUR_INCLUDE_PARAMETER:bool = True
-YOUR_CHECK_VALID_URL:bool = True
-YOUR_REMOVE_NONE_ENGLISH:bool = False # only uses words that are part of nltk.corpus words
+YOUR_ATTRIBUTE:str = "text" # only text like attributes
+YOUR_INCLUDE_DOMAIN:bool = False # include URL domain in keyword scan
+YOUR_INCLUDE_PARAMETER:bool = True # inlude URL parameter in keyword scan
+YOUR_CHECK_VALID_URL:bool = False # ensure valid URL pattern
+YOUR_REMOVE_NONE_ENGLISH:bool = False # only use words that are part of nltk.corpus words
 YOUR_REMOVE_STOPWORDS:bool = True # only uses words that are not part of nltk.corpus stopwords
 YOUR_REMOVE_HEX_LIKE:bool = True # remove things that look like hex or numbers
-YOUR_TEXT_SEPERATOR:str = ", "
-YOUR_SPLIT_REGEX:str = "\W" # possible regex, default is any none word char e.g. [^\w]|_ to include underscores
-YOUR_WORD_WHITE_LIST:List[str] = ["heuristics"]
+YOUR_TEXT_SEPERATOR:str = ", " # joins resulting keywords on
+YOUR_SPLIT_REGEX:str = "\W" # possible regex, default is any none word char e.g. \W|_ to include underscores
+YOUR_WORD_WHITE_LIST:List[str] = None # optional, specify words that are exempt form remove checks
 
 def url_keyword_parser(record):
     url = record[YOUR_ATTRIBUTE]
