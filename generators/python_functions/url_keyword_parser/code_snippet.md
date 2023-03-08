@@ -18,6 +18,8 @@ YOUR_WORD_WHITE_LIST:List[str] = None # optional, specify words that are exempt 
 
 def url_keyword_parser(record):
     url = record[YOUR_ATTRIBUTE]
+    if not isinstance(url,str):
+        url = url.text
     if YOUR_CHECK_VALID_URL and not valid_url(url):
         return ""
     url_obj = urlparse(url)
