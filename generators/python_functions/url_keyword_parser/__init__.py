@@ -6,7 +6,7 @@ from typing import List
 from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
-    "url": "https://www.tagesschau.de/ausland/streiks-frankreich-137.html",
+    "url": "https://stackoverflow.com/questions/19560498/faster-way-to-remove-stop-words-in-python",
     "includeDomain": True,
     "includeParameter": True,
     "checkValidUrl": True,
@@ -15,7 +15,7 @@ INPUT_EXAMPLE = {
     "removeHexLike": True,
     "textSeperator": ", ",
     "splitRegex": "\W",
-    "wordWhiteList": ["heuristics"]
+    "wordWhiteList": None
 }
 
 class UrlKeywordParserModel(BaseModel):
