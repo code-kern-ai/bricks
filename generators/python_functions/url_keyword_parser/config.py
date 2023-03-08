@@ -10,7 +10,7 @@ def get_config():
         data_type="text",
         issue_id=163,
         tabler_icon="Cut",
-        min_refinery_version="1.7.0",
+        min_refinery_version="1.8.1",
         state=State.PUBLIC
     )
 
