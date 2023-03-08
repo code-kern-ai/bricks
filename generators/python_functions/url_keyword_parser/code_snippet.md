@@ -68,5 +68,5 @@ url_regex = re.compile(
 split_regex = re.compile(YOUR_SPLIT_REGEX) 
 english_words = set(words.words()) if YOUR_REMOVE_STOPWORDS else None
 english_stopwords = set(stopwords.words("english")) if YOUR_REMOVE_NONE_ENGLISH else None
-white_list = set(YOUR_WORD_WHITE_LIST)
+white_list = set(YOUR_WORD_WHITE_LIST) if YOUR_WORD_WHITE_LIST else set()
 ```
