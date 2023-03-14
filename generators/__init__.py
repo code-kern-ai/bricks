@@ -14,6 +14,7 @@ from .python_functions import (
     most_frequent_words,
     euclidean_distance,
     url_keyword_parser,
+    manhattan_distance,
 )
 from .premiums import (
     microsoft_translator,
@@ -57,6 +58,7 @@ for module in [
     euclidean_distance,
     azure_speech_to_text,
     url_keyword_parser,
+    manhattan_distance,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
