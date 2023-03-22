@@ -2,12 +2,12 @@
 # expects labeling task to have labels ["very positive", "positive" ,"neutral", "negative", "very negative"]
 from textblob import TextBlob
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_MAX_SCORE: int = 100
-YOUR_MIN_SCORE: int = -100
+record_dict = {
+    "your_attribute": "Replace this with your text attribute
+}
 
 def textblob_sentiment(record):
-    blob = TextBlob(record[YOUR_ATTRIBUTE].text) # SpaCy document, hence we need to call .text to get the string
+    blob = TextBlob(record["your_attribute"])
     return get_mapping_sentiment(blob.sentiment.polarity * 100)
 
 
@@ -16,10 +16,10 @@ def set_all(d, keys, value):
         d[k] = value
 
 def get_mapping_sentiment(score):
-    if score < YOUR_MIN_SCORE:
-        return outcomes[YOUR_MIN_SCORE]
-    if score > YOUR_MAX_SCORE:
-        return outcomes[YOUR_MAX_SCORE]
+    if score < 0:
+        return outcomes[0]
+    if score > 100:
+        return outcomes[100]
     return outcomes[int(score)]
 
 outcomes = {}
