@@ -17,9 +17,9 @@ def set_all(d, keys, value):
     
 def get_mapping_complexity(score):
     if score < 0:
-        return outcomes[YOUR_MIN_SCORE]
+        return outcomes[0]
     if score > 100:
-        return outcomes[YOUR_MAX_SCORE]
+        return outcomes[100]
     return outcomes[int(score)]
 
 if YOUR_TARGET_LANGUAGE is not None:

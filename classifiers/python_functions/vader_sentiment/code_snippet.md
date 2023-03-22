@@ -4,9 +4,9 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_MODE: str = "classification" # choose "scores" to only get the sentiment scores as floats
 
-def vader_sentiment(req):
+def vader_sentiment(record):
     analyzer = SentimentIntensityAnalyzer()
-    text = req.text
+    text = record[YOUR_ATTRIBUTE].text
 
     vs = analyzer.polarity_scores(text)
     if YOUR_MODE == "classification":
