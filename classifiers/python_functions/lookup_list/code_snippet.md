@@ -2,10 +2,11 @@
 # the lookup list values can also come from a knowledge base, e.g.:
 # from knowledge import my_lookup_list
 import knowledge
+from typing import List
 
 YOUR_ATTRIBUTE: str = "text"
 YOUR_LOOKUP_LIST: List[str] = knowledge.my_lookup_list # Change this to the name of your lookup list
-YOUR_LOOKUP_VALUES: List[str] = ["johannes.hoetter@kern.ai", "henrik.wenck@kern.ai"]
+YOUR_LOOKUP_VALUES: List[str] = ["joe@example.ai", "ava@example.ai"]
 YOUR_LABEL: str = "ham"
 
 # If further values are specified, add them to the lookup list.

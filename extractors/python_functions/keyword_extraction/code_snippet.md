@@ -1,6 +1,7 @@
 ```python
 import re
 from flashtext import KeywordProcessor
+from typing import List
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 YOUR_KEYWORDS: List[str] = ["keyword1", "keyword2", "keyword3"]

@@ -1,5 +1,6 @@
 ```python
 import knowledge
+from typing import List
 
 YOUR_WINDOW: int = 4 # choose any window size here
 YOUR_LABEL: str = "PERSON"
