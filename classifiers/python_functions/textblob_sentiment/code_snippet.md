@@ -16,17 +16,17 @@ def set_all(d, keys, value):
         d[k] = value
 
 def get_mapping_sentiment(score):
-    if score < YOUR_MIN_SCORE:
-        return outcomes[YOUR_MIN_SCORE]
-    if score > YOUR_MAX_SCORE:
-        return outcomes[YOUR_MAX_SCORE]
+    if score < -100:
+        return outcomes[-100]
+    if score > 100:
+        return outcomes[100]
     return outcomes[int(score)]
 
 outcomes = {}
-set_all(outcomes, range(60, YOUR_MAX_SCORE + 1), "very positive")
+set_all(outcomes, range(60, 100 + 1), "very positive")
 set_all(outcomes, range(20, 60), "positive")
 set_all(outcomes, range(-20, 20), "neutral")
 set_all(outcomes, range(-60, -20), "negative")
-set_all(outcomes, range(YOUR_MIN_SCORE, -60), "very negative")
+set_all(outcomes, range(-100, -60), "very negative")
 
 ```
