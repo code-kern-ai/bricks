@@ -9,7 +9,6 @@ YOUR_COUNTRY: str = "US" # optional, takes in an ISO country code, such as US, D
 
 def workday_classifier(record):
     text = record[YOUR_ATTRIBUTE].text
-    
 
     # try to parse a date from the provided string
     try:
