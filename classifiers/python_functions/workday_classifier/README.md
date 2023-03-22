@@ -1,0 +1,1 @@
+Uses the dateutil as well as the holidays library to determine if a weekday is a national holiday, a normal workday or a weekend. 

@@ -10,6 +10,7 @@ from .python_functions import (
     cosine_similarity,
     profanity_detection,
     vader_sentiment,
+    workday_classifier,
 )
 from .premiums import (
     gpt3_classifier
@@ -29,6 +30,7 @@ for module in [
     profanity_detection,
     gpt3_classifier,
     vader_sentiment,
+    workday_classifier,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
