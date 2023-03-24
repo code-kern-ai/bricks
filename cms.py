@@ -28,16 +28,16 @@ class CMS:
         """Fetches all modules from the CMS and lists all modules that are not yet in the CMS."""
         drafts = []
         ready_to_publish = []
-        for moduleType in ["classifier", "extractor", "generator"]:
-            for executionType in ["pythonFunction", "activeLearner", "premium"]:
+        for moduleType in ["classifiers", "extractors", "generators"]:
+            for executionType in os.listdir(moduleType):
                 relative_dir = os.path.join(
-                    f"{moduleType}s", f"{camel_case_to_snake_case(executionType)}s"
+                    f"{moduleType}", f"{camel_case_to_snake_case(executionType)}"
                 )
                 for sub_dir in os.listdir(relative_dir):
                     config_path = os.path.join(relative_dir, sub_dir, "config.py")
                     if os.path.exists(config_path):
                         config_module = import_module(
-                            f"{moduleType}s.{camel_case_to_snake_case(executionType)}s.{sub_dir}.config"
+                            f"{moduleType}.{camel_case_to_snake_case(executionType)}.{sub_dir}.config"
                         )
                         config, state = config_module.get_config()
 
@@ -67,17 +67,17 @@ class CMS:
         Args:
             verbose: If True, prints more information.
         """
-        for moduleType in ["classifier", "extractor", "generator"]:
-            for executionType in ["pythonFunction", "activeLearner", "premium"]:
+        for moduleType in ["classifiers", "extractors", "generators"]:
+            for executionType in os.listdir(moduleType):
                 relative_dir = os.path.join(
-                    f"{moduleType}s", f"{camel_case_to_snake_case(executionType)}s"
+                    f"{moduleType}", f"{camel_case_to_snake_case(executionType)}"
                 )
                 for sub_dir in os.listdir(relative_dir):
                     config_path = os.path.join(relative_dir, sub_dir, "config.py")
                     if os.path.exists(config_path):
                         print(f"Processing {config_path}")
                         config_module = import_module(
-                            f"{moduleType}s.{camel_case_to_snake_case(executionType)}s.{sub_dir}.config"
+                            f"{moduleType}.{camel_case_to_snake_case(executionType)}.{sub_dir}.config"
                         )
                         config, state = config_module.get_config()
 
@@ -162,7 +162,12 @@ def post_module(config: Dict[str, Any]):
                 "registeredDate": config["registeredDate"],
                 "markdownDescription": config["markdownDescription"],
                 "sourceCode": config["sourceCode"],
-                "minRefineryVersion": config["minRefineryVersion"],
+                "minRefineryVersion": config["minRefineryVersion"],#
+                "gdpr_compilant": config["gdpr_compilant"],
+                "kern_token_proxy_usable": config["kern_token_proxy_usable"],
+                "docker_image": config["docker_image"],
+                "available_for": config["available_for"],
+                "part_of_group": config["part_of_group"],
             }
         },
         headers={
@@ -190,7 +195,12 @@ def update_module(config: Dict[str, Any]):
                 "registeredDate": config["registeredDate"],
                 "markdownDescription": config["markdownDescription"],
                 "sourceCode": config["sourceCode"],
-                "minRefineryVersion": config["minRefineryVersion"],
+                "minRefineryVersion": config["minRefineryVersion"],#
+                "gdpr_compilant": config["gdpr_compilant"],
+                "kern_token_proxy_usable": config["kern_token_proxy_usable"],
+                "docker_image": config["docker_image"],
+                "available_for": config["available_for"],
+                "part_of_group": config["part_of_group"],
             }
         },
         headers={

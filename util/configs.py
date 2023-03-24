@@ -4,7 +4,7 @@ from typing import Callable, Dict, Any
 import json
 from util.exceptions import ErrorneousConfiguration
 
-from util.paths import camel_case_to_snake_case
+from util.paths import camel_case_to_snake_case, get_module_folders
 
 
 def build_classifier_function_config(
@@ -15,6 +15,14 @@ def build_classifier_function_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="classifier",
@@ -26,6 +34,14 @@ def build_classifier_function_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
     
 
@@ -37,6 +53,14 @@ def build_classifier_premium_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="classifier",
@@ -48,6 +72,14 @@ def build_classifier_premium_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
 
 
@@ -58,6 +90,14 @@ def build_classifier_learner_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="classifier",
@@ -69,6 +109,14 @@ def build_classifier_learner_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
 
 
@@ -80,6 +128,14 @@ def build_extractor_function_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="extractor",
@@ -91,6 +147,14 @@ def build_extractor_function_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
 
 def build_extractor_premium_config(
@@ -101,6 +165,14 @@ def build_extractor_premium_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="extractor",
@@ -112,6 +184,14 @@ def build_extractor_premium_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
 
 
@@ -122,6 +202,14 @@ def build_extractor_learner_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="extractor",
@@ -133,6 +221,14 @@ def build_extractor_learner_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
 
 def build_generator_function_config(
@@ -143,6 +239,14 @@ def build_generator_function_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="generator",
@@ -154,6 +258,14 @@ def build_generator_function_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
 
 
@@ -164,6 +276,14 @@ def build_generator_learner_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="generator",
@@ -175,6 +295,14 @@ def build_generator_learner_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
 
 def build_generator_premium_config(
@@ -185,6 +313,14 @@ def build_generator_premium_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     return build_config(
         module_type="generator",
@@ -196,6 +332,14 @@ def build_generator_premium_config(
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
         state=state,
+        type=type,
+        gdpr_compliant=gdpr_compliant,
+        kern_token_proxy_usable=kern_token_proxy_usable,
+        docker_image=docker_image,
+        available_for=available_for,
+        part_of_group=part_of_group,
+        outputs=outputs,
+        integrator_inputs=integrator_inputs,
     )
 
 def build_config(
@@ -208,16 +352,24 @@ def build_config(
     tabler_icon: str,
     min_refinery_version: str,
     state: str,
+    type: str,
+    gdpr_compliant: bool,
+    kern_token_proxy_usable: bool,
+    docker_image: str,
+    available_for: list,
+    part_of_group: list,
+    outputs: list,
+    integrator_inputs: dict,
 ):
     markdown_description_path = os.path.join(
         f"{module_type}s",
-        f"{camel_case_to_snake_case(execution_type)}s",
+        f"{camel_case_to_snake_case(part_of_group[0])}",
         f"{function.__name__}",
         "README.md",
     )
     source_code_path = os.path.join(
         f"{module_type}s",
-        f"{camel_case_to_snake_case(execution_type)}s",
+        f"{camel_case_to_snake_case(part_of_group[0])}",
         f"{function.__name__}",
         "code_snippet.md",
     )
@@ -245,6 +397,14 @@ def build_config(
         {"tabler_icon": tabler_icon},
         {"min_refinery_version": min_refinery_version},
         {"state": state},
+        {"type": type},
+        {"gdpr_compliant": gdpr_compliant},
+        {"kern_token_proxy_usable": kern_token_proxy_usable},
+        {"docker_image": docker_image},
+        {"available_for": available_for},
+        {"part_of_group": part_of_group},
+        {"outputs": outputs},
+        {"integrator_inputs": integrator_inputs},
     ]:
         if not list(mandatory_field.values())[0]:
             raise ErrorneousConfiguration(
@@ -265,6 +425,15 @@ def build_config(
         "inputExample": json.dumps(input_example, indent=4),
         "tablerIcon": tabler_icon,
         "minRefineryVersion": min_refinery_version,
+        "state": state,
+        "type": type,
+        "gdprCompliant": gdpr_compliant,
+        "kernTokenProxyUsable": kern_token_proxy_usable,
+        "dockerImage": docker_image,
+        "availableFor": available_for,
+        "partOfGroup": part_of_group,
+        "outputs": outputs,
+        "integratorInputs": integrator_inputs,
     }
 
     return config, state

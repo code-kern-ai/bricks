@@ -1,33 +1,18 @@
 from fastapi import APIRouter
-from .python_functions import (
-    language_detection,
-    lookup_list,
-    sentence_complexity,
+from .sentiment import (
     textblob_sentiment,
-    textblob_subjectivity,
-    emotionality_detection,
-    spelling_check,
-    cosine_similarity,
-    profanity_detection,
     vader_sentiment,
 )
-from .premiums import (
-    gpt3_classifier
+
+from .spelling import (
+    spelling_check,
 )
 
 router = APIRouter()
 
 for module in [
-    language_detection,
-    lookup_list,
-    sentence_complexity,
     textblob_sentiment,
-    textblob_subjectivity,
-    emotionality_detection,
     spelling_check,
-    cosine_similarity,
-    profanity_detection,
-    gpt3_classifier,
     vader_sentiment,
 ]:
     module_name = module.__name__.split(".")[-1]

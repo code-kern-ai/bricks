@@ -13,9 +13,9 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC,
         type="python_function",
-        gdpr_compliant=True,
-        kern_token_proxy_usable=False,
-        docker_image=None,
+        gdpr_compliant="True",
+        kern_token_proxy_usable="False",
+        docker_image="None",
         available_for=["refinery", "common"],
         part_of_group=["spelling", "gdpr_compliant"],
         # bricks integrator information
