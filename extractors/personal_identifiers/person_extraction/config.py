@@ -12,4 +12,27 @@ def get_config():
         tabler_icon="User",
         min_refinery_version="1.7.0",
         state=State.PUBLIC,
+        gdpr_compliant=True,
+        kern_token_proxy_usable=False,
+        docker_image=None,
+        available_for=["refinery", "common"],
+        part_of_group=["personal_identifiers", "gdpr_compliant"],
+        # bricks integrator information
+        outputs=["name"],
+        integrator_inputs={
+            "name": "person_extraction",
+            "refineryInputType": "text",
+            "constants": {
+                "inputRecordAttribute": {
+                    "defaultValue": "text",
+                    "optional": False,
+                },  
+                "label": {
+                    "defaultValue": "name",
+                    "type": "string",
+                    "optional": False,
+                    "description": "The label you want to assign to emails.",
+                },
+            },
+        },
     )
