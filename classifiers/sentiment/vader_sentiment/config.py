@@ -18,10 +18,10 @@ def get_config():
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["sentiment", "gdpr_compliant"],
+        part_of_group=["sentiment", "gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "spelling_check",
+            "name": "vader_sentiment",
             "refineryInputType": "text",
             "outputs": ["positive" ,"neutral", "negative"],
             "constants": {

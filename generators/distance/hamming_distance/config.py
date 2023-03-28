@@ -12,19 +12,20 @@ def get_config():
         tabler_icon="ArrowsMoveHorizontal",
         min_refinery_version="1.7.0",
         state=State.PUBLIC,
-        gdpr_compliant=True,
-        kern_token_proxy_usable=False,
-        docker_image=None,
+        gdpr_compliant="True",
+        type="python_function",
+        kern_token_proxy_usable="False",
+        docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["spelling", "gdpr_compliant"],
+        part_of_group=["distance", "gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "spelling_check",
+            "name": "hamming_distance",
             "refineryInputType": "text",
             "outputs": ["contains mistakes", "no mistakes"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "text",
+                    "selectionType": "string",
                     "defaultValue": "your-text",
                 }, 
                 "baseSentence": {

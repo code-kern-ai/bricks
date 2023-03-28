@@ -11,17 +11,18 @@ def get_config():
         issue_id=22,
         tabler_icon="SquareRoundedLetterL",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
-        gdpr_compliant=True,
-        kern_token_proxy_usable=False,
-        docker_image=None,
+        state=State.PUBLIC.value,
+        gdpr_compliant="True",
+        type="python_function",
+        kern_token_proxy_usable="False",
+        docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["spelling", "gdpr_compliant"],
+        part_of_group=["distance", "gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
-        outputs=["contains mistakes", "no mistakes"],
         integrator_inputs={
-            "name": "spelling_check",
+            "name": "levenshtein_distance",
             "refineryInputType": "text",
+            "outputs": ["contains mistakes", "no mistakes"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
                     "selectionType": "string",

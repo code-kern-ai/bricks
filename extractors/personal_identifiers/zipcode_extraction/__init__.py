@@ -18,7 +18,7 @@ class ZipcodeExtractionModel(BaseModel):
 
 
 # Load JSON file with all zip code regex patterns
-with open('extractors/python_functions/zipcode_extraction/zip_codes.json') as f:
+with open('extractors/personal_identifiers/zipcode_extraction/zip_codes.json') as f:
     zip_codes_json = json.load(f)
 
 

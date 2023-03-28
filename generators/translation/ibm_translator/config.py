@@ -11,20 +11,21 @@ def get_config():
         issue_id=175,
         tabler_icon="LanguageHiragana",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
-        gdpr_compliant=True,
-        kern_token_proxy_usable=False,
-        docker_image=None,
+        state=State.PUBLIC.value,
+        gdpr_compliant="True",
+        type="premium",
+        kern_token_proxy_usable="False",
+        docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["spelling", "gdpr_compliant"],
+        part_of_group=["translation", "gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "spelling_check",
+            "name": "ibm_translator",
             "refineryInputType": "text",
             "outputs": ["translated text"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "text",
+                    "selectionType": "string",
                     "defaultValue": "your-text",
                 },   
                 "apiKey": {

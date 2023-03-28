@@ -12,16 +12,16 @@ def get_config():
         issue_id=62,
         tabler_icon="AddressBook",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
         type="python_function",
         gdpr_compliant="True",
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["personal_identifiers", "gdpr_compliant"],
+        part_of_group=["personal_identifiers", "gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "spelling_check",
+            "name": "address_extraction",
             "refineryInputType": "text",
             "outputs": ["address", "spanStart", "spanEnd"],
             "constants": {
