@@ -7,12 +7,19 @@ Before diving deep into how the components of this repository work, there are so
 - Every little contribution counts - We are aware that not all the users checking `bricks` out would be proficient in python or any programming language for that matter. This shouldn't discourage anyone from contributing their ideas. For example, just opening a new issue consisting of some new idea is considered a valid contribution. The implementation will then be taken care of by us.
 
 ## Table of contents
-- [Structure of this repository](#structure-of-this-repository)
-- [How to contribute ideas](#how-to-contribute-ideas)
-- [How to contribute modules](#how-to-contribute-modules)
-- [Test your module](#test-your-module)
-- [Quality assurance](#quality-assurance)
-- [What happens next?](#what-happens-next)
+1. [Structure of this repository](#structure-of-this-repository)
+    1. [Module types](#module-types-classifiers-extractors-and-generators)
+    2. [Bricks groups](#brick-groups)
+    3. [Structure of brick modules](#structure-of-brick-modules-__init__py-readmemd-code_snippet_refinerymd-code_snippet_commonmd-and-configpy)
+2. [How to contribute ideas](#how-to-contribute-ideas)
+3. [How to contribute modules](#how-to-contribute-modules)
+    1. [SpaCy in extractors](#spacy-in-extractors)
+    2. [Configuring the config.py file](#configuring-the-configpy-file)
+    3. [Desired output of a brick](#desired-output-of-a-brick)
+4. [Test your module](#test-your-module)
+    1. [Finding errors](#finding-errors)
+5. [Quality assurance](#quality-assurance)
+6. [What happens next?](#what-happens-next)
 
 
 ## Structure of this repository
@@ -28,7 +35,7 @@ Since bricks 2.0, brick modules will be grouped together with similar modules. F
 
 A group may consist of as little as one implementation. There is no limit to how many implementations a group can contain. 
 
-### Structure of modules: `__init__.py`, `README.md`, `code_snippet_refinery.md`, `code_snippet_common.md` and `config.py`
+### Structure of brick modules: `__init__.py`, `README.md`, `code_snippet_refinery.md`, `code_snippet_common.md` and `config.py`
 Each module has a folder with the following structure:
 - `__init__.py`: if the module can be executed as a script, this file contains the entry point.
 - `README.md`: a description of the module, which is displayed on the platform on the detail page of the module.
@@ -135,7 +142,7 @@ The name refers to the name of the module. refineryDataType is the type of input
 
 We use that structure to a) standardize module implementations, making it easier to maintain the underlying code of modules, and b) to synchronize the repository with the online platform. This means that if you add a new module to the repository, it will be added to the platform via a script that reads the `config.py` file.
 
-### Desired output 
+### Desired output of a brick
 The output that is expected by the actual endpoint in bricks (your `__init__.py`) and the source code for refinery (your `code_snippet.md`) differ a bit. This section should provide a guideline on how the output of the modules should look like.
 
 **Classifiers:**
