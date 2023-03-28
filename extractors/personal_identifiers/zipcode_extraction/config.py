@@ -22,23 +22,23 @@ def get_config():
         integrator_inputs={
             "name": "zipcode_extraction",
             "refineryInputType": "text",
-            "refineryOutputType": "label_position",
+            "outputs":["zip code", "spanStart", "spanEnd"],
             "constants": {
-                "inputRecordAttribute": {
-                    "defaultValue": "text",
-                    "optional": False,
-                },  
+                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+                    "selectionType": "string",
+                    "defaultValue": "your-text",
+                }, 
                 "countryID": {
+                    "selectionType": "string",
                     "defaultValue": "DE",
-                    "type": "string",
-                    "optional": False,
                     "description": "The country you want to extract zipcodes from.",
+                    "optional": "False",
                 },
                 "label": {
+                    "selectionType": "string",
                     "defaultValue": "zip code",
-                    "type": "string",
-                    "optional": False,
-                    "description": "The label you want to assign to emails.",
+                    "description": "The label you want to assign to zip codes.",
+                    "optional": "False",
                 },
             },
         },

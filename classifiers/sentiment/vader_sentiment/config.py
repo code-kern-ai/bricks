@@ -12,33 +12,29 @@ def get_config():
         issue_id=157,
         tabler_icon="MoodCrazyHappy",
         min_refinery_version="1.8.0",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
         type="python_function",
-        gdpr_compliant=True,
-        kern_token_proxy_usable=False,
-        docker_image=None,
+        gdpr_compliant="True",
+        kern_token_proxy_usable="False",
+        docker_image="None",
         available_for=["refinery", "common"],
         part_of_group=["sentiment", "gdpr_compliant"],
         # bricks integrator information
-        outputs=["positive" ,"neutral", "negative"],
         integrator_inputs={
             "name": "spelling_check",
             "refineryInputType": "text",
+            "outputs": ["positive" ,"neutral", "negative"],
             "constants": {
-                "inputRecordAttribute": {
-                    "defaultValue": "text",
-                    "optional": False,
+                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+                    "selectionType": "string",
+                    "defaultValue": "your-text",
                 },  
                 "mode": {
+                    "selectionType": "choice",
+                    "allowedValues": ["classification", "scores"],
                     "defaultValue": "classification",
-                    "classification": {
-                        "type": "string",
-                        "description": "Classify the sentiment as positive, neutral or negative.",
-                    },
-                    "scores": {
-                        "type": "string",
-                        "description": "Get the sentiment scores as floats.",
-                    },
+                    "description": "Choose classification to return either positive, neutral or negative. Choose scores to retrieve a float score.",
+                    "optional": "False",
                 },
             },
         },

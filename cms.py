@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import requests
 from importlib import import_module
 from typing import Dict, Any
-from util.paths import camel_case_to_snake_case, snake_case_to_camel_case
+from util.paths import camel_case_to_snake_case, snake_case_to_camel_case, get_module_folders
 from util.enums import State
 import fire
 from wasabi import msg
@@ -29,7 +29,7 @@ class CMS:
         drafts = []
         ready_to_publish = []
         for moduleType in ["classifiers", "extractors", "generators"]:
-            for executionType in os.listdir(moduleType):
+            for executionType in get_module_folders(moduleType):
                 relative_dir = os.path.join(
                     f"{moduleType}", f"{camel_case_to_snake_case(executionType)}"
                 )
@@ -68,7 +68,7 @@ class CMS:
             verbose: If True, prints more information.
         """
         for moduleType in ["classifiers", "extractors", "generators"]:
-            for executionType in os.listdir(moduleType):
+            for executionType in get_module_folders(moduleType):
                 relative_dir = os.path.join(
                     f"{moduleType}", f"{camel_case_to_snake_case(executionType)}"
                 )
@@ -81,7 +81,7 @@ class CMS:
                         )
                         config, state = config_module.get_config()
 
-                        if state == State.PUBLIC:
+                        if state == State.PUBLIC.value:
                             module_exists, _ = check_module_exists(config)
                             if not module_exists:
                                 print("Posting module to CMS")
@@ -161,13 +161,15 @@ def post_module(config: Dict[str, Any]):
                 "tablerIcon": config["tablerIcon"],
                 "registeredDate": config["registeredDate"],
                 "markdownDescription": config["markdownDescription"],
-                "sourceCode": config["sourceCode"],
-                "minRefineryVersion": config["minRefineryVersion"],#
-                "gdpr_compilant": config["gdpr_compilant"],
-                "kern_token_proxy_usable": config["kern_token_proxy_usable"],
-                "docker_image": config["docker_image"],
-                "available_for": config["available_for"],
-                "part_of_group": config["part_of_group"],
+                "sourceCodeRefinery": config["sourceCodeRefinery"],
+                "sourceCodeCommon": config["sourceCodeCommon"],
+                "minRefineryVersion": config["minRefineryVersion"],
+                "gdprCompliant": config["gdprCompliant"],
+                "kernTokenProxyUsable": config["kernTokenProxyUsable"],
+                "dockerImage": config["dockerImage"],
+                "availableFor": config["availableFor"],
+                "partOfGroup": config["partOfGroup"],
+                "integratorInputs": config["integratorInputs"],
             }
         },
         headers={
@@ -194,13 +196,15 @@ def update_module(config: Dict[str, Any]):
                 "tablerIcon": config["tablerIcon"],
                 "registeredDate": config["registeredDate"],
                 "markdownDescription": config["markdownDescription"],
-                "sourceCode": config["sourceCode"],
+                "sourceCodeRefinery": config["sourceCodeRefinery"],
+                "sourceCodeCommon": config["sourceCodeCommon"],
                 "minRefineryVersion": config["minRefineryVersion"],#
-                "gdpr_compilant": config["gdpr_compilant"],
-                "kern_token_proxy_usable": config["kern_token_proxy_usable"],
-                "docker_image": config["docker_image"],
-                "available_for": config["available_for"],
-                "part_of_group": config["part_of_group"],
+                "gdprCompliant": config["gdprCompliant"],
+                "kernTokenProxyUsable": config["kernTokenProxyUsable"],
+                "dockerImage": config["dockerImage"],
+                "availableFor": config["availableFor"],
+                "partOfGroup": config["partOfGroup"],
+                "integratorInputs": config["integratorInputs"],
             }
         },
         headers={

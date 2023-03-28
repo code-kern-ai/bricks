@@ -21,7 +21,6 @@ def build_classifier_function_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -40,7 +39,6 @@ def build_classifier_function_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
     
@@ -59,7 +57,6 @@ def build_classifier_premium_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -78,7 +75,6 @@ def build_classifier_premium_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
 
@@ -96,7 +92,6 @@ def build_classifier_learner_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -115,7 +110,6 @@ def build_classifier_learner_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
 
@@ -134,7 +128,6 @@ def build_extractor_function_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -153,7 +146,6 @@ def build_extractor_function_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
 
@@ -171,7 +163,6 @@ def build_extractor_premium_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -190,7 +181,6 @@ def build_extractor_premium_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
 
@@ -208,7 +198,6 @@ def build_extractor_learner_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -227,7 +216,6 @@ def build_extractor_learner_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
 
@@ -245,7 +233,6 @@ def build_generator_function_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -264,7 +251,6 @@ def build_generator_function_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
 
@@ -282,7 +268,6 @@ def build_generator_learner_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -301,7 +286,6 @@ def build_generator_learner_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
 
@@ -319,7 +303,6 @@ def build_generator_premium_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -338,7 +321,6 @@ def build_generator_premium_config(
         docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
-        outputs=outputs,
         integrator_inputs=integrator_inputs,
     )
 
@@ -358,7 +340,6 @@ def build_config(
     docker_image: str,
     available_for: list,
     part_of_group: list,
-    outputs: list,
     integrator_inputs: dict,
 ):
     markdown_description_path = os.path.join(
@@ -367,22 +348,32 @@ def build_config(
         f"{function.__name__}",
         "README.md",
     )
-    source_code_path = os.path.join(
+    source_code_refinery_path = os.path.join(
         f"{module_type}s",
         f"{camel_case_to_snake_case(part_of_group[0])}",
         f"{function.__name__}",
-        "code_snippet.md",
+        "code_snippet_refinery.md",
     )
 
-    for path in [markdown_description_path, source_code_path]:
+    source_code_common_path = os.path.join(
+        f"{module_type}s",
+        f"{camel_case_to_snake_case(part_of_group[0])}",
+        f"{function.__name__}",
+        "code_snippet_common.md",
+    )
+
+    for path in [markdown_description_path, source_code_refinery_path, source_code_common_path]:
         if not os.path.exists(path):
             raise ErrorneousConfiguration(f"Missing file: {path}")
 
     with open(markdown_description_path, "r") as f:
         markdown_description = f.read()
 
-    with open(source_code_path, "r") as f:
-        source_code = f.read()
+    with open(source_code_refinery_path, "r") as f:
+        source_code_refinery = f.read()
+
+    with open(source_code_common_path, "r") as f:
+        source_code_common = f.read()
 
     for mandatory_field in [
         {"module_type": module_type},
@@ -390,7 +381,8 @@ def build_config(
         {"function_name": function.__name__},
         {"function_docstring": function.__doc__},
         {"markdown_description": markdown_description},
-        {"source_code": source_code},
+        {"source_code_refinery": source_code_refinery},
+        {"source_code_common": source_code_common},
         {"input_example": input_example},
         {"data_type": data_type},
         {"issue_id": issue_id},
@@ -403,7 +395,6 @@ def build_config(
         {"docker_image": docker_image},
         {"available_for": available_for},
         {"part_of_group": part_of_group},
-        {"outputs": outputs},
         {"integrator_inputs": integrator_inputs},
     ]:
         if not list(mandatory_field.values())[0]:
@@ -417,7 +408,8 @@ def build_config(
         "moduleType": module_type,
         "executionType": execution_type,
         "dataType": data_type,
-        "sourceCode": source_code.replace("```python\n", "").replace("```", ""),
+        "sourceCodeRefinery": source_code_refinery.replace("```python\n", "").replace("```", ""),
+        "sourceCodeCommon": source_code_common.replace("```python\n", "").replace("```", ""),        
         "markdownDescription": markdown_description,
         "issueId": issue_id,
         "registeredDate": datetime.now().isoformat(),
@@ -430,10 +422,9 @@ def build_config(
         "gdprCompliant": gdpr_compliant,
         "kernTokenProxyUsable": kern_token_proxy_usable,
         "dockerImage": docker_image,
-        "availableFor": available_for,
-        "partOfGroup": part_of_group,
-        "outputs": outputs,
-        "integratorInputs": integrator_inputs,
+        "availableFor": json.dumps(available_for, indent=4),
+        "partOfGroup": json.dumps(part_of_group, indent=4),
+        "integratorInputs": json.dumps(integrator_inputs, indent=4),
     }
 
     return config, state

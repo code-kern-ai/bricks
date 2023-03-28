@@ -18,20 +18,20 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=["personal_identifiers", "gdpr_compliant"],
         # bricks integrator information
-        outputs=["email"],
         integrator_inputs={
             "name": "email_extraction",
             "refineryInputType": "text",
+            "outputs": ["email", "spanStart", "spanEnd"],
             "constants": {
-                "inputRecordAttribute": {
-                    "defaultValue": "text",
-                    "optional": False,
+                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+                    "selectionType": "string",
+                    "defaultValue": "your-text",
                 },  
                 "label": {
+                    "selectionType": "string",
                     "defaultValue": "email",
-                    "type": "string",
-                    "optional": False,
                     "description": "The label you want to assign to emails.",
+                    "optional": "False",
                 },
             },
         },

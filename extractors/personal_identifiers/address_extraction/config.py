@@ -14,26 +14,26 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC,
         type="python_function",
-        gdpr_compliant=True,
-        kern_token_proxy_usable=False,
-        docker_image=None,
+        gdpr_compliant="True",
+        kern_token_proxy_usable="False",
+        docker_image="None",
         available_for=["refinery", "common"],
         part_of_group=["personal_identifiers", "gdpr_compliant"],
         # bricks integrator information
-        outputs=["address"],
         integrator_inputs={
             "name": "spelling_check",
             "refineryInputType": "text",
+            "outputs": ["address", "spanStart", "spanEnd"],
             "constants": {
-                "inputRecordAttribute": {
-                    "defaultValue": "text",
-                    "optional": False,
+                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+                    "selectionType": "string",
+                    "defaultValue": "your-text",
                 },  
                 "label": {
+                    "selectionType": "string",
                     "defaultValue": "address",
-                    "type": "string",
-                    "optional": False,
                     "description": "The label you want to assign to addresses.",
+                    "optional": "False",
                 },
             },
         },

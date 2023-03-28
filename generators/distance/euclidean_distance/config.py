@@ -18,20 +18,20 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=["distance", "gdpr_compliant"],
         # bricks integrator information
-        outputs=["contains mistakes", "no mistakes"],
         integrator_inputs={
             "name": "spelling_check",
             "refineryInputType": "text",
+            "outputs": ["contains mistakes", "no mistakes"],
             "constants": {
-                "inputRecordAttribute": {
-                    "defaultValue": "text",
-                    "optional": False,
-                },  
-                "subjectText": {
+                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+                    "selectionType": "string",
+                    "defaultValue": "your-text",
+                }, 
+                "baseSentence": {
+                    "selectionType": "string",
                     "defaultValue": "The sun is not made out of pancakes.",
-                    "type": "string",
-                    "optional": False,
                     "description": "The text you want to compare your records to.",
+                    "optional": "False",
                 },
             },
         },

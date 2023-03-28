@@ -18,26 +18,26 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=["spelling", "gdpr_compliant"],
         # bricks integrator information
-        outputs=["contains mistakes", "no mistakes"],
         integrator_inputs={
             "name": "spelling_check",
             "refineryInputType": "text",
+            "outputs": ["translated text"],
             "constants": {
-                "inputRecordAttribute": {
-                    "defaultValue": "text",
-                    "optional": False,
+                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+                    "selectionType": "text",
+                    "defaultValue": "your-text",
                 },  
                 "originalLanguage": {
+                    "selectionType": "string",
                     "defaultValue": "en",
-                    "type": "string",
-                    "optional": False,
                     "description": "The language of the text that is to be translated.",
+                    "optional": "False",
                 },
                 "targetLanguage": {
+                    "selectionType": "string",
                     "defaultValue": "de",
-                    "type": "string",
-                    "optional": False,
-                    "description": "The language to translate to.",
+                    "description": "The language to translate to. The original language is automatically detected.",
+                    "optional": "False",
                 },
             },
         },
