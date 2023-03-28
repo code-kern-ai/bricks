@@ -21,7 +21,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "deepl_translator",
-            "refineryInputType": "text",
+            "refineryDataType": "text",
             "outputs": ["translated text"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional

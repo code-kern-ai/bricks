@@ -37,6 +37,59 @@ Each module has a folder with the following structure:
 - `code_snippet.md`: the displayed code snippet on the detail page of the module.
 - `config.py`: a config script to synchronize this repository with the online platform.
 
+## Structure the `config.py`
+This file syncs the brick with an online CMS. This is done via a configuration file to avoid the need to do this manually. 
+
+If you struggle with this file: Don't worry! You can leave a blank dictionary for now. A member of our team will gladly help you to set it up afterward. 
+
+The upper half of the config contains most of the general information of the brick. 
+- The INPUT_EXAMPLE come from the `__init__.py`. 
+- The `issue_id` is the corresponding GitHub issue number of the brick module. If no issue was created for a brick, you can do so [here](https://github.com/code-kern-ai/bricks/issues). 
+- `tabler_icon` refers to the icon that should be displayed for this brick. An icon can be chosen [here](https://tabler-icons-react.vercel.app/). 
+- If the brick requires a Python package, it might only be available after the dev-team has added this package to the execution environment to refinery. The `min_refinery_version` refers to the first version in which the needed library was added to refinery. 
+- The `state` parameter simply refers to if this bricks should be publicly visible yet. Set this to `DRAFT` if you think this needs some more work. 
+- If this module uses an API that sends data to outside to the EU, the brick automatically is not `gdpr_compliant` anymore, which then needs to the set to `"False"` then. 
+- If the brick uses a paid API, it is also then a `premium` function. Otherwise it's a `python_function`. 
+- In the future, Kern AI will offer a Kern API token, with which different services can be used. Once this is the case, the `kern_token_proxy_usable` will be set to `"True"`. Otherwise is is set to `"False".` 
+- The `available_for` containing `"refinery"` if the `"code_snippet_refinery.md"` exists and/or `"commom"` to  `"code_snippet_common.md"` exists. The first containing code that expects a SpaCy dictionary as an input, the latter containing code which can directly be executed in any Python environment without the need for SpaCy.
+- Every brick is also part of at least two groups: the parent directory, i.e. `"sentiment"`, `"spelling"` etc, and `"gdpr_compliant"` or `"gdpr_uncompliant"`. This is set at `part_of_group`.
+
+
+```python
+def get_config():
+    return build_generator_function_config(
+        function=levenshtein_distance,
+        input_example=INPUT_EXAMPLE,
+        data_type="text",
+        issue_id=22,
+        tabler_icon="SquareRoundedLetterL",
+        min_refinery_version="1.7.0",
+        state=State.PUBLIC.value,
+        gdpr_compliant="True",
+        type="python_function",
+        kern_token_proxy_usable="False",
+        docker_image="None",
+        available_for=["refinery", "common"],
+        part_of_group=["distance", "gdpr_compliant"],
+```
+ 
+At the bottom of the config, you will find the section "integratior inputs". This section is mean for the bricks integrator, which allows the integration of bricks into our main tool Kern AI refinery. The integrator should always have at least the following structure:
+```python
+        integrator_inputs={
+            "name": "levenshtein_distance",
+            "refineryDataType": "text",
+            "outputs": ["yes", "no"],
+            "constants": {
+                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+                    "selectionType": "string",
+                    "defaultValue": "your-text",
+                },
+            },
+        }
+)
+```
+The name refers to the name of the module. refineryDataType is the type of input to be set in refinery, this can be category, text, integer, float or boolean for attribute calculation. For bricks that should be used as labeling functions, this should be set to text. Outputs is a list containing possible outputs. This list does not server as a rule of which outputs are allowed, but rather provides some default values which might be changed later on. The constants affect anything that should be set in the code_snippet_refinery.md. Everything configurable here can then be set via the bricks integrator, which paste the constants into the code which will be used in refinery. 
+
 We use that structure to a) standardize module implementations, making it easier to maintain the underlying code of modules, and b) to synchronize the repository with the online platform. This means that if you add a new module to the repository, it will be added to the platform via a script that reads the `config.py` file.
 
 ## How to contribute ideas

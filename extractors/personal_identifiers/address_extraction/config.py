@@ -22,7 +22,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "address_extraction",
-            "refineryInputType": "text",
+            "refineryDataType": "text",
             "outputs": ["address", "spanStart", "spanEnd"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional

@@ -21,7 +21,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "hamming_distance",
-            "refineryInputType": "text",
+            "refineryDataType": "text",
             "outputs": ["contains mistakes", "no mistakes"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional

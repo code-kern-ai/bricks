@@ -22,7 +22,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "vader_sentiment",
-            "refineryInputType": "text",
+            "refineryDataType": "text",
             "outputs": ["positive" ,"neutral", "negative"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional

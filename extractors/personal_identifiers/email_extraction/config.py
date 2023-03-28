@@ -21,7 +21,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "email_extraction",
-            "refineryInputType": "text",
+            "refineryDataType": "text",
             "outputs": ["email", "spanStart", "spanEnd"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional

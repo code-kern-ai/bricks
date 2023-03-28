@@ -21,7 +21,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "spelling_check",
-            "refineryInputType": "text",
+            "refineryDataType": "text",
             "outputs": ["contains mistakes", "no mistakes"],
             "additionalConstants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
