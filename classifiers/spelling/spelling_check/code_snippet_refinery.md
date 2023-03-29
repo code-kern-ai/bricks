@@ -10,8 +10,8 @@ def spelling_check(record):
 
     words_corpus = words.words()
     brown_corpus = brown.words()
+    word_list = set(words_corpus + brown_corpus)
 
-    word_list = words_corpus + brown_corpus
     text_lower = text.replace(',', '').replace('.', '').lower().split()
     text_original = text.replace(',', '').replace('.', '').split()
     

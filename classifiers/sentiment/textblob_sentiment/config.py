@@ -22,7 +22,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "textblob_sentiment",
-            "refineryInputType": "text",
+            "refineryDataType": "text",
             "possibleOutputs": ["very positive", "positive" ,"neutral", "negative", "very negative"],
             "constants": {
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional

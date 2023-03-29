@@ -18,7 +18,7 @@ def spelling_check(request: SpellingCheckModel):
 
     words_corpus = words.words()
     brown_corpus = brown.words()
-    word_list = words_corpus + brown_corpus
+    word_list = set(words_corpus + brown_corpus)
     text = request.text
     text_list_lower = text.replace(',', '').replace('.', '').lower().split()
     text_list_original = text.replace(',', '').replace('.', '').split()

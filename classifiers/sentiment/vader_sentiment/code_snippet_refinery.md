@@ -18,5 +18,4 @@ def vader_sentiment(record):
             return "negative"
     elif YOUR_MODE == "scores": 
         return vs
-
 ```
