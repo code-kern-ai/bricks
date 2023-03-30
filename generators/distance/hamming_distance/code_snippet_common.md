@@ -12,7 +12,7 @@ record = {
 }
 
 # function for the hamming distance, should return a n*n matrix. n being the number of texts
-def hamming_distance(record):
+def hamming_distance(record: dict) -> dict:
     all_distances = []
     all_entries = record["your_text"]
 

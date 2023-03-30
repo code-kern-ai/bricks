@@ -12,7 +12,7 @@ record = {
     "country_id": "US",
 }
 
-def zipcode_extraction(record):
+def zipcode_extraction(record: dict) -> dict:
     nlp = spacy.load("en_core_web_sm")
 
     zipcode_positions = []

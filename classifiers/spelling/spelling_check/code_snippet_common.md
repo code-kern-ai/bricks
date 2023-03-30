@@ -11,7 +11,7 @@ record = {
     "label_correct": "no mistakes",
 }
 
-def spelling_check(record):
+def spelling_check(record: dict) -> dict:
     words_corpus = words.words()
     brown_corpus = brown.words()
     word_list = set(words_corpus + brown_corpus)
