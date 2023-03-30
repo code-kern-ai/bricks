@@ -12,7 +12,7 @@ def get_config():
         tabler_icon="Language",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="True",
+        gdpr_compliant="False",
         type="premium",
         kern_token_proxy_usable="False",
         docker_image="None",
