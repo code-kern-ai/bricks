@@ -19,7 +19,7 @@ def zipcode_extraction(record):
     text_id = 0
     for entry in record["your_text"]:
         for country_id in YOUR_COUNTRY_IDS:
-            match = re.search(zip_codes[[country_id]], entry)
+            match = re.search(zip_codes[country_id], entry)
 
             start, end = match.span()
             span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
