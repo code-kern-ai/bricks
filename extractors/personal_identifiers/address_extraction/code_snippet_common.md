@@ -28,5 +28,5 @@ def address_extraction(record: dict) -> dict:
                 span = doc.char_span(start, end, alignment_mode="expand")
                 address_positions.append({f"text_{text_id}" :[record["label"], span.start, span.end]})
         text_id += 1
-    return address_positions
+    return {"extraction": address_positions}
 ```

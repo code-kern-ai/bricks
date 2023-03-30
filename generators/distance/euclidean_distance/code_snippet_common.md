@@ -36,5 +36,5 @@ def euclidean_distance(record: dict) -> dict:
         all_distances.append(row_of_distances)
         
     # return distance matrix
-    return all_distances
+    return {"distances": all_distances}
 ```

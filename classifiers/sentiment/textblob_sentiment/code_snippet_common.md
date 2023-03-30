@@ -16,7 +16,7 @@ def textblob_sentiment(record: dict) -> dict:
     for entry in record["your_text"]:
         blob = TextBlob(entry)
         sentiments.append(get_mapping_sentiment(blob.sentiment.polarity * 100))
-    return sentiments
+    return {"sentiments": sentiments}
 
 # helper funtion to set the outcomes
 def set_all(d, keys, value):

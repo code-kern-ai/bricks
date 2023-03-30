@@ -20,5 +20,5 @@ def person_extraction(record: dict) -> dict:
         if entity.label_ == "PERSON":
             name_positions.append({f"text_{text_id}" :[record["label"], span.start, span.end]})
         text_id += 1
-    return name_positions
+    return {"extraction": name_positions}
 ```

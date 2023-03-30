@@ -30,5 +30,5 @@ def spelling_check(record):
             mistakes.append(record["label_mistakes"])
         else:
             mistakes.append(record["label_correct"])
-    return mistakes
+    return {"spellchecks": mistakes}
 ```

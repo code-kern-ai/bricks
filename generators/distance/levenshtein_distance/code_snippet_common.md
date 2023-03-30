@@ -13,7 +13,7 @@ record = {
 }
 
 # function for the hamming distance, should return a n*n matrix. n being the number of texts
-def levenshtein_distance(record):
+def levenshtein_distance(record: dict) -> dict:
     # check if weights are provided
     if record["weight_insertion"] is not None and record["weight_deletion"] is not None and record["weight_substitution"] is not None:
         weights_tuple = (
@@ -43,5 +43,5 @@ def levenshtein_distance(record):
             row_of_distances.append(ls_distance)
         # append whole row of distances to the matrix
         all_distances.append(row_of_distances)
-    return all_distances
+    return {"distances": all_distances}
 ```

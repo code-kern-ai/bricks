@@ -36,5 +36,5 @@ def hamming_distance(record):
         all_distances.append(row_of_distances)
         
     # return distance matrix
-    return all_distances
+    return {"distances": all_distances}
 ```

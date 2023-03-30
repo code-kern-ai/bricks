@@ -25,5 +25,5 @@ def vader_sentiment(record: dict) -> dict:
                 sentiment.append("negative")
         elif record["mode"] == "scores": 
             sentiment.append(vs)
-    return sentiment
+    return {"sentiments": sentiment}
 ```

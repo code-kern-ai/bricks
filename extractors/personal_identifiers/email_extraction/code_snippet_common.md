@@ -24,5 +24,5 @@ def email_extraction(record: dict) -> dict:
             span = doc.char_span(start, end, alignment_mode="expand")
             email_positions.append({f"text_{text_id}" :[record["label"], span.start, span.end]})
         text_id += 1
-    return email_positions
+    return {"extraction": email_positions}
 ```
