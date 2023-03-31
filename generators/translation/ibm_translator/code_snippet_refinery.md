@@ -9,7 +9,7 @@ YOUR_ORIGIN_LANG: str = "en"
 YOUR_TARGET_LANG: str = "de"
 
 
-def attribute_4(record):
+def ibm_translator(record):
     headers = {'Content-Type': 'application/json'}
     data = '{"text":'+f'["{record[YOUR_ATTRIBUTE].text}"], '+'"model_id":'+f'"{YOUR_ORIGIN_LANG}-'+f'{YOUR_TARGET_LANG}"'+'}'
     auth = ('apikey', YOUR_API_KEY)
@@ -25,5 +25,4 @@ def attribute_4(record):
         return " ".join(translation)
     except:
         return "Tanslation not possible."
-                    
 ```
