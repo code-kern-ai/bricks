@@ -13,7 +13,7 @@ record = {
     "target_language": "de" # change this to the language you want to translate to
 }
 
-def attribute_4(record: dict) -> dict:
+def ibm_translator(record: dict) -> dict:
     translations = []
     for entry in record["your_text"]:
         headers = {'Content-Type': 'application/json'}

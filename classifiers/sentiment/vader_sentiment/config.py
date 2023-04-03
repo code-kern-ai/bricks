@@ -21,6 +21,7 @@ def get_config():
         part_of_group=["sentiment", "gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
+            "globalComment": "Only for english text.",
             "name": "vader_sentiment",
             "refineryDataType": "text",
             "outputs": ["positive" ,"neutral", "negative"],
@@ -28,13 +29,14 @@ def get_config():
                 "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
                     "selectionType": "string",
                     "defaultValue": "your-text",
+                    "addInfo": [] # enum for only text etc or additional information 
                 },  
                 "mode": {
-                    "selectionType": "choice",
+                    "selectionType": "choice", # should be enum
                     "allowedValues": ["classification", "scores"],
                     "defaultValue": "classification",
                     "description": "Choose classification to return either positive, neutral or negative. Choose scores to retrieve a float score.",
-                    "optional": "False",
+                    "optional": "False", # should be enum
                 },
             },
         },

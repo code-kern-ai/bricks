@@ -23,20 +23,21 @@ def get_config():
             "name": "ibm_translator",
             "refineryDataType": "text",
             "outputs": ["translated text"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+            "variables": {
+                "YOUR_ATTRIBUTE": { # previously YOUR_ATTRIBUTE, never optional
                     "selectionType": "string",
-                    "defaultValue": "your-text",
-                },   
-                "apiKey": {
+                    "defaultValue": "",
+                    "refineryType": "attribute",
+                }, 
+                "API_KEY": {
                     "selectionType": "string",
-                    "defeaultValue": "YOUR_API_KEY",
+                    "defaultValue": "<your-api-key>",
                     "description": "The IBM Watson translation service API key.",
                     "optional": "False",
                 },
                 "ibmUrl": {
                     "selectionType": "string",
-                    "defaultValue": "https://api.eu-de.language-translator.watson.cloud.ibm.com/instances/YOUR_INSTANCE_ID",
+                    "defaultValue": "<your-resource-url>",
                     "description": "The URL for the IBM Watson Language Translator resource.",
                     "optional": "False",
                 },

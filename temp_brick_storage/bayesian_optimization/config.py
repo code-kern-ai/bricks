@@ -10,5 +10,5 @@ def get_config():
         issue_id=188,
         tabler_icon="ChartDots",
         min_refinery_version="1.8.1",
-        state=State.PUBLIC,
+        state=State.DRAFT.value,
     )
