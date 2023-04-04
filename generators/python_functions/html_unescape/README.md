@@ -1,0 +1,1 @@
+This module unescapes HTML characters in a text. "For example, the text Here\&#39;s how \&quot;Kern.ai Newsletter\&quot; did today." will be converted to "Here's how "Kern.ai Newsletter" did today."
