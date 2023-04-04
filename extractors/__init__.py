@@ -34,6 +34,7 @@ from .python_functions import (
     noun_match_extraction,
     stock_ticker_extraction,
     verb_phrase_extraction,
+    percentage_extraction
 )
 
 from .premiums import (
@@ -78,6 +79,7 @@ for module in [
     noun_match_extraction,
     stock_ticker_extraction,
     verb_phrase_extraction,
+    percentage_extraction
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
