@@ -4,10 +4,6 @@ from enum import Enum
 class State(Enum):
     DRAFT = "draft"
     PUBLIC = "public"
-
-class Boolean(Enum):
-    TRUE = "true"
-    FALSE = "false"
     
 class SelectionType(Enum):
     STRING = "string"

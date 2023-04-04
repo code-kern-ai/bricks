@@ -1,5 +1,5 @@
 from util.configs import build_classifier_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, SelectionType, BricksVariableType, RefineryType
 from . import emotionality_detection, INPUT_EXAMPLE
 
 
@@ -11,5 +11,29 @@ def get_config():
         issue_id=97,
         tabler_icon="MoodSad2",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC
+        state=State.PUBLIC,
+        integrator_inputs={
+            "name": "emotionality_detection",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "outputs": [
+                "anger",
+                "fear",
+                "anticipation",
+                "trust",
+                "surprise",
+                "sadness",
+                "joy",
+                "disgust"
+            ],
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
+        }       
     )

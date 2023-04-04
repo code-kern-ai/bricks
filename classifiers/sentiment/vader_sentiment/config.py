@@ -1,5 +1,5 @@
 from util.configs import build_classifier_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, SelectionType, BricksVariableType
 from . import vader_sentiment, INPUT_EXAMPLE
 
 
@@ -41,3 +41,27 @@ def get_config():
             },
         },
     )
+integrator_inputs={
+    "name": "vader_sentiment",
+    "refineryDataType": RefineryDataType.TEXT.value,
+    "variables": {
+        "ATTRIBUTE": {
+            "selectionType": SelectionType.CHOICE.value,
+            "optional": "false",
+            "addInfo": [
+                BricksVariableType.ATTRIBUTE.value,
+                BricksVariableType.GENERIC_STRING.value
+            ]
+        },
+        "MODE": {
+            "selectionType": SelectionType.CHOICE.value,
+            "defaultValue": "classification",
+            "description": "choose \"scores\" to only get the sentiment scores as floats",
+            "optional": "false",
+            "addInfo": [
+                BricksVariableType.GENERIC_STRING.value
+            ]
+        }
+    }
+}
+

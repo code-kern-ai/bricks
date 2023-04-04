@@ -1,7 +1,6 @@
 ```python
 #expects labeling task to have labels ["anger", "fear", "anticipation", "trust", "surprise", "sadness", "joy", "disgust"]
 from LeXmo import LeXmo
-import nltk
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
