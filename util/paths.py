@@ -12,7 +12,7 @@ def snake_case_to_camel_case(text):
 
 def get_module_folders(base_folder):
     folders = os.listdir(base_folder)
-    ignore_these = ["__pycache__", "README.md", "util", "zero_shot", "__init__.py", ".DS_Store"]
+    ignore_these = ["__pycache__", "README.md", "util", "zero_shot", "__init__.py", ".DS_Store", "_template"]
     for item in ignore_these:
         try:
             folders.remove(item)
