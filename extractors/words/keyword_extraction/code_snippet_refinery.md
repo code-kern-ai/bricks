@@ -1,5 +1,6 @@
 ```python
 import re
+from typing import List
 from flashtext import KeywordProcessor
 
 YOUR_ATTRIBUTE: str = "text" # only text attributes
@@ -8,13 +9,13 @@ YOUR_LABEL: str = "keyword"
 
 def keyword_extraction(record):
     
-    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
+    text = record[YOUR_ATTRIBUTE] # SpaCy doc, hence we need to use .text to get the string.
     keyword_processor = KeywordProcessor()
     keyword_processor.add_keywords_from_list(YOUR_KEYWORDS)
     keyword_found = keyword_processor.extract_keywords(text, span_info=True)
     
     for keyword in keyword_found:
-        start, end = re.match(rf"({keyword})").span()
+        start, end = re.match(rf"({keyword})", text).span()
         span = record[YOUR_ATTRIBUTE].char_span(start, end)
         yield YOUR_LABEL, span.start, span.end
 ```

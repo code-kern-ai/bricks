@@ -15,6 +15,6 @@ def color_code_extraction(record):
     for regex in [hexcolor_regex, rgb_regex, hsl_regex, hwb_regex]:
         for match in regex.finditer(text):
             start, end = match.span()
-            span = doc.char_span(start, end, alignment_mode="expand")
+            span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
             yield YOUR_LABEL, span.start, span.end 
 ```

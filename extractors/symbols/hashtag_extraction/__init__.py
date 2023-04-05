@@ -3,7 +3,7 @@ from extractors.util.spacy import SpacySingleton
 import re
 
 INPUT_EXAMPLE = {
-    "text": "In tech industry, #devrel is a very hot topic",
+    "text": "In tech industry, #devrel is a very hot topic.",
     "spacyTokenizer": "en_core_web_sm",
 }
 
