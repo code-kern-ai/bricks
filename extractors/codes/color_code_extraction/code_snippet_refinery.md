@@ -13,6 +13,7 @@ def color_code_extraction(record):
     hwb_regex = re.compile(r"hwb\([^\)]*\)")
 
     for regex in [hexcolor_regex, rgb_regex, hsl_regex, hwb_regex]:
+        color_code_positions = []
         for match in regex.finditer(text):
             start, end = match.span()
             span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")

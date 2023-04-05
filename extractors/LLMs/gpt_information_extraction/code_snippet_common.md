@@ -9,7 +9,7 @@ text = ["My E-Mail address is jane.doe@gmail.com", "Our support mail is support@
 # add the texts to a dict called records. Add further information as key-value pairs if needed
 record = {
     "text": text,
-    "api_key": "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", # paste your OpenAI API key here
+    "api_key": "paste your key here", # paste your OpenAI API key here
     "extraction_keyword": "emails",
     "temperature": 0.0,
     "max_tokens": 64,

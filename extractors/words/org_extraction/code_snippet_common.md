@@ -2,12 +2,12 @@
 import spacy 
 
 # replace this list with a list containing your data
-text = ["A desktop with i7 processor costs 950 dollars in the US."]
+text = ["We are developers from Kern.ai."]
 
 # add the texts to a dict called records. Add further information as key-value pairs if needed
 record = {
     "text": text,
-    "label": "money",
+    "label": "org",
 }
 
 def org_extraction(record):
