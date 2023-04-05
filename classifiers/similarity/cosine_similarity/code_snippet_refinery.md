@@ -1,5 +1,5 @@
 ```python
-#expects labeling task to have labels ["Not similar", "Somewhat similar", "Very similar"]
+# expects labeling task to have labels ["Not similar", "Somewhat similar", "Very similar"]
 import numpy as np 
 from numpy import dot
 from numpy.linalg import norm

@@ -10,7 +10,6 @@ record = {
     "your_text": text,
 }
 
-
 def emotionality_detection(record):
     emotions = []
     for entry in record["your_text"]:

@@ -32,8 +32,8 @@ def get_config():
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }       
+                    ],
+                },
+            },
+        },      
     )
