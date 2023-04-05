@@ -3,10 +3,7 @@
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def part_of_speech_extraction(record):
-    """Yields POS tags using spaCy."""
-
     doc = record[YOUR_ATTRIBUTE]
-
     for token in doc:
             pos = token.pos_
             if pos:
