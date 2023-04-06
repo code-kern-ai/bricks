@@ -12,7 +12,8 @@ from .python_functions import (
     vader_sentiment,
 )
 from .premiums import (
-    gpt3_classifier
+    gpt3_classifier,
+    toxicity_classifier
 )
 
 router = APIRouter()
@@ -29,6 +30,7 @@ for module in [
     profanity_detection,
     gpt3_classifier,
     vader_sentiment,
+    toxicity_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
