@@ -12,6 +12,7 @@ def get_config():
         tabler_icon="Stack3",
         min_refinery_version="1.7.0",
         state=State.PUBLIC,
+        gdpr_compliant="True",
         type="python_function",
         kern_token_proxy_usable="False",
         docker_image="None",
@@ -32,7 +33,7 @@ def get_config():
                     ]
                 },
                 "N_WORDS": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 5,
                     "optional": "false",
                     "addInfo": [

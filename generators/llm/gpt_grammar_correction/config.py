@@ -12,11 +12,12 @@ def get_config():
         tabler_icon="Checks",
         min_refinery_version="1.8.0",
         state=State.PUBLIC,
+        gdpr_compliant="True",
         type="python_function",
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["LLMs", "not_gdpr_compliant"], # first entry should be parent directory
+        part_of_group=["llm", "not_gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "gpt_grammar_correction",
@@ -47,7 +48,7 @@ def get_config():
                     ]
                 },
                 "MAX_TOKENS": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 64,
                     "optional": "false",
                     "addInfo": [

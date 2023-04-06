@@ -12,6 +12,12 @@ def get_config():
         tabler_icon="WaveSine",
         min_refinery_version="1.7.0",
         state=State.PUBLIC,
+        gdpr_compliant="True",
+        type="python_function",
+        kern_token_proxy_usable="False",
+        docker_image="None",
+        available_for=["refinery", "common"],
+        part_of_group=["similarity", "gdpr_compliant"], # first entry should be parent directory
         integrator_inputs={
             "name": "cosine_similarity",
             "refineryDataType": RefineryDataType.TEXT.value,

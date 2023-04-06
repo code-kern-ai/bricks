@@ -32,7 +32,7 @@ def get_config():
                     ]
                 },
                 "WINDOW": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 4,
                     "description": "choose any window size here",
                     "optional": "false",

@@ -1,10 +1,10 @@
 from util.configs import build_extractor_premium_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from . import gpt3_information_extraction, INPUT_EXAMPLE
+from . import gpt_information_extraction, INPUT_EXAMPLE
 
 def get_config():
     return build_extractor_premium_config(
-        function=gpt3_information_extraction,
+        function=gpt_information_extraction,
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=193,
@@ -16,7 +16,7 @@ def get_config():
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["LLMs", "not_gdpr_compliant"], # first entry should be parent directory
+        part_of_group=["llm", "not_gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "gpt_information_extraction",
@@ -47,7 +47,7 @@ def get_config():
                     ]
                 },
                 "TEMPERATURE": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 0,
                     "optional": "false",
                     "addInfo": [
@@ -55,7 +55,7 @@ def get_config():
                     ]
                 },
                 "MAX_TOKENS": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 64,
                     "optional": "false",
                     "addInfo": [

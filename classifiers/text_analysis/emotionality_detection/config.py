@@ -17,7 +17,7 @@ def get_config():
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["distance", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=["text_analysis", "gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "emotionality_detection",

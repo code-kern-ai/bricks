@@ -40,7 +40,7 @@ def get_config():
                     ]
                 },
                 "WEIGHT_INSERTION": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 1,
                     "description": "Optional",
                     "optional": "false",
@@ -49,7 +49,7 @@ def get_config():
                     ]
                 },
                 "WEIGHT_DELETION": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 1,
                     "description": "Optional",
                     "optional": "false",
@@ -58,7 +58,7 @@ def get_config():
                     ]
                 },
                 "WEIGHT_SUBSTITUTION": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 1,
                     "description": "Optional",
                     "optional": "false",

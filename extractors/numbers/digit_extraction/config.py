@@ -32,7 +32,7 @@ def get_config():
                     ]
                 },
                 "MAX_NUMBER_LENGTH": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 4,
                     "description": "maximum amount of digits to be considered relevant",
                     "optional": "false",

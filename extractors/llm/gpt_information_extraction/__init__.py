@@ -12,7 +12,7 @@ INPUT_EXAMPLE = {
     "presencePenalty": 0.0
 }
 
-class Gpt3InformationExtractionModel(BaseModel):
+class GptInformationExtractionModel(BaseModel):
     apiKey: str
     prompt: str
     extractionKeyword: str
@@ -25,7 +25,7 @@ class Gpt3InformationExtractionModel(BaseModel):
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
-def gpt3_information_extraction(req: Gpt3InformationExtractionModel):
+def gpt_information_extraction(req: GptInformationExtractionModel):
     '''Uses OpenAI's GPT-3 model to extract keyword from a text.'''
     # Access openai via API key
     try: 
