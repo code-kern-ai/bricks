@@ -9,7 +9,7 @@ def get_config():
         input_example=INPUT_EXAMPLE, 
         data_type="text",
         issue_id=233,
-        tabler_icon="IconHtml",
-        min_refinery_version="1.9.0",
+        tabler_icon="BrandHtml5",
+        min_refinery_version="1.7.0",
         state=State.PUBLIC,
     )
