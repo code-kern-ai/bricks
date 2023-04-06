@@ -23,3 +23,4 @@ def bing_search(record):
     elif YOUR_RESPONSE_SIZE == "compact":
         return search_results["webPages"]["value"][0]["snippet"] # only returns text of first response
 ```
+

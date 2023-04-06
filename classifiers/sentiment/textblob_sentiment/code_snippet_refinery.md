@@ -28,5 +28,4 @@ set_all(outcomes, range(20, 60), "positive")
 set_all(outcomes, range(-20, 20), "neutral")
 set_all(outcomes, range(-60, -20), "negative")
 set_all(outcomes, range(YOUR_MIN_SCORE, -60), "very negative")
-
 ```
