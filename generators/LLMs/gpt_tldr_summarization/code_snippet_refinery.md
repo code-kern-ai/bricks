@@ -9,7 +9,7 @@ YOUR_TOP_P: float = 1.0
 YOUR_FREQUENCY_PENALTY: float = 0.0
 YOUR_PRESENCE_PENALTY: float = 1.0
 
-def gpt3_restaurant_review(record):
+def gpt_summarizer(record):
     """
     Uses OpenAIs GPT-3 model to classify texts. Visit https://beta.openai.com/docs/api-reference/completions/create for full documentation 
 
@@ -30,7 +30,7 @@ def gpt3_restaurant_review(record):
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"""
-            Write a restaurant review based on these notes:\n\n{record[YOUR_ATTRIBUTE].text}\n\nReview:""",
+            {record[YOUR_ATTRIBUTE].text}/n/nTl;dr""",
         temperature=YOUR_TEMPERATURE,
         max_tokens=YOUR_MAX_TOKENS,
         top_p=YOUR_TOP_P,

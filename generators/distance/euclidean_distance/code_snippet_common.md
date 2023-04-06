@@ -8,7 +8,7 @@ text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", 
 
 # add the texts to a dict called records. Add further information as key-value pairs if needed
 record = {
-    "your_text": text,
+    "text": text,
 }
 
 # function for the euclidean distance, should return a n*n matrix. n being the number of texts

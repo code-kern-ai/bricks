@@ -11,7 +11,7 @@ INPUT_EXAMPLE = {
     "presencePenalty": 0.0
 }
 
-class Gpt3GrammarCorrectionModel(BaseModel):
+class GptGrammarCorrectionModel(BaseModel):
     apiKey: str
     prompt: str
     temperature: float
@@ -23,7 +23,7 @@ class Gpt3GrammarCorrectionModel(BaseModel):
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
-def gpt3_grammar_correction(req: Gpt3GrammarCorrectionModel):
+def gpt_grammar_correction(req: GptGrammarCorrectionModel):
     '''GPT-3 model which can be used to classify text inputs.'''
     # Access openai via API key
     try: 

@@ -12,7 +12,7 @@ INPUT_EXAMPLE = {
 }
 
 
-class Gpt3TldrSummarizationModel(BaseModel):
+class GptTldrSummarizationModel(BaseModel):
     apiKey: str
     prompt: str
     temperature: float
@@ -25,7 +25,7 @@ class Gpt3TldrSummarizationModel(BaseModel):
         schema_example = {"example": INPUT_EXAMPLE}
 
 
-def gpt3_tldr_summarization(req: Gpt3TldrSummarizationModel):
+def gpt_tldr_summarization(req: GptTldrSummarizationModel):
     """GPT-3 model which can be used to summarise text inputs."""
     # Access openai via API key
     try:

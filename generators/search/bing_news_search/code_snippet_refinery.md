@@ -7,8 +7,7 @@ YOUR_API_KEY: str = "<API-KEY-GOES-HERE>"
 YOUR_MARKET: str = "en-US" # sets language, see all markets here: https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/market-codes
 YOUR_RESPONSE_SIZE: str = "full" # choose "compact" to only get text snippet of the first result
 
-def bing_search(record):
-    '''Uses Microsoft's Bing to retrieve search results for news articles.'''
+def bing_news_search(record):
     search_url = "https://api.bing.microsoft.com/v7.0/news/search"
 
     headers = {"Ocp-Apim-Subscription-Key" : YOUR_API_KEY}
