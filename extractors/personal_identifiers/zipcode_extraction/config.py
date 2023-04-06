@@ -1,5 +1,5 @@
 from util.configs import build_extractor_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import zipcode_extraction, INPUT_EXAMPLE
 
 
@@ -21,25 +21,34 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "zipcode_extraction",
-            "refineryDataType": "text",
-            "outputs":["zip code", "spanStart", "spanEnd"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                }, 
-                "countryID": {
-                    "selectionType": "string",
-                    "defaultValue": "DE",
-                    "description": "The country you want to extract zipcodes from.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "description": ".",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "label": {
-                    "selectionType": "string",
+                "COUNTRY_IDS": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "US",
+                    "description": "see list below for more countries",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                },
+                "LABEL": {
+                    "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "zip code",
-                    "description": "The label you want to assign to zip codes.",
-                    "optional": "False",
-                },
-            },
-        },
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
+        }
     )

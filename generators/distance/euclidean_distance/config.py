@@ -1,5 +1,5 @@
 from util.configs import build_generator_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import euclidean_distance, INPUT_EXAMPLE
 
 
@@ -21,19 +21,24 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "euclidean_distance",
-            "refineryDataType": "text",
-            "outputs": ["contains mistakes", "no mistakes"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                }, 
-                "baseSentence": {
-                    "selectionType": "string",
-                    "defaultValue": "The sun is not made out of pancakes.",
-                    "description": "The text you want to compare your records to.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-            },
-        },
+                "SUBJECT_TEXT": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "Ten amazing facts about the sun",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
+        }
     )

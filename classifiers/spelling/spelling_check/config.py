@@ -1,5 +1,5 @@
 from util.configs import build_classifier_function_config
-from util.enums import State
+from util.enums import State, BricksVariableType, RefineryDataType, SelectionType
 from . import spelling_check, INPUT_EXAMPLE
 
 def get_config():
@@ -21,25 +21,32 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "spelling_check",
-            "refineryDataType": "text",
-            "outputs": ["contains mistakes", "no mistakes"],
-            "additionalConstants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                },  
-                "labelMistake": {
-                    "selectionType": "string",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                },
+                "LABEL_MISTAKES": {
+                    "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "contains mistakes",
-                    "description": "The label for the output if the text contains spelling mistakes.",
-                    "optional": "False",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "labelNoMistake": {
-                    "selectionType": "string",
+                "LABEL_CORRECT": {
+                    "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "no mistakes",
-                    "description": "The label for the output if the text does not contain spelling mistakes.",
-                    "optional": "False",
-                },
-            },
-        },
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
+        }
     )

@@ -1,5 +1,5 @@
 from util.configs import build_extractor_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import person_extraction, INPUT_EXAMPLE
 
 
@@ -21,19 +21,24 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "person_extraction",
-            "refineryDataType": "text",
-            "outputs": ["name", "spanStart", "spanEnd"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                },  
-                "label": {
-                    "selectionType": "string",
-                    "defaultValue": "name",
-                    "description": "The label you want to assign to names.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-            },
-        },
+                "LABEL": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "name",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
+        }
     )

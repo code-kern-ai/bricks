@@ -1,5 +1,5 @@
 from util.configs import build_generator_premium_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import deepl_translator, INPUT_EXAMPLE
 
 
@@ -21,25 +21,33 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "deepl_translator",
-            "refineryDataType": "text",
-            "outputs": ["translated text"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "text",
-                    "defaultValue": "your-text",
-                },   
-                "apiKey": {
-                    "selectionType": "string",
-                    "defeaultValue": "YOUR_API_KEY",
-                    "description": "The DeepL Premium API key.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "targetLanguage": {
-                    "selectionType": "string",
-                    "defaultValue": "EN",
-                    "description": "The language to translate to. The original language is automatically detected.",
-                    "optional": "False",
+                "API_KEY": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "<api-key-goes-here>",
+                    "description": "Deepl API Key",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-            },
-        },
+                "TARGET_LANGUAGE": {
+                    "selectionType": SelectionType.STRING.value,
+                    "description": "only iso format",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.LANGUAGE.value
+                    ]
+                }
+            }
+        }
     )

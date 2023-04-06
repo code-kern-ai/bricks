@@ -21,47 +21,27 @@ def get_config():
         part_of_group=["sentiment", "gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "globalComment": "Only for english text.",
             "name": "vader_sentiment",
-            "refineryDataType": "text",
-            "outputs": ["positive" ,"neutral", "negative"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                    "addInfo": [] # enum for only text etc or additional information 
-                },  
-                "mode": {
-                    "selectionType": "choice", # should be enum
-                    "allowedValues": ["classification", "scores"],
-                    "defaultValue": "classification",
-                    "description": "Choose classification to return either positive, neutral or negative. Choose scores to retrieve a float score.",
-                    "optional": "False", # should be enum
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-            },
-        },
-    )
-integrator_inputs={
-    "name": "vader_sentiment",
-    "refineryDataType": RefineryDataType.TEXT.value,
-    "variables": {
-        "ATTRIBUTE": {
-            "selectionType": SelectionType.CHOICE.value,
-            "optional": "false",
-            "addInfo": [
-                BricksVariableType.ATTRIBUTE.value,
-                BricksVariableType.GENERIC_STRING.value
-            ]
-        },
-        "MODE": {
-            "selectionType": SelectionType.CHOICE.value,
-            "defaultValue": "classification",
-            "description": "choose \"scores\" to only get the sentiment scores as floats",
-            "optional": "false",
-            "addInfo": [
-                BricksVariableType.GENERIC_STRING.value
-            ]
+                "MODE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "classification",
+                    "description": "choose \"scores\" to only get the sentiment scores as floats",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
         }
-    }
-}
+    )
 

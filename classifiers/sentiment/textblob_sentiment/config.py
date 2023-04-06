@@ -1,5 +1,5 @@
 from util.configs import build_classifier_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import textblob_sentiment, INPUT_EXAMPLE
 
 
@@ -22,27 +22,39 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "textblob_sentiment",
-            "refineryDataType": "text",
-            "possibleOutputs": ["very positive", "positive" ,"neutral", "negative", "very negative"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                },  
-                "minScore": {
-                    "selectionType": "range",
-                    "defaultValue": -100,
-                    "allowedValueRange": [-100, 0], # from -100 to 0
-                    "description": "The lowest possible sentiment score.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "outputs": [
+                "very positive",
+                "positive",
+                "neutral",
+                "negative",
+                "very negative"
+            ],
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "maxScore": {
-                    "selectionType": "range",
+                "MAX_SCORE": {
+                    "selectionType": SelectionType.INT.value,
                     "defaultValue": 100,
-                    "allowedValueRange": [1, 100], # from 1 to 100
-                    "description": "The highest possible sentiment score.",
-                    "optional": "False",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_INT.value
+                    ]
                 },
-            },
-        },
+                "MIN_SCORE": {
+                    "selectionType": SelectionType.INT.value,
+                    "defaultValue": -100,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_INT.value
+                    ]
+                }
+            }
+        }
     )

@@ -1,5 +1,5 @@
 from util.configs import build_generator_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import language_translator, INPUT_EXAMPLE
 
 
@@ -17,29 +17,36 @@ def get_config():
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["translation", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=["translation", "not_gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "language_translator",
-            "refineryDataType": "text",
-            "outputs": ["translated text"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                },  
-                "originalLanguage": {
-                    "selectionType": "string",
-                    "defaultValue": "en",
-                    "description": "The language of the text that is to be translated.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "targetLanguage": {
-                    "selectionType": "string",
-                    "defaultValue": "de",
-                    "description": "The language to translate to. The original language is automatically detected.",
-                    "optional": "False",
+                "ORIGINAL_LANGUAGE": {
+                    "selectionType": SelectionType.STRING.value,
+                    "description": "only iso format",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.LANGUAGE.value
+                    ]
                 },
-            },
-        },
+                "TARGET_LANGUAGE": {
+                    "selectionType": SelectionType.STRING.value,
+                    "description": "only iso format",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.LANGUAGE.value
+                    ]
+                }
+            }
+        }
     )

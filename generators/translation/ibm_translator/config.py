@@ -1,5 +1,5 @@
 from util.configs import build_generator_premium_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import ibm_translator, INPUT_EXAMPLE
 
 
@@ -21,38 +21,40 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "ibm_translator",
-            "refineryDataType": "text",
-            "outputs": ["translated text"],
+            "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
-                "YOUR_ATTRIBUTE": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "",
-                    "refineryType": "attribute",
-                }, 
-                "API_KEY": {
-                    "selectionType": "string",
-                    "defaultValue": "<your-api-key>",
-                    "description": "The IBM Watson translation service API key.",
-                    "optional": "False",
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "ibmUrl": {
-                    "selectionType": "string",
-                    "defaultValue": "<your-resource-url>",
-                    "description": "The URL for the IBM Watson Language Translator resource.",
-                    "optional": "False",
+                "IBM_URL": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "<RESOURCE_URL_GOES_HERE",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "originalLanguage": {
-                    "selectionType": "string",
+                "ORIGIN_LANG": {
+                    "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "en",
-                    "description": "The language of the text that is to be translated.",
-                    "optional": "False",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "targetLanguage": {
-                    "selectionType": "string",
+                "TARGET_LANG": {
+                    "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "de",
-                    "description": "The language to translate to. The original language is automatically detected.",
-                    "optional": "False",
-                },
-            },
-        },
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
+        }
     )

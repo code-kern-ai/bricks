@@ -1,5 +1,5 @@
 from util.configs import build_extractor_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import address_extraction, INPUT_EXAMPLE
 
 
@@ -22,19 +22,24 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "address_extraction",
-            "refineryDataType": "text",
-            "outputs": ["address", "spanStart", "spanEnd"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                },  
-                "label": {
-                    "selectionType": "string",
-                    "defaultValue": "address",
-                    "description": "The label you want to assign to addresses.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-            },
-        },
+                "LABEL": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "address",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
+        }
     )

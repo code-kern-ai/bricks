@@ -1,5 +1,5 @@
 from util.configs import build_extractor_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import email_extraction, INPUT_EXAMPLE
 
 
@@ -21,19 +21,24 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "email_extraction",
-            "refineryDataType": "text",
-            "outputs": ["email", "spanStart", "spanEnd"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                },  
-                "label": {
-                    "selectionType": "string",
-                    "defaultValue": "email",
-                    "description": "The label you want to assign to emails.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-            },
-        },
+                "LABEL": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "email",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                }
+            }
+        }
     )

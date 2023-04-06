@@ -1,5 +1,5 @@
 from util.configs import build_generator_function_config
-from util.enums import State
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import levenshtein_distance, INPUT_EXAMPLE
 
 
@@ -21,37 +21,51 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "levenshtein_distance",
-            "refineryDataType": "text",
-            "outputs": ["contains mistakes", "no mistakes"],
-            "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
-                    "selectionType": "string",
-                    "defaultValue": "your-text",
-                }, 
-                "baseSentence": {
-                    "selectionType": "string",
-                    "defaultValue": "The sun is not made out of pancakes.",
-                    "description": "The text you want to compare your records to.",
-                    "optional": "False",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "BASE_SENTENCE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "This is a base sentence to compare to.",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
                 },
-                "weightInsertion": {
-                    "selectionType": "int",
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                },
+                "WEIGHT_INSERTION": {
+                    "selectionType": SelectionType.INT.value,
                     "defaultValue": 1,
-                    "description": "Weight for the insertion parameter.",
-                    "optional": "False",
+                    "description": "Optional",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_INT.value
+                    ]
                 },
-                "weightDeletion": {
-                    "selectionType": "int",
+                "WEIGHT_DELETION": {
+                    "selectionType": SelectionType.INT.value,
                     "defaultValue": 1,
-                    "description": "Weight for the deletion parameter.",
-                    "optional": "False",
+                    "description": "Optional",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_INT.value
+                    ]
                 },
-                "weightSubstitution": {
-                    "selectionType": "int",
+                "WEIGHT_SUBSTITUTION": {
+                    "selectionType": SelectionType.INT.value,
                     "defaultValue": 1,
-                    "description": "Weight for the deletion parameter.",
-                    "optional": "False",
-                },
-            },
-        },
+                    "description": "Optional",
+                    "optional": "false",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_INT.value
+                    ]
+                }
+            }
+        }
     )
