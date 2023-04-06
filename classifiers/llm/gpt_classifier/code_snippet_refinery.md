@@ -10,7 +10,7 @@ YOUR_TOP_P: float = 1.0
 YOUR_FREQUENCY_PENALTY: float = 0.0 
 YOUR_PRESENCE_PENALTY: float = 0.0 
 
-def gpt3_classifier(record):
+def gpt_classifier(record):
     """
     Uses OpenAIs GPT-3 model to classify texts. Visit https://beta.openai.com/docs/api-reference/completions/create for full documentation 
 

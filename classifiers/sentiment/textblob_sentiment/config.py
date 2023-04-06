@@ -40,7 +40,7 @@ def get_config():
                     ]
                 },
                 "MAX_SCORE": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 100,
                     "optional": "false",
                     "addInfo": [
@@ -48,7 +48,7 @@ def get_config():
                     ]
                 },
                 "MIN_SCORE": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": -100,
                     "optional": "false",
                     "addInfo": [

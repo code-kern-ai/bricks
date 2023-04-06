@@ -9,6 +9,8 @@ class SelectionType(Enum):
     STRING = "string"
     CHOICE = "choice"
     RANGE = "range"
+    INTEGER = "integer"
+    FLOAT = "float"
 
 class BricksVariableType(Enum):
     ATTRIBUTE = "attribute",

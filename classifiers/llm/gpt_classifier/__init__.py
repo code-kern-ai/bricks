@@ -12,7 +12,7 @@ INPUT_EXAMPLE = {
     "presencePenalty": 0.0
 }
 
-class Gpt3ClassifierModel(BaseModel):
+class GptClassifierModel(BaseModel):
     apiKey: str
     prompt: str
     classifyBy: str
@@ -25,7 +25,7 @@ class Gpt3ClassifierModel(BaseModel):
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
-def gpt3_classifier(req: Gpt3ClassifierModel):
+def gpt_classifier(req: GptClassifierModel):
     '''GPT-3 model which can be used to correct the grammar of text inputs.'''
     # Access openai via API key
     try: 

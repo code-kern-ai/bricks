@@ -1,11 +1,11 @@
 from util.configs import build_classifier_premium_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from . import gpt3_classifier, INPUT_EXAMPLE
+from . import gpt_classifier, INPUT_EXAMPLE
 
 
 def get_config():
     return build_classifier_premium_config(
-        function=gpt3_classifier,
+        function=gpt_classifier,
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=168,
@@ -20,7 +20,7 @@ def get_config():
         part_of_group=["LLMs", "not_gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "gpt3_classifier",
+            "name": "gpt_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "API_KEY": {
@@ -56,7 +56,7 @@ def get_config():
                     ]
                 },
                 "MAX_TOKENS": {
-                    "selectionType": SelectionType.INT.value,
+                    "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 64,
                     "optional": "false",
                     "addInfo": [
