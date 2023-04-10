@@ -30,7 +30,7 @@ def filetype_extraction(req: FiletypeExtractionModel):
     doc = nlp(text)
     
     patterns = [re.compile(fr"(?<=\w)\{filetype}(\b)(?!\.)", re.IGNORECASE) for filetype in file_types_json]
-    # covers tricky cases, like files with an extension as part of their names or extensions mentioned on their own.
+    # covers some tricky cases, like files with an extension as part of their names or extensions mentioned on their own.
     # does not check if filename is valid or if it ends with a valid character.
     
     filetypes = defaultdict(list)
