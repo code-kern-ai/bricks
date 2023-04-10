@@ -10,7 +10,7 @@ with open('extractors/python_functions/filetype_extraction/file_types.json') as 
 
 def filetype_extraction(record):
     text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
-
+    
     patterns = [re.compile(fr"(?<=\w)\{filetype}(\b)(?!\.)", re.IGNORECASE) for filetype in file_types_json]
     filetypes = defaultdict(list)
 
