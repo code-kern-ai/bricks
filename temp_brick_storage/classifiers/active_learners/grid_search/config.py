@@ -10,5 +10,5 @@ def get_config():
         issue_id=48,
         tabler_icon="ChartGridDots",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
     )

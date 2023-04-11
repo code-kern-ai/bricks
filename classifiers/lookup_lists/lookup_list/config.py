@@ -10,7 +10,7 @@ def get_config():
         issue_id=26,
         tabler_icon="ClipboardList",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
         gdpr_compliant="True",
         type="python_function",
         kern_token_proxy_usable="False",

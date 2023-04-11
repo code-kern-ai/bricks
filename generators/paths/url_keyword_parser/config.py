@@ -11,7 +11,7 @@ def get_config():
         issue_id=163,
         tabler_icon="Cut",
         min_refinery_version="1.8.1",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
         gdpr_compliant="True",
         type="python_function",
         kern_token_proxy_usable="False",

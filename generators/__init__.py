@@ -34,14 +34,14 @@ from .summarization import (
     text_summarisation,
 )
 
-from text_analytics import (
+from .text_analytics import (
     most_frequent_words,
     phonetic_soundex,
     reading_time,
     syllable_count,
 )
 
-from text_cleaning import (
+from .text_cleaning import (
     html_cleanser,
 )
 

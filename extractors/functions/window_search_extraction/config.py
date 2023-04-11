@@ -10,7 +10,7 @@ def get_config():
         data_type="text",
         issue_id=41,
         tabler_icon="AppWindow",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
         min_refinery_version="1.7.0",
         gdpr_compliant="True",
         type="python_function",

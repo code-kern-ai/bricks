@@ -11,7 +11,7 @@ def get_config():
         issue_id=60,  # you need to look this up in the issues https://github.com/code-kern-ai/bricks/issues
         tabler_icon="ColorSwatch",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,  # make this State.PUBLIC when you are ready to publish
+        state=State.PUBLIC.value,
         gdpr_compliant="True",
         type="python_function",
         kern_token_proxy_usable="False",

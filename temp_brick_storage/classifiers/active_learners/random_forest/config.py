@@ -10,5 +10,5 @@ def get_config():
         issue_id=51,
         tabler_icon="BinaryTree2",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
     )

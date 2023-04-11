@@ -11,5 +11,5 @@ def get_config():
         issue_id=157,
         tabler_icon="MoodCrazyHappy",
         min_refinery_version="1.8.0",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
     )

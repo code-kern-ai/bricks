@@ -10,5 +10,5 @@ def get_config():
         issue_id=49,
         tabler_icon="ArrowsRandom",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
     )
