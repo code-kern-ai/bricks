@@ -10,9 +10,7 @@ from .lemmatizer import (
     spacy_lemmatizer,
 )
 
-from .paths import (
-    url_keyword_parser
-)
+from .paths import url_keyword_parser
 
 from .search import (
     bing_news_search,
