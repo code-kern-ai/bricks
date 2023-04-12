@@ -21,7 +21,7 @@ def spelling_check(record):
             misspells.append(text_original[i])
 
     if len(misspells) > 0:
-        return {"mistakes": YOUR_LABEL_MISTAKES}
+        return YOUR_LABEL_MISTAKES
     else:
-        return {"mistakes": YOUR_LABEL_CORRECT}
+        return YOUR_LABEL_CORRECT
 ```

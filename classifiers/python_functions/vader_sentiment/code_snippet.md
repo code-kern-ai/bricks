@@ -11,12 +11,12 @@ def vader_sentiment(record):
     vs = analyzer.polarity_scores(text)
     if YOUR_MODE == "classification":
         if vs["compound"] >= 0.05:
-            return {"sentiment": "positive"}
+            return "positive"
         elif vs["compound"] > -0.05: 
-            return {"sentiment": "neutral"}
+            return "neutral"
         elif vs["compound"] <= -0.05:
-            return {"sentiment": "negative"}
+            return "negative"
     elif YOUR_MODE == "scores": 
-        return {"sentiment_scores": vs}
+        return vs
 
 ```
