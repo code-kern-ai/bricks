@@ -35,6 +35,7 @@ def get_config():
                 "MODE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "classification",
+                    "allowedValues": ["classification", "scores"],
                     "description": "choose \"scores\" to only get the sentiment scores as floats",
                     "optional": "false",
                     "addInfo": [
