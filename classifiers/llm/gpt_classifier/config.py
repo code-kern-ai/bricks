@@ -12,7 +12,7 @@ def get_config():
         tabler_icon="MoodHappy",
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="True",
+        gdpr_compliant="False",
         type="python_function",
         kern_token_proxy_usable="False",
         docker_image="None",
