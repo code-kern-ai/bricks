@@ -4,7 +4,11 @@ from dotenv import load_dotenv
 import requests
 from importlib import import_module
 from typing import Dict, Any
-from util.paths import camel_case_to_snake_case, snake_case_to_camel_case, get_module_folders
+from util.paths import (
+    camel_case_to_snake_case,
+    snake_case_to_camel_case,
+    get_module_folders,
+)
 from util.enums import State
 import fire
 from wasabi import msg
@@ -111,17 +115,17 @@ class CMS:
         """
 
         moduleType = module_dir.split("/")[0][:-1]  # remove the trailing 's'
-        executionType = snake_case_to_camel_case(module_dir.split("/")[1])[:-1]
+        executionType = snake_case_to_camel_case(module_dir.split("/")[1])
         sub_dir = module_dir.split("/")[2]
         config_path = os.path.join(module_dir, "config.py")
         if os.path.exists(config_path):
             print(f"Processing {config_path}")
             config_module = import_module(
-                f"{moduleType}s.{camel_case_to_snake_case(executionType)}s.{sub_dir}.config"
+                f"{moduleType}s.{camel_case_to_snake_case(executionType)}.{sub_dir}.config"
             )
             config, state = config_module.get_config()
 
-            if state == State.PUBLIC:
+            if state == State.PUBLIC.value:
                 module_exists, module_data = check_module_exists(config)
                 if module_exists:
                     module_data = module_data[0]
@@ -198,7 +202,7 @@ def update_module(config: Dict[str, Any]):
                 "markdownDescription": config["markdownDescription"],
                 "sourceCodeRefinery": config["sourceCodeRefinery"],
                 "sourceCodeCommon": config["sourceCodeCommon"],
-                "minRefineryVersion": config["minRefineryVersion"],#
+                "minRefineryVersion": config["minRefineryVersion"],  #
                 "gdprCompliant": config["gdprCompliant"],
                 "kernTokenProxyUsable": config["kernTokenProxyUsable"],
                 "dockerImage": config["dockerImage"],

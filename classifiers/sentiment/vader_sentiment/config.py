@@ -18,7 +18,10 @@ def get_config():
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["sentiment", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "sentiment",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "vader_sentiment",
@@ -29,19 +32,17 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "MODE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "classification",
-                    "description": "choose \"scores\" to only get the sentiment scores as floats",
+                    "description": 'choose "scores" to only get the sentiment scores as floats',
+                    "allowedValues": ["classification", "scores"],
                     "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+            },
+        },
     )
-
