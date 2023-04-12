@@ -36,6 +36,7 @@ def get_config():
                     "defaultValue": "Ticker",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

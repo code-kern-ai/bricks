@@ -46,6 +46,7 @@ def get_config():
                     "description": "Choose any available label here",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

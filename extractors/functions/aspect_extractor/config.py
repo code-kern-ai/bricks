@@ -54,6 +54,7 @@ def get_config():
                     "defaultValue": "negative",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
@@ -62,6 +63,7 @@ def get_config():
                     "defaultValue": "positive",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

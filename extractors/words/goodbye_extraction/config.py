@@ -37,6 +37,7 @@ def get_config():
                     "defaultValue": "goodbye",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

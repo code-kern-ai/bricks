@@ -36,6 +36,7 @@ def get_config():
                     "defaultValue": "profane",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
@@ -44,6 +45,7 @@ def get_config():
                     "defaultValue": "not_profane",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

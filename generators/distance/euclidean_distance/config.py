@@ -36,6 +36,7 @@ def get_config():
                     "defaultValue": "Ten amazing facts about the sun",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

@@ -45,6 +45,7 @@ def get_config():
                     "defaultValue": "digit",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

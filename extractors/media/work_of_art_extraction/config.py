@@ -36,6 +36,7 @@ def get_config():
                     "defaultValue": "work of art",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

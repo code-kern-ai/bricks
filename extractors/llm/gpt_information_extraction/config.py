@@ -43,6 +43,7 @@ def get_config():
                     "defaultValue": "names",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },

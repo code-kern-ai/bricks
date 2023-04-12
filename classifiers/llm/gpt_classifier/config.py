@@ -44,12 +44,14 @@ def get_config():
                     "defaultValue": "emotional sentiment",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
                 "TEMPERATURE": {
                     "selectionType": SelectionType.FLOAT.value,
                     "defaultValue": 0,
+                    "allowedRange": [0, 100] 
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.GENERIC_FLOAT.value

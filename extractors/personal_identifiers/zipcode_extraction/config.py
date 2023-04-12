@@ -46,6 +46,7 @@ def get_config():
                     "defaultValue": "zip code",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

@@ -36,6 +36,7 @@ def get_config():
                     "defaultValue": "isbn",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }

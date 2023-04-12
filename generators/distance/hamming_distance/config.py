@@ -36,6 +36,7 @@ def get_config():
                     "defaultValue": "This is the base sentence you want to find the distances to.",
                     "optional": "false",
                     "addInfo": [
+                        BricksVariableType.LABEL.value, 
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }
