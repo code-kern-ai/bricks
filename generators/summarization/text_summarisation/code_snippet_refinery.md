@@ -3,10 +3,10 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 from heapq import nlargest
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
+ATTRIBUTE: str = "text" # only text attributes
 
 def summarize(record, per):
-    text=record[YOUR_ATTRIBUTE].text
+    text=record[ATTRIBUTE].text
     word_frequencies={}
     for word in text:
         if word.text.lower() not in list(STOP_WORDS):

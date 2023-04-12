@@ -2,10 +2,10 @@
 # expects labeling task to have labels ["subjective", "rather subjective" ,"neutral", "rather objective", "objective"]
 from textblob import TextBlob
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
+ATTRIBUTE: str = "text" # only text attributes
 
 def textblob_subjectivity(record):    
-    blob = TextBlob(record[YOUR_ATTRIBUTE].text) # SpaCy document, hence we need to call .text to get the string
+    blob = TextBlob(record[ATTRIBUTE].text) # SpaCy document, hence we need to call .text to get the string
     return get_mapping_subjectivity(blob.sentiment.subjectivity * 100)
 
 def set_all(d, keys, value):

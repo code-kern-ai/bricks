@@ -3,13 +3,13 @@ import numpy as np
 from scipy.spatial.distance import hamming
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_BASE_SENTENCE: str = "This is the base sentence you want to find the distances to." 
+ATTRIBUTE: str = "text" # only text attributes
+BASE_SENTENCE: str = "This is the base sentence you want to find the distances to." 
 
 def hamming_distance(record):
 
-    text_one = YOUR_BASE_SENTENCE
-    text_two = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
+    text_one = BASE_SENTENCE
+    text_two = record[ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 
     tfidf = TfidfVectorizer().fit_transform([text_one, text_two])
 

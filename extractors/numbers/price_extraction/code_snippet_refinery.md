@@ -1,11 +1,11 @@
 ```python
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_LABEL: str = "price"
+ATTRIBUTE: str = "text" # only text attributes
+LABEL: str = "price"
 
 def price_extraction(record):
-    doc = record[YOUR_ATTRIBUTE] # SpaCy doc
+    doc = record[ATTRIBUTE] # SpaCy doc
 
     for entity in doc.ents:
         if entity.label_ == 'MONEY':
-            yield YOUR_LABEL, entity.start, entity.end
+            yield LABEL, entity.start, entity.end
 ```

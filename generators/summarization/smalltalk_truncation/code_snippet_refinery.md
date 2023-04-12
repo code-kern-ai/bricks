@@ -5,12 +5,12 @@ from nltk.corpus import stopwords
 #currently only english language is supported here
 #reach out to us if this should be extended for other languages
 
-YOUR_ATTRIBUTE: str = "text" #only text attributes
+ATTRIBUTE: str = "text" #only text attributes
 
 def smalltalk_truncation(record):
     sw = stopwords.words("english")
     regex = re.compile(r"\".*?\"")
-    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get string.
+    text = record[ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get string.
 
     removed_smalltalk = []
     for message in regex.findall(text):

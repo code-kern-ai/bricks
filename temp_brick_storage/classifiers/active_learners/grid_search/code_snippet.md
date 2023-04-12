@@ -3,9 +3,9 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from typing import List
 
-YOUR_EMBEDDING: str = "headline-classification-distilbert-base-uncased" # pick this from the options above
-YOUR_MIN_CONFIDENCE: float = 0.8
-YOUR_LABELS: List[str] = None # optional, you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
+EMBEDDING: str = "headline-classification-distilbert-base-uncased" # pick this from the options above
+MIN_CONFIDENCE: float = 0.8
+LABELS: List[str] = None # optional, you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
 
 class MyGrid(LearningClassifier):
     
@@ -21,7 +21,7 @@ class MyGrid(LearningClassifier):
         self.model = GridSearchCV(self.base_classifier, self.param_grid)
 
     @params_fit(
-        embedding_name = YOUR_EMBEDDING, 
+        embedding_name = EMBEDDING, 
         train_test_split = 0.5 # we currently have this fixed, but you'll soon be able to specify this individually!
     )
 
@@ -29,8 +29,8 @@ class MyGrid(LearningClassifier):
         self.model.fit(embeddings, labels)
 
     @params_inference(
-        min_confidence = YOUR_MIN_CONFIDENCE,
-        label_names = YOUR_LABELS 
+        min_confidence = MIN_CONFIDENCE,
+        label_names = LABELS 
     )
 
     def predict_proba(self, embeddings):

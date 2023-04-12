@@ -1,3 +1,3 @@
 **Only works with refinery version > 1.7.1**  
 
-Uses Google engine to retrieve search results. This module requires an API key, which can be obtained at https://serpapi.com/. In refinery, set YOUR_RESPONSE_SIZE to "full" to get the full response as a JSON (stored as string) or choose "compact" to only get the text of the first result. Please contact the Kern AI Team if you need further support at info@kern.ai or join our Discord channel: https://discord.gg/WAnAgQEv 
+Uses Google engine to retrieve search results. This module requires an API key, which can be obtained at https://serpapi.com/. In refinery, set RESPONSE_SIZE to "full" to get the full response as a JSON (stored as string) or choose "compact" to only get the text of the first result. Please contact the Kern AI Team if you need further support at info@kern.ai or join our Discord channel: https://discord.gg/WAnAgQEv 

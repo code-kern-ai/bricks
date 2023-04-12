@@ -1,13 +1,13 @@
 ```python
 import openai
 
-YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_TEMPERATURE: float = 0.0
-YOUR_MAX_TOKENS: int = 64
-YOUR_TOP_P: float = 1.0
-YOUR_FREQUENCY_PENALTY: float = 0.0
-YOUR_PRESENCE_PENALTY: float = 0.0
+API_KEY: str = "<API_KEY_GOES_HERE>"
+ATTRIBUTE: str = "text" # only text attributes
+TEMPERATURE: float = 0.0
+MAX_TOKENS: int = 64
+TOP_P: float = 1.0
+FREQUENCY_PENALTY: float = 0.0
+PRESENCE_PENALTY: float = 0.0
 
 def gpt_grammar_correction(record):
     """
@@ -25,18 +25,18 @@ def gpt_grammar_correction(record):
     - presence_penalty: Value between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     """
     # Access openai via API key
-    openai.api_key = YOUR_API_KEY
+    openai.api_key = API_KEY
 
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"""
             Correct this to standard English:\n
-            {record[YOUR_ATTRIBUTE].text}""",
-        temperature=YOUR_TEMPERATURE,
-        max_tokens=YOUR_MAX_TOKENS,
-        top_p=YOUR_TOP_P,
-        frequency_penalty=YOUR_FREQUENCY_PENALTY,
-        presence_penalty=YOUR_PRESENCE_PENALTY
+            {record[ATTRIBUTE].text}""",
+        temperature=TEMPERATURE,
+        max_tokens=MAX_TOKENS,
+        top_p=TOP_P,
+        frequency_penalty=FREQUENCY_PENALTY,
+        presence_penalty=PRESENCE_PENALTY
     )
 
     return response["choices"][0]["text"]

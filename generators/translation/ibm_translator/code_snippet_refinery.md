@@ -2,20 +2,20 @@
 import requests
 from typing import List
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
+ATTRIBUTE: str = "text" # only text attributes
 API_KEY: str = "<API_KEY_GOES_HERE>"
-YOUR_IBM_URL: str = "<RESOURCE_URL_GOES_HERE"
-YOUR_ORIGIN_LANG: str = "en"
-YOUR_TARGET_LANG: str = "de"
+IBM_URL: str = "<RESOURCE_URL_GOES_HERE"
+ORIGIN_LANG: str = "en"
+TARGET_LANG: str = "de"
 
 
 def ibm_translator(record):
     headers = {'Content-Type': 'application/json'}
-    data = '{"text":'+f'["{record[YOUR_ATTRIBUTE].text}"], '+'"model_id":'+f'"{YOUR_ORIGIN_LANG}-'+f'{YOUR_TARGET_LANG}"'+'}'
-    auth = ('apikey', YOUR_API_KEY)
+    data = '{"text":'+f'["{record[ATTRIBUTE].text}"], '+'"model_id":'+f'"{ORIGIN_LANG}-'+f'{TARGET_LANG}"'+'}'
+    auth = ('apikey', API_KEY)
 
     response = requests.post(
-        YOUR_IBM_URL, 
+        IBM_URL, 
         headers=headers,
         data=data, 
         auth=auth

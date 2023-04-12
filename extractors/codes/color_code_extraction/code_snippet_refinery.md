@@ -1,11 +1,11 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_LABEL: str = "color"
+ATTRIBUTE: str = "text" # only text attributes
+LABEL: str = "color"
 
 def color_code_extraction(record):
-    text = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
+    text = record[ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string
 
     hexcolor_regex = re.compile(r"#([0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{4}|[0-9a-fA-F]{3})(?![0-9a-fA-F])")
     rgb_regex = re.compile(r"(rgba|rgb)\([^\)]*\)")
@@ -16,6 +16,6 @@ def color_code_extraction(record):
         color_code_positions = []
         for match in regex.finditer(text):
             start, end = match.span()
-            span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-            yield YOUR_LABEL, span.start, span.end 
+            span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
+            yield LABEL, span.start, span.end 
 ```

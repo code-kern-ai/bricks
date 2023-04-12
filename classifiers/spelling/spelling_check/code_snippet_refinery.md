@@ -1,12 +1,12 @@
 ```python
 from nltk.corpus import words, brown
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_LABEL_MISTAKES: str = "contains mistakes"
-YOUR_LABEL_CORRECT: str = "no mistakes"
+ATTRIBUTE: str = "text" # only text attributes
+LABEL_MISTAKES: str = "contains mistakes"
+LABEL_CORRECT: str = "no mistakes"
 
 def spelling_check(record):
-    text = record[YOUR_ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
+    text = record[ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
 
     words_corpus = words.words()
     brown_corpus = brown.words()
@@ -21,7 +21,7 @@ def spelling_check(record):
             misspells.append(text_original[i])
 
     if len(misspells) > 0:
-        return YOUR_LABEL_MISTAKES
+        return LABEL_MISTAKES
     else:
-        return YOUR_LABEL_CORRECT
+        return LABEL_CORRECT
 ```

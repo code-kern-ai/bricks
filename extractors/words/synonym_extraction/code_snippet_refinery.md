@@ -5,14 +5,14 @@ import re
 # currently only english language is supported here
 # reach out to us if this should be extended for other languages
 
-YOUR_TARGET_WORD: str = "soccer"
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_LABEL: str = "synonym"
+TARGET_WORD: str = "soccer"
+ATTRIBUTE: str = "text" # only text attributes
+LABEL: str = "synonym"
 
 def synonym_extraction(record):
     # find synonyms to a word using Wordnet
     synonyms = []
-    for syn in wordnet.synsets(YOUR_TARGET_WORD):
+    for syn in wordnet.synsets(TARGET_WORD):
         for i in syn.lemmas():
             synonyms.append(i.name())
             
@@ -20,7 +20,7 @@ def synonym_extraction(record):
     split_synonyms = [item.split(sep="_") for item in synonyms]
     combined_synonyms = [item for sublist in split_synonyms for item in sublist]
 
-    text = record[YOUR_ATTRIBUTE].text # spaCy doc, hence we need to use .text to get the string.
+    text = record[ATTRIBUTE].text # spaCy doc, hence we need to use .text to get the string.
 
     # extracted words are sometimes connected by an underscore, which we want to remove   
     for word in combined_synonyms:
@@ -29,8 +29,8 @@ def synonym_extraction(record):
             match = re.search(pattern, text)
 
             start, end = match.span()
-            span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-            yield YOUR_LABEL, span.start, span.end
+            span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
+            yield LABEL, span.start, span.end
         except:
             pass
 ```

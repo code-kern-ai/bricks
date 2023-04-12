@@ -2,8 +2,8 @@
 import re
 import spacy
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_LABEL: str = "time"
+ATTRIBUTE: str = "text" # only text attributes
+LABEL: str = "time"
 
 # replace this list with a list containing your data
 text = ["Right now it is 14:40:37.", "Three hours ago it was 11:40 am. Two hours and twenty mins from now it will be 5PM.",]
@@ -27,7 +27,7 @@ def time_extraction(record):
         for match in regex.finditer(entry):
             start, end = match.span()
             span = doc.char_span(start, end, alignment_mode="expand")
-            time_positions.append({f"text_{text_id}": [YOUR_LABEL, span.start, span.end]})
+            time_positions.append({f"text_{text_id}": [LABEL, span.start, span.end]})
         text_id += 1
     return {"extractions": time_positions}
 ```

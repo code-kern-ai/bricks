@@ -18,11 +18,11 @@ def zipcode_extraction(record: dict) -> dict:
     zipcode_positions = []
     text_id = 0
     for entry in record["your_text"]:
-        for country_id in YOUR_COUNTRY_IDS:
+        for country_id in COUNTRY_IDS:
             match = re.search(zip_codes[country_id], entry)
 
             start, end = match.span()
-            span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
+            span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
 
             zipcode_positions.append({f"text_{text_id}" :[record["label"], span.start, span.end]})
         text_id += 1

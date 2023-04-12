@@ -1,6 +1,6 @@
 ```python
-YOUR_ATTRIBUTE: str = "text"
+ATTRIBUTE: str = "text"
 
 def spacy_lemmatizer(record):
-    return " ".join([token.lemma_ for token in record[YOUR_ATTRIBUTE]])
+    return " ".join([token.lemma_ for token in record[ATTRIBUTE]])
 ```

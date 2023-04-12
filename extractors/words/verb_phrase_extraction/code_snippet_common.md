@@ -2,9 +2,9 @@
 import textacy
 import spacy
 
-YOUR_ATTRIBUTE: str = "text"  # only texts allowed
-YOUR_TOKENIZER: str = "en_core_web_sm" 
-YOUR_LABEL: str = "verb-action"
+ATTRIBUTE: str = "text"  # only texts allowed
+TOKENIZER: str = "en_core_web_sm" 
+LABEL: str = "verb-action"
 
 # replace this list with a list containing your data
 text = ["In the next section, we will build a new model which is more accurate than the previous one."]

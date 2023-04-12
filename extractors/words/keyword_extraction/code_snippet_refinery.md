@@ -3,19 +3,19 @@ import re
 from typing import List
 from flashtext import KeywordProcessor
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_KEYWORDS: List[str] = ["keyword1", "keyword2", "keyword3"]
-YOUR_LABEL: str = "keyword"
+ATTRIBUTE: str = "text" # only text attributes
+KEYWORDS: List[str] = ["keyword1", "keyword2", "keyword3"]
+LABEL: str = "keyword"
 
 def keyword_extraction(record):
     
-    text = record[YOUR_ATTRIBUTE] # SpaCy doc, hence we need to use .text to get the string.
+    text = record[ATTRIBUTE] # SpaCy doc, hence we need to use .text to get the string.
     keyword_processor = KeywordProcessor()
-    keyword_processor.add_keywords_from_list(YOUR_KEYWORDS)
+    keyword_processor.add_keywords_from_list(KEYWORDS)
     keyword_found = keyword_processor.extract_keywords(text, span_info=True)
     
     for keyword in keyword_found:
         start, end = re.match(rf"({keyword})", text).span()
-        span = record[YOUR_ATTRIBUTE].char_span(start, end)
-        yield YOUR_LABEL, span.start, span.end
+        span = record[ATTRIBUTE].char_span(start, end)
+        yield LABEL, span.start, span.end
 ```

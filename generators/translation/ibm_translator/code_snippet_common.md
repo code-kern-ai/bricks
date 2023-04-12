@@ -8,7 +8,7 @@ text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", 
 record = {
     "your_text": text,
     "api_key": "insert your API key here", 
-    "ibm_url": "https://api.eu-de.language-translator.watson.cloud.ibm.com/instances/YOUR_INSTANCE_ID" # change YOUR_INSTANCE_ID
+    "ibm_url": "https://api.eu-de.language-translator.watson.cloud.ibm.com/instances/INSTANCE_ID" # change INSTANCE_ID
     "origin_language": "en", # change this to the language of your texts
     "target_language": "de" # change this to the language you want to translate to
 }

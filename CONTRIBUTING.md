@@ -130,7 +130,7 @@ At the bottom of the config, you will find the section "integratior inputs". Thi
             "refineryDataType": "text",
             "outputs": ["yes", "no"],
             "constants": {
-                "inputAttribute": { # previously YOUR_ATTRIBUTE, never optional
+                "inputAttribute": { # previously ATTRIBUTE, never optional
                     "selectionType": "string",
                     "defaultValue": "your-text",
                 },

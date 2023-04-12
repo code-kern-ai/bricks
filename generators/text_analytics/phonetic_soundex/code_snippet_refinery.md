@@ -4,12 +4,12 @@ import unicodedata
 # Currently only english language is supported here
 # Reach out to us if this should be extended for other languages
 
-YOUR_ATTRIBUTE: str = "text" #only text attributes
+ATTRIBUTE: str = "text" #only text attributes
 
 def phonetic_soundex(record):
     """Converts an english word into a phonetic SoundEx representation, for example to store names."""
 
-    sentence = record[YOUR_ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string. 
+    sentence = record[ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string. 
 
     soundex_list = []
     for word in sentence.split():

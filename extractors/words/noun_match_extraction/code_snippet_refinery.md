@@ -1,17 +1,17 @@
 ```python
 import re
 
-YOUR_ATTRIBUTE: str = "text" # only text attributes
+ATTRIBUTE: str = "text" # only text attributes
 
 def noun_match_extraction(record):
 # instantiate empty lists to store already encountered words and for found matches 
     word_repo = []
     matches = []
 
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[ATTRIBUTE].text
 
     # get noun chunks from spacy 
-    nc = [i.text.lower() for i in record[YOUR_ATTRIBUTE].noun_chunks]
+    nc = [i.text.lower() for i in record[ATTRIBUTE].noun_chunks]
     
     # loop through all noun chunks
     for noun_chunk in nc:
@@ -33,7 +33,7 @@ def noun_match_extraction(record):
                 # extract the spans of all found matches
                 for item in re.finditer(pattern, text):
                     start, end = item.span()
-                    span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
+                    span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
                     yield "Noun chunk", span.start, span.end
         else:
             pass

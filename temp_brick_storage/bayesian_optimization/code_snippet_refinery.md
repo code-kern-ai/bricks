@@ -4,10 +4,10 @@ from skopt.space import Real, Categorical, Integer
 from sklearn.svm import SVC
 from typing import List
 
-YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" # pick this from the options above
-YOUR_MIN_CONFIDENCE: float = 0.8
-YOUR_ITERATIONS: int = 100 # this can be modified by the user
-YOUR_LABELS: List[str] = None # optional, you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
+EMBEDDING: str = "text-classification-distilbert-base-uncased" # pick this from the options above
+MIN_CONFIDENCE: float = 0.8
+ITERATIONS: int = 100 # this can be modified by the user
+LABELS: List[str] = None # optional, you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
 
 class MyBayesian(LearningClassifier):
     def __init__(self):
@@ -18,10 +18,10 @@ class MyBayesian(LearningClassifier):
             'degree': Integer(1,8),
             'kernel': Categorical(['linear', 'poly', 'rbf']),
         }   # the hyperparameters can be modified by the user
-        self.model = BayesSearchCV(self.base_classifier, self.param_grid, n_iter=YOUR_ITERATIONS)
+        self.model = BayesSearchCV(self.base_classifier, self.param_grid, n_iter=ITERATIONS)
         
     @params_fit(
-        embedding_name = YOUR_EMBEDDING,
+        embedding_name = EMBEDDING,
         train_test_split = 0.5
     )
     
@@ -29,8 +29,8 @@ class MyBayesian(LearningClassifier):
         self.model.fit(embeddings, labels)
         
     @params_inference(
-        min_confidence = YOUR_MIN_CONFIDENCE,
-        label_names = YOUR_LABELS
+        min_confidence = MIN_CONFIDENCE,
+        label_names = LABELS
     )
     
     def predict_proba(self, embeddings):
