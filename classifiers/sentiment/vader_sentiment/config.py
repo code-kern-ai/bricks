@@ -14,9 +14,9 @@ def get_config():
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
         type="python_function",
-        gdpr_compliant="True",
-        kern_token_proxy_usable="False",
-        docker_image="None",
+        gdpr_compliant="true",
+        kern_token_proxy_usable="false",
+        docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "sentiment",
@@ -26,10 +26,14 @@ def get_config():
         integrator_inputs={
             "name": "vader_sentiment",
             "refineryDataType": RefineryDataType.TEXT.value,
+            "outputs": [
+                "positive",
+                "neutral",
+                "negative",
+            ],
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value,
@@ -40,7 +44,6 @@ def get_config():
                     "defaultValue": "classification",
                     "description": 'choose "scores" to only get the sentiment scores as floats',
                     "allowedValues": ["classification", "scores"],
-                    "optional": "false",
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
             },

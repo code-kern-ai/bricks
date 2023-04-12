@@ -1,4 +1,5 @@
 ```python
+# expects labeling task to have labels ["positive" ,"neutral", "negative"]
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 ATTRIBUTE: str = "text" # only text attributes

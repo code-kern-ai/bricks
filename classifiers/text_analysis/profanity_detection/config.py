@@ -12,12 +12,15 @@ def get_config():
         tabler_icon="MoodWrrr",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="True",
+        gdpr_compliant="true",
         type="python_function",
-        kern_token_proxy_usable="False",
-        docker_image="None",
+        kern_token_proxy_usable="false",
+        docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["text_analysis", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "text_analysis",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "profanity_detection",
@@ -25,30 +28,27 @@ def get_config():
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LABEL_PROFANE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "profane",
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LABEL_NOT_PROFANE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "not_profane",
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
+                },
+            },
+        },
     )

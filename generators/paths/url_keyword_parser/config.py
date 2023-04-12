@@ -12,12 +12,15 @@ def get_config():
         tabler_icon="Cut",
         min_refinery_version="1.8.1",
         state=State.PUBLIC.value,
-        gdpr_compliant="True",
+        gdpr_compliant="true",
         type="python_function",
-        kern_token_proxy_usable="False",
-        docker_image="None",
+        kern_token_proxy_usable="false",
+        docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["paths", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "paths",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "url_keyword_parser",
@@ -26,93 +29,65 @@ def get_config():
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "description": "only text like attributes",
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "INCLUDE_DOMAIN": {
                     "selectionType": SelectionType.BOOLEAN.value,
-                    "defaultValue": "False",
+                    "defaultValue": "false",
                     "description": "include URL domain in keyword scan",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_BOOLEAN.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_BOOLEAN.value],
                 },
                 "INCLUDE_PARAMETER": {
                     "selectionType": SelectionType.BOOLEAN.value,
-                    "defaultValue": "True",
+                    "defaultValue": "true",
                     "description": "inlude URL parameter in keyword scan",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_BOOLEAN.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_BOOLEAN.value],
                 },
                 "CHECK_VALID_URL": {
                     "selectionType": SelectionType.BOOLEAN.value,
-                    "defaultValue": "False",
+                    "defaultValue": "false",
                     "description": "ensure valid URL pattern",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_BOOLEAN.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_BOOLEAN.value],
                 },
                 "REMOVE_NONE_ENGLISH": {
                     "selectionType": SelectionType.BOOLEAN.value,
-                    "defaultValue": "False",
+                    "defaultValue": "false",
                     "description": "only use words that are part of nltk.corpus words",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_BOOLEAN.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_BOOLEAN.value],
                 },
                 "REMOVE_STOPWORDS": {
                     "selectionType": SelectionType.BOOLEAN.value,
-                    "defaultValue": "True",
+                    "defaultValue": "true",
                     "description": "only uses words that are not part of nltk.corpus stopwords",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_BOOLEAN.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_BOOLEAN.value],
                 },
                 "REMOVE_HEX_LIKE": {
                     "selectionType": SelectionType.BOOLEAN.value,
-                    "defaultValue": "True",
+                    "defaultValue": "true",
                     "description": "remove things that look like hex or numbers",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_BOOLEAN.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_BOOLEAN.value],
                 },
                 "TEXT_SEPERATOR": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "defaultValue": ", ",
                     "description": "joins resulting keywords on",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "SPLIT_REGEX": {
                     "selectionType": SelectionType.STRING.value,
                     "defaultValue": "\\W",
                     "description": "possible regex, default is any none word char e.g. \\W|_ to include underscores",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.REGEX.value
-                    ]
+                    "addInfo": [BricksVariableType.REGEX.value],
                 },
                 "WORD_WHITE_LIST": {
                     "selectionType": SelectionType.CHOICE.value,
                     "description": "optional, specify words that are exempt form remove checks",
                     "optional": "true",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+            },
+        },
     )
-

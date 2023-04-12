@@ -12,12 +12,15 @@ def get_config():
         tabler_icon="LanguageKatakana",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="True",
+        gdpr_compliant="true",
         type="premium",
-        kern_token_proxy_usable="False",
-        docker_image="None",
+        kern_token_proxy_usable="false",
+        docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["translation", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "translation",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "deepl_translator",
@@ -25,29 +28,25 @@ def get_config():
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "API_KEY": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "<api-key-goes-here>",
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "<API-KEY-GOES-HERE>",
                     "description": "Deepl API Key",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "TARGET_LANGUAGE": {
-                    "selectionType": SelectionType.STRING.value,
+                    "selectionType": SelectionType.CHOICE.value,
                     "description": "only iso format",
-                    "optional": "false",
                     "addInfo": [
-                        BricksVariableType.LANGUAGE.value
-                    ]
-                }
-            }
-        }
+                        BricksVariableType.LANGUAGE.value,
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
+                },
+            },
+        },
     )

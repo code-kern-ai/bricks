@@ -12,12 +12,15 @@ def get_config():
         tabler_icon="News",
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="False",
+        gdpr_compliant="false",
         type="python_function",
-        kern_token_proxy_usable="False",
-        docker_image="None",
+        kern_token_proxy_usable="false",
+        docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["search", "not_gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "search",
+            "not_gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "nyt_news_search",
@@ -25,30 +28,24 @@ def get_config():
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "API_KEY": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "<api-key-goes-here>",
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "<API-KEY-GOES-HERE>",
                     "description": "go here for free API key https://developer.nytimes.com/",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "OUTPUT_SIZE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "full",
-                    "description": "choose \"compact\" to only get the text of the first result",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                    "description": 'choose "compact" to only get the text of the first result',
+                    "allowedValues": ["full", "compact"],
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+            },
+        },
     )
