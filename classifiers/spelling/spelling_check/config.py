@@ -2,6 +2,7 @@ from util.configs import build_classifier_function_config
 from util.enums import State, BricksVariableType, RefineryDataType, SelectionType
 from . import spelling_check, INPUT_EXAMPLE
 
+
 def get_config():
     return build_classifier_function_config(
         # strapi information
@@ -17,7 +18,10 @@ def get_config():
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["spelling", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "spelling",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "spelling_check",
@@ -28,16 +32,17 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LABEL_MISTAKES": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "contains mistakes",
                     "optional": "false",
                     "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.LABEL.value,
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LABEL_CORRECT": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -45,9 +50,9 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
+                },
+            },
+        },
     )
