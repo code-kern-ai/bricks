@@ -15,6 +15,7 @@ from .python_functions import (
     euclidean_distance,
     url_keyword_parser,
     manhattan_distance,
+    html_unescape
 )
 from .premiums import (
     microsoft_translator,
@@ -59,6 +60,7 @@ for module in [
     azure_speech_to_text,
     url_keyword_parser,
     manhattan_distance,
+    html_unescape
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
