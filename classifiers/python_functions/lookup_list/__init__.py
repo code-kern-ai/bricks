@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from typing import List
 
 INPUT_EXAMPLE = {
-    "text": "The mail was sent from johannes.hoetter@kern.ai, please contact him for further information.",
-    "lookupValues": ["johannes.hoetter@kern.ai", "henrik.wenck@kern.ai"],
+    "text": "The mail was sent from joe@example.ai, please contact him for further information.",
+    "lookupValues": ["joe@example.ai", "ava@example.ai"],
     "yourLabel": "ham",
 }
 
