@@ -4,7 +4,11 @@ from dotenv import load_dotenv
 import requests
 from importlib import import_module
 from typing import Dict, Any
-from util.paths import camel_case_to_snake_case, snake_case_to_camel_case, get_module_folders
+from util.paths import (
+    camel_case_to_snake_case,
+    snake_case_to_camel_case,
+    get_module_folders,
+)
 from util.enums import State
 import fire
 from wasabi import msg
@@ -198,7 +202,7 @@ def update_module(config: Dict[str, Any]):
                 "markdownDescription": config["markdownDescription"],
                 "sourceCodeRefinery": config["sourceCodeRefinery"],
                 "sourceCodeCommon": config["sourceCodeCommon"],
-                "minRefineryVersion": config["minRefineryVersion"],#
+                "minRefineryVersion": config["minRefineryVersion"],  #
                 "gdprCompliant": config["gdprCompliant"],
                 "kernTokenProxyUsable": config["kernTokenProxyUsable"],
                 "dockerImage": config["dockerImage"],
