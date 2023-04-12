@@ -14,7 +14,7 @@ def workday_classifier(record):
     try:
         date = dparser.parse(text, fuzzy=True).date()
     except:
-        return "No date found or invalid date"
+        return "Found no date, an invalid date or multiple dates."
 
     # check if country code is specified
     if YOUR_COUNTRY:
