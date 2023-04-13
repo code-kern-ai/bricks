@@ -12,12 +12,15 @@ def get_config():
         tabler_icon="Books",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="True",
+        gdpr_compliant="true",
         type="python_function",
-        kern_token_proxy_usable="False",
-        docker_image="None",
+        kern_token_proxy_usable="false",
+        docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["text_analysis", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "text_analysis",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "textblob_subjectivity",
@@ -27,17 +30,16 @@ def get_config():
                 "rather subjective",
                 "neutral",
                 "rather objective",
-                "objective"
+                "objective",
             ],
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 }
-            }
-        }
+            },
+        },
     )

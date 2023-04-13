@@ -14,9 +14,9 @@ def get_config():
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
         type="python_function",
-        gdpr_compliant=Boolean.TRUE.value,
-        kern_token_proxy_usable=Boolean.FALSE.value,
-        docker_image="None",
+        gdpr_compliant="true",
+        kern_token_proxy_usable="false",
+        docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "_template_func",
@@ -57,7 +57,6 @@ def get_config():
                     "allowedValueRange": [0, 100],  # from 0 to 100
                     "description": "The lowest possible sentiment score.",
                     "addInfo": [BricksVariableType.GENERIC_INT.value],
-                    "optional": "false",
                 },
             },
         },
