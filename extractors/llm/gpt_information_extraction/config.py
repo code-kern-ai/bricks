@@ -11,10 +11,10 @@ def get_config():
         tabler_icon="FileInfo",
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="False",
+        gdpr_compliant="false",
         type="python_function",
-        kern_token_proxy_usable="False",
-        docker_image="None",
+        kern_token_proxy_usable="false",
+        docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=["llm", "not_gdpr_compliant"], # first entry should be parent directory
         # bricks integrator information
@@ -50,6 +50,7 @@ def get_config():
                 "TEMPERATURE": {
                     "selectionType": SelectionType.INTEGER.value,
                     "defaultValue": 0,
+                    "allowedValues": [0, 100],
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.GENERIC_INT.value
