@@ -50,6 +50,10 @@ from .translation import (
     microsoft_translator,
 )
 
+from .sentiment import (
+    vader_sentiment_scores
+)
+
 router = APIRouter()
 
 for module in [

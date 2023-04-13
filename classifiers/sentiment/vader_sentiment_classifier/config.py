@@ -1,12 +1,12 @@
 from util.configs import build_classifier_function_config
 from util.enums import State, RefineryDataType, SelectionType, BricksVariableType
-from . import vader_sentiment, INPUT_EXAMPLE
+from . import vader_sentiment_classifier, INPUT_EXAMPLE
 
 
 def get_config():
     return build_classifier_function_config(
         # strapi information
-        function=vader_sentiment,
+        function=vader_sentiment_classifier,
         input_example=INPUT_EXAMPLE,
         data_type="text",
         issue_id=157,
@@ -38,13 +38,6 @@ def get_config():
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value,
                     ],
-                },
-                "MODE": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "classification",
-                    "description": 'choose "scores" to only get the sentiment scores as floats',
-                    "allowedValues": ["classification", "scores"],
-                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
             },
         },

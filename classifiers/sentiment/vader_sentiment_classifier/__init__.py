@@ -13,7 +13,7 @@ class VaderSentimentModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def vader_sentiment(req):
+def vader_sentiment_classifier(req):
     '''Get the sentiment of a text using the VADER algorithm.'''
     analyzer = SentimentIntensityAnalyzer()
     text = req.text
