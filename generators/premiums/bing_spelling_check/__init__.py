@@ -17,6 +17,13 @@ def bing_spelling_check(req: BingSpellingCheckModel):
     '''Uses Microsoft's Bing to correct the spelling of sentences.'''
 
     text = req.text
+
+    if(len(text) == 0):
+        return {"correctedText": ""}
+    elif(len(text) >= 1500):
+        raise ValueError("""The text is too long for the bing API to process. 
+                         Please shorten it to less than 1500 characters.""")
+    
     search_url = "https://api.bing.microsoft.com/v7.0/SpellCheck"
 
     data = {
@@ -38,7 +45,7 @@ def bing_spelling_check(req: BingSpellingCheckModel):
     search_results = response.json()
 
     updated_string = text
-    for i in range(len(search_results)):
+    for i in range(len(search_results["flaggedTokens"])):
         # retrieve the found token and the suggested token
         found_token = search_results["flaggedTokens"][i]["token"]
         suggested_token = search_results["flaggedTokens"][i]["suggestions"][0]["suggestion"]
