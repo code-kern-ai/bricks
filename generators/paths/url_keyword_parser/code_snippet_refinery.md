@@ -12,7 +12,7 @@ CHECK_VALID_URL:bool = False # ensure valid URL pattern
 REMOVE_NONE_ENGLISH:bool = False # only use words that are part of nltk.corpus words
 REMOVE_STOPWORDS:bool = True # only uses words that are not part of nltk.corpus stopwords
 REMOVE_HEX_LIKE:bool = True # remove things that look like hex or numbers
-TEXT_SEPERATOR:str = ", " # joins resulting keywords on
+TEXT_SEPARATOR:str = ", " # joins resulting keywords on
 SPLIT_REGEX:str = "\W" # possible regex, default is any none word char e.g. \W|_ to include underscores
 WORD_WHITE_LIST:List[str] = None # optional, specify words that are exempt form remove checks
 
@@ -28,9 +28,9 @@ def url_keyword_parser(record):
         keywords = keywords | extract_part(url_obj.netloc)
     if INCLUDE_PARAMETER:
         keywords = keywords | extract_part(url_obj.params) | extract_part(url_obj.query) | extract_part(url_obj.fragment)
-    if not TEXT_SEPERATOR:
+    if not TEXT_SEPARATOR:
         return " ".join(keywords)
-    return TEXT_SEPERATOR.join(keywords)
+    return TEXT_SEPARATOR.join(keywords)
 
 def extract_part(part):
     if not part:

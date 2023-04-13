@@ -25,7 +25,6 @@ def get_config():
         integrator_inputs={
             "name": "lkp_known_sender",
             "refineryDataType": RefineryDataType.TEXT.value,
-            "globalComment": "the lookup list values can also come from a knowledge base, e.g.:\nfrom knowledge import my_lookup_list\n\nIf further values are specified, add them to the lookup list.",
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -45,6 +44,7 @@ def get_config():
                 "LOOKUP_VALUES": {
                     "selectionType": SelectionType.STRING.value,
                     "defaultValue": "john@kern.ai",
+                    "optional": "true",
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "LABEL": {

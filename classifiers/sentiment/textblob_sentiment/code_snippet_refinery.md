@@ -1,5 +1,4 @@
 ```python
-# expects labeling task to have labels ["very positive", "positive" ,"neutral", "negative", "very negative"]
 from textblob import TextBlob
 
 ATTRIBUTE: str = "text" # only text attributes

@@ -24,7 +24,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "vader_sentiment",
+            "name": "vader_sentiment_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
             "outputs": [
                 "positive",
