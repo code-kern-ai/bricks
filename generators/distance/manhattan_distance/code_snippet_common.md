@@ -7,7 +7,7 @@ def manhattan_distance(base_text: str, compare_text:str) -> float:
     """
     @param base_text: base text
     @param compare_text: text to compare to
-    @return: the hamming distance between the two texts
+    @return: the manhattan distance between the two texts
     """
     tfidf = TfidfVectorizer()
     vects = tfidf.fit_transform([base_text.lower(), compare_text.lower()])

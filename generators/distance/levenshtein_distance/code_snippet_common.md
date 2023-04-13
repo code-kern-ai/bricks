@@ -8,7 +8,7 @@ def levenshtein_distance(base_text: str, compare_text:str, weight_insertion:int=
     @param weight_insertion: weight for insertion
     @param weight_deletion: weight for deletion
     @param weight_substitution: weight for substitution
-    @return: the hamming distance between the two texts
+    @return: the levenshtein distance between the two texts
     """
     weights_tuple = (weight_insertion, weight_deletion, weight_substitution)
     return levenshtein_dist(base_text, compare_text, weights=weights_tuple)
