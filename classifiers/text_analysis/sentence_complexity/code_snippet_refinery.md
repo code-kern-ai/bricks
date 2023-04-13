@@ -1,5 +1,4 @@
 ```python
-#expects labeling task to have labels ["very easy", "easy" ,"fairly easy", "standard", "fairly difficult", "difficult", "very difficult"]
 import textstat
 
 ATTRIBUTE: str = "text" # only text attributes
@@ -8,29 +7,24 @@ TARGET_LANGUAGE: str = "en" # iso codes
 def sentence_complexity(record):
     text = record[ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
     sentence_complexity_score = textstat.flesch_reading_ease(text)
-    sentence_complexity = get_mapping_complexity(sentence_complexity_score)
-    return sentence_complexity
+    return lookup_label(sentence_complexity_score)
 
-def set_all(d, keys, value):
-    for k in keys:
-        d[k] = value
-    
-def get_mapping_complexity(score):
-    if score < 0:
-        return outcomes[0]
-    if score > 100:
-        return outcomes[100]
-    return outcomes[int(score)]
+def lookup_label(score:int) -> str:
+    if score < 30:
+        return "very difficult"
+    if score < 50:
+        return "difficult"
+    if score < 60:
+        return "fairly difficult"
+    if score < 70:
+        return "standard"
+    if score < 80:
+        return "fairly easy"
+    if score < 90:
+        return "easy"        
+    return "very easy"
 
 if TARGET_LANGUAGE is not None:
     textstat.set_lang(TARGET_LANGUAGE)
 
-outcomes = {}
-set_all(outcomes, range(90, 100 + 1), "very easy")
-set_all(outcomes, range(80, 90), "easy")
-set_all(outcomes, range(70, 80), "fairly easy")
-set_all(outcomes, range(60, 70), "standard")
-set_all(outcomes, range(50, 60), "fairly difficult")
-set_all(outcomes, range(30, 50), "difficult")
-set_all(outcomes, range(0, 30), "very difficult")
 ```

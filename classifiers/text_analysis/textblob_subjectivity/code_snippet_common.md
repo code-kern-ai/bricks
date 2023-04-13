@@ -1,38 +1,31 @@
 ```python
-# expects labeling task to have labels ["subjective", "rather subjective" ,"neutral", "rather objective", "objective"]
 from textblob import TextBlob
 
-# replace this list with a list containing your data
-text = ["These are the worst fries every.", "Trees are made of wood."]
+def textblob_subjectivity(text:str): 
+    """
+    @param text: text to check
+    @return: either 'very difficult', 'difficult', 'fairly difficult', 'standard', 'fairly easy', 'easy' or 'very easy' depending on the score
+    """
+    blob = TextBlob(text) 
+    return lookup_label(blob.sentiment.subjectivity)
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-}
+def lookup_label(score:float) -> str:
+    if score < .2:
+        return "objective"
+    if score < .4:
+        return "rather objective"
+    if score < .6:
+        return "neutral"
+    if score < .8:
+        return "rather subjective"     
+    return "subjective"
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["These are the worst fries every.", "Trees are made of wood."]
+    for text in texts:
+        print(f"\"{text}\" is {textblob_subjectivity(text)}")
 
-def textblob_subjectivity(record): 
-    subjectivity = []
-    for entry in record["text"]:   
-        blob = TextBlob(entry) 
-        subjectivity.append(get_mapping_subjectivity(blob.sentiment.subjectivity * 100))
-    return {"subjectivity": subjectivity}
-
-def set_all(d, keys, value):
-    for k in keys:
-        d[k] = value
-
-def get_mapping_subjectivity(score):
-    if score < 0:
-        return outcomes[0]
-    if score > 100:
-        return outcomes[100]
-    return outcomes[int(score)]
-
-
-outcomes = {}
-set_all(outcomes, range(80, 100 + 1), "subjective")
-set_all(outcomes, range(60, 80), "rather subjective")
-set_all(outcomes, range(40, 60), "neutral")
-set_all(outcomes, range(20, 40), "rather objective")
-set_all(outcomes, range(0, 20), "objective")
+example_integration()
 ```

@@ -7,7 +7,9 @@ ATTRIBUTE: str = "text" # only text attributes
 def emotionality_detection(record):
     text = record[ATTRIBUTE].text # SpaCy document, hence we need to call .text to get the string
     emo = LeXmo.LeXmo(text)
-    emo.pop("text", None)
+    del emo["text"]
+    del emo["positive"]
+    del emo["negative"]
     emo = max(emo, key=emo.get)
 
     return emo 

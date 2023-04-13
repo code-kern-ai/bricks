@@ -26,6 +26,7 @@ def get_config():
         integrator_inputs={
             "name": "spelling_check",
             "refineryDataType": RefineryDataType.TEXT.value,
+            "globalComment": "matches nltk words & brown to check for spelling issues\ncurrently only english language",
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -45,6 +46,7 @@ def get_config():
                 "LABEL_CORRECT": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "no mistakes",
+                    "optional": "true",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value,

@@ -44,9 +44,10 @@ def get_config():
                 },
                 "TARGET_LANGUAGE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "description": "iso codes",
+                    "description": "supported iso codes",
+                    "defaultValue": "en",
+                    "allowedValues": ["en", "de", "es", "fr", "it", "nl", "ru"],
                     "addInfo": [
-                        BricksVariableType.LANGUAGE.value,
                         BricksVariableType.GENERIC_STRING.value,
                     ],
                 },

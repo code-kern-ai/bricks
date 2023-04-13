@@ -41,16 +41,6 @@ def get_config():
                         BricksVariableType.GENERIC_STRING.value,
                     ],
                 },
-                "MAX_SCORE": {
-                    "selectionType": SelectionType.INTEGER.value,
-                    "defaultValue": 100,
-                    "addInfo": [BricksVariableType.GENERIC_INT.value],
-                },
-                "MIN_SCORE": {
-                    "selectionType": SelectionType.INTEGER.value,
-                    "defaultValue": -100,
-                    "addInfo": [BricksVariableType.GENERIC_INT.value],
-                },
             },
         },
     )

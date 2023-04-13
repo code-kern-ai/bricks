@@ -25,6 +25,7 @@ def get_config():
         integrator_inputs={
             "name": "emotionality_detection",
             "refineryDataType": RefineryDataType.TEXT.value,
+            "globalComment": "Only for english text.\nWorks best with longer texts since scores for each word are accumulated.",
             "outputs": [
                 "anger",
                 "fear",
