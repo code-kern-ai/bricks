@@ -28,6 +28,7 @@ from .premiums import (
     bing_news_search,
     bing_search,
     google_search,
+    bing_spelling_check,
     azure_speech_to_text,
 )
 
@@ -57,6 +58,7 @@ for module in [
     spacy_lemmatizer,
     most_frequent_words,
     euclidean_distance,
+    bing_spelling_check,
     azure_speech_to_text,
     url_keyword_parser,
     manhattan_distance,

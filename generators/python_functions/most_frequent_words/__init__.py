@@ -17,7 +17,6 @@ class MostFrequentWordsModel(BaseModel):
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
-
 def most_frequent_words(request: MostFrequentWordsModel):
     """Generates the frequency of the words and shows top n words"""
 
