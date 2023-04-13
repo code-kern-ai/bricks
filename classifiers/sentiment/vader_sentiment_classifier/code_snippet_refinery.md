@@ -4,7 +4,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 ATTRIBUTE: str = "text" # only text attributes
 
-def vader_sentiment(record):
+def vader_sentiment_classifier(record):
     analyzer = SentimentIntensityAnalyzer()
     text = record[ATTRIBUTE].text
 

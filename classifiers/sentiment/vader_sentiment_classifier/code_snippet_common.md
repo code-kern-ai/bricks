@@ -9,7 +9,7 @@ record = {
     "your_text": text,
 }
 
-def vader_sentiment(record: dict) -> dict:
+def vader_sentiment_classifier(record: dict) -> dict:
     analyzer = SentimentIntensityAnalyzer()
 
     sentiment = []

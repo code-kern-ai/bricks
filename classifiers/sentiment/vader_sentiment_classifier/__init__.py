@@ -6,7 +6,7 @@ INPUT_EXAMPLE = {
     "mode": "classification" # Choose "scores" to only get the sentiment scores as floats
 }
 
-class VaderSentimentModel(BaseModel):
+class VaderSentimentClassifierModel(BaseModel):
     text: str
     mode: str
 

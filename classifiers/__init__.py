@@ -10,7 +10,7 @@ from .lookup_lists import (
 
 from .sentiment import (
     textblob_sentiment,
-    vader_sentiment,
+    vader_sentiment_classifier,
 )
 
 from .similarity import (
@@ -38,7 +38,7 @@ router = APIRouter()
 for module in [
     textblob_sentiment,
     spelling_check,
-    vader_sentiment,
+    vader_sentiment_classifier,
     gpt_classifier,
     lookup_list,
     cosine_similarity,
