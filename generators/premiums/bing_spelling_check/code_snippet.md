@@ -25,7 +25,7 @@ def bing_spelling_check(record):
     search_results = response.json()
     updated_string = text
 
-    for i in range(len(search_results)):
+    for i in range(len(search_results["flaggedTokens"])):
         # retrieve the found token and the suggested token
         try:
             found_token = search_results["flaggedTokens"][i]["token"]
