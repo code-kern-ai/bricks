@@ -18,7 +18,7 @@ def get_config():
         docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
-            "sentiments",
+            "sentiment",
             "gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
