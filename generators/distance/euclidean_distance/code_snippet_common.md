@@ -25,7 +25,7 @@ def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
     for textA in texts:
         for textB in texts:
-            print(f"distance between \"{textA}\" and \"{textB}\" is {euclidean_distance(textA, textB)}")
+            print(f"euclidean distance between \"{textA}\" and \"{textB}\" is {euclidean_distance(textA, textB)}")
 
 example_integration()
 ```

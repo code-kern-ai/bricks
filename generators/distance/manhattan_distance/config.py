@@ -11,7 +11,7 @@ def get_config():
         issue_id=231,
         tabler_icon="Stairs",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC,
+        state=State.PUBLIC.value,
         gdpr_compliant="true",
         type="python_function",
         kern_token_proxy_usable="false",
@@ -24,24 +24,22 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "manhattan_distance",
-            "refineryDataType": RefineryDataType.TEXT.value,
+            "refineryDataType": RefineryDataType.FLOAT.value,
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "SUBJECT_TEXT": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "defaultValue": "Insert the sentence you want to compare your records to here!",
                     "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+            },
+        },
     )

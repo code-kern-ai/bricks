@@ -24,7 +24,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "hamming_distance",
-            "refineryDataType": RefineryDataType.TEXT.value,
+            "refineryDataType": RefineryDataType.FLOAT.value,
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
