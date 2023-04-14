@@ -4,7 +4,7 @@ import json
 
 ATTRIBUTE: str = "text" # only text attributes
 
-def vader_sentiment(record):
+def vader_sentiment_scores(record):
     analyzer = SentimentIntensityAnalyzer()
     text = record[ATTRIBUTE].text
 

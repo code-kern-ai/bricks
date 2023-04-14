@@ -43,6 +43,7 @@ def get_config():
                 "SEPARATOR": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "/",
+                    "allowedValues": ["\\", "/"],
                     "description": "use \"\\\\\" for Windows paths",
                     "optional": "false",
                     "addInfo": [

@@ -24,19 +24,20 @@ def get_config():
             "refineryDataType": RefineryDataType.TEXT.value,
             "globalComment": "currently only english language is supported here\nreach out to us if this should be extended for other languages",
             "variables": {
-                "TARGET_WORD": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "soccer",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                },
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                },
+                "TARGET_WORD": {
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "soccer",
+                    "optional": "false",
+                    "description": "The word for which synonyms should be extracted.",
+                    "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },

@@ -33,7 +33,7 @@ def get_config():
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "cardNumber",
+                    "defaultValue": "card number",
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,

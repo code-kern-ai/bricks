@@ -23,19 +23,20 @@ def get_config():
             "name": "substring_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
-                "SUBSTRING": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "example",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                },
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                },
+                "SUBSTRING": {
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "example",
+                    "description": "The substring to search for in a longer text.",
+                    "optional": "false",
+                    "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },

@@ -13,6 +13,7 @@ class SelectionType(Enum):
     INTEGER = "integer"
     FLOAT = "float"
     BOOLEAN = "boolean"
+    LIST = "list"
 
 
 class BricksVariableType(Enum):

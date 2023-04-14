@@ -32,7 +32,7 @@ def get_config():
                     ]
                 },
                 "KEYWORDS": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.LIST.value,
                     "defaultValue": "keyword1",
                     "optional": "false",
                     "addInfo": [

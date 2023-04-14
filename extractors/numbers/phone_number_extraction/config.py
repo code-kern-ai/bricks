@@ -33,7 +33,7 @@ def get_config():
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "PHONE_NUMBER",
+                    "defaultValue": "phone number",
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,

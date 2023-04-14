@@ -35,6 +35,7 @@ def get_config():
                 "TOKENIZER": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "en_core_web_sm",
+                    "allowedValues": ["en_core_web_sm", "de_core_news_sm"],
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
