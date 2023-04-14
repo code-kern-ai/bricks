@@ -4,6 +4,7 @@ import json
 
 ATTRIBUTE: str = "text" # only text attributes
 API_KEY: str = "<API-KEY-GOES-HERE>"
+MARKET: str = "en-US" # sets language, see all markets here: https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/market-codes
 RESPONSE_SIZE: str = "full" # choose "compact" to only get text snippet of the first result
 
 def bing_search(record):
@@ -12,7 +13,7 @@ def bing_search(record):
     search_url = "https://api.bing.microsoft.com/v7.0/search"
 
     headers = {"Ocp-Apim-Subscription-Key" : API_KEY}
-    params  = {"q": record[ATTRIBUTE].text, "textDecorations": True, "textFormat": "HTML"}
+    params  = {"q": record[ATTRIBUTE].text, "textDecorations": True, "textFormat": "HTML", "mkt": market}
 
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()

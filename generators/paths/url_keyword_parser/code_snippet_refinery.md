@@ -14,7 +14,7 @@ REMOVE_STOPWORDS:bool = True # only uses words that are not part of nltk.corpus 
 REMOVE_HEX_LIKE:bool = True # remove things that look like hex or numbers
 TEXT_SEPARATOR:str = ", " # joins resulting keywords on
 SPLIT_REGEX:str = "\W" # possible regex, default is any none word char e.g. \W|_ to include underscores
-WORD_WHITE_LIST:List[str] = None # optional, specify words that are exempt form remove checks
+WORD_WHITE_LIST:List[str] = None # specify words that are exempt form remove checks
 
 def url_keyword_parser(record):
     url = record[ATTRIBUTE]

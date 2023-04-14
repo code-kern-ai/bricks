@@ -40,7 +40,7 @@ def get_config():
                 },
                 "LANGUAGE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "de",
+                    "defaultValue": "en",
                     "addInfo": [
                         BricksVariableType.LANGUAGE.value,
                         BricksVariableType.GENERIC_STRING.value,

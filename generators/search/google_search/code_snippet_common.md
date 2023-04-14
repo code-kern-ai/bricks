@@ -2,36 +2,40 @@
 from serpapi import GoogleSearch
 import json
 
-# replace this list with a list containing your data
-text = ["code kern ai."]
+def google_search(query:str,api_key:str,location:str="Germany",geolocation:str="de",language:str="en",response_size:str="full")->str:
+    """ Search Google Search for a given query and return the results.
+    @param query: The query to search with.
+    @param api_key: Google API key to use.
+    @param location: Google location to use.
+    @param geolocation: Google geolocation to use.
+    @param language: Google language to use.
+    @param response_size: The size of the response. Choose "compact" to only get text snippet of the first result. "full" creates a json dump of the results.
+    @return: The search results.
+    """
+    params = {
+        "q": query,
+        "location": location,
+        "hl": language,
+        "gl": geolocation,
+        "google_domain": f"google.{language}",
+        "api_key": api_key,
+    }
+    search = GoogleSearch(params)
+    results = search.get_dict()
+    
+    if response_size == "full":
+        return json.dumps(results) # returns full response
+    elif response_size == "compact":
+        return results["organic_results"][0]["snippet"] # only returns text of first response
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "location": "Germany",
-    "language": "en",
-    "geolocation": "de",
-    "api_key": "paste your api key here!",
-    "response_size": "full",
-}
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    queries = ["code kern ai"]
+    api_key = "<API_KEY_TO_USE>" # paste your Google API key here
+    for query in queries:
+        print(f"Google search result for query: \"{query}\" is\n\n{google_search(query, api_key)}")
 
-def google_search(record):
-    search_results = []
-    for entry in record["text"]:
-        params = {
-            "q": entry,
-            "location": record["location"],
-            "hl": record["language"],
-            "gl": record["geolocation"],
-            "google_domain": f"google.{record['geolocation']}",
-            "api_key": record["api_key"],
-        }
-        search = GoogleSearch(params)
-        results = search.get_dict()
-        
-        if record["response_size"] == "full":
-            search_results.append(json.dumps(results)) # returns full response
-        elif record["response_size"] == "compact":
-            search_results.append(results["organic_results"][0]["snippet"]) # only returns text of first response
-    return {"searchResults": search_results}
+example_integration()
 ```
