@@ -24,7 +24,7 @@ def get_config():
         integrator_inputs={
             "name": "phonetic_soundex",
             "refineryDataType": RefineryDataType.TEXT.value,
-            "globalComment": "Currently only english language is supported here\nReach out to us if this should be extended for other languages",
+            "globalComment": "This is meant for names",
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,

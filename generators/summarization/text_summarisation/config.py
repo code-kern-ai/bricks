@@ -10,7 +10,7 @@ def get_config():
         issue_id=183,
         tabler_icon="Writing",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC.value,
+        state=State.DRAFT.value,
         gdpr_compliant="true",
         type="python_function",
         kern_token_proxy_usable="false",

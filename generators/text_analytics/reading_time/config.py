@@ -23,7 +23,7 @@ def get_config():
         # bricks integrator information
         integrator_inputs={
             "name": "reading_time",
-            "refineryDataType": RefineryDataType.TEXT.value,
+            "refineryDataType": RefineryDataType.FLOAT.value,
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,

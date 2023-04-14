@@ -1,17 +1,19 @@
 ```python
 import textstat
 
-# replace this list with a list containing your data
-text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+def reading_time(text:str)->float:
+    """ 
+    @param text: text we check the reading time for
+    @return: reading time in seconds
+    """
+    return textstat.reading_time(text, ms_per_char=14.69)
+# ↑ necessary bricks stuff
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-}
-
-def reading_time(record):
-    time_list = []
-    for entry in record["text"]:
-        time_list.append(textstat.reading_time(entry, ms_per_char=14.69))
-    return {"readingTimes": time_list}
+    for text in texts:
+        print(f"the text \"{text}\" will take around {reading_time(text)} sec")
+example_integration() 
 ```

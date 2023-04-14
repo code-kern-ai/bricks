@@ -1,9 +1,6 @@
 ```python
 import unicodedata
 
-# Currently only english language is supported here
-# Reach out to us if this should be extended for other languages
-
 ATTRIBUTE: str = "text" #only text attributes
 
 def phonetic_soundex(record):

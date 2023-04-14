@@ -1,38 +1,33 @@
 ```python
 import requests
 
-# replace this list with a list containing your data
-text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "your_text": text,
-    "api_key": "insert your API key here"
-    "target_language": "de" # Change this to the language of your choice
-}
-
-def deepl_translator(record: dict) -> dict:
-    translations = []
-    for entry in record["your_texts"]:
-        # set up everything for the API call
-        deepl_url = "https://api.deepl.com/v2/translate"
-        params={ 
-            "auth_key": record["api_key"], 
-            "target_lang": record["target_language"], 
-            "text": entry, 
-        }
-
-        # send out API call
-        deepl_result = requests.get(
+def deepl_translator(text: str,api_key:str,target_language:str) -> str:    
+    """ 
+    @param text: text we want to translate
+    @param api_key: Deepl API Key
+    @param target_language: only iso format
+    @return: translated text
+    """
+    deepl_url = "https://api.deepl.com/v2/translate"
+    params={ 
+        "auth_key": api_key, 
+        "target_lang": target_language, 
+        "text": text, 
+    }
+    deepl_result = requests.get(
         deepl_url, 
         params=params
-        ) 
-
-        # parse API response
-        deepl_result_json= deepl_result.json()
-        translation = deepl_result_json["translations"][0]["text"]
-
-        # append to the list of translations
-        translations.append(translation)
-    return {"translations": translations}
+    ) 
+    deepl_result_json= deepl_result.json()
+    return deepl_result_json["translations"][0]["text"]
+# ↑ necessary bricks stuff
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+    api_key = "<API_KEY_TO_USE>"
+    target_language = "de"
+    for text in texts:
+        print(f"the text \"{text}\" in {target_language} is {deepl_translator(text,api_key,target_language)}")
+example_integration() 
 ```

@@ -1,21 +1,24 @@
 ```python
 from translate import Translator
 
-# replace this list with a list containing your data
-text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+def language_translator(text: str,original_language:str,target_language:str) -> str:
+    """ 
+    @param text: text we want to translate
+    @param original_language: only iso format
+    @param target_language: only iso format
+    @return: translated text
+    """
+    translator = Translator(from_lang=original_language, to_lang=target_language)
+    return translator.translate(text)
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "your_text": text,
-    "origin_language": "en", # change this to the language of your texts
-    "target_language": "de" # change this to the language you want to translate to
-}
-
-def language_translator(record: dict) -> dict:
-    translations = []
-    for entry in record["your_text"]:     
-        translator = Translator(from_lang=record["origin_language"], to_lang=record["target_language"])
-        translation = translator.translate(entry)
-        translations.append(translation)
-    return {"translations": translations}
+# ↑ necessary bricks stuff
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+    original_language = "en"
+    target_language = "de"
+    for text in texts:
+        print(f"the text \"{text}\" in {target_language} is {language_translator(text,original_language,target_language)}")
+example_integration() 
 ```

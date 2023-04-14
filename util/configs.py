@@ -10,7 +10,6 @@ from util.paths import camel_case_to_snake_case, get_module_folders
 def build_classifier_function_config(
     function: Callable,
     input_example: Dict[str, Any],
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -28,7 +27,6 @@ def build_classifier_function_config(
         execution_type="pythonFunction",
         function=function,
         input_example=input_example,
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -41,12 +39,11 @@ def build_classifier_function_config(
         part_of_group=part_of_group,
         integrator_inputs=integrator_inputs,
     )
-    
+
 
 def build_classifier_premium_config(
     function: Callable,
     input_example: Dict[str, Any],
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -64,7 +61,6 @@ def build_classifier_premium_config(
         execution_type="premium",
         function=function,
         input_example=input_example,
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -81,7 +77,6 @@ def build_classifier_premium_config(
 
 def build_classifier_learner_config(
     function: Callable,
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -99,7 +94,6 @@ def build_classifier_learner_config(
         execution_type="activeLearner",
         function=function,
         input_example={"dummy": None},
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -117,7 +111,6 @@ def build_classifier_learner_config(
 def build_extractor_function_config(
     function: Callable,
     input_example: Dict[str, Any],
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -135,7 +128,6 @@ def build_extractor_function_config(
         execution_type="pythonFunction",
         function=function,
         input_example=input_example,
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -149,10 +141,10 @@ def build_extractor_function_config(
         integrator_inputs=integrator_inputs,
     )
 
+
 def build_extractor_premium_config(
     function: Callable,
     input_example: Dict[str, Any],
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -170,7 +162,6 @@ def build_extractor_premium_config(
         execution_type="premium",
         function=function,
         input_example=input_example,
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -187,7 +178,6 @@ def build_extractor_premium_config(
 
 def build_extractor_learner_config(
     function: Callable,
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -205,7 +195,6 @@ def build_extractor_learner_config(
         execution_type="activeLearner",
         function=function,
         input_example={"dummy": None},
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -219,10 +208,10 @@ def build_extractor_learner_config(
         integrator_inputs=integrator_inputs,
     )
 
+
 def build_generator_function_config(
     function: Callable,
     input_example: Dict[str, Any],
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -240,7 +229,6 @@ def build_generator_function_config(
         execution_type="pythonFunction",
         function=function,
         input_example=input_example,
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -257,7 +245,6 @@ def build_generator_function_config(
 
 def build_generator_learner_config(
     function: Callable,
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -275,7 +262,6 @@ def build_generator_learner_config(
         execution_type="activeLearner",
         function=function,
         input_example={"dummy": None},
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -289,10 +275,10 @@ def build_generator_learner_config(
         integrator_inputs=integrator_inputs,
     )
 
+
 def build_generator_premium_config(
     function: Callable,
     input_example: Dict[str, Any],
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -310,7 +296,6 @@ def build_generator_premium_config(
         execution_type="premium",
         function=function,
         input_example=input_example,
-        data_type=data_type,
         issue_id=issue_id,
         tabler_icon=tabler_icon,
         min_refinery_version=min_refinery_version,
@@ -324,12 +309,12 @@ def build_generator_premium_config(
         integrator_inputs=integrator_inputs,
     )
 
+
 def build_config(
     module_type: str,
     execution_type: str,
     function: Callable,
     input_example: Dict[str, Any],
-    data_type: str,
     issue_id: int,
     tabler_icon: str,
     min_refinery_version: str,
@@ -362,7 +347,11 @@ def build_config(
         "code_snippet_common.md",
     )
 
-    for path in [markdown_description_path, source_code_refinery_path, source_code_common_path]:
+    for path in [
+        markdown_description_path,
+        source_code_refinery_path,
+        source_code_common_path,
+    ]:
         if not os.path.exists(path):
             raise ErrorneousConfiguration(f"Missing file: {path}")
 
@@ -384,7 +373,6 @@ def build_config(
         {"source_code_refinery": source_code_refinery},
         {"source_code_common": source_code_common},
         {"input_example": input_example},
-        {"data_type": data_type},
         {"issue_id": issue_id},
         {"tabler_icon": tabler_icon},
         {"min_refinery_version": min_refinery_version},
@@ -407,9 +395,12 @@ def build_config(
         "description": function.__doc__,
         "moduleType": module_type,
         "executionType": execution_type,
-        "dataType": data_type,
-        "sourceCodeRefinery": source_code_refinery.replace("```python\n", "").replace("```", ""),
-        "sourceCodeCommon": source_code_common.replace("```python\n", "").replace("```", ""),        
+        "sourceCodeRefinery": source_code_refinery.replace("```python\n", "").replace(
+            "```", ""
+        ),
+        "sourceCodeCommon": source_code_common.replace("```python\n", "").replace(
+            "```", ""
+        ),
         "markdownDescription": markdown_description,
         "issueId": issue_id,
         "registeredDate": datetime.now().isoformat(),
