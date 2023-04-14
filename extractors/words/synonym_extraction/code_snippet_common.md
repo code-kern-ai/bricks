@@ -3,21 +3,12 @@ from nltk.corpus import wordnet
 import re
 import spacy 
 
-# replace this list with a list containing your data
-text = ["My sister is good at playing football."]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "target_word": "soccer",
-    "label": "synonym"
-}
-
-def synonym_extraction(record):
+def synonym_extraction(text:str, extraction_keyword:str, target_word: str) -> List[Tuple[str,int]]:
     nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)  
 
     synonyms = []
-    for syn in wordnet.synsets(record["target_word"]):
+    for syn in wordnet.synsets(target_word):
         for i in syn.lemmas():
             synonyms.append(i.name())
             
@@ -26,19 +17,32 @@ def synonym_extraction(record):
     combined_synonyms = [item for sublist in split_synonyms for item in sublist]
 
     synonym_positions = []
-    text_id = 0
-    for entry in record["text"]:
-        doc = nlp(entry)  
-        for word in combined_synonyms:
-            try:
-                pattern = rf"({word})"
-                match = re.search(pattern, entry)
+    for word in combined_synonyms:
+        try:
+            pattern = rf"({word})"
+            match = re.search(pattern, text)
 
-                start, end = match.span()
-                span = doc.char_span(start, end, alignment_mode="expand")
-                synonym_positions.append({f"text_{text_id}": [record["label"], span.start, span.end]}) 
-            except:
-                pass
-        text_id += 1
-    return {"extractions": synonym_positions}
+            start, end = match.span()
+            span = doc.char_span(start, end, alignment_mode="expand")
+            synonym_positions.append((extraction_keyword, span.start, span.end)) 
+        except:
+            pass
+    return synonym_positions
+
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation
+
+def example_integration():
+    texts = ["My sister is good at playing football.", "Japan is a country in asia."]
+    extraction_keyword = "synonym"
+    target_word = "soccer"
+    for text in texts:
+        found = synonym_extraction(text, extraction_keyword, target_word)
+        if found:
+            print(f"text: \"{text}\" has {extraction_keyword} -> \"{found}\"")
+        else:
+            print(f"text: \"{text}\" doesn't have {extraction_keyword}")
+
+example_integration()
 ```

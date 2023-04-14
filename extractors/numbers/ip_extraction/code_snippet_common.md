@@ -1,29 +1,34 @@
 ```python
 import re
 import spacy
+from typing import List, Tuple
 
-# replace this list with a list containing your data
-text = ["The IP addressing range is from 0.0.0.0 to 255.255.255.255."]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "label": "IP-address",
-}
-
-def ip_extraction(record):
+def ip_extraction(text:str, extraction_keyword:str) -> List[Tuple[str, int]]:
     nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
 
+    regex = re.compile(r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b")
+    
     ip_positions = []
-    text_id = 0
-    for entry in record["text"]:
-        regex = re.compile(r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b")
-        
-        doc = nlp(entry)
-        for match in regex.finditer(entry):
-            start, end = match.span()
-            span = doc.char_span(start, end, alignment_mode="expand")
-            ip_positions.append({f"text_{text_id}": [record["label"], span.start, span.end]})
-        text_id += 1
-    return {"extraction": ip_positions}
+    for match in regex.finditer(text):
+        start, end = match.span()
+        span = doc.char_span(start, end, alignment_mode="expand")
+        ip_positions.append((extraction_keyword, span.start, span.end))
+    return ip_positions
+
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation
+
+def example_integration():
+    texts = ["The IP addressing range is from 0.0.0.0 to 255.255.255.255.", "No IP address found."]
+    extraction_keyword = "ip address"
+    for text in texts:
+        found = ip_extraction(text, extraction_keyword)
+        if found:
+            print(f"text: \"{text}\" has {extraction_keyword} -> \"{found}\"")
+        else:
+            print(f"text: \"{text}\" doesn't have {extraction_keyword}")
+
+example_integration()
 ```

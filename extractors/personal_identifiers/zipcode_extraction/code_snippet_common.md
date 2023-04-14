@@ -1,32 +1,24 @@
-```python
+```python 
 import re
 import spacy
+from typing import List, Tuple
 
-# replace this list with a list containing your data
-text = ["My name is James Bond.", "Harry met Jane on a sunny afternoon."]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "your_text": text,
-    "label": "zip code",
-    "country_id": "US",
-}
-
-def zipcode_extraction(record: dict) -> dict:
+def zipcode_extraction(text: str, extraction_keyword: str, country_id: str) -> List[Tuple[str, int]]:
     nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+
+    regex = re.compile(zip_codes[country_id])
 
     zipcode_positions = []
-    text_id = 0
-    for entry in record["your_text"]:
-        for country_id in COUNTRY_IDS:
-            match = re.search(zip_codes[country_id], entry)
+    for match in regex.finditer(text):
+        start, end = match.span()
+        span = doc.char_span(start, end, alignment_mode="expand")
+        zipcode_positions.append((extraction_keyword, span.start, span.end))
+    return zipcode_positions
 
-            start, end = match.span()
-            span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-
-            zipcode_positions.append({f"text_{text_id}" :[record["label"], span.start, span.end]})
-        text_id += 1
-    return {"extraction": zipcode_positions}
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation (code further down below)
 
 zip_codes = {
     "GB": r"GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BH|BL|BN|BR|BS|BT|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\\d[\\dA-Z]?[ ]?\\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\\d{1,4}",
@@ -188,4 +180,17 @@ zip_codes = {
     "XK": r"\\d{5}",
     "YT": r"976\\d{2}"
 }
+
+def example_integration():
+    texts = ["10 Downing Street London SW1A 2AA"]
+    extraction_keyword = "zip code"
+    country_id = "GB"
+    for text in texts:
+        found = zipcode_extraction(text, extraction_keyword, country_id)
+        if found:
+            print(f"text: \"{text}\" has {extraction_keyword} -> \"{found}\"")
+        else:
+            print(f"text: \"{text}\" doesn't have {extraction_keyword}")
+
+example_integration()
 ```

@@ -1,31 +1,31 @@
 ```python
 import spacy
 
-# replace this list with a list containing your data
-text = ["Italians eat a lot of pasta, often with tomatoes."]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "label": "substring",
-    "substring": "Italians eat a lot of pasta"
-}
-
-def substring_extraction(record):
+def substring_extraction(text:str, extraction_keyword:str, substring: str) -> tuple:
     nlp = spacy.load("en_core_web_sm")
-    substring = record["substring"]
+    doc = nlp(text)
 
-    substring_position = []
-    text_id = 0
-    for entry in record["text"]:
-        doc = nlp(entry)
+    start_index = text.find(substring)
+    end_index = start_index + len(substring)
 
-        start_index = entry.find(substring)
-        end_index = start_index + len(substring)
+    if start_index != -1:
+        span = doc.char_span(start_index, end_index, alignment_mode="expand")
+        return (extraction_keyword, span.start, span.end)
 
-        if start_index != -1:
-            span = doc.char_span(start_index, end_index, alignment_mode="expand")
-            substring_position.append({f"text_{text_id}": [record["label"], span.start, span.end]}) 
-        text_id += 1
-    return {"extractions": substring_position}
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation
+
+def example_integration():
+    texts = ["Italians eat a lot of pasta, often with tomatoes."]
+    extraction_keyword = "substring"
+    substring = "Italians eat a lot of pasta"
+    for text in texts:
+        found = substring_extraction(text, extraction_keyword, substring)
+        if found:
+            print(f"text: \"{text}\" has {extraction_keyword} -> \"{found}\"")
+        else:
+            print(f"text: \"{text}\" doesn't have {extraction_keyword}")
+
+example_integration()
 ```

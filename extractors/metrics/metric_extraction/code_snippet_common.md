@@ -1,23 +1,29 @@
 ```python
 from quantulum3 import parser
+from typing import List, Tuple
 
-# replace this list with a list containing your data
-text = ["My weight is 82 kilos. The eifel tower is 187 meters high."]
+def metric_extraction(text:str, extraction_keyword:str) -> List[Tuple[str, int]]:
+    quants = parser.parse(text)
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "label": "metric",
-}
-
-def metric_extraction(record):
     metric_positions = []
-    text_id = 0
-    for entry in record["text"]:
-        quants = parser.parse(entry)
-        for quant in quants:
-            span = quant.span
-            metric_positions.append({f"text_{text_id}": [record["label"], span[0], span[1]]})
-        text_id += 1
-    return {"extractions": metric_positions}
+    for quant in quants:
+        span = quant.span
+        metric_positions.append((extraction_keyword, span[0], span[1]))
+    return metric_positions
+
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation
+
+def example_integration():
+    texts = ["My weight is 82 kilos.", "The eifel tower is 187 meters high.", "One football field long."]
+    extraction_keyword = "metric"
+    for text in texts:
+        found = metric_extraction(text, extraction_keyword)
+        if found:
+            print(f"text: \"{text}\" has {extraction_keyword} -> \"{found}\"")
+        else:
+            print(f"text: \"{text}\" doesn't have {extraction_keyword}")
+
+example_integration()
 ```

@@ -1,25 +1,29 @@
 ```python
 import spacy 
 
-# replace this list with a list containing your data
-text = ["We are developers from Kern.ai."]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "label": "org",
-}
-
-def org_extraction(record):
+def org_extraction(text:str, extraction_keyword:str) -> List[Tuple[str,int]]:
     nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
 
     org_positions = []
-    text_id = 0
-    for entry in record["text"]:
-        doc = nlp(entry)
-        for entity in doc.ents:
-            if entity.label_ == "ORG":
-                org_positions.append({f"text_{text_id}" :[record["label"], entity.start, entity.end]})
-        text_id += 1
-    return {"extractions": org_positions}
+    for entity in doc.ents:
+        if entity.label_ == "ORG":
+            org_positions.append((extraction_keyword, entity.start, entity.end))
+    return org_positions
+
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation
+
+def example_integration():
+    texts = ["We are developers from Kern.ai.", "Apple is a company that sells computers.", "I really like fruit."]
+    extraction_keyword = "org"
+    for text in texts:
+        found = org_extraction(text, extraction_keyword)
+        if found:
+            print(f"text: \"{text}\" has {extraction_keyword} -> \"{found}\"")
+        else:
+            print(f"text: \"{text}\" doesn't have {extraction_keyword}")
+
+example_integration()
 ```

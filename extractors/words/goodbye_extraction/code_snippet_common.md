@@ -1,28 +1,35 @@
 ```python
 import re
 import spacy
+from typing import List, Tuple
 
-# replace this list with a list containing your data
-text = ["I will leave for now since I have to cook dinner. Goodbye, and ciao to you as well!"]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "label": "goodbye",
-}
-
-def goodbye_extraction(record: dict) -> dict:
-    regex = re.compile(r"((?:((?i)good)(?:[ ])?)?((?i)bye)|(?i)Ciao|(?:((?i)see you)(?:[ ]?)((?i)tomorrow|later|soon)?))")
+def goodbye_extraction(text: str, extraction_keyword: str) -> List[Tuple[str,int]]:
     nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+
+    regex = re.compile(r"((?:((?i)good)(?:[ ])?)?((?i)bye)|(?i)Ciao|(?:((?i)see you)(?:[ ]?)((?i)tomorrow|later|soon)?))")
 
     goodbye_positions = []
-    text_id = 0
-    for entry in record["text"]:
-        doc = nlp(entry)
-        for match in regex.finditer(entry):
-            start, end = match.span()
-            span = doc.char_span(start, end, alignment_mode="expand")
-            goodbye_positions.append({f"text_{text_id}" :[record["label"], span.start, span.end]})
-        text_id += 1
-    return {"extraction": goodbye_positions}
+    for match in regex.finditer(text):
+        start, end = match.span()
+        span = doc.char_span(start, end, alignment_mode="expand")
+        goodbye_positions.append((extraction_keyword, span.start, span.end))
+
+    return goodbye_positions
+
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation
+
+def example_integration():
+    texts = ["I will leave for now since I have to cook dinner. Goodbye, and ciao to you as well!"]
+    extraction_keyword = "goodbye"
+    for text in texts:
+        found = goodbye_extraction(text, extraction_keyword)
+        if found:
+            print(f"text: \"{text}\" has {extraction_keyword} -> \"{found}\"")
+        else:
+            print(f"text: \"{text}\" doesn't have {extraction_keyword}")
+
+example_integration()
 ```
