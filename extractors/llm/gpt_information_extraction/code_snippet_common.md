@@ -67,7 +67,7 @@ def gpt_information_extraction(text:str, extraction_keyword:str, api_key:str, te
 def example_integration():
 
     texts = ["My E-Mail address is jane.doe@gmail.com", "Our support mail is support@awesome-co.com but we are also available at my@awesome-co.com", "This is a negative text."]
-    api_key = "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" # paste your OpenAI API key here
+    api_key = "<API_KEY_GOES_HERE>" # paste your OpenAI API key here
     extraction_keyword = "emails"
     
     for text in texts:
