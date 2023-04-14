@@ -1,47 +1,40 @@
 ```python
-# expects labeling task to have labels ["Not similar", "Somewhat similar", "Very similar"]
+
 import numpy as np 
 from numpy import dot
 from numpy.linalg import norm
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# replace this list with a list containing your data
-text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+def cosine_similarity(base_text: str, compare_text:str) -> str:
+    """
+    @param base_text: base text
+    @param compare_text: text to compare to
+    @return: either 'Not similar', 'Somewhat similar' or 'Very similar' depending on the score
+    """
+    tfidf = TfidfVectorizer()
+    vects = tfidf.fit_transform([base_text.lower(), compare_text.lower()])
+    vects = vects.todense()
+    vect_one, vect_two = np.squeeze(np.asarray(vects[0])), np.squeeze(np.asarray(vects[1]))
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "your_text": text,
-}
+    cos_sim = dot(vect_one, vect_two)/(norm(vect_one)*norm(vect_two))
+    return lookup_label(cos_sim)
 
-# function for the euclidean distance, should return a n*n matrix. n being the number of texts
-def cosine_similarity(record: dict) -> dict:
-    all_similarities = []
-    all_entries = record["your_text"]
+def lookup_label(score:float)->str:
+    if score < .5:
+        return "Not similar"
+    if score < .75:
+        return "Somewhat similar"
+    return "Very similar"
 
-    # fit a tfidf vectorizer to all texts
-    tfidf = TfidfVectorizer().fit(all_entries)
-    for entry in all_entries:
 
-        # calculate the euclidean distance for each entry
-        row_of_similarities = []
-        for diff_entry in all_entries: 
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+    for textA in texts:
+        for textB in texts:
+            print(f"\"{textA}\" and \"{textB}\" are {cosine_similarity(textA, textB)}")
 
-            # transform sentences to a vector
-            vects = tfidf.transform([entry.lower(), diff_entry.lower()])
-            vects = vects.todense()
-            vect_one, vect_two = np.squeeze(np.asarray(vects[0])), np.squeeze(np.asarray(vects[1]))
-
-            cos_sim = dot(vect_one, vect_two)/(norm(vect_one)*norm(vect_two))
-            if cos_sim < 0.5:
-                row_of_similarities.append("Not similar")
-            elif cos_sim > 0.5 and cos_sim < 0.75:
-                row_of_similarities.append("Somewhat similar")
-            else:
-                row_of_similarities.append("Very similar")
-
-        # append a row of distances to the list of all distances
-        all_similarities.append(row_of_similarities)
-        
-    # return distance matrix
-    return {"distances": all_similarities}
+example_integration()
 ```

@@ -47,7 +47,7 @@ class CMS:
 
                         module_exists, _ = check_module_exists(config)
                         if not module_exists:
-                            if state == State.PUBLIC:
+                            if state == State.PUBLIC.value:
                                 ready_to_publish.append(config["name"])
                             else:
                                 drafts.append(config["name"])

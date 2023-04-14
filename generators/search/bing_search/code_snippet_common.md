@@ -2,32 +2,35 @@
 import requests
 import json
 
-# replace this list with a list containing your data
-text = ["Election 2020.", "Cute cats", "Apple pie recepies."]
+def bing_search(query:str,api_key:str,market:str="en-US",response_size:str="full")->str:
+    """ Search Bing Search for a given query and return the results.
+    @param query: The query to search with.
+    @param api_key: The Bing API key to use.
+    @param market: The market to search in. Further markets here: https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/market-codes
+    @param response_size: The size of the response. Choose "compact" to only get text snippet of the first result. "full" creates a json dump of the results.
+    """
+    search_url = "https://api.bing.microsoft.com/v7.0/search"
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "bing_api_key": "paste your bing api key here",
-    "market": "en-US", # sets language, see all markets here: https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/market-codes
-    "response_size": "full" # choose "compact" to only get text snippet of the first result
-}
+    headers = {"Ocp-Apim-Subscription-Key" : api_key}
+    params  = {"q": query, "textDecorations": True, "textFormat": "HTML", "mkt": market}
 
-def bing_search(record):
-    all_results = []
-    for entry in record["text"]:
-        search_url = "https://api.bing.microsoft.com/v7.0/search"
+    response = requests.get(search_url, headers=headers, params=params)
+    response.raise_for_status()
+    search_results = response.json()
 
-        headers = {"Ocp-Apim-Subscription-Key" : record["bing_api_key"]}
-        params  = {"q": entry, "textDecorations": True, "textFormat": "HTML", "mkt": record["market"]}
+    if response_size == "full":
+        return json.dumps(search_results)
+    elif response_size == "compact":
+        return search_results["value"][0]["description"]
 
-        response = requests.get(search_url, headers=headers, params=params)
-        response.raise_for_status()
-        search_results = response.json()
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    queries = ["Election 2020.", "Cute cats", "Apple pie recepies."]
+    api_key = "<API_KEY_TO_USE>" # paste your Bing API key here
+    for query in queries:
+        print(f"Bing search result for query: \"{query}\" is\n\n{bing_search(query, api_key)}")
 
-        if record["response_size"] == "full":
-            all_results.append(json.dumps(search_results)) # returns full response
-        elif record["response_size"] == "compact":
-            all_results.append(search_results["value"][0]["description"]) # only returns text of first response
-    return {"searchResults": all_results}
+example_integration()
 ```

@@ -1,18 +1,20 @@
 ```python
 from langdetect import detect
 
-# replace this list with a list containing your data
-text = ["This is an english sentence.", "Dies ist ein Text in Deutsch."]
+def language_detection(text:str)->str:    
+    """
+    @param text: text to check
+    @return: language iso code. Full list here https://github.com/Mimino666/langdetect#languages
+    """
+    return detect(text)
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-}
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["This is an english sentence.", "Dies ist ein Text in Deutsch."]
+    for text in texts:
+        print(f"\"{text}\" is written in {language_detection(text)}")
 
-def language_detection(record):
-    detected_languages = []
-    for entry in record["text"]:
-        language = detect(entry)
-        detected_languages.append(language)
-    return {"detected_languages": detected_languages}
+example_integration()
 ```

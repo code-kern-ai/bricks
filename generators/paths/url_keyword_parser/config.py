@@ -70,7 +70,7 @@ def get_config():
                     "description": "remove things that look like hex or numbers",
                     "addInfo": [BricksVariableType.GENERIC_BOOLEAN.value],
                 },
-                "TEXT_SEPERATOR": {
+                "TEXT_SEPARATOR": {
                     "selectionType": SelectionType.STRING.value,
                     "defaultValue": ", ",
                     "description": "joins resulting keywords on",
@@ -83,7 +83,7 @@ def get_config():
                     "addInfo": [BricksVariableType.REGEX.value],
                 },
                 "WORD_WHITE_LIST": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "description": "optional, specify words that are exempt form remove checks",
                     "optional": "true",
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],

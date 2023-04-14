@@ -1,25 +1,29 @@
 ```python
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-# replace this list with a list containing your data
-text = ["I hate this.", "Meh it's ok.", "I love this!"]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "your_text": text,
-}
-
-def vader_sentiment_classifier(record: dict) -> dict:
+def vader_sentiment_classifier(text: str) -> str:    
+    """
+    @param text: text you want to analyze
+    @return: either 'negative', 'neutral' or 'positive' depending on the score
+    """
     analyzer = SentimentIntensityAnalyzer()
+    vs = analyzer.polarity_scores(text)
+    return lookup_label(vs["compound"])
 
-    sentiment = []
-    for entry in record["your_text"]:
-        vs = analyzer.polarity_scores(entry)
-            if vs["compound"] >= 0.05:
-                sentiment.append("positive")
-            elif vs["compound"] > -0.05: 
-                sentiment.append("neutral")
-            elif vs["compound"] <= -0.05:
-                sentiment.append("negative")
-    return {"sentiments": sentiment}
+def lookup_label(score:float) -> str:
+    if score <= -0.05:
+        return "negative"
+    if score < 0.05:
+        return "neutral"
+    return "positive"
+
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["I hate this!","This is a negative example.","I don't know how this is.", "This is a fine example.", "I love this!"]
+    for text in texts:
+        print(f"the sentiment of \"{text}\" is \"{vader_sentiment_classifier(text)}\"")
+
+example_integration()
 ```

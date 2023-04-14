@@ -1,22 +1,27 @@
 ```python
 from better_profanity import profanity
 
-# replace this list with a list containing your data
-text = ["You suck man!.", "Thanks have a nice day."]
+def profanity_detection(text:str,return_label_profane:str,return_label_not_profane:str) -> str:    
+    """
+    @param text: text to check
+    @param return_label_profane: label to return if the text contains profanity
+    @param return_label_not_profane: label to return if the text does not contains profanity
+    @return: either return_label_profane or return_label_not_profane
+    """
+    if profanity.contains_profanity(text):
+        return return_label_profane
+    else:
+        return return_label_not_profane
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "label_profane": "profane",
-    "label_not_profane": "not_profane",
-}
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["You suck man!.", "Thanks have a nice day."]
+    label_profane= "profanity"
+    label_not_profane= "no profanity"
+    for text in texts:
+        print(f"\"{text}\" contains {profanity_detection(text,label_profane,label_not_profane)}")
 
-def profanity_detection(record):
-    detected_profanity = []
-    for entry in record["text"]:
-        if profanity.contains_profanity(entry):
-            detected_profanity.append(record["label_profane"])
-        else:
-            detected_profanity.append(record["label_not_profane"])
-    return {"profanity": detected_profanity}
+example_integration()
 ```

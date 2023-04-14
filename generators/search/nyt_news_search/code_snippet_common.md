@@ -2,25 +2,29 @@
 import requests
 import json
 
-# replace this list with a list containing your data
-text = ["US election 2020."]
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "nyt_api_key": "paste your NYT API key here", # go here for free API key https://developer.nytimes.com/
-    "output_size": "full", # choose "compact" to only get the text of the first result
-}
+def nyt_news_search(query:str,api_key:str,response_size:str="full")->str:
+    """ Search Google Search for a given query and return the results.
+    @param query: The query to search with.
+    @param api_key: New York times API key to use.
+    @param response_size: The size of the response. Choose "compact" to only get text snippet of the first result. "full" creates a json dump of the results.
+    @return: The search results.
+    """
+    req = requests.get(f"https://api.nytimes.com/svc/search/v2/articlesearch.json?q={query}&api-key={api_key}")
+    search_results = req.json()
 
-def nyt_news_search(record):
-    search_results = []
-    for entry in record["text"]:
-        req = requests.get(f"https://api.nytimes.com/svc/search/v2/articlesearch.json?q={entry}&api-key={record["nyt_api_key"]}")
-        search_results = req.json()
+    if response_size == "full":
+        return json.dumps(search_results)
+    elif response_size == "compact":
+        return search_results["response"]["docs"][0]["snippet"]
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    queries = ["US election 2020"]
+    api_key = "<API_KEY_TO_USE>" # paste your NYT API key here
+    for query in queries:
+        print(f"New York times search result for query: \"{query}\" is\n\n{nyt_news_search(query, api_key)}")
 
-        if record["output_size"] == "full":
-            search_results.append(json.dumps(search_results))
-        elif record["output_size"] == "compact":
-            search_results.append(search_results["response"]["docs"][0]["snippet"])
-    return {"nytResults": search_results}
+example_integration()
 ```

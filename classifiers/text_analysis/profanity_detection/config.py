@@ -44,6 +44,7 @@ def get_config():
                 "LABEL_NOT_PROFANE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "not_profane",
+                    "optional": "true",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value,

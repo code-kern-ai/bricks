@@ -2,9 +2,9 @@ from pydantic import BaseModel
 from typing import List
 
 INPUT_EXAMPLE = {
-    "text": "The mail was sent from johannes.hoetter@kern.ai, please contact him for further information.",
-    "lookupValues": ["johannes.hoetter@kern.ai", "henrik.wenck@kern.ai"],
-    "yourLabel": "ham",
+    "text": "The mail was sent from john@kern.ai, please contact him for further information.",
+    "lookupValues": ["john@kern.ai", "jane@kern.ai"],
+    "yourLabel": "in lookup",
 }
 
 
@@ -15,6 +15,7 @@ class LookupListModel(BaseModel):
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
+
 
 def lookup_list(request: LookupListModel):
     """Checks if a given text contains any of the given lookup values."""

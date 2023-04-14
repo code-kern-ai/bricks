@@ -1,19 +1,21 @@
 ```python
 import spacy
 
-# replace this list with a list containing your data
-text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
-
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-}
-
-def spacy_lemmatizer(record):
+def spacy_lemmatizer(text: str) -> str:
+    """
+    @param text: base text
+    @return: All tokens in a text in their base form
+    """
     nlp = spacy.load("en_core_web_sm")
-    lemmatized_text = []
-    for entry in record["text"]:
-        doc = nlp(entry)
-        lemmatized_text.append(" ".join([token.lemma_ for token in doc]))
-    return {"lemmatizedTexts": lemmatized_text}
+    doc = nlp(text)
+    return " ".join([token.lemma_ for token in doc])
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+    for text in texts:
+        print(f"lemmatized text: \"{text}\" is \"{spacy_lemmatizer(text)}\"")
+
+example_integration()
 ```

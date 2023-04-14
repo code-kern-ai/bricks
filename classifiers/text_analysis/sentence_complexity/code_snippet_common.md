@@ -1,44 +1,38 @@
 ```python
-# expects labeling task to have labels ["very easy", "easy" ,"fairly easy", "standard", "fairly difficult", "difficult", "very difficult"]
 import textstat
 
-# replace this list with a list containing your data
-text = ["Doctors from Stockhold University invent cure for rare disease.", "Mary had a little lamb."]
+def sentence_complexity(text:str)->str:    
+    """
+    @param text: text to check
+    @return: either 'very difficult', 'difficult', 'fairly difficult', 'standard', 'fairly easy', 'easy' or 'very easy' depending on the score
+    """
+    return lookup_label(textstat.flesch_reading_ease(text))
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-    "traget_language": "en", # accepts ISO country codes
-}
+def lookup_label(score:int) -> str:
+    if score < 30:
+        return "very difficult"
+    if score < 50:
+        return "difficult"
+    if score < 60:
+        return "fairly difficult"
+    if score < 70:
+        return "standard"
+    if score < 80:
+        return "fairly easy"
+    if score < 90:
+        return "easy"        
+    return "very easy"
 
-def sentence_complexity(record):
-    complexity = []
-    for entry in record["text"]:
-        sentence_complexity_score = textstat.flesch_reading_ease(entry)
-        sentence_complexity = get_mapping_complexity(sentence_complexity_score)
-        complexity.append(sentence_complexity)
-    return {"complexity": complexity}
 
-def set_all(d, keys, value):
-    for k in keys:
-        d[k] = value
-    
-def get_mapping_complexity(score):
-    if score < 0:
-        return outcomes[0]
-    if score > 100:
-        return outcomes[100]
-    return outcomes[int(score)]
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["Doctors from Stockhold University invent cure for rare disease.", "Mary had a little lamb."]
+    target_language = "en"
+    textstat.set_lang("en") #en, de, es, fr, it, nl, ru
+    for text in texts:
+        print(f"\"{text}\" is {sentence_complexity(text)}")
 
-if record["traget_language"] is not None:
-    textstat.set_lang(record["traget_language"])
-
-outcomes = {}
-set_all(outcomes, range(90, 100 + 1), "very easy")
-set_all(outcomes, range(80, 90), "easy")
-set_all(outcomes, range(70, 80), "fairly easy")
-set_all(outcomes, range(60, 70), "standard")
-set_all(outcomes, range(50, 60), "fairly difficult")
-set_all(outcomes, range(30, 50), "difficult")
-set_all(outcomes, range(0, 30), "very difficult")
+example_integration()
 ```
