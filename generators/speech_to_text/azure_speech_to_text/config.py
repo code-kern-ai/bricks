@@ -46,8 +46,9 @@ def get_config():
                 },
                 "LANGUAGE": {
                     "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "en-US",
+                    "description": "language of the audio file",
                     "addInfo": [
-                        BricksVariableType.LANGUAGE.value,
                         BricksVariableType.GENERIC_STRING.value,
                     ],
                 },

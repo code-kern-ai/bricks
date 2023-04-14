@@ -6,8 +6,5 @@ ATTRIBUTE: str = "text" # only text attributes
 
 def vader_sentiment_scores(record):
     analyzer = SentimentIntensityAnalyzer()
-    text = record[ATTRIBUTE].text
-
-    vs = analyzer.polarity_scores(text)
-    return json.dumps(vs)
+    return json.dumps(analyzer.polarity_scores(record[ATTRIBUTE].text))
 ```

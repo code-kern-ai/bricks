@@ -28,12 +28,11 @@ def get_config():
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 }
-            }
-        }
+            },
+        },
     )
