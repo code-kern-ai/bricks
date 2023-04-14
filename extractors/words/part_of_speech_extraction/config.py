@@ -7,7 +7,6 @@ def get_config():
     return build_extractor_function_config(
         function=part_of_speech_extraction,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=53,
         tabler_icon="TopologyStar3",
         min_refinery_version="1.7.0",
@@ -17,7 +16,10 @@ def get_config():
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["words", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "words",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "part_of_speech_extraction",
@@ -41,7 +43,7 @@ def get_config():
                 "SYM",
                 "VERB",
                 "X",
-                "SPACE"
+                "SPACE",
             ],
             "variables": {
                 "ATTRIBUTE": {
@@ -49,9 +51,9 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 }
-            }
-        }
+            },
+        },
     )

@@ -7,7 +7,6 @@ def get_config():
     return build_extractor_function_config(
         function=window_search_extraction,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=41,
         tabler_icon="AppWindow",
         state=State.PUBLIC.value,
@@ -17,7 +16,10 @@ def get_config():
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["functions", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "functions",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "window_search_extraction",
@@ -28,9 +30,7 @@ def get_config():
                     "defaultValue": 4,
                     "description": "choose any window size here",
                     "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_INT.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_INT.value],
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -38,16 +38,16 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LOOKUP_LISTS": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -55,17 +55,15 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LOOKUP_LIST.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LOOKUP_VALUES": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "Max",
                     "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+            },
+        },
     )

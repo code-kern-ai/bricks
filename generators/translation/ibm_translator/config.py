@@ -7,7 +7,6 @@ def get_config():
     return build_generator_premium_config(
         function=ibm_translator,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=175,
         tabler_icon="LanguageHiragana",
         min_refinery_version="1.7.0",

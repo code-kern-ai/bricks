@@ -7,7 +7,6 @@ def get_config():
     return build_generator_premium_config(
         function=bing_news_search,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=207,
         tabler_icon="ReportSearch",
         min_refinery_version="1.8.0",

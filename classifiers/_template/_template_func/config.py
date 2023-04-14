@@ -8,7 +8,6 @@ def get_config():
         # strapi information
         function=_template_func,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=157,
         tabler_icon="MoodCrazyHappy",
         min_refinery_version="1.8.0",

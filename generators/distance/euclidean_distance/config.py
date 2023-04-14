@@ -7,7 +7,6 @@ def get_config():
     return build_generator_function_config(
         function=euclidean_distance,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=230,
         tabler_icon="VectorTriangle",
         min_refinery_version="1.7.0",

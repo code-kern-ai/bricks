@@ -8,6 +8,7 @@ def bing_search(query:str,api_key:str,market:str="en-US",response_size:str="full
     @param api_key: The Bing API key to use.
     @param market: The market to search in. Further markets here: https://learn.microsoft.com/en-us/bing/search-apis/bing-web-search/reference/market-codes
     @param response_size: The size of the response. Choose "compact" to only get text snippet of the first result. "full" creates a json dump of the results.
+    @return: The search results.
     """
     search_url = "https://api.bing.microsoft.com/v7.0/search"
 

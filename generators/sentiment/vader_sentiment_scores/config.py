@@ -7,7 +7,6 @@ def get_config():
     return build_generator_function_config(
         function=vader_sentiment_scores,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=276,
         tabler_icon="MoodWink",
         min_refinery_version="1.7.1",

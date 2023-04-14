@@ -6,7 +6,6 @@ from . import logistic_regression
 def get_config():
     return build_classifier_learner_config(
         function=logistic_regression,
-        data_type="text",
         issue_id=42,
         tabler_icon="Contrast2",
         min_refinery_version="1.7.0",

@@ -7,7 +7,6 @@ def get_config():
     return build_generator_function_config(
         function=html_cleanser,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=109,
         tabler_icon="SquareRoundedLetterH",
         min_refinery_version="1.7.0",

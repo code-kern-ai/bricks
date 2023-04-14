@@ -8,7 +8,6 @@ def get_config():
         # strapi information
         function=address_extraction,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=62,
         tabler_icon="AddressBook",
         min_refinery_version="1.7.0",
@@ -18,7 +17,10 @@ def get_config():
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["personal_identifiers", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "personal_identifiers",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "address_extraction",
@@ -29,8 +31,8 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -38,9 +40,9 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
+                },
+            },
+        },
     )

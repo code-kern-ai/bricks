@@ -7,7 +7,6 @@ def get_config():
     return build_extractor_function_config(
         function=regex_extraction,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=38,
         tabler_icon="Regex",
         min_refinery_version="1.7.0",
@@ -17,7 +16,10 @@ def get_config():
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["functions", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "functions",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "regex_extraction",
@@ -28,17 +30,15 @@ def get_config():
                     "defaultValue": "\\$[0-9]+",
                     "description": "Choose any regex here",
                     "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.REGEX.value
-                    ]
+                    "addInfo": [BricksVariableType.REGEX.value],
                 },
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -47,9 +47,9 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
+                },
+            },
+        },
     )

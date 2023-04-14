@@ -8,7 +8,6 @@ def get_config():
         # strapi information
         function=textblob_sentiment,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=27,
         tabler_icon="MoodSmileBeam",
         min_refinery_version="1.7.0",

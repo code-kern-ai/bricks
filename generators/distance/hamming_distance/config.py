@@ -7,11 +7,10 @@ def get_config():
     return build_generator_function_config(
         function=hamming_distance,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=110,
         tabler_icon="ArrowsMoveHorizontal",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC.value,
+        state=State.DRAFT.value,
         gdpr_compliant="true",
         type="python_function",
         kern_token_proxy_usable="false",

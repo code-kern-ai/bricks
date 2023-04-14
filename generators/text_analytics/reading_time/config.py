@@ -7,7 +7,6 @@ def get_config():
     return build_generator_function_config(
         function=reading_time,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=20,
         tabler_icon="ClockPlay",
         min_refinery_version="1.7.0",

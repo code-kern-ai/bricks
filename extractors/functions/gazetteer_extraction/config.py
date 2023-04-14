@@ -7,7 +7,6 @@ def get_config():
     return build_extractor_function_config(
         function=gazetteer_extraction,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=31,
         tabler_icon="Affiliate",
         min_refinery_version="1.7.0",
@@ -17,7 +16,10 @@ def get_config():
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
-        part_of_group=["functions", "gdpr_compliant"], # first entry should be parent directory
+        part_of_group=[
+            "functions",
+            "gdpr_compliant",
+        ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "gazetteer_extraction",
@@ -28,8 +30,8 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -37,8 +39,8 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LOOKUP_LISTS": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -46,17 +48,15 @@ def get_config():
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LOOKUP_LIST.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "LOOKUP_VALUES": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "Max",
                     "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+            },
+        },
     )

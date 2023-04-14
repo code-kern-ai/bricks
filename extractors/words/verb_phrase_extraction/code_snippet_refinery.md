@@ -1,9 +1,13 @@
 ```python
 import textacy
+import os
 
 ATTRIBUTE: str = "text"  # only texts allowed
 TOKENIZER: str = "en_core_web_sm" 
 LABEL: str = "verb-action"
+
+stream = os.popen(f'python -m spacy download {TOKENIZER}')
+output = stream.read()
 
 def verb_phrase_extraction(record):
     text = record[ATTRIBUTE].text

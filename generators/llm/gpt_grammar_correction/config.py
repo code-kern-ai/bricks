@@ -7,7 +7,6 @@ def get_config():
     return build_generator_premium_config(
         function=gpt_grammar_correction,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=190,
         tabler_icon="Checks",
         min_refinery_version="1.8.0",

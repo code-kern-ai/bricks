@@ -8,7 +8,6 @@ def get_config():
         # strapi information
         function=spelling_check,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=73,
         tabler_icon="TextSpellcheck",
         min_refinery_version="1.7.0",

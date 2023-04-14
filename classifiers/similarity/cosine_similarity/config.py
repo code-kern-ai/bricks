@@ -7,7 +7,6 @@ def get_config():
     return build_classifier_function_config(
         function=cosine_similarity,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=79,
         tabler_icon="WaveSine",
         min_refinery_version="1.7.0",

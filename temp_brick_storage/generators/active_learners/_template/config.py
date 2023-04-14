@@ -6,7 +6,6 @@ from . import _template
 def get_config():
     return build_generator_learner_config(
         function=_template,
-        data_type="text",
         issue_id=-1,  # you need to look this up in the issues https://github.com/code-kern-ai/bricks/issues
         tabler_icon="Template",  # Add any fitting icons from https://tabler-icons-react.vercel.app/
         min_refinery_version="x.x.x",

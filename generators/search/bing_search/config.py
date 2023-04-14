@@ -7,7 +7,6 @@ def get_config():
     return build_generator_premium_config(
         function=bing_search,
         input_example=INPUT_EXAMPLE,
-        data_type="text",
         issue_id=208,
         tabler_icon="BrandBing",
         min_refinery_version="1.8.0",
