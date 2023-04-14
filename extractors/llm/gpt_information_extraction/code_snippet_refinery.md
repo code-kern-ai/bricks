@@ -1,6 +1,7 @@
 ```python
 import openai
 import re
+import json
 
 API_KEY: str = "<API_KEY_GOES_HERE>"
 ATTRIBUTE: str = "text" # only text attributes
@@ -10,6 +11,7 @@ MAX_TOKENS: int = 64
 TOP_P: float = 1.0
 FREQUENCY_PENALTY: float = 0.0
 PRESENCE_PENALTY: float = 0.0
+LABEL: str = "name"
 
 def gpt_information_extraction(record):
     """
@@ -33,21 +35,37 @@ def gpt_information_extraction(record):
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"""
-            Extract all {EXTRACTION_KEYWORD} from this text:\n\n 
+            Extract all {EXTRACTION_KEYWORD} from this text:\n\n
             {text}\n\n
-            return {EXTRACTION_KEYWORD} if something is found, else return NAN!""", 
+            return a list of json objects with the keys {EXTRACTION_KEYWORD} and charPosition the {EXTRACTION_KEYWORD} was found. 
+            If nothing is found return NAN!""", 
         temperature=TEMPERATURE,
         max_tokens=MAX_TOKENS,
         top_p=TOP_P,
         frequency_penalty=FREQUENCY_PENALTY,
         presence_penalty=PRESENCE_PENALTY
     )
-    gpt_response = str(response["choices"][0]["text"])
-    
-    re_comp = re.compile(fr"({gpt_response})")
-    match = re_comp.search( text.lower())
-    if match:
-        start, end = match.start(), match.end()
+    gpt_response = response["choices"][0]["text"].strip().replace("'","\"")
+    if gpt_response == "NAN!":
+        return []
+    parsed = json.loads(gpt_response)
+    if len(parsed) == 0:
+        return []
+    # find used json key (since e.g. emails will become email)
+    json_key = EXTRACTION_KEYWORD
+    if EXTRACTION_KEYWORD not in parsed[0]:        
+        for key in parsed[0]:
+            if key != "charPosition":
+                json_key = key
+                break
+    #gpt can't reliably find the correct position since the whole prompt is used so we need to find the difference and apply it
+    char_pos_diff = parsed[0]["charPosition"] - text.index(parsed[0][json_key])    
+    for match in parsed:
+        start = match["charPosition"] - char_pos_diff
+        end = start + len(match[json_key]) - 1
         span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-        yield LABEL, span.start, span.end
+        if span:
+            yield LABEL, span.start, span.end
+
+
 ```

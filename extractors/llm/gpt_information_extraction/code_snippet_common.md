@@ -3,6 +3,7 @@ from typing import Tuple, List
 import openai
 import re
 import spacy
+import json
 
 def gpt_information_extraction(text:str, extraction_keyword:str, api_key:str, temperature:float = 0.0, max_tokens:int = 64, top_p:float = 1.0, frequency_penalty:float = 0.0, presence_penalty:float = 0.0) -> List[Tuple[str,int]]:
     """
@@ -24,35 +25,49 @@ def gpt_information_extraction(text:str, extraction_keyword:str, api_key:str, te
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt=f"""
-            Extract all {extraction_keyword} from this text:\n\n 
-            {text}\n\n
-            return {extraction_keyword} if something is found, else return NAN!""", 
+        Extract all {extraction_keyword} from this text:\n\n
+        {text}\n\n
+        return a list of json objects with the keys {extraction_keyword} and charPosition the {extraction_keyword} was found. 
+        If nothing is found return NAN!""", 
         temperature=temperature,
         max_tokens=max_tokens,
         top_p=top_p,
         frequency_penalty=frequency_penalty,
         presence_penalty=presence_penalty
     )
-    gpt_response = str(response["choices"][0]["text"])
-
+    gpt_response = response["choices"][0]["text"].strip().replace("'","\"")
+    if gpt_response == "NAN!":
+        return []
+    parsed = json.loads(gpt_response)
+    if len(parsed) == 0:
+        return []
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     gpt_positions = []
-    regex = re.compile(fr"({gpt_response})")
-    for match in regex.finditer(text):
-        start, end = match.span()
-        span = doc.char_span(start, end, alignment_mode="expand")
-        gpt_positions.append((extraction_keyword, span.start, span.end))
-    return gpt_positions
 
+    json_key = extraction_keyword
+    if extraction_keyword not in parsed[0]:        
+        for key in parsed[0]:
+            if key != "charPosition":
+                json_key = key
+                break
+    #gpt can't reliably find the correct position since the whole prompt is used so we need to find the difference and apply it
+    char_pos_diff = parsed[0]["charPosition"] - text.index(parsed[0][json_key])    
+    for match in parsed:
+        start = match["charPosition"] - char_pos_diff
+        end = start + len(match[json_key]) - 1
+        span = doc.char_span(start, end, alignment_mode="expand")
+        if span:
+            gpt_positions.append((match[json_key], span.start, span.end))
+    return gpt_positions
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
 def example_integration():
 
-    texts = ["My E-Mail address is jane.doe@gmail.com", "Our support mail is support@awesome-co.com", "This is a negative text."]
-    api_key = "<API_KEY_TO_USE>" # paste your OpenAI API key here
+    texts = ["My E-Mail address is jane.doe@gmail.com", "Our support mail is support@awesome-co.com but we are also available at my@awesome-co.com", "This is a negative text."]
+    api_key = "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" # paste your OpenAI API key here
     extraction_keyword = "emails"
     
     for text in texts:

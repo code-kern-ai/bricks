@@ -8,7 +8,14 @@ def spacy_lemmatizer(text: str) -> str:
     """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
-    return " ".join([token.lemma_ for token in doc])
+    final_text = ""
+    for i, token in enumerate(doc):
+        if i > 0:
+            diff = token.idx - (doc[i-1].idx + len(doc[i-1]))
+            if diff > 0:
+                final_text+=" "*diff
+        final_text+=token.lemma_
+    return final_text
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
