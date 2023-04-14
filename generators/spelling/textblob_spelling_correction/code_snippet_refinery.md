@@ -1,8 +1,6 @@
 ```python
 from textblob import TextBlob
 
-#currently only english language is supported here
-
 ATTRIBUTE: str = "text" # only text attributes
 
 def textblob_spelling_correction(record):

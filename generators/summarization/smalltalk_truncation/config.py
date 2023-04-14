@@ -24,7 +24,7 @@ def get_config():
         integrator_inputs={
             "name": "smalltalk_truncation",
             "refineryDataType": RefineryDataType.TEXT.value,
-            "globalComment": "currently only english language is supported here\nreach out to us if this should be extended for other languages",
+            "globalComment": "currently only english language is supported here",
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,

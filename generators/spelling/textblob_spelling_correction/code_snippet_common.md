@@ -1,18 +1,22 @@
 ```python
 from textblob import TextBlob
 
-# replace this list with a list containing your data
-text = ["His text contaisn some speling errors."]
+def textblob_spelling_correction(text: str) -> str:
+    """
+    @param text: text to correct
+    @return: corrected text
+    """
+    textblob_text = TextBlob(text)
+    return str(textblob_text.correct())
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-}
+# ↑ necessary bricks stuff
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+def example_integration():
+    texts = ["This text contaisn some speling errors."]
 
-def textblob_spelling_correction(record):
-    corrected_texts = []
-    for entry in record["text"]:
-        textblob_text = TextBlob(entry)
-        corrected_texts.append(str(textblob_text.correct()))
-    return {"correctedText": corrected_texts}
+    for text in texts:
+        print(f"the corrected version of \"{text}\" is: {textblob_spelling_correction(text)}")
+example_integration() 
+
 ```

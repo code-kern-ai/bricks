@@ -2,9 +2,6 @@
 import re
 from nltk.corpus import stopwords
 
-#currently only english language is supported here
-#reach out to us if this should be extended for other languages
-
 ATTRIBUTE: str = "text" #only text attributes
 
 def smalltalk_truncation(record):
@@ -26,5 +23,5 @@ def smalltalk_truncation(record):
         if (len(new_text) > 0.5*len(chat) or len(stop_words) > 8) and not len(chat) < 3:
             removed_smalltalk.append(" ".join(chat))
 
-    return removed_smalltalk
+    return " ".join(removed_smalltalk)
 ```

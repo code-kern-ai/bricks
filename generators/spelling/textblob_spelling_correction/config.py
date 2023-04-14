@@ -7,7 +7,7 @@ def get_config():
     return build_generator_function_config(
         function=textblob_spelling_correction,
         input_example=INPUT_EXAMPLE,
-                issue_id=111,
+        issue_id=111,
         tabler_icon="FileCheck",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
