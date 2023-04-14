@@ -2,14 +2,15 @@ import openai
 from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
-    "apiKey": "<API_KEY_GOES_HERE",
+    "apiKey": "<API_KEY_GOES_HERE>",
     "prompt": "Named must be your fear before banish it you can.",
     "temperature": 0.0,
     "maxTokens": 64,
     "top_p": 1.0,
-    "frequencyPenalty": 0.0, 
-    "presencePenalty": 0.0
+    "frequencyPenalty": 0.0,
+    "presencePenalty": 0.0,
 }
+
 
 class GptGrammarCorrectionModel(BaseModel):
     apiKey: str
@@ -23,10 +24,11 @@ class GptGrammarCorrectionModel(BaseModel):
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
+
 def gpt_grammar_correction(req: GptGrammarCorrectionModel):
-    '''GPT-3 model which can be used to classify text inputs.'''
+    """GPT-3 model which can be used to classify text inputs."""
     # Access openai via API key
-    try: 
+    try:
         openai.api_key = req.apiKey
 
         response = openai.Completion.create(
@@ -38,10 +40,10 @@ def gpt_grammar_correction(req: GptGrammarCorrectionModel):
             max_tokens=req.maxTokens,
             top_p=req.top_p,
             frequency_penalty=req.frequencyPenalty,
-            presence_penalty=req.presencePenalty
+            presence_penalty=req.presencePenalty,
         )
 
         return {"Corrected sentence": response["choices"][0]["text"]}
-    
-    except: 
+
+    except:
         return "That didn't work. Did you provide an OpenAI API key?"

@@ -41,5 +41,5 @@ def gpt_classifier(record):
         presence_penalty=PRESENCE_PENALTY
     )
 
-    return response["choices"][0]["text"]
+    return response["choices"][0]["text"].strip()
 ```

@@ -39,5 +39,5 @@ def gpt_grammar_correction(record):
         presence_penalty=PRESENCE_PENALTY
     )
 
-    return response["choices"][0]["text"]
+    return response["choices"][0]["text"].strip()
 ```
