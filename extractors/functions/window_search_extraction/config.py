@@ -59,7 +59,7 @@ def get_config():
                     ],
                 },
                 "LOOKUP_VALUES": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.LIST.value,
                     "defaultValue": "Max",
                     "optional": "false",
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],

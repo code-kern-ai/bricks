@@ -32,9 +32,14 @@ def get_config():
                         BricksVariableType.GENERIC_STRING.value,
                     ],
                 },
-                "IBM_URL": {
+                "API_KEY": {
                     "selectionType": SelectionType.STRING.value,
-                    "defaultValue": "<RESOURCE_URL_GOES_HERE>",
+                    "defaultValue": "<API_KEY_GOES_HERE>",
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+                "IBM_INSTANCE_ID": {
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "<RESOURCE_INSTANCE_ID_GOES_HERE>",
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "ORIGIN_LANG": {

@@ -35,7 +35,7 @@ def get_config():
                     ],
                 },
                 "COUNTRY_IDS": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "defaultValue": "US",
                     "description": "see list below for more countries",
                     "optional": "false",
