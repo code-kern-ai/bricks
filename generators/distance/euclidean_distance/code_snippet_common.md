@@ -21,6 +21,7 @@ def euclidean_distance(base_text: str, compare_text:str) -> float:
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
     for textA in texts:

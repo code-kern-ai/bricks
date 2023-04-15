@@ -1,17 +1,16 @@
 ```python
 import textstat
 
-# replace this list with a list containing your data
-text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+def syllable_count(text: str) -> int:
+    return textstat.syllable_count(text)
 
-# add the texts to a dict called records. Add further information as key-value pairs if needed
-record = {
-    "text": text,
-}
+# ↑ necessary bricks stuff
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
 
-def syllable_count(record):
-    syllable_list = []
-    for entry in record["text"]:
-        syllable_list.append(textstat.syllable_count(entry))
-    return {"syllables": syllable_list}
+def example_integration():
+    texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
+    for text in texts:
+        print(f"the text \"{text}\" has {syllable_count(text)} syllables")
+example_integration() 
 ```

@@ -12,6 +12,7 @@ def textblob_spelling_correction(text: str) -> str:
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["This text contaisn some speling errors."]
 

@@ -15,6 +15,7 @@ def lookup_list(text:str, lookup_values:List[str], return_label:str) -> str:
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Please contact john@kern.ai to get more info.", "This is a negative text."]
     lookup_values = ["john@kern.ai", "jane@kern.ai"]

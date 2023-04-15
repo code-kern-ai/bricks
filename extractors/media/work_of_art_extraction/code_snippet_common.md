@@ -3,7 +3,12 @@ from typing import List, Tuple
 import spacy 
 
 def work_of_art_extraction(text: str, extraction_keyword: str) -> List[Tuple[str, int]]:
-    nlp = spacy.load("en_core_web_sm")
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: positions of extracted work of arts
+    """
+    nlp = spacy.load("en_core_web_sm") # choose a larger model if no works of art are found
     doc = nlp(text)
 
     artwork_positions = []

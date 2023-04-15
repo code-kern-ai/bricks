@@ -3,6 +3,12 @@ from typing import List, Tuple
 from flashtext import KeywordProcessor
 
 def keyword_extraction(text: str, keywords: list, extraction_keyword: str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @param keywords: a list of keywords you want to extract  
+    @return: similar keywords
+    """
     keyword_processor = KeywordProcessor()
     keyword_processor.add_keywords_from_list(keywords)
 

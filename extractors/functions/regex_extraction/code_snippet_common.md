@@ -4,6 +4,12 @@ import re
 import spacy
 
 def regex_extraction(text: str, extraction_keyword: str, regex: str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @param regex: the regex pattern to use
+    @return: positions of extracted words
+    """
     def regex_search(pattern, string):
         prev_end = 0
         while True:

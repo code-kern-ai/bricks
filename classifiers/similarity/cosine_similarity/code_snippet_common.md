@@ -26,10 +26,10 @@ def lookup_label(score:float)->str:
         return "Somewhat similar"
     return "Very similar"
 
-
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
     for textA in texts:

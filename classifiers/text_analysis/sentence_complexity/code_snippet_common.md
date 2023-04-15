@@ -27,6 +27,7 @@ def lookup_label(score:int) -> str:
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Doctors from Stockhold University invent cure for rare disease.", "Mary had a little lamb."]
     target_language = "en"

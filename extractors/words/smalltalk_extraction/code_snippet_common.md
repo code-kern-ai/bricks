@@ -2,8 +2,14 @@
 import re
 from nltk.corpus import stopwords
 import spacy
+from typing import List, Tuple
 
 def smalltalk_extraction(text:str, extraction_keyword:str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: smalltalk positions
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

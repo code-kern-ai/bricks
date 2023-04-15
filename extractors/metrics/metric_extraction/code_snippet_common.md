@@ -3,6 +3,11 @@ from quantulum3 import parser
 from typing import List, Tuple
 
 def metric_extraction(text:str, extraction_keyword:str) -> List[Tuple[str, int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: positions of extracted metrics
+    """
     quants = parser.parse(text)
 
     metric_positions = []

@@ -4,6 +4,13 @@ from textblob import TextBlob
 import spacy
 
 def aspect_extraction(text:str, window:int, sensitivity:float, positive_label:str, negative_label:str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param window: the window size of nearby words to include 
+    @param positive_label: the label if a similar positive word is found
+    @param negatuive_label: the label if a similar negative word is found
+    @return: positions of extracted similar aspects
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

@@ -23,6 +23,7 @@ def spelling_check(text:str, return_label_has_mistakes:str, return_label_no_mist
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["This contins speling mistaks.", "Thats not how you wraite this.", "This should be a correct sentence."]
     label_no_mistakes = "no mistakes"

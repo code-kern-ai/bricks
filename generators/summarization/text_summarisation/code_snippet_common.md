@@ -34,9 +34,11 @@ def summarize(text:str):
     summary=nlargest(select_length, sentence_scores,key=sentence_scores.get)
     final_summary=[word.text for word in summary]
     return ''.join(final_summary)
+
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["""There was a time when he would have embraced the change that was coming. In his youth, he sought 
 adventure and the unknown, but that had been years ago. He wished he could go back and learn to find the 

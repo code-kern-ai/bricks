@@ -13,9 +13,11 @@ def most_frequent_words(text:str, n_words:int = 5)->List[Tuple[str,int]]:
     doc = nlp(text)
     words = [token.text for token in doc if not token.is_stop and not token.is_punct]
     return Counter(words).most_common(n_words)
+    
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["APPL went down by 5% in the past two weeks. Shareholders are concerned over the continued recession since APPL and NASDAQ have been hit hard by this recession. Risks pertaining to short-selling are pouring in as APPL continues to depreciate. If the competitors come together and start short-selling, the stock can face calamity."]
 

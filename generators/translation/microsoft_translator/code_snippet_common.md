@@ -38,6 +38,7 @@ def microsoft_translator(text: str, api_key:str, resource_location:str, original
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
     api_key = "<API_KEY_TO_USE>"
@@ -45,6 +46,6 @@ def example_integration():
     original_language = "en"
     target_language = "de"
     for text in texts:
-        print(f"the text \"{text}\" in {target_language} is {microsoft_translator(text,api_key,resource_location,original_language,target_language)}")
+        print(f"the text \"{text}\" in {target_language} is {microsoft_translator(text, api_key, resource_location, original_language, target_language)}")
 example_integration() 
 ```

@@ -5,6 +5,11 @@ import requests
 import spacy
 
 def stock_ticker_extraction(text:str, extraction_keyword:str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: positions of extracted stick tickers
+    """
     # import list of tickers from bricks github repo
     req = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/main/extractors/python_functions/stock_ticker_extraction/tickers.txt")
     tickers = req.text.split("\n")

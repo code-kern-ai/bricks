@@ -32,6 +32,7 @@ def gpt_grammar_correction(text:str, api_key:str, temperature:float = 0.0, max_t
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
 
     texts = ["Named must be your fear before banish it you can."]

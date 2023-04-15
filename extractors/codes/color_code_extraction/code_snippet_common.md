@@ -4,6 +4,11 @@ import re
 import spacy
 
 def color_code_extraction(text:str, extraction_keyword:str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: positions of extracted color codes
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

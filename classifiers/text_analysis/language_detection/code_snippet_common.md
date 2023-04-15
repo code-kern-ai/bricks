@@ -11,6 +11,7 @@ def language_detection(text:str)->str:
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["This is an english sentence.", "Dies ist ein Text in Deutsch."]
     for text in texts:

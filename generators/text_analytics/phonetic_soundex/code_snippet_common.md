@@ -49,6 +49,7 @@ def phonetic_soundex(text:str)->List[str]:
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
 

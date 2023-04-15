@@ -4,6 +4,12 @@ import spacy
 from typing import List, Tuple
 
 def digit_extraction(text: str, extraction_keyword: str, digit_length:int) -> List[Tuple[str, int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @param digit_length: the length of the to be extracted digit
+    @return: positions of extracted digits
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

@@ -26,7 +26,8 @@ def bing_news_search(query:str,api_key:str,market:str="en-US",response_size:str=
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
-# ↓ example implementation 
+# ↓ example implementation  
+
 def example_integration():
     queries = ["Election 2020.", "Cute cats", "Apple pie recepies."]
     api_key = "<API_KEY_TO_USE>" # paste your Bing API key here

@@ -4,6 +4,11 @@ import spacy
 from typing import List, Tuple
 
 def ip_extraction(text:str, extraction_keyword:str) -> List[Tuple[str, int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: positions of extracted IP addresses
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

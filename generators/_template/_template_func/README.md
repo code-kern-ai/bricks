@@ -1,0 +1,1 @@
+A brick module should contain a README which describes the use and functionality of a brick. This is also the place where you can provide additional information. You may also include your name here let others know who contributed this brick!

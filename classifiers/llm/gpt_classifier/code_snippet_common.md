@@ -38,6 +38,7 @@ def gpt_classifier(text:str, classify_by:str, labels:List[str], api_key:str, tem
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
 
     texts = ["This is a positve text.", "This is a negative text."]

@@ -16,6 +16,7 @@ def profanity_detection(text:str,return_label_profane:str,return_label_not_profa
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["You suck man!.", "Thanks have a nice day."]
     label_profane= "profanity"

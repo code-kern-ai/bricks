@@ -4,6 +4,12 @@ import spacy
 from typing import List, Tuple
 
 def zipcode_extraction(text: str, extraction_keyword: str, country_id: str) -> List[Tuple[str, int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @param country_id: ISO code of a country
+    @return: extracted zip code positions
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

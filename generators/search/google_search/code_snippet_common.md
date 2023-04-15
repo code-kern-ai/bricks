@@ -2,7 +2,7 @@
 from serpapi import GoogleSearch
 import json
 
-def google_search(query:str,api_key:str,location:str="Germany",geolocation:str="de",language:str="en",response_size:str="full")->str:
+def google_search(query:str, api_key:str, location:str="Germany", geolocation:str="de", language:str="en", response_size:str="full")->str:
     """ Search Google Search for a given query and return the results.
     @param query: The query to search with.
     @param api_key: Google API key to use.
@@ -17,7 +17,7 @@ def google_search(query:str,api_key:str,location:str="Germany",geolocation:str="
         "location": location,
         "hl": language,
         "gl": geolocation,
-        "google_domain": f"google.{language}",
+        "google_domain": f"google.{geolocation}",
         "api_key": api_key,
     }
     search = GoogleSearch(params)
@@ -31,6 +31,7 @@ def google_search(query:str,api_key:str,location:str="Germany",geolocation:str="
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     queries = ["code kern ai"]
     api_key = "<API_KEY_TO_USE>" # paste your Google API key here

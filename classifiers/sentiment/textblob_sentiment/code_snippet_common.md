@@ -24,6 +24,7 @@ def lookup_label(score:float) -> str:
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["I hate this!","This is a negative example.","I don't know how this is.", "This is a fine example.", "I love this!"]
     for text in texts:

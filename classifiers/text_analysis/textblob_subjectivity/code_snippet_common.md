@@ -19,9 +19,11 @@ def lookup_label(score:float) -> str:
     if score < .8:
         return "rather subjective"     
     return "subjective"
+
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["These are the worst fries every.", "Trees are made of wood."]
     for text in texts:

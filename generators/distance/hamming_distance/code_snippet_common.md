@@ -23,6 +23,7 @@ def hamming_distance(base_text: str, compare_text:str) -> float:
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Let's eat, Grandpa!", "Grandpa is eating!", "Apple pie is also very delicious."]
     for textA in texts:

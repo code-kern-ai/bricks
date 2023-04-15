@@ -4,6 +4,11 @@ import re
 import spacy
 
 def time_extraction(text:str, extraction_keyword:str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: positions of extracted times
+    """
     regex = re.compile(
         r"(?:(?:[0-9]{1,2}(?::[0-9]{1,2}(?::[0-9]{1,2}:?)?)?)(?:(?: )?am|(?: )?pm|(?: )?AM|(?: )?PM)?)"
     )

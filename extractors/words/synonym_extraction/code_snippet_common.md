@@ -2,8 +2,16 @@
 from nltk.corpus import wordnet
 import re
 import spacy 
+from typing import List, Tuple
+
 
 def synonym_extraction(text:str, extraction_keyword:str, target_word: str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @param target_word: the word to find synonyms to
+    @return: found synonyms
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)  
 

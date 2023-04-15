@@ -3,7 +3,7 @@ import requests
 import json
 
 
-def nyt_news_search(query:str,api_key:str,response_size:str="full")->str:
+def nyt_news_search(query:str, api_key:str, response_size:str="full") -> str:
     """ Search Google Search for a given query and return the results.
     @param query: The query to search with.
     @param api_key: New York times API key to use.
@@ -17,9 +17,11 @@ def nyt_news_search(query:str,api_key:str,response_size:str="full")->str:
         return json.dumps(search_results)
     elif response_size == "compact":
         return search_results["response"]["docs"][0]["snippet"]
+
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     queries = ["US election 2020"]
     api_key = "<API_KEY_TO_USE>" # paste your NYT API key here

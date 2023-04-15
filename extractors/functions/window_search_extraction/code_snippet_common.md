@@ -4,6 +4,13 @@ import spacy
 import re
 
 def window_search_extraction(text: str, extraction_keyword: str, window: int, lookup_list:list) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @param window: the size of the window to look in for words
+    @param lookup_list: a list of lookup values to search with
+    @return: positions of extracted words
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

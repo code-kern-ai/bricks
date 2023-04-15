@@ -5,6 +5,11 @@ import phonenumbers
 from typing import List, Tuple
 
 def phone_number_extraction(text: str, extraction_keyword: str) -> List[Tuple[str, int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: positions of extracted phone numbers
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

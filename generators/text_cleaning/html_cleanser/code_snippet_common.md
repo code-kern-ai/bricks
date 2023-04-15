@@ -14,6 +14,7 @@ def html_cleanser(text:str)->str:
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["""
 <!DOCTYPE html>

@@ -33,9 +33,11 @@ def azure_speech_to_text(link_to_wav:str, azure_api_key:str, azure_resource_regi
         except:
             print("No text to display. Did you provide a valid link to a .wav file?.")
             return None
+            
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     links = ["should be path to a .wav file."]
     azure_api_key = "<API_KEY_TO_USE>" # paste your Azure API key here

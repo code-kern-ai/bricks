@@ -1,8 +1,14 @@
 ```python
 import textacy
 import spacy
+from typing import List, Tuple
 
 def verb_phrase_extraction(text:str, extraction_keyword:str, tokenizer: str) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @return: verb phrase pairs
+    """
     patterns = [{"POS": "AUX"}, {"POS": "VERB"}]
     about_talk_doc = textacy.make_spacy_doc(
         text, lang=tokenizer

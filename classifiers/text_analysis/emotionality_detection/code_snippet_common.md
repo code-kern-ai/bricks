@@ -12,9 +12,11 @@ def emotionality_detection(text:str) -> str:
     del emo["negative"]
     emo = max(emo, key=emo.get)
     return emo
+    
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["I am scared to continue.", "Oh my goodness it was the best evening ever, hype!"]
     for text in texts:

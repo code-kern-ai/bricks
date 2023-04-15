@@ -20,14 +20,16 @@ def deepl_translator(text: str,api_key:str,target_language:str) -> str:
     ) 
     deepl_result_json= deepl_result.json()
     return deepl_result_json["translations"][0]["text"]
+
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
     api_key = "<API_KEY_TO_USE>"
     target_language = "de"
     for text in texts:
-        print(f"the text \"{text}\" in {target_language} is {deepl_translator(text,api_key,target_language)}")
+        print(f"the text \"{text}\" in {target_language} is {deepl_translator(text, api_key, target_language)}")
 example_integration() 
 ```

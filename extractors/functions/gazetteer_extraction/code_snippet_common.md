@@ -5,6 +5,12 @@ import re
 
 
 def gazetteer_extraction(text:str, extraction_keyword:str, lookup_list:list) -> List[Tuple[str,int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @param lookup_list: a list of lookup values to search with
+    @return: positions of extracted gazetteer positions
+    """
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 

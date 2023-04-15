@@ -14,6 +14,7 @@ def language_translator(text: str,original_language:str,target_language:str) -> 
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
     original_language = "en"

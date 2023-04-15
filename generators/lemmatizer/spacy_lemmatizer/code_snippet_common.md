@@ -16,9 +16,11 @@ def spacy_lemmatizer(text: str) -> str:
                 final_text+=" "*diff
         final_text+=token.lemma_
     return final_text
+    
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
     for text in texts:

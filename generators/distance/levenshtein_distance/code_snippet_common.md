@@ -15,7 +15,8 @@ def levenshtein_distance(base_text: str, compare_text:str, weight_insertion:int=
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
-# ↓ example implementation 
+# ↓ example implementation
+
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
     for textA in texts:

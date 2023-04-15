@@ -28,6 +28,7 @@ def smalltalk_truncation(text:str):
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     texts = ['''"Hello, how are you?" he asked.
 "I am doing fine, and you?", she said.

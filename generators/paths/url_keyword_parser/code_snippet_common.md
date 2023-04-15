@@ -85,6 +85,7 @@ def prepare_globals(word_white_list:Optional[List[str]]=None, regex:str="\W",rem
 # ↑ necessary bricks stuff
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
+
 def example_integration():
     word_white_list = None # optional, specify words that are exempt form remove checks
     split_regex = "\W" # regex, default is any none word char e.g. \W|_ to include underscores
