@@ -25,6 +25,7 @@ from .speech_to_text import (
 
 from .spelling import (
     textblob_spelling_correction,
+    bing_spelling_correction,
 )
 
 from .summarization import (
@@ -79,6 +80,7 @@ for module in [
     reading_time,
     syllable_count,
     html_cleanser,
+    bing_spelling_correction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

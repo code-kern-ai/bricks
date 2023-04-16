@@ -5,7 +5,7 @@ ATTRIBUTE: str = "review" # only text attributes
 API_KEY: str = "<API-KEY-GOES-HERE>"
 LANGUAGE: str = "en-US" # en-GB, de-DE, fr-FR, it-IT, zh-CN, ja-JP
 
-def bing_spelling_check(record):
+def bing_spelling_correction(record):
     '''Uses Microsoft's Bing to retrieve search results.'''
     text = record[YOUR_ATTRIBUTE].text
     search_url = "https://api.bing.microsoft.com/v7.0/SpellCheck"
