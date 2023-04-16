@@ -1,9 +1,9 @@
 ```python
 import re
 
-YOUR_REGEX: str = r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)%" # this will capture all percentages
-YOUR_ATTRIBUTE: str = "text" # only text attributes
-YOUR_LABEL: str = "percentage" # Choose any available label here
+ATTRIBUTE: str = "text" # only text attributes
+REGEX: str = r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)%" # this will capture all percentages
+LABEL: str = "percentage" # Choose any available label here
 
 def percentage_extraction(record):
 
