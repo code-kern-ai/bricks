@@ -7,14 +7,14 @@ INPUT_EXAMPLE = {
     "apiKey": "<api-key-goes-here>",
     }
 
-class BingSpellingCheckModel(BaseModel):
+class BingSpellingCorrectionModel(BaseModel):
     text: str
     apiKey: str
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
-def bing_spelling_check(req: BingSpellingCheckModel):
+def bing_spelling_correction(req: BingSpellingCorrectionModel):
     '''Uses Microsoft's Bing to correct the spelling of sentences.'''
 
     text = req.text
