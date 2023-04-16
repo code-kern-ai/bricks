@@ -35,5 +35,4 @@ def example_integration():
         print(f"Bing result for query: \"{query}\" is\n\n{bing_news_search(query, api_key)}")
 
 example_integration()
-
 ```

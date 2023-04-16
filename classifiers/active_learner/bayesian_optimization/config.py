@@ -10,4 +10,16 @@ def get_config():
         tabler_icon="ChartDots",
         min_refinery_version="1.8.1",
         state=State.DRAFT.value,
+        type="active_learner",
+        gdpr_compliant="true",
+        kern_token_proxy_usable="false",
+        docker_image="none",
+        available_for=["refinery"],
+        part_of_group=[
+            "active_learner",
+            "gdpr_compliant",
+        ],
+        integrator_inputs={
+            "input": "coming soon"
+        }
     )

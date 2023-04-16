@@ -46,7 +46,7 @@ for module in [
     language_detection,
     profanity_detection,
     sentence_complexity,
-    textblob_subjectivity,
+    textblob_subjectivity
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

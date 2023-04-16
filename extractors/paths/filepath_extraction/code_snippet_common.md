@@ -7,6 +7,7 @@ def filepath_extraction(text: str, extraction_keyword: str, separator: str) -> L
     """
     @param text: the input text
     @param extraction_keyword: the label that is assigned to extracted words
+    @param separator: path separator, either / or \ depending on the used OS 
     @return: positions of extracted file paths
     """
     nlp = spacy.load("en_core_web_sm")
