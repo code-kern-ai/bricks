@@ -39,8 +39,8 @@ A group may consist of as little as one implementation. There is no limit to how
 Each module has a folder with the following structure:
 - `__init__.py`: if the module can be executed as a script, this file contains the entry point.
 - `README.md`: a description of the module, which is displayed on the platform on the detail page of the module.
-- `code_snippet_refinery.md`: the displayed code snippet based on a SpaCy input. This is showed on the detail page of the module.
 - `code_snippet_common.md`: the displayed code snippet for any Python env on the detail page of the module.  This is showed on the detail page of the module.
+- `code_snippet_refinery.md`: the displayed code snippet based on a SpaCy input. This is showed on the detail page of the module.
 - `config.py`: a config script to synchronize this repository with the online platform.
 
 ## How to contribute ideas
@@ -54,12 +54,54 @@ If you have an idea for a new module/heuristic, please [open an issue](https://g
 5. Implement the `__init__.py` file. This is the entry point of the module, and will be executed when the module is run. If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
 6. Add your function to the top-level `__init__.py` of your module type, so either in `extractors/__init.py__`, `classifiers/__init.py__`, or `generators/__init.py__`. If the brick module if part of a new brick group, create a new folder for the group and import the brick from there. 
 7. [Test](#test-your-module) your module.
-8. Modify `code_snippet_refinery.md`, and keep in mind that this must fit the interface of refinery. If you copied from the `_template` directory, you will already see the expected interface. All the variables holding the user defined inputs shall be defined as constants (all capital letters). If you are not sure about the expected output of the function, please read [the output section](#desired-ouput). Optionally, you can also add a file `code_snippet_common.md`, which contains code that can be executed in any Python environment. 
+8. Modify `code_snippet_refinery.md`, and keep in mind that this must fit the interface of refinery.  Optionally, you can also add a file `code_snippet_common.md`, which contains code that can be executed in any Python environment. If you copied from the `_template` directory, you will already see the expected interface. All the variables holding the user defined inputs shall be defined as constants (all capital letters). If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
 9. Document and describe your function in the `README.md` file. This will be displayed on the detail page of the module, which means you can go more into detail with your description. Make sure the module description in `README.md` tails the description from the docstring you wrote in `__init__.py`.
 10. Finally, make your last changes to the `config.py` by updating the name of the function you implemented in this module. Add other [parameters of the `config.py`](#configuring-the-configpy-file).
 11. Create a pull request to the `main` branch of the repository. Add a comment `implements #<your-issue-id>` to the pull request, so that we can link the pull request to the issue.
 
 If you have any questions along the way, please don't hesitate to reach out to us, either in the issue you created, or via [Discord](https://discord.gg/qf4rGCEphW).
+
+## Structure of the `code_snippet_common.md`
+Providing the common code for a brick is easy, but there are a few thing you need to ensure so that all bricks are uniform. Here's the tldr:
+- The code snippet should consist of a function that takes in only one string at a time. Add additional params as needed. 
+- Please add docstrings and type hints to the function, ideally similar to the ones you'll find in the example below.  
+- You may add additional helper functions. 
+- Please include a function called `example_integration()` at the bottom, where you provide a couple of examples and use the brick function you've built. Please ensure to separate the main function and the example integration. 
+- Have fun coding! Don't stress out over details, we're all here to learn and making errors is ok!
+
+Below you can find an example for the code snippet: 
+```python
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+def vader_sentiment_classifier(text: str) -> str:    
+    """
+    @param text: text you want to analyze
+    @return: either 'negative', 'neutral' or 'positive' depending on the score
+    """
+    analyzer = SentimentIntensityAnalyzer()
+    vs = analyzer.polarity_scores(text)
+    return lookup_label(vs["compound"])
+
+def lookup_label(score:float) -> str:
+    if score <= -0.05:
+        return "negative"
+    if score < 0.05:
+        return "neutral"
+    return "positive"
+
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+
+def example_integration():
+    texts = ["I hate this!","This is a negative example.","I don't know how this is.", "This is a fine example.", "I love this!"]
+    for text in texts:
+        print(f"the sentiment of \"{text}\" is \"{vader_sentiment_classifier(text)}\"")
+
+example_integration()
+```
+As you can see, the main function and the example integration are clearly separated. Please use this in your brick as well so that it is clear what the actual code of the brick is but the users also get an understanding of how they might integrate it and what kind of input they should use. 
+
 
 ### spaCy in `extractors`
 We use spaCy for extractor modules, as it helps to put texts into correct tokens. Please use spaCy for extractor modules, and match character returns with token-level returns. For instance, in the `__init__.py` file:
@@ -122,7 +164,7 @@ def get_config():
         part_of_group=["distance", "gdpr_compliant"],
 ```
  
-At the bottom of the config, you will find the section "integratior inputs". This section is mean for the bricks integrator, which allows the integration of bricks into our main tool Kern AI refinery. The integrator should always have at least the following structure:
+At the bottom of the config, you will find the section "integratior inputs". You can leave this section blank and leave it for the Kern AI team do fill it out. This section is mean for the bricks integrator, which allows the integration of bricks into our main tool Kern AI refinery. The integrator should always have at least the following structure:
 ```python
         integrator_inputs={
             "name": "levenshtein_distance",
