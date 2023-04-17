@@ -78,6 +78,7 @@ for module in [
     html_cleanser,
     bing_spelling_correction,
     html_unescape,
+    vader_sentiment_scores,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
