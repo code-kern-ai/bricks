@@ -2,7 +2,7 @@
 import requests
 
 ATTRIBUTE: str = "text" # only text attributes
-API_KEY: str = "<api-key-goes-here>" # Deepl API Key
+API_KEY: str = "<API_KEY_GOES_HERE>" # Deepl API Key
 TARGET_LANGUAGE: str = "de" # only iso format
 
 def deepl_translator(record):

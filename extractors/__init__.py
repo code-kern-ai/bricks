@@ -8,7 +8,7 @@ from .dates_and_times import (
 )
 
 from .functions import (
-    aspect_extractor,
+    aspect_extraction,
     gazetteer_extraction,
     regex_extraction,
     window_search_extraction,
@@ -73,7 +73,7 @@ for module in [
     stock_ticker_extraction,
     date_extraction,
     time_extraction,
-    aspect_extractor,
+    aspect_extraction,
     gazetteer_extraction,
     regex_extraction,
     window_search_extraction,

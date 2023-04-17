@@ -34,7 +34,7 @@ def get_config():
                 },
                 "API_KEY": {
                     "selectionType": SelectionType.STRING.value,
-                    "defaultValue": "<API-KEY-GOES-HERE>",
+                    "defaultValue": "<API_KEY_GOES_HERE>",
                     "description": "Microsoft API key",
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },

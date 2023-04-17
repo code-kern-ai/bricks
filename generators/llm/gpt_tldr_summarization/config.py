@@ -23,7 +23,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "gpt_summarizer",
+            "name": "gpt_tldr_summarization",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "API_KEY": {

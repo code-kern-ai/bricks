@@ -1,11 +1,11 @@
 from util.configs import build_generator_function_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from . import text_summarisation, INPUT_EXAMPLE
+from . import text_summarization, INPUT_EXAMPLE
 
 
 def get_config():
     return build_generator_function_config(
-        function=text_summarisation,
+        function=text_summarization,
         input_example=INPUT_EXAMPLE,
         issue_id=183,
         tabler_icon="Writing",
@@ -22,7 +22,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "summarize",
+            "name": "text_summarization",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "ATTRIBUTE": {

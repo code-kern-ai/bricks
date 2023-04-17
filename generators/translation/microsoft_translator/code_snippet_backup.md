@@ -7,7 +7,7 @@ text = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", 
 # add the texts to a dict called records. Add further information as key-value pairs if needed
 record = {
     "your_text": text,
-    "api_key": "<API_KEY_TO_USE>", 
+    "api_key": "<API_KEY_GOES_HERE>", 
     "resource_location": "northeurope", # change this to the location where your resource is provisioned, like northeurope, uswest, etc
     "origin_language": "en", # only iso codes, change this to the language of your texts
     "target_language": "de" # only iso codes, change this to the language you want to translate to

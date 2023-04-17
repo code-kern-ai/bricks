@@ -6,9 +6,10 @@ INPUT_EXAMPLE = {
     "text": "Hallo, guten Tag.",
     "fromLang": ["de"],
     "toLang": ["en"],
-    "apiKey": "<api-key-goes-here>",
-    "region": "northeurope"
-    }
+    "apiKey": "<API_KEY_GOES_HERE>",
+    "region": "northeurope",
+}
+
 
 class MicrosoftTranslatorModel(BaseModel):
     text: str
@@ -20,34 +21,24 @@ class MicrosoftTranslatorModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
+
 def microsoft_translator(req: MicrosoftTranslatorModel):
-    '''Uses Microsofts cognitive services to translate texts.'''
+    """Uses Microsofts cognitive services to translate texts."""
 
     endpoint = "https://api.cognitive.microsofttranslator.com/translate"
-    params = {
-        'api-version': '3.0',
-        'from': req.fromLang,
-        'to': req.toLang
-    }
+    params = {"api-version": "3.0", "from": req.fromLang, "to": req.toLang}
 
     headers = {
-        'Ocp-Apim-Subscription-Key': req.apiKey,
-        'Ocp-Apim-Subscription-Region': req.region,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
+        "Ocp-Apim-Subscription-Key": req.apiKey,
+        "Ocp-Apim-Subscription-Region": req.region,
+        "Content-type": "application/json",
+        "X-ClientTraceId": str(uuid.uuid4()),
     }
 
     # You can pass more than one object in body.
-    body = [{
-        'text': req.text
-    }]
+    body = [{"text": req.text}]
 
-    request = requests.post(
-        endpoint, 
-        params=params, 
-        headers=headers, 
-        json=body
-    )
+    request = requests.post(endpoint, params=params, headers=headers, json=body)
 
     try:
         return request.json()

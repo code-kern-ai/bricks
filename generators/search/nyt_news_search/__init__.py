@@ -3,8 +3,9 @@ import requests
 
 INPUT_EXAMPLE = {
     "query": "US election 2020.",
-    "apiKey": "<api-key-goes-here>",
-    }
+    "apiKey": "<API_KEY_GOES_HERE>",
+}
+
 
 class NytNewsSearchModel(BaseModel):
     query: str
@@ -13,12 +14,15 @@ class NytNewsSearchModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
+
 def nyt_news_search(req: NytNewsSearchModel):
-    '''Search for New York Times news articles.'''
+    """Search for New York Times news articles."""
     query = req.query
     key = req.apiKey
 
-    req = requests.get(f"https://api.nytimes.com/svc/search/v2/articlesearch.json?q={query}&api-key={key}")
+    req = requests.get(
+        f"https://api.nytimes.com/svc/search/v2/articlesearch.json?q={query}&api-key={key}"
+    )
     search_results = req.json()
 
     response_snippet = search_results["response"]["docs"][0]["snippet"]

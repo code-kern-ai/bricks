@@ -22,7 +22,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "bing_search",
+            "name": "bing_spelling_correction",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "ATTRIBUTE": {
@@ -34,7 +34,7 @@ def get_config():
                 },
                 "API_KEY": {
                     "selectionType": SelectionType.STRING.value,
-                    "defaultValue": "<API-KEY-GOES-HERE>",
+                    "defaultValue": "<API_KEY_GOES_HERE>",
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "language": {

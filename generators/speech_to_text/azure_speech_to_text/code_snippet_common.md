@@ -40,7 +40,7 @@ def azure_speech_to_text(link_to_wav:str, azure_api_key:str, azure_resource_regi
 
 def example_integration():
     links = ["should be path to a .wav file."]
-    azure_api_key = "<API_KEY_TO_USE>" # paste your Azure API key here
+    azure_api_key = "<API_KEY_GOES_HERE>" # paste your Azure API key here
     azure_resource_region = "northeurope"
     language = "en-US"
     

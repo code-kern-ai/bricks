@@ -3,7 +3,7 @@ import requests
 import json
 
 ATTRIBUTE: str = "text" # only text attributes
-API_KEY: str = "<api-key-goes-here>" # go here for free API key https://developer.nytimes.com/
+API_KEY: str = "<API_KEY_GOES_HERE>" # go here for free API key https://developer.nytimes.com/
 OUTPUT_SIZE: str = "full" # choose "compact" to only get the text of the first result
 
 def nyt_news_search(record):

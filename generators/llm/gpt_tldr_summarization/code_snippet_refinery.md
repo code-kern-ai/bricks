@@ -9,7 +9,7 @@ TOP_P: float = 1.0
 FREQUENCY_PENALTY: float = 0.0
 PRESENCE_PENALTY: float = 1.0
 
-def gpt_summarizer(record):
+def gpt_tldr_summarization(record):
     """
     Uses OpenAIs GPT-3 model to classify texts. Visit https://beta.openai.com/docs/api-reference/completions/create for full documentation 
 

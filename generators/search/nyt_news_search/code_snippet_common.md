@@ -24,7 +24,7 @@ def nyt_news_search(query:str, api_key:str, response_size:str="full") -> str:
 
 def example_integration():
     queries = ["US election 2020"]
-    api_key = "<API_KEY_TO_USE>" # paste your NYT API key here
+    api_key = "<API_KEY_GOES_HERE>" # paste your NYT API key here
     for query in queries:
         print(f"New York times search result for query: \"{query}\" is\n\n{nyt_news_search(query, api_key)}")
 

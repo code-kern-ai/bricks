@@ -10,11 +10,11 @@ INPUT_EXAMPLE = {
     excitement that came with change but it was useless. That curiosity had long left him to where he had come to 
     loathe anything that put him out of his comfort zone.""",
     "spacyTokenizer": "en_core_web_sm",
-    "length": 0.5
+    "length": 0.5,
 }
 
 
-class TextSummarisationModel(BaseModel):
+class TextSummarizationModel(BaseModel):
     text: str
     spacyTokenizer: str = "en_core_web_sm"
     length: float
@@ -25,7 +25,7 @@ class TextSummarisationModel(BaseModel):
         }
 
 
-def text_summarisation(request: TextSummarisationModel):
+def text_summarization(request: TextSummarizationModel):
     """Generates the summary of a lengthy text"""
 
     text = request.text
@@ -44,7 +44,7 @@ def text_summarisation(request: TextSummarisationModel):
     maximum_count = max(word_count.values())
 
     for word in word_count.keys():
-        word_count[word] = word_count[word]/maximum_count
+        word_count[word] = word_count[word] / maximum_count
 
     sentence_tokens = [sent for sent in doc.sents]
     sentence_scores = {}
@@ -57,9 +57,9 @@ def text_summarisation(request: TextSummarisationModel):
                 else:
                     sentence_scores[sent] += word_count[word.text.lower()]
 
-    size = int(len(sentence_tokens)*request.length)
+    size = int(len(sentence_tokens) * request.length)
     extracted_sentences = nlargest(size, sentence_scores, key=sentence_scores.get)
     summarise = [word.text for word in extracted_sentences]
-    summary = ' '.join(summarise)
+    summary = " ".join(summarise)
 
     return {"summary": summary}

@@ -30,7 +30,7 @@ def bing_news_search(query:str,api_key:str,market:str="en-US",response_size:str=
 
 def example_integration():
     queries = ["Election 2020.", "Cute cats", "Apple pie recepies."]
-    api_key = "<API_KEY_TO_USE>" # paste your Bing API key here
+    api_key = "<API_KEY_GOES_HERE>" # paste your Bing API key here
     for query in queries:
         print(f"Bing result for query: \"{query}\" is\n\n{bing_news_search(query, api_key)}")
 

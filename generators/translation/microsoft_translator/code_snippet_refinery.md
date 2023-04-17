@@ -2,7 +2,7 @@
 import requests, uuid
 
 ATTRIBUTE: str = "text" # only text attributes
-API_KEY: str = "<api-key-goes-here>" # Microsoft API key
+API_KEY: str = "<API_KEY_GOES_HERE>" # Microsoft API key
 ORIGINAL_LANGUAGE: str = "en" # only iso format
 TARGET_LANGUAGE: str = "de" # only iso format
 

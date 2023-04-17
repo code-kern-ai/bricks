@@ -1,11 +1,11 @@
 from util.configs import build_extractor_function_config
 from util.enums import State, BricksVariableType, RefineryDataType, SelectionType
-from . import aspect_extractor, INPUT_EXAMPLE
+from . import aspect_extraction, INPUT_EXAMPLE
 
 
 def get_config():
     return build_extractor_function_config(
-        function=aspect_extractor,
+        function=aspect_extraction,
         input_example=INPUT_EXAMPLE,
         issue_id=30,
         tabler_icon="SquarePlus",

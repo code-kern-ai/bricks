@@ -42,7 +42,7 @@ def gpt_classifier(text:str, classify_by:str, labels:List[str], api_key:str, tem
 def example_integration():
 
     texts = ["This is a positve text.", "This is a negative text."]
-    api_key = "<API_KEY_TO_USE>" # paste your OpenAI API key here
+    api_key = "<API_KEY_GOES_HERE>" # paste your OpenAI API key here
     classify_by = "emotional sentiment"
     labels = ["positive", "neutral", "negative"]
     extraction_keyword = "emails"

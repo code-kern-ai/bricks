@@ -34,7 +34,7 @@ def google_search(query:str, api_key:str, location:str="Germany", geolocation:st
 
 def example_integration():
     queries = ["code kern ai"]
-    api_key = "<API_KEY_TO_USE>" # paste your Google API key here
+    api_key = "<API_KEY_GOES_HERE>" # paste your Google API key here
     for query in queries:
         print(f"Google search result for query: \"{query}\" is\n\n{google_search(query, api_key)}")
 

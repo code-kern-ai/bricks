@@ -8,7 +8,7 @@ INPUT_EXAMPLE = {
     "maxTokens": 60,
     "top_p": 1.0,
     "frequencyPenalty": 0.0,
-    "presencePenalty": 1
+    "presencePenalty": 1,
 }
 
 
@@ -39,7 +39,7 @@ def gpt_tldr_summarization(req: GptTldrSummarizationModel):
             max_tokens=req.maxTokens,
             top_p=req.top_p,
             frequency_penalty=req.frequencyPenalty,
-            presence_penalty=req.presencePenalty
+            presence_penalty=req.presencePenalty,
         )
 
         return {"Summarised text": response["choices"][0]["text"]}

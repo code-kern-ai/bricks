@@ -6,7 +6,7 @@ ATTRIBUTE: str = "text" # only text attributes
 LOCATION: str = "Germany"
 LANGUAGE: str = "en"
 GEOLOCATION: str = "de"
-API_KEY: str = "<API-KEY-GOES-HERE>"
+API_KEY: str = "<API_KEY_GOES_HERE>"
 RESPONSE_SIZE: str = "full" # choose "compact" to only get text snippet of the first result
 
 def google_search(record):

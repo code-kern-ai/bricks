@@ -31,7 +31,7 @@ from .spelling import (
 
 from .summarization import (
     smalltalk_truncation,
-    text_summarisation,
+    text_summarization,
 )
 
 from .text_analytics import (
@@ -71,7 +71,7 @@ for module in [
     azure_speech_to_text,
     textblob_spelling_correction,
     smalltalk_truncation,
-    text_summarisation,
+    text_summarization,
     most_frequent_words,
     phonetic_soundex,
     reading_time,

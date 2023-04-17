@@ -41,7 +41,7 @@ def microsoft_translator(text: str, api_key:str, resource_location:str, original
 
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
-    api_key = "<API_KEY_TO_USE>"
+    api_key = "<API_KEY_GOES_HERE>"
     resource_location = "northeurope" # change this to the location where your resource is provisioned, like northeurope, uswest, etc
     original_language = "en"
     target_language = "de"

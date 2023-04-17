@@ -32,7 +32,7 @@ def ibm_translator(text: str, api_key:str, instance_id:str, original_language:st
  
 def example_integration():
     texts = ["Pizza is very delicious.", "Titanic is a movie made by James Cameron", "Apple pie is also very delicious."]
-    api_key = "<API_KEY_TO_USE>"
+    api_key = "<API_KEY_GOES_HERE>"
     instance_id = "<INSTANCE_ID_TO_USE>"
     original_language = "en"
     target_language = "de"

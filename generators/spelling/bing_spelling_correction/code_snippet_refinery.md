@@ -2,7 +2,7 @@
 import requests
 
 ATTRIBUTE: str = "review" # only text attributes
-API_KEY: str = "<API-KEY-GOES-HERE>"
+API_KEY: str = "<API_KEY_GOES_HERE>"
 LANGUAGE: str = "en-US" # en-GB, de-DE, fr-FR, it-IT, zh-CN, ja-JP
 
 def bing_spelling_correction(record):

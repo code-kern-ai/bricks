@@ -6,7 +6,7 @@ INPUT_EXAMPLE = {
     "location": "Germany",
     "language": "en",
     "geoLocation": "de",
-    "apiKey": "<api-key-goes-here>",
+    "apiKey": "<API_KEY_GOES_HERE>",
 }
 
 

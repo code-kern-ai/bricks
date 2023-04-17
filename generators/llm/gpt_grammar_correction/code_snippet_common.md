@@ -36,7 +36,7 @@ def gpt_grammar_correction(text:str, api_key:str, temperature:float = 0.0, max_t
 def example_integration():
 
     texts = ["Named must be your fear before banish it you can."]
-    api_key = "<API_KEY_TO_USE>" # paste your OpenAI API key here
+    api_key = "<API_KEY_GOES_HERE>" # paste your OpenAI API key here
     
     for text in texts:
         print(f"The corrected version of '{text}' is: {gpt_grammar_correction(text, api_key)}")

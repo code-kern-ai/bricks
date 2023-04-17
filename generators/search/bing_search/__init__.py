@@ -3,8 +3,9 @@ import requests
 
 INPUT_EXAMPLE = {
     "searchTerm": "Chattering lori",
-    "apiKey": "<api-key-goes-here>",
-    }
+    "apiKey": "<API_KEY_GOES_HERE>",
+}
+
 
 class BingSearchModel(BaseModel):
     searchTerm: str
@@ -13,13 +14,14 @@ class BingSearchModel(BaseModel):
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
+
 def bing_search(req: BingSearchModel):
-    '''Uses Microsoft's Bing to retrieve search results.'''
+    """Uses Microsoft's Bing to retrieve search results."""
     subscription_key = req.apiKey
     search_url = "https://api.bing.microsoft.com/v7.0/search"
 
-    headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
-    params  = {"q": req.searchTerm, "textDecorations": True, "textFormat": "HTML"}
+    headers = {"Ocp-Apim-Subscription-Key": subscription_key}
+    params = {"q": req.searchTerm, "textDecorations": True, "textFormat": "HTML"}
 
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()

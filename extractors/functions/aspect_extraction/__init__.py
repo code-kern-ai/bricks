@@ -21,7 +21,7 @@ class AspectExtractorModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def aspect_extractor(request: AspectExtractorModel):
+def aspect_extraction(request: AspectExtractorModel):
     """Matches aspects in a text to positive or negative sentiment."""
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(request.text)
