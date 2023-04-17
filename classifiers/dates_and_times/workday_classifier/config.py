@@ -9,8 +9,8 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         issue_id=161,
         tabler_icon="CalendarEvent",
-        min_refinery_version="1.7.0",
-        state=State.DRAFT.value,  # change to public once refinery exec env requirements are met
+        min_refinery_version="1.9.2",
+        state=State.PUBLIC.value,
         type="python_function",
         gdpr_compliant="true",
         kern_token_proxy_usable="false",
