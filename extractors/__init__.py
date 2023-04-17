@@ -1,9 +1,6 @@
 from fastapi import APIRouter
 
-from .codes import (
-    color_code_extraction,
-    stock_ticker_extraction
-)
+from .codes import color_code_extraction, stock_ticker_extraction
 
 from .dates_and_times import (
     date_extraction,
@@ -21,9 +18,7 @@ from .llm import (
     gpt_information_extraction,
 )
 
-from .media import (
-    work_of_art_extraction
-)
+from .media import work_of_art_extraction
 
 from .metrics import (
     metric_extraction,
@@ -52,9 +47,7 @@ from .personal_identifiers import (
     zipcode_extraction,
 )
 
-from .symbols import (
-    hashtag_extraction
-)
+from .symbols import hashtag_extraction
 
 from .words import (
     goodbye_extraction,

@@ -40,9 +40,7 @@ from .text_analytics import (
     syllable_count,
 )
 
-from .text_cleaning import (
-    html_cleanser,
-)
+from .text_cleaning import html_cleanser, html_unescape
 
 from .translation import (
     deepl_translator,
@@ -51,9 +49,7 @@ from .translation import (
     microsoft_translator,
 )
 
-from .sentiment import (
-    vader_sentiment_scores
-)
+from .sentiment import vader_sentiment_scores
 
 router = APIRouter()
 
@@ -81,6 +77,7 @@ for module in [
     syllable_count,
     html_cleanser,
     bing_spelling_correction,
+    html_unescape,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

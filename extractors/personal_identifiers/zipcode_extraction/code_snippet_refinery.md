@@ -1,5 +1,6 @@
 ```python
 import re
+from typing import List
 
 ATTRIBUTE: str = "text" # only text attributes.
 COUNTRY_IDS: List[str] = ["US"] # see list below for more countries

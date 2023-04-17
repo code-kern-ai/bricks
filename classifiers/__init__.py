@@ -1,12 +1,8 @@
 from fastapi import APIRouter
 
-from .llm import (
-    gpt_classifier
-)
+from .llm import gpt_classifier
 
-from .lookup_lists import (
-    lookup_list
-)
+from .lookup_lists import lookup_list
 
 from .sentiment import (
     textblob_sentiment,
@@ -46,7 +42,7 @@ for module in [
     language_detection,
     profanity_detection,
     sentence_complexity,
-    textblob_subjectivity
+    textblob_subjectivity,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
