@@ -10,7 +10,7 @@ def get_config():
         issue_id=161,
         tabler_icon="CalendarEvent",
         min_refinery_version="1.7.0",
-        state=State.PUBLIC.value,
+        state=State.DRAFT.value,  # change to public once refinery exec env requirements are met
         type="python_function",
         gdpr_compliant="true",
         kern_token_proxy_usable="false",
@@ -44,5 +44,5 @@ def get_config():
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
             },
-        },    
+        },
     )

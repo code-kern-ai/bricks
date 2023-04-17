@@ -17,7 +17,7 @@ def get_config():
         docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
-            "search",
+            "spelling",
             "not_gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
