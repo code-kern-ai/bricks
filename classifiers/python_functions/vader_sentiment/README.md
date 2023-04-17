@@ -1,2 +1,0 @@
-VADER (Valence Aware Dictionary and sEntiment Reasoner) is a lexicon and rule-based sentiment analysis tool. It's specifically tuned to get the sentiment of social-media post, but also works on other text-types as well. Learn more here: https://github.com/cjhutto/vaderSentiment
-Only works with refinery > 1.7.1.

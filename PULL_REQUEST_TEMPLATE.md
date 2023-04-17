@@ -1,8 +1,8 @@
 PR checklist:
-- [ ] Tested by creator locally
-- [ ] Tested by creator on remote App
-- [ ] Tested by reviewer locally
-- [ ] Tested by reviewer on remote App
+- [ ] Tested by creator on localhost
+- [ ] Tested by kern member on app.dev.kern.ai
+- [ ] Tested by reviewer on localhost
+- [ ] Tested by reviewer on app.dev.kern.ai
 - [ ] Conforms with the agreed upon code pattern
 
 

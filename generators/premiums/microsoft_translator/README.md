@@ -1,1 +1,0 @@
-Translates texts using Microsoft's Azure cognitive services. An API key can be obtained via the Azures cognitive services. Currently Microsoft offers a free plan with which allows the translation of two million characters per month. Please contact the Kern AI Team if you need further support at info@kern.ai or join our Discord channel: https://discord.gg/WAnAgQEv 

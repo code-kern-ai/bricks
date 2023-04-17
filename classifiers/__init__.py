@@ -1,36 +1,48 @@
 from fastapi import APIRouter
-from .python_functions import (
-    language_detection,
-    lookup_list,
-    sentence_complexity,
+
+from .llm import gpt_classifier
+
+from .lookup_lists import lookup_list
+
+from .sentiment import (
     textblob_sentiment,
-    textblob_subjectivity,
-    emotionality_detection,
-    spelling_check,
-    cosine_similarity,
-    profanity_detection,
-    vader_sentiment,
-    workday_classifier,
+    vader_sentiment_classifier,
 )
-from .premiums import (
-    gpt3_classifier
+
+from .similarity import (
+    cosine_similarity,
+)
+
+from .spelling import (
+    spelling_check,
+)
+
+from .text_analysis import (
+    emotionality_detection,
+    language_detection,
+    profanity_detection,
+    sentence_complexity,
+    textblob_subjectivity,
+)
+
+from .spelling import (
+    spelling_check,
 )
 
 router = APIRouter()
 
 for module in [
-    language_detection,
-    lookup_list,
-    sentence_complexity,
     textblob_sentiment,
-    textblob_subjectivity,
-    emotionality_detection,
     spelling_check,
+    vader_sentiment_classifier,
+    gpt_classifier,
+    lookup_list,
     cosine_similarity,
+    emotionality_detection,
+    language_detection,
     profanity_detection,
-    gpt3_classifier,
-    vader_sentiment,
-    workday_classifier,
+    sentence_complexity,
+    textblob_subjectivity,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
