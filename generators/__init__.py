@@ -4,6 +4,7 @@ from .distance import (
     hamming_distance,
     levenshtein_distance,
     euclidean_distance,
+    manhattan_distance,
 )
 
 from .lemmatizer import (
@@ -79,6 +80,7 @@ for module in [
     bing_spelling_correction,
     html_unescape,
     vader_sentiment_scores,
+    manhattan_distance,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
