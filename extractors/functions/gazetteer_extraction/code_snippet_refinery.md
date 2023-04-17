@@ -1,5 +1,6 @@
 ```python
 import knowledge
+from typing import List
 
 ATTRIBUTE: str = "text" # only text attributes
 LABEL: str = "PERSON"
