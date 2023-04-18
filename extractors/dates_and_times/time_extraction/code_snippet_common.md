@@ -10,7 +10,7 @@ def time_extraction(text:str, extraction_keyword:str) -> List[Tuple[str,int]]:
     @return: positions of extracted times
     """
     regex = re.compile(
-        r"(?:(?:[0-9]{1,2}(?::[0-9]{1,2}(?::[0-9]{1,2}:?)?)?)(?:(?: )?am|(?: )?pm|(?: )?AM|(?: )?PM)?)"
+        r"\b(1[0-2]|[1-9])\s*[apAP][. ]*[mM]\.?|(?:(?:[01]?[0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9])?(?:(?:\s?[ap](?:\.m\.)?)|(?:\s?[AP](?:\.M\.)?)))|(?:[01]?[0-9]|2[0-3]):[0-5][0-9](?::[0-5][0-9])?"
     )
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
