@@ -1,0 +1,1 @@
+This brick module is using the sumy library from GitHub to summarize texts that were scraped from websites like wikipedia or blog articles. https://github.com/miso-belica/sumy
