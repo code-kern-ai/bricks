@@ -60,6 +60,7 @@ from .words import (
     substring_extraction,
     synonym_extraction,
     verb_phrase_extraction,
+    difficult_words_extraction,
 )
 
 router = APIRouter()
@@ -101,6 +102,7 @@ for module in [
     synonym_extraction,
     verb_phrase_extraction,
     percentage_extraction,
+    difficult_words_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
