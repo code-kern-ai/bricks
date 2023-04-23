@@ -1,4 +1,5 @@
 import requests
+import json
 from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
@@ -20,7 +21,8 @@ def toxicity_classifier(req: ToxicityClassifierModel):
     def query(api_token, inputs):
         headers = {"Authorization": f"Bearer {api_token}"}
         response = requests.post(API_URL, headers=headers, json={"inputs": inputs})
-        return response.json()
+        json_response = response.json()
+        return json.dumps(json_response)
 
     try:
         output = query(req.apiToken, req.text)

@@ -10,6 +10,6 @@ def get_config():
         data_type="text",
         issue_id=80,
         tabler_icon="MoodAngry",
-        min_refinery_version="1.8.0",
+        min_refinery_version="1.7.0",
         state=State.PUBLIC
     )

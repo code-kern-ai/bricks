@@ -2,7 +2,7 @@
 import requests
 
 YOUR_API_KEY: str = "<API_KEY_GOES_HERE>"
-API_URL = "https://api-inference.huggingface.co/models/unitary/toxic-bert"
+YOUR_API_URL = "https://api-inference.huggingface.co/models/unitary/toxic-bert"
 YOUR_ATTRIBUTE: str = "text" # only text attributes
 
 def toxicity_classifier(record):
