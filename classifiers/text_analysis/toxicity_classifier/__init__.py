@@ -26,9 +26,7 @@ def toxicity_classifier(req: ToxicityClassifierModel):
             {item["label"]: item["score"] for item in entry}
             for entry in json_response
         ]
-        breakpoint()
-        res = json.dumps(result)
-        return json.dumps(json_response)
+        return json.dumps(result)
 
     try:
         output = query(req.apiToken, req.text)

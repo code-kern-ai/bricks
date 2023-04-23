@@ -14,5 +14,10 @@ def toxicity_classifier(record):
 
     headers = {"Authorization": f"Bearer {api_token}"}
     response = requests.post(API_URL, headers=headers, json={"inputs": inputs})
-    return response.json()
+    json_response = response.json()
+    result = [
+        {item["label"]: item["score"] for item in entry}
+        for entry in json_response
+    ]
+    return json.dumps(result)
 ```
