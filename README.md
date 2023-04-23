@@ -49,7 +49,8 @@ We generally summarize them as modules in this repository.
 Each module has a folder with the following structure:
 - `__init__.py`: if the module can be executed as a script, this file contains the entry point.
 - `README.md`: a description of the module, which is displayed on the platform on the detail page of the module.
-- `code_snippet.md`: the displayed code snippet on the detail page of the module. This is exactly how you can run the code in [refinery](#refinery).
+- `code_snippet_refinery.md`: the displayed code snippet based on a SpaCy input. This is showed on the detail page of the module.
+- `code_snippet_common.md`: the displayed code snippet for any Python env on the detail page of the module.  This is showed on the detail page of the module.
 - `config.py`: a config script to synchronize this repository with the online platform.
 
 If you want to add a new module, please look into our [contributing guidelines](#contributing).

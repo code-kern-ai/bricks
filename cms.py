@@ -4,7 +4,11 @@ from dotenv import load_dotenv
 import requests
 from importlib import import_module
 from typing import Dict, Any
-from util.paths import camel_case_to_snake_case, snake_case_to_camel_case
+from util.paths import (
+    camel_case_to_snake_case,
+    snake_case_to_camel_case,
+    get_module_folders,
+)
 from util.enums import State
 import fire
 from wasabi import msg
@@ -28,22 +32,22 @@ class CMS:
         """Fetches all modules from the CMS and lists all modules that are not yet in the CMS."""
         drafts = []
         ready_to_publish = []
-        for moduleType in ["classifier", "extractor", "generator"]:
-            for executionType in ["pythonFunction", "activeLearner", "premium"]:
+        for moduleType in ["classifiers", "extractors", "generators"]:
+            for executionType in get_module_folders(moduleType):
                 relative_dir = os.path.join(
-                    f"{moduleType}s", f"{camel_case_to_snake_case(executionType)}s"
+                    f"{moduleType}", f"{camel_case_to_snake_case(executionType)}"
                 )
                 for sub_dir in os.listdir(relative_dir):
                     config_path = os.path.join(relative_dir, sub_dir, "config.py")
                     if os.path.exists(config_path):
                         config_module = import_module(
-                            f"{moduleType}s.{camel_case_to_snake_case(executionType)}s.{sub_dir}.config"
+                            f"{moduleType}.{camel_case_to_snake_case(executionType)}.{sub_dir}.config"
                         )
                         config, state = config_module.get_config()
 
                         module_exists, _ = check_module_exists(config)
                         if not module_exists:
-                            if state == State.PUBLIC:
+                            if state == State.PUBLIC.value:
                                 ready_to_publish.append(config["name"])
                             else:
                                 drafts.append(config["name"])
@@ -67,21 +71,21 @@ class CMS:
         Args:
             verbose: If True, prints more information.
         """
-        for moduleType in ["classifier", "extractor", "generator"]:
-            for executionType in ["pythonFunction", "activeLearner", "premium"]:
+        for moduleType in ["classifiers", "extractors", "generators"]:
+            for executionType in get_module_folders(moduleType):
                 relative_dir = os.path.join(
-                    f"{moduleType}s", f"{camel_case_to_snake_case(executionType)}s"
+                    f"{moduleType}", f"{camel_case_to_snake_case(executionType)}"
                 )
                 for sub_dir in os.listdir(relative_dir):
                     config_path = os.path.join(relative_dir, sub_dir, "config.py")
                     if os.path.exists(config_path):
                         print(f"Processing {config_path}")
                         config_module = import_module(
-                            f"{moduleType}s.{camel_case_to_snake_case(executionType)}s.{sub_dir}.config"
+                            f"{moduleType}.{camel_case_to_snake_case(executionType)}.{sub_dir}.config"
                         )
                         config, state = config_module.get_config()
 
-                        if state == State.PUBLIC:
+                        if state == State.PUBLIC.value:
                             module_exists, _ = check_module_exists(config)
                             if not module_exists:
                                 print("Posting module to CMS")
@@ -111,17 +115,17 @@ class CMS:
         """
 
         moduleType = module_dir.split("/")[0][:-1]  # remove the trailing 's'
-        executionType = snake_case_to_camel_case(module_dir.split("/")[1])[:-1]
+        executionType = snake_case_to_camel_case(module_dir.split("/")[1])
         sub_dir = module_dir.split("/")[2]
         config_path = os.path.join(module_dir, "config.py")
         if os.path.exists(config_path):
             print(f"Processing {config_path}")
             config_module = import_module(
-                f"{moduleType}s.{camel_case_to_snake_case(executionType)}s.{sub_dir}.config"
+                f"{moduleType}s.{camel_case_to_snake_case(executionType)}.{sub_dir}.config"
             )
             config, state = config_module.get_config()
 
-            if state == State.PUBLIC:
+            if state == State.PUBLIC.value:
                 module_exists, module_data = check_module_exists(config)
                 if module_exists:
                     module_data = module_data[0]
@@ -154,15 +158,21 @@ def post_module(config: Dict[str, Any]):
                 "description": config["description"],
                 "moduleType": config["moduleType"],
                 "executionType": config["executionType"],
-                "dataType": config["dataType"],
                 "endpoint": config["endpoint"],
                 "inputExample": config["inputExample"],
                 "issueId": config["issueId"],
                 "tablerIcon": config["tablerIcon"],
                 "registeredDate": config["registeredDate"],
                 "markdownDescription": config["markdownDescription"],
-                "sourceCode": config["sourceCode"],
+                "sourceCodeRefinery": config["sourceCodeRefinery"],
+                "sourceCodeCommon": config["sourceCodeCommon"],
                 "minRefineryVersion": config["minRefineryVersion"],
+                "gdprCompliant": config["gdprCompliant"],
+                "kernTokenProxyUsable": config["kernTokenProxyUsable"],
+                "dockerImage": config["dockerImage"],
+                "availableFor": config["availableFor"],
+                "partOfGroup": config["partOfGroup"],
+                "integratorInputs": config["integratorInputs"],
             }
         },
         headers={
@@ -182,15 +192,21 @@ def update_module(config: Dict[str, Any]):
                 "description": config["description"],
                 "moduleType": config["moduleType"],
                 "executionType": config["executionType"],
-                "dataType": config["dataType"],
                 "endpoint": config["endpoint"],
                 "inputExample": config["inputExample"],
                 "issueId": config["issueId"],
                 "tablerIcon": config["tablerIcon"],
                 "registeredDate": config["registeredDate"],
                 "markdownDescription": config["markdownDescription"],
-                "sourceCode": config["sourceCode"],
-                "minRefineryVersion": config["minRefineryVersion"],
+                "sourceCodeRefinery": config["sourceCodeRefinery"],
+                "sourceCodeCommon": config["sourceCodeCommon"],
+                "minRefineryVersion": config["minRefineryVersion"],  #
+                "gdprCompliant": config["gdprCompliant"],
+                "kernTokenProxyUsable": config["kernTokenProxyUsable"],
+                "dockerImage": config["dockerImage"],
+                "availableFor": config["availableFor"],
+                "partOfGroup": config["partOfGroup"],
+                "integratorInputs": config["integratorInputs"],
             }
         },
         headers={

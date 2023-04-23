@@ -7,12 +7,19 @@ Before diving deep into how the components of this repository work, there are so
 - Every little contribution counts - We are aware that not all the users checking `bricks` out would be proficient in python or any programming language for that matter. This shouldn't discourage anyone from contributing their ideas. For example, just opening a new issue consisting of some new idea is considered a valid contribution. The implementation will then be taken care of by us.
 
 ## Table of contents
-- [Structure of this repository](#structure-of-this-repository)
-- [How to contribute ideas](#how-to-contribute-ideas)
-- [How to contribute modules](#how-to-contribute-modules)
-- [Test your module](#test-your-module)
-- [Quality assurance](#quality-assurance)
-- [What happens next?](#what-happens-next)
+1. [Structure of this repository](#structure-of-this-repository)
+    1. [Module types](#module-types-classifiers-extractors-and-generators)
+    2. [Bricks groups](#brick-groups)
+    3. [Structure of brick modules](#structure-of-brick-modules-__init__py-readmemd-code_snippet_refinerymd-code_snippet_commonmd-and-configpy)
+2. [How to contribute ideas](#how-to-contribute-ideas)
+3. [How to contribute modules](#how-to-contribute-modules)
+    1. [SpaCy in extractors](#spacy-in-extractors)
+    2. [Configuring the config.py file](#configuring-the-configpy-file)
+    3. [Desired output of a brick](#desired-output-of-a-brick)
+4. [Test your module](#test-your-module)
+    1. [Finding errors](#finding-errors)
+5. [Quality assurance](#quality-assurance)
+6. [What happens next?](#what-happens-next)
 
 
 ## Structure of this repository
@@ -23,21 +30,18 @@ We have structured this repository into two main folders:
 - `extractors`: this is where the modules will go into that are used to extract information from a given text. For example, a module that extracts the author of a text would go into this folder.
 - `generators`: this is where the modules will go that are used to produce values based on the provided text. For example, a module that corrects spelling mistakes while take an incorrect text and generate the corrected text.
 
-### Execution types: `python_functions`, `active_learners`, `zero_shot` and `premium`
-In each folder, you will find further directories, typically in this structure:
-- `python_functions`: functions you would write as labeling functions in refinery. Think of very simplistic Python snippets.
-- `active_learners`: contains code snippets you can use in refinery to train an active learning module.
-- `zero_shot`: _not yet relevant_; this is where we'll add configurations for zero-shot models as soon as refinery has a programmable zero-shot interface (atm it is no-code, but we'll change that in the near future).
-- `premium`: _not yet relevant_; those are modules that require some sort of API key. We will add them here, but only the request code, not the API key itself.
+### Brick groups:
+Since bricks 2.0, brick modules will be grouped together with similar modules. For example, there may be one brick called `sentiment brick`, which then contains different algorithms to classify a text by the sentiment (like VADER, GPT, etc.). The user is then able to choose the desired algorithm. 
 
-### Structure of modules: `__init__.py`, `README.md`, `code_snippet.md` and `config.py`
+A group may consist of as little as one implementation. There is no limit to how many implementations a group can contain. 
+
+### Structure of brick modules: `__init__.py`, `README.md`, `code_snippet_refinery.md`, `code_snippet_common.md` and `config.py`
 Each module has a folder with the following structure:
 - `__init__.py`: if the module can be executed as a script, this file contains the entry point.
 - `README.md`: a description of the module, which is displayed on the platform on the detail page of the module.
-- `code_snippet.md`: the displayed code snippet on the detail page of the module.
+- `code_snippet_common.md`: the displayed code snippet for any Python env on the detail page of the module.  This is showed on the detail page of the module.
+- `code_snippet_refinery.md`: the displayed code snippet based on a SpaCy input. This is showed on the detail page of the module.
 - `config.py`: a config script to synchronize this repository with the online platform.
-
-We use that structure to a) standardize module implementations, making it easier to maintain the underlying code of modules, and b) to synchronize the repository with the online platform. This means that if you add a new module to the repository, it will be added to the platform via a script that reads the `config.py` file.
 
 ## How to contribute ideas
 If you have an idea for a new module/heuristic, please [open an issue](https://github.com/code-kern-ai/bricks/issues) in this repository. We will discuss the idea and if it is a good fit for the library, we will add it to the library. This means you don't _have to_ write the code yourself and can still contribute to the library. If you want to write the code yourself, please refer to the next section.
@@ -45,17 +49,59 @@ If you have an idea for a new module/heuristic, please [open an issue](https://g
 ## How to contribute modules
 1. As stated above, please first add the idea as an issue. We'll use this to document the origin of the module, and will use it to help you during the contribution.
 2. Create a new branch with the name of the module you want to add. Please do **not** add multiple modules in one branch.
-3. Duplicate the `_template` directory of the type of module you want to add (e.g. `extractors/python_functions/_template`) and rename the directory to the name of your module.
+3. Duplicate the `_template` directory of the type of module you want to add (e.g. `extractors/_template`) and rename the directory to the name of your module.
 4. Start by changing the `config.py` file by updating the issueId to the issue you created in step 1.
 5. Implement the `__init__.py` file. This is the entry point of the module, and will be executed when the module is run. If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
-6. Add your function to the top-level `__init__.py` of your module type, so either in `extractors/__init.py__`, `classifiers/__init.py__`, or `generators/__init.py__`.
+6. Add your function to the top-level `__init__.py` of your module type, so either in `extractors/__init.py__`, `classifiers/__init.py__`, or `generators/__init.py__`. If the brick module if part of a new brick group, create a new folder for the group and import the brick from there. 
 7. [Test](#test-your-module) your module.
-8. Modify `code_snippet.md`, and keep in mind that this must fit the interface of refinery. If you copied from the `_template` directory, you will already see the expected interface. All the variables holding the user defined inputs shall be defined as constants (all capital letters). If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
+8. Modify `code_snippet_refinery.md`, and keep in mind that this must fit the interface of refinery.  Optionally, you can also add a file `code_snippet_common.md`, which contains code that can be executed in any Python environment. If you copied from the `_template` directory, you will already see the expected interface. All the variables holding the user defined inputs shall be defined as constants (all capital letters). If you are not sure about the expected output of the function, please read [the output section](#desired-ouput).
 9. Document and describe your function in the `README.md` file. This will be displayed on the detail page of the module, which means you can go more into detail with your description. Make sure the module description in `README.md` tails the description from the docstring you wrote in `__init__.py`.
-10. Finally, make your last changes to the `config.py` by updating the name of the function you implemented in this module. Make sure that the function name is the same as the directory name!
+10. Finally, make your last changes to the `config.py` by updating the name of the function you implemented in this module. Add other [parameters of the `config.py`](#configuring-the-configpy-file).
 11. Create a pull request to the `main` branch of the repository. Add a comment `implements #<your-issue-id>` to the pull request, so that we can link the pull request to the issue.
 
 If you have any questions along the way, please don't hesitate to reach out to us, either in the issue you created, or via [Discord](https://discord.gg/qf4rGCEphW).
+
+## Structure of the `code_snippet_common.md`
+Providing the common code for a brick is easy, but there are a few thing you need to ensure so that all bricks are uniform. Here's the tldr:
+- The code snippet should consist of a function that takes in only one string at a time. Add additional params as needed. 
+- Please add docstrings and type hints to the function, ideally similar to the ones you'll find in the example below.  
+- You may add additional helper functions. 
+- Please include a function called `example_integration()` at the bottom, where you provide a couple of examples and use the brick function you've built. Please ensure to separate the main function and the example integration. 
+- Have fun coding! Don't stress out over details, we're all here to learn and making errors is ok!
+
+Below you can find an example for the code snippet: 
+```python
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
+def vader_sentiment_classifier(text: str) -> str:    
+    """
+    @param text: text you want to analyze
+    @return: either 'negative', 'neutral' or 'positive' depending on the score
+    """
+    analyzer = SentimentIntensityAnalyzer()
+    vs = analyzer.polarity_scores(text)
+    return lookup_label(vs["compound"])
+
+def lookup_label(score:float) -> str:
+    if score <= -0.05:
+        return "negative"
+    if score < 0.05:
+        return "neutral"
+    return "positive"
+
+# ↑ necessary bricks function 
+# -----------------------------------------------------------------------------------------
+# ↓ example implementation 
+
+def example_integration():
+    texts = ["I hate this!","This is a negative example.","I don't know how this is.", "This is a fine example.", "I love this!"]
+    for text in texts:
+        print(f"the sentiment of \"{text}\" is \"{vader_sentiment_classifier(text)}\"")
+
+example_integration()
+```
+As you can see, the main function and the example integration are clearly separated. Please use this in your brick as well so that it is clear what the actual code of the brick is but the users also get an understanding of how they might integrate it and what kind of input they should use. 
+
 
 ### spaCy in `extractors`
 We use spaCy for extractor modules, as it helps to put texts into correct tokens. Please use spaCy for extractor modules, and match character returns with token-level returns. For instance, in the `__init__.py` file:
@@ -82,7 +128,62 @@ def date_extraction(request: DateExtraction):
 
 Note that spaCy doesn't have to be used in the `code_snippet.md` file, as this is only used for the code snippet in the library. refinery uses spaCy under the hood, such that all records are already tokenized.
 
-### Desired output 
+### Configuring the `config.py` file:
+This file syncs the brick with an online CMS. This is done via a configuration file to avoid the need to do this manually. 
+
+If you struggle with this file: Don't worry! You can leave a blank dictionary for now. A member of our team will gladly help you to set it up afterward. 
+
+The upper half of the config contains most of the general information of the brick. 
+- `input_example`: A dictionary called `INPUT_EXAMPLE` should be set in the `__init__.py` and imported into the `config.py`. 
+- `issue_id`: Is the corresponding GitHub issue number of the brick module. If no issue was created for a brick, you can do so [here](https://github.com/code-kern-ai/bricks/issues). 
+- `tabler_icon`: Refers to the icon that should be displayed for this brick. An icon can be chosen [here](https://tabler-icons-react.vercel.app/). 
+- `min_refinery_version`: If the brick requires a Python package, it might only be available after the dev-team has added this package to the execution environment to refinery. The `min_refinery_version` refers to the first version in which the needed library was added to refinery. 
+- `state`: The `state` parameter simply refers to if this bricks should be publicly visible yet. Set this to `DRAFT` if you think this needs some more work. 
+- `gdpr_compliant`:If this module uses an API that sends data to outside to the EU, the brick automatically is not `gdpr_compliant` anymore, which then needs to the set to `"False"` then. 
+- `type`: If the brick uses a paid API, it is also then a `premium` function. Otherwise it's a `python_function`. 
+- `kern_token_proxy_usable`: In the future, Kern AI will offer a Kern API token, with which different services can be used. Once this is the case, the `kern_token_proxy_usable` will be set to `"True"`. Otherwise is is set to `"False".` 
+- `docker_image`: We plan to offer certain bricks as a `docker_image` in the future. The name of the image will then be entered here.
+- `available_for`: The `available_for` containing `"refinery"` if the `"code_snippet_refinery.md"` exists and/or `"commom"` to  `"code_snippet_common.md"` exists. The first containing code that expects a SpaCy dictionary as an input, the latter containing code which can directly be executed in any Python environment without the need for SpaCy.
+- `part_of_group`: Every brick is also part of at least two groups: the parent directory, i.e. `"sentiment"`, `"spelling"` etc, and `"gdpr_compliant"` or `"gdpr_uncompliant"`. This is set at `part_of_group`.
+
+
+```python
+def get_config():
+    return build_generator_function_config(
+        function=levenshtein_distance,
+        input_example=INPUT_EXAMPLE,
+                issue_id=22,
+        tabler_icon="SquareRoundedLetterL",
+        min_refinery_version="1.7.0",
+        state=State.PUBLIC.value,
+        gdpr_compliant="True",
+        type="python_function",
+        kern_token_proxy_usable="False",
+        docker_image="None",
+        available_for=["refinery", "common"],
+        part_of_group=["distance", "gdpr_compliant"],
+```
+ 
+At the bottom of the config, you will find the section "integratior inputs". You can leave this section blank and leave it for the Kern AI team do fill it out. This section is mean for the bricks integrator, which allows the integration of bricks into our main tool Kern AI refinery. The integrator should always have at least the following structure:
+```python
+        integrator_inputs={
+            "name": "levenshtein_distance",
+            "refineryDataType": "text",
+            "outputs": ["yes", "no"],
+            "constants": {
+                "inputAttribute": { # previously ATTRIBUTE, never optional
+                    "selectionType": "string",
+                    "defaultValue": "your-text",
+                },
+            },
+        }
+)
+```
+The name refers to the name of the module. refineryDataType is the type of input to be set in refinery, this can be category, text, integer, float or boolean for attribute calculation. For bricks that should be used as labeling functions, this should be set to text. Outputs is a list containing possible outputs. This list does not server as a rule of which outputs are allowed, but rather provides some default values which might be changed later on. The constants affect anything that should be set in the code_snippet_refinery.md. Everything configurable here can then be set via the bricks integrator, which paste the constants into the code which will be used in refinery. 
+
+We use that structure to a) standardize module implementations, making it easier to maintain the underlying code of modules, and b) to synchronize the repository with the online platform. This means that if you add a new module to the repository, it will be added to the platform via a script that reads the `config.py` file.
+
+### Desired output of a brick
 The output that is expected by the actual endpoint in bricks (your `__init__.py`) and the source code for refinery (your `code_snippet.md`) differ a bit. This section should provide a guideline on how the output of the modules should look like.
 
 **Classifiers:**

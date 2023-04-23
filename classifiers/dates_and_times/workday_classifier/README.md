@@ -1,0 +1,1 @@
+Uses the dateutil as well as the holidays library to determine if a weekday is a national holiday, a normal workday or a weekend. Currently, this module does not work with multiple dates and will only provide the classification on one first date that it finds! Defaults to month-first dates except if the first number is above 12!

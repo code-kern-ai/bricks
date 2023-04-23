@@ -1,1 +1,0 @@
-Translates texts with DeepL. Requires a paid API key, which you can obtain at https://www.deepl.com/. Please contact the Kern AI Team if you need further support at info@kern.ai or join our Discord channel: https://discord.gg/WAnAgQEv 

@@ -1,1 +1,0 @@
-Calculates to manhattan distance, also known as the cityblock distance, between two vectors. Can be used as a similarity metric between two texts. Uses TF-IDF to vectorize the text inputs. 

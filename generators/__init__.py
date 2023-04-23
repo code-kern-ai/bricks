@@ -1,63 +1,85 @@
 from fastapi import APIRouter
-from .python_functions import (
-    language_translator,
-    html_cleanser,
-    phonetic_soundex,
-    textblob_spelling_correction,
-    smalltalk_truncation,
+
+from .distance import (
     hamming_distance,
     levenshtein_distance,
-    reading_time,
-    syllable_count,
-    text_summarisation,
-    spacy_lemmatizer,
-    most_frequent_words,
     euclidean_distance,
-    url_keyword_parser,
     manhattan_distance,
 )
-from .premiums import (
-    microsoft_translator,
-    deepl_translator,
-    ibm_translator,
-    gpt3_grammar_correction,
-    gpt3_tldr_summarization,
-    gpt3_restaurant_review,
-    nyt_news_search,
+
+from .lemmatizer import (
+    spacy_lemmatizer,
+)
+
+from .paths import url_keyword_parser
+
+from .search import (
     bing_news_search,
     bing_search,
     google_search,
+    nyt_news_search,
+)
+
+from .speech_to_text import (
     azure_speech_to_text,
 )
+
+from .spelling import (
+    textblob_spelling_correction,
+    bing_spelling_correction,
+)
+
+from .summarization import (
+    smalltalk_truncation,
+    text_summarization,
+)
+
+from .text_analytics import (
+    most_frequent_words,
+    phonetic_soundex,
+    reading_time,
+    syllable_count,
+)
+
+from .text_cleaning import html_cleanser, html_unescape
+
+from .translation import (
+    deepl_translator,
+    ibm_translator,
+    language_translator,
+    microsoft_translator,
+)
+
+from .sentiment import vader_sentiment_scores
 
 router = APIRouter()
 
 for module in [
     language_translator,
-    html_cleanser,
     microsoft_translator,
     deepl_translator,
-    phonetic_soundex,
-    textblob_spelling_correction,
-    smalltalk_truncation,
     hamming_distance,
     levenshtein_distance,
-    reading_time,
-    syllable_count,
     ibm_translator,
-    text_summarisation,
-    gpt3_grammar_correction,
-    gpt3_tldr_summarization,
-    gpt3_restaurant_review,
-    nyt_news_search,
+    euclidean_distance,
+    spacy_lemmatizer,
+    url_keyword_parser,
     bing_news_search,
     bing_search,
     google_search,
-    spacy_lemmatizer,
-    most_frequent_words,
-    euclidean_distance,
+    nyt_news_search,
     azure_speech_to_text,
-    url_keyword_parser,
+    textblob_spelling_correction,
+    smalltalk_truncation,
+    text_summarization,
+    most_frequent_words,
+    phonetic_soundex,
+    reading_time,
+    syllable_count,
+    html_cleanser,
+    bing_spelling_correction,
+    html_unescape,
+    vader_sentiment_scores,
     manhattan_distance,
 ]:
     module_name = module.__name__.split(".")[-1]

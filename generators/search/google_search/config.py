@@ -1,0 +1,70 @@
+from util.configs import build_generator_premium_config
+from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
+from . import google_search, INPUT_EXAMPLE
+
+
+def get_config():
+    return build_generator_premium_config(
+        function=google_search,
+        input_example=INPUT_EXAMPLE,
+        issue_id=206,
+        tabler_icon="BrandGoogle",
+        min_refinery_version="1.8.0",
+        state=State.PUBLIC.value,
+        gdpr_compliant="false",
+        type="python_function",
+        kern_token_proxy_usable="false",
+        docker_image="none",
+        available_for=["refinery", "common"],
+        part_of_group=[
+            "search",
+            "not_gdpr_compliant",
+        ],  # first entry should be parent directory
+        # bricks integrator information
+        integrator_inputs={
+            "name": "google_search",
+            "refineryDataType": RefineryDataType.TEXT.value,
+            "variables": {
+                "ATTRIBUTE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "addInfo": [
+                        BricksVariableType.ATTRIBUTE.value,
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
+                },
+                "LOCATION": {
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "Germany",
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+                "LANGUAGE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "en",
+                    "addInfo": [
+                        BricksVariableType.LANGUAGE.value,
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
+                },
+                "GEOLOCATION": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "de",
+                    "addInfo": [
+                        BricksVariableType.LANGUAGE.value,
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
+                },
+                "API_KEY": {
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "<API_KEY_GOES_HERE>",
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+                "RESPONSE_SIZE": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "full",
+                    "description": 'choose "compact" to only get text snippet of the first result',
+                    "allowedValues": ["full", "compact"],
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+            },
+        },
+    )

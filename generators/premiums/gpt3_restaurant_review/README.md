@@ -1,1 +1,0 @@
-Uses OpenAI's `text-davinci-003` GPT-3 model to generate a restaurant review based on the keywords provided in the prompt. An API key can be obtained directly from OpenAI. Contact us at info@kern.ai if you require an API key or need any support from us.
