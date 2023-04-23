@@ -22,6 +22,12 @@ def toxicity_classifier(req: ToxicityClassifierModel):
         headers = {"Authorization": f"Bearer {api_token}"}
         response = requests.post(API_URL, headers=headers, json={"inputs": inputs})
         json_response = response.json()
+        result = [
+            {item["label"]: item["score"] for item in entry}
+            for entry in json_response
+        ]
+        breakpoint()
+        res = json.dumps(result)
         return json.dumps(json_response)
 
     try:
