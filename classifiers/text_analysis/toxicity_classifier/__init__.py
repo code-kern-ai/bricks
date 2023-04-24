@@ -7,8 +7,6 @@ INPUT_EXAMPLE = {
     "text": "Shut your mouth, you idiot!"
 }
 
-API_URL = "https://api-inference.huggingface.co/models/unitary/toxic-bert"
-
 class ToxicityClassifierModel(BaseModel):
     apiToken: str
     text: str
@@ -18,9 +16,10 @@ class ToxicityClassifierModel(BaseModel):
 
 
 def toxicity_classifier(req: ToxicityClassifierModel):
+    """Uses the Hugging Face API to classify text as toxic or not toxic."""
     def query(api_token, inputs):
         headers = {"Authorization": f"Bearer {api_token}"}
-        response = requests.post(API_URL, headers=headers, json={"inputs": inputs})
+        response = requests.post("https://api-inference.huggingface.co/models/unitary/toxic-bert", headers=headers, json={"inputs": inputs})
         json_response = response.json()
         result = [
             {item["label"]: item["score"] for item in entry}
