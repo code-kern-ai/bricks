@@ -1,1 +1,1 @@
-This brick module is using the sumy library from GitHub to summarize texts that were scraped from websites like wikipedia or blog articles. https://github.com/miso-belica/sumy
+This brick module is using the sumy library from GitHub to summarize texts that were scraped from websites like wikipedia or blog articles. It uses Latent Semantic Analysis to extract structures of the words and texts used to find relevant sentences. You can read more about the sumy libraray here: https://github.com/miso-belica/sumy
