@@ -8,9 +8,7 @@ assignees: ''
 ---
 
 ## What module did you encounter a bug with?
-Please specify the full path to the module.
-
-For example: "extractor/python_functions/color_code_extraction".
+Please specify the name of the brick module that you are encounting errors with. If you have, you can also specify the link to the issue page of the brick, which you can access by simply clicking the `GitHub` button on each brick page.
 
 ## Please describe the bug you observed with this module.
 Besides a description, it would be really helpful to also include an example input and both the actual and the expected output. Also include the necessary information for reproducibility, e.g. the tokenizer you used.
