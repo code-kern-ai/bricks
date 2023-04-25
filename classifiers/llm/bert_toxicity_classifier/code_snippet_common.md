@@ -1,7 +1,7 @@
 ```python
 import requests
 
-def toxicity_classifier(text: str, api_key: str) -> dict:
+def bert_toxicity_classifier(text: str, api_key: str) -> dict:
     headers = {"Authorization": f"Bearer {api_key}"}
     response = requests.post("https://api-inference.huggingface.co/models/unitary/toxic-bert", headers=headers, json={"inputs": text})
     json_response = response.json()

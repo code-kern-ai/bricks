@@ -1,11 +1,11 @@
 from util.configs import build_classifier_premium_config
 from util.enums import State, SelectionType, BricksVariableType, RefineryDataType
-from . import toxicity_classifier, INPUT_EXAMPLE
+from . import bert_toxicity_classifier, INPUT_EXAMPLE
 
 
 def get_config():
     return build_classifier_premium_config(
-        function=toxicity_classifier,
+        function=bert_toxicity_classifier,
         input_example=INPUT_EXAMPLE,
         issue_id=80,
         tabler_icon="MoodAngry",
@@ -17,7 +17,7 @@ def get_config():
         docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
-            "text_analysis",
+            "llm",
             "gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
