@@ -7,7 +7,7 @@ def get_config():
     return build_extractor_function_config(
         function=difficult_words_extraction,
         input_example=INPUT_EXAMPLE,
-        issue_id=55,
+        issue_id=227,
         state=State.PUBLIC.value,
         gdpr_compliant="true",
         type="python_function",
