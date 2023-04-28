@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from .llm import gpt_classifier
+from .llm import gpt_classifier, bert_toxicity_classifier
 
 from .lookup_lists import lookup_list
 
@@ -23,7 +23,6 @@ from .text_analysis import (
     profanity_detection,
     sentence_complexity,
     textblob_subjectivity,
-    toxicity_classifier,
 )
 
 from .spelling import (
@@ -37,6 +36,7 @@ for module in [
     spelling_check,
     vader_sentiment_classifier,
     gpt_classifier,
+    bert_toxicity_classifier,
     lookup_list,
     cosine_similarity,
     emotionality_detection,
@@ -44,7 +44,6 @@ for module in [
     profanity_detection,
     sentence_complexity,
     textblob_subjectivity,
-    toxicity_classifier,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
