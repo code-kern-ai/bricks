@@ -29,7 +29,7 @@ def difficult_words_extraction(text: str, extraction_keyword: str, syllable_thre
 
 def example_integration():
       texts = ["My cat is eleven years old.", "My Dad plays the saxophone.", "My brother mows the lawn with our lawnmower.", "The butterfly is colorful."]
-      extraction_keyword = "diffucly_word"
+      extraction_keyword = "difficult_word"
       syllable_threshold = 3
       for text in texts:
             found = difficult_words_extraction(text, extraction_keyword, syllable_threshold)
