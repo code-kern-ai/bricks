@@ -1,10 +1,10 @@
-from util.configs import build_extractor_function_config
+from util.configs import build_classifier_function_config
 from util.enums import State, SelectionType, BricksVariableType, RefineryDataType
 from . import _template_func, INPUT_EXAMPLE
 
 
 def get_config():
-    return build_extractor_function_config(
+    return build_classifier_function_config(
         # strapi information
         function=_template_func,
         input_example=INPUT_EXAMPLE,
