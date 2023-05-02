@@ -12,7 +12,7 @@ def get_config():
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
         gdpr_compliant="false",
-        type="python_function",
+        type="premium",
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
