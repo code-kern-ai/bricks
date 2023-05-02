@@ -7,7 +7,7 @@ INPUT_EXAMPLE = {
     "text": "Shut your mouth, you idiot!"
 }
 
-class BertToxicityClassifierModel(BaseModel):
+class BertToxicityDetectorModel(BaseModel):
     apiToken: str
     text: str
 
@@ -15,7 +15,7 @@ class BertToxicityClassifierModel(BaseModel):
         schema_example = {"example": INPUT_EXAMPLE}
 
 
-def bert_toxicity_classifier(req: BertToxicityClassifierModel):
+def bert_toxicity_detector(req: BertToxicityClassifierModel):
     """Uses the Hugging Face API to classify text as toxic or not toxic."""
     def query(api_token, inputs):
         headers = {"Authorization": f"Bearer {api_token}"}

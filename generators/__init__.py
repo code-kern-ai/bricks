@@ -52,7 +52,7 @@ from .translation import (
 )
 
 from .llm import (
-    bert_toxicity_classifier,
+    bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
 )
@@ -89,7 +89,7 @@ for module in [
     vader_sentiment_scores,
     manhattan_distance,
     sumy_website_summarizer,
-    bert_toxicity_classifier,
+    bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
 ]:
