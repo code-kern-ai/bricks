@@ -19,7 +19,7 @@ def example_integration():
     api = "<API_KEY_GOES_HERE>"
     texts = ["Damn you are a stupid moron!", "The flowers look beautiful today.", "I hate all german people!", "I love you!"]
     for text in texts:
-        print(f"\"{text}\" is {toxicity_classifier(text, api)}")
+        print(f"\"{text}\" is {bert_toxicity_classifier(text, api)}")
 
 example_integration()
 ```
