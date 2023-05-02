@@ -32,6 +32,7 @@ from .spelling import (
 from .summarization import (
     smalltalk_truncation,
     text_summarization,
+    sumy_website_summarizer,
 )
 
 from .text_analytics import (
@@ -81,6 +82,7 @@ for module in [
     html_unescape,
     vader_sentiment_scores,
     manhattan_distance,
+    sumy_website_summarizer,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
