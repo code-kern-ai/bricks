@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from .llm import gpt_classifier, bert_toxicity_classifier
+from .llm import gpt_classifier
 
 from .lookup_lists import lookup_list
 
@@ -36,7 +36,6 @@ for module in [
     spelling_check,
     vader_sentiment_classifier,
     gpt_classifier,
-    bert_toxicity_classifier,
     lookup_list,
     cosine_similarity,
     emotionality_detection,
