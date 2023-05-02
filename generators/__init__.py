@@ -51,6 +51,12 @@ from .translation import (
     microsoft_translator,
 )
 
+from .llm import (
+    bert_toxicity_classifier,
+    gpt_grammar_correction,
+    gpt_tldr_summarization,
+)
+
 from .sentiment import vader_sentiment_scores
 
 router = APIRouter()
@@ -83,6 +89,9 @@ for module in [
     vader_sentiment_scores,
     manhattan_distance,
     sumy_website_summarizer,
+    bert_toxicity_classifier,
+    gpt_grammar_correction,
+    gpt_tldr_summarization,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
