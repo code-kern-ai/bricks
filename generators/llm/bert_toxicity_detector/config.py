@@ -1,11 +1,11 @@
-from util.configs import build_classifier_premium_config
+from util.configs import build_generator_premium_config
 from util.enums import State, SelectionType, BricksVariableType, RefineryDataType
-from . import bert_toxicity_classifier, INPUT_EXAMPLE
+from . import bert_toxicity_detector, INPUT_EXAMPLE
 
 
 def get_config():
-    return build_classifier_premium_config(
-        function=bert_toxicity_classifier,
+    return build_generator_premium_config(
+        function=bert_toxicity_detector,
         input_example=INPUT_EXAMPLE,
         issue_id=80,
         tabler_icon="MoodAngry",

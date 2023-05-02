@@ -5,7 +5,7 @@ import json
 API_KEY: str = "<API_KEY_GOES_HERE>"
 ATTRIBUTE: str = "headline" # only text attributes
 
-def bert_toxicity_classifier(record):
+def bert_toxicity_detector(record):
     """
     Uses toxic-bert via Hugging Face Inference API to classify toxicity in text.
     """
