@@ -36,6 +36,6 @@ def difficult_words_extraction(request: DifficultWordsExtractionModel):
     for match in re.finditer(pattern, text):
         start, end = match.span()
         span = doc.char_span(start, end, alignment_mode="expand")
-        difficult_words.append([request.yourLabel, span.start_char, span.end_char])
+        difficult_words.append([request.yourLabel, span.start, span.end])
         
     return {f"{request.yourLabel}s": difficult_words}
