@@ -15,7 +15,7 @@ class BertToxicityDetectorModel(BaseModel):
         schema_example = {"example": INPUT_EXAMPLE}
 
 
-def bert_toxicity_detector(req: BertToxicityClassifierModel):
+def bert_toxicity_detector(req: BertToxicityDetectorModel):
     """Uses the Hugging Face API to classify text as toxic or not toxic."""
     def query(api_token, inputs):
         headers = {"Authorization": f"Bearer {api_token}"}
@@ -25,7 +25,7 @@ def bert_toxicity_detector(req: BertToxicityClassifierModel):
             {item["label"]: item["score"] for item in entry}
             for entry in json_response
         ]
-        return json.dumps(result)
+        return json.dumps(result[0])
 
     try:
         output = query(req.apiToken, req.text)
