@@ -8,7 +8,7 @@ def get_config():
         function=percentage_extraction,
         input_example=INPUT_EXAMPLE,
         issue_id=149,
-        tabler_icon="IconPercentage",
+        tabler_icon="Percentage",
         min_refinery_version="1.9.0",
         state=State.PUBLIC.value,
         gdpr_compliant="true",
