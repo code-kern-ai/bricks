@@ -1,9 +1,6 @@
 ```python
 import re
 
-#currently only english language is supported here
-#reach out to us if this should be extended for other languages
-
 ATTRIBUTE: str = "text" # only text attributes
 LABEL: str = "date"
 

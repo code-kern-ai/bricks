@@ -22,7 +22,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "keyword_extraction",
+            "name": "difficult_words_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "ATTRIBUTE": {

@@ -2,9 +2,6 @@
 from nltk.corpus import wordnet
 import re
 
-# currently only english language is supported here
-# reach out to us if this should be extended for other languages
-
 TARGET_WORD: str = "soccer"
 ATTRIBUTE: str = "text" # only text attributes
 LABEL: str = "synonym"
