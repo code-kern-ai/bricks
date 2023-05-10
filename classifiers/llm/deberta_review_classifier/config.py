@@ -1,11 +1,11 @@
 from util.configs import build_classifier_premium_config
 from util.enums import State, SelectionType, BricksVariableType, RefineryDataType
-from . import deberta_sentiment_classifier, INPUT_EXAMPLE
+from . import deberta_review_classifier, INPUT_EXAMPLE
 
 
 def get_config():
     return build_classifier_premium_config(
-        function=deberta_sentiment_classifier,
+        function=deberta_review_classifier,
         input_example=INPUT_EXAMPLE,
         issue_id=302,
         tabler_icon="MoodNerd",
@@ -22,7 +22,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "toxicity_classifier",
+            "name": "deberta_review_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "ATTRIBUTE": {

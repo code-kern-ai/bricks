@@ -1,7 +1,7 @@
 ```python
 import requests
 
-def deberta_sentiment_classifier(text: str, api_key: str) -> dict:
+def deberta_review_classifier(text: str, api_key: str) -> dict:
     headers = {"Authorization": f"Bearer {api_key}"}
     response = requests.post("https://api-inference.huggingface.co/models/RashidNLP/Amazon-Deberta-Base-Sentiment", headers=headers, json={"inputs": text})
     json_response = response.json()

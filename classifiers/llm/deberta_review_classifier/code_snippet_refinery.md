@@ -5,7 +5,7 @@ import json
 API_KEY: str = "<API_KEY_GOES_HERE>"
 ATTRIBUTE: str = "headline" # only text attributes
 
-def deberta_sentiment_classifier(record):
+def deberta_review_classifier(record):
     """
     Uses toxic-bert via Hugging Face Inference API to classify toxicity in text.
     """
@@ -18,5 +18,5 @@ def deberta_sentiment_classifier(record):
         {item["label"]: item["score"] for item in entry}
         for entry in json_response
     ]
-    return list(result[0].keys())[0]
+    return str(list(result[0].keys())[0])
 ```
