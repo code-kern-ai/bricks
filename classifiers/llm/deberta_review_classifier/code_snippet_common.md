@@ -16,7 +16,7 @@ def deberta_review_classifier(text: str, api_key: str) -> dict:
 # ↓ example implementation 
 
 def example_integration():
-    api = "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"
+    api = "<API_KEY_GOES_HERE>"
     texts = ["This is a great product and I would by it again, 10/10 would recommend!", "Product broke immediately. Don't like it. :/"]
     for text in texts:
         print(f"\"{text}\" is {deberta_sentiment_classifier(text, api)}")
