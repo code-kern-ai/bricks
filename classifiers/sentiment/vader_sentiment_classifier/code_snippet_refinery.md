@@ -2,7 +2,7 @@
 # expects labeling task to have labels ["positive" ,"neutral", "negative"]
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
-ATTRIBUTE: str = "text" # only text attributes
+ATTRIBUTE: str = "headline" # only text attributes
 
 def vader_sentiment_classifier(record):
     analyzer = SentimentIntensityAnalyzer()
