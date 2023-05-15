@@ -33,6 +33,7 @@ from .numbers import (
     phone_number_extraction,
     price_extraction,
     percentage_extraction,
+    bic_extraction,
 )
 
 from .paths import (
@@ -103,6 +104,7 @@ for module in [
     verb_phrase_extraction,
     percentage_extraction,
     difficult_words_extraction,
+    bic_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
