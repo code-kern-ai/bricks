@@ -4,6 +4,10 @@ from .llm import gpt_classifier
 
 from .lookup_lists import lookup_list
 
+from .dates_and_times import (
+    workday_classifier,
+)
+
 from .sentiment import (
     textblob_sentiment,
     vader_sentiment_classifier,
@@ -43,6 +47,7 @@ for module in [
     profanity_detection,
     sentence_complexity,
     textblob_subjectivity,
+    workday_classifier,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
