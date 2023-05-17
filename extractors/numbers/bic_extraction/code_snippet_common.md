@@ -12,7 +12,7 @@ def bic_extraction(text:str, extraction_keyword:str) -> List[Tuple[str, int]]:
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 
-    regex = re.compile(r'[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z2-9][A-NP-Z0-9]([X]{3,3}|[A-WY-Z0-9]{1,1}[A-Z0-9]{2,2}|[A-WY-Z0-9]{0,0})')
+    regex = re.compile(r'\b[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z2-9][A-NP-Z0-9]([X]{3,3}|[A-WY-Z0-9]{1,1}[A-Z0-9]{2,2}|\s|\W|$)')
     bic_positions = []
     for match in regex.finditer(text):
         start, end = match.span()
