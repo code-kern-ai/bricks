@@ -1,0 +1,2 @@
+Extracts the root domain from a given URL. You can choose to keep or cut the subdomain in front of the root domain, too. 
+The root domain is the highest hierarchical for the website. It includes the domain name and the top-level-domain.
