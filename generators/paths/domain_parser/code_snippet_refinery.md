@@ -2,10 +2,11 @@
 import re
 
 ATTRIBUTE: str = "text" # only text attributes
+LABEL: str = "domain"
 SUBLABEL: str = "False" #"True"
 
 def domain_parser(record):
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[ATTRIBUTE].text
 
     clean_link = re.sub("www.", "",text)
     parts = clean_link.split("/")
