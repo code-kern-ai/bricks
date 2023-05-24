@@ -14,9 +14,6 @@ def deberta_review_classifier(record):
     headers = {"Authorization": f"Bearer {api_token}"}
     response = requests.post("https://api-inference.huggingface.co/models/RashidNLP/Amazon-Deberta-Base-Sentiment", headers=headers, json={"inputs": inputs})
     json_response = response.json()
-    result = [
-        {item["label"]: item["score"] for item in entry}
-        for entry in json_response
-    ]
+    result = [{item["label"]: item["score"] for item in entry} for entry in json_response]
     return str(list(result[0].keys())[0])
 ```
