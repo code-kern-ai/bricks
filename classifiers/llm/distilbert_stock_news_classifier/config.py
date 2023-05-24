@@ -8,7 +8,7 @@ def get_config():
         function=distilbert_stock_news_classifier,
         input_example=INPUT_EXAMPLE,
         issue_id=304,
-        tabler_icon="MoodNerd",
+        tabler_icon="ZoomMoney",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         gdpr_compliant="false",
