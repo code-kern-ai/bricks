@@ -55,30 +55,14 @@ def get_config():
                     "optional": "false",
                     "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
                 },
-                "MAX_TOKENS": {
-                    "selectionType": SelectionType.INTEGER.value,
-                    "defaultValue": 64,
+                "LABELS": {
+                    "selectionType": SelectionType.LIST.value,
+                    "description": "change this to the labels you want to classify by",
                     "optional": "false",
-                    "addInfo": [BricksVariableType.GENERIC_INT.value],
-                },
-                "TOP_P": {
-                    "selectionType": SelectionType.FLOAT.value,
-                    "defaultValue": 1,
-                    "optional": "false",
-                    "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
-                },
-                "FREQUENCY_PENALTY": {
-                    "selectionType": SelectionType.FLOAT.value,
-                    "defaultValue": 0,
-                    "optional": "false",
-                    "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
-                },
-                "PRESENCE_PENALTY": {
-                    "selectionType": SelectionType.FLOAT.value,
-                    "defaultValue": 0,
-                    "optional": "false",
-                    "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
-                },
+                    "addInfo": [
+                        BricksVariableType.LABEL.value
+                    ]
+                }
             },
         },
     )
