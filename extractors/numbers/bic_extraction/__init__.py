@@ -22,8 +22,7 @@ def bic_extraction(request: BicExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
-    regex = re.compile(r'[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z2-9][A-NP-Z0-9]([X]{3,3}|[A-WY-Z0-9]{1,1}[A-Z0-9]{2,2}|[A-WY-Z0-9]{0,0})')
-
+    regex = re.compile(r'\b[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z2-9][A-NP-Z0-9]([X]{3,3}|[A-WY-Z0-9]{1,1}[A-Z0-9]{2,2}|\s|\W|$)')
     bic = []
     for match in regex.finditer(text):
         start, end = match.span()
