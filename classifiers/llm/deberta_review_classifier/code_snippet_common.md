@@ -8,7 +8,7 @@ def deberta_review_classifier(text: str, api_key: str) -> dict:
     while not isinstance(json_response, dict):
         json_response = json_response[0]
     if "label" not in json_response:
-        json_response = "Unkown"
+        return f"This didn't work, got: {json_response}"
     else:
         json_response = json_response["label"]
     return json_response
