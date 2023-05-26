@@ -1,21 +1,15 @@
 ```python
-import re
+from urllib.parse import urlsplit
 
-def domain_parser(link:str, include_sub_domain:bool = False) -> str:
-    """
-    @param link: the input link
-    @param include_sub_domain: Attribute whether subdomain in front of domain is desired or not
-    @return: rootdomain
-    """
-
-    clean_link = re.sub("www.", "",link)
-    parts = clean_link.split("/")
-    domain = parts[2]
-    if include_sub_domain == False:
-        split = domain.split(".")
-        if len(split) == 3:
-            domain = str(split[1] + "." + split[2])
-
+def domain_parser(link:str) -> str:
+    if "http" in link:
+        parser = urlsplit(link)
+        domain = parser.netloc
+    else:
+        part = link.strip('/').split('/')
+        domain = part[0]
+    if "www." in domain:
+            domain = domain.lstrip("www.")
     return domain
 
 # ↑ necessary bricks function 
@@ -23,7 +17,7 @@ def domain_parser(link:str, include_sub_domain:bool = False) -> str:
 # ↓ example implementation
 
 def example_integration():
-    links = ["https://mail.google.com/mail/u/0/?pli=1#inbox", "https://www.registry.in/internationalized-domain-names-idns", "https://www.iana.org/domains/root/db/wme.html", "https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains", "https://huggingface.co/sentence-transformers", "https://www.google.com/search?client=firefox-b-d&q=root+domain+names#imgrc=VU1Iy5dzWVXSoM","https://slack.com/intl/de-de/downloads/instructions/windows"]
+    links = ["linkedin.com", "www.linkedin.com/mynetwork/epic", "www.linkedin.com", "https://mail.google.com/mail/u/0/?pli=1#inbox", "https://www.registry.in/internationalized-domain-names-idns", "https://www.iana.org/domains/root/db/wme.html", "https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains", "https://huggingface.co/sentence-transformers", "https://www.google.com/search?client=firefox-b-d&q=root+domain+names#imgrc=VU1Iy5dzWVXSoM","https://slack.com/intl/de-de/downloads/instructions/windows"]
     extraction_keyword = "domain"
     for link in links:
         found = domain_parser(link, False)
