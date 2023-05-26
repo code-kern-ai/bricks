@@ -16,19 +16,21 @@ class DebertaReviewClassifierModel(BaseModel):
 
 
 def deberta_review_classifier(req: DebertaReviewClassifierModel):
-    """Uses the Hugging Face API to classify the sentiment of customer reviews."""
+    """Uses a DeBERTa model to classify the sentiment of customer reviews."""
     def query(api_token, inputs):
         headers = {"Authorization": f"Bearer {api_token}"}
         response = requests.post("https://api-inference.huggingface.co/models/RashidNLP/Amazon-Deberta-Base-Sentiment", headers=headers, json={"inputs": inputs})
         json_response = response.json()
-        result = [
-            {item["label"]: item["score"] for item in entry}
-            for entry in json_response
-        ]
-        return str(list(result[0].keys())[0])
+        while not isinstance(json_response, dict):
+            json_response = json_response[0]
+        if "label" not in json_response:
+            json_response = "Unkown"
+        else:
+            json_response = json_response["label"]
+        return json_response
 
     try:
         output = query(req.apiToken, req.text)
-        return output
+        return {"Sentiment": output}
     except:
-        return "That didn't work. Did you provide a valid Hugging Face API key?"
+        return {"Error": "That didn't work. Did you provide a valid Hugging Face API key?"}
