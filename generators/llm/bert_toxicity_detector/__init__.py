@@ -7,9 +7,7 @@ INPUT_EXAMPLE = {
     "text": "Shut your mouth, you idiot!"
 }
 
-API_URL = "https://api-inference.huggingface.co/models/unitary/toxic-bert"
-
-class ToxicityClassifierModel(BaseModel):
+class BertToxicityDetectorModel(BaseModel):
     apiToken: str
     text: str
 
@@ -17,16 +15,17 @@ class ToxicityClassifierModel(BaseModel):
         schema_example = {"example": INPUT_EXAMPLE}
 
 
-def toxicity_classifier(req: ToxicityClassifierModel):
+def bert_toxicity_detector(req: BertToxicityDetectorModel):
+    """Uses the Hugging Face API to classify text as toxic or not toxic."""
     def query(api_token, inputs):
         headers = {"Authorization": f"Bearer {api_token}"}
-        response = requests.post(API_URL, headers=headers, json={"inputs": inputs})
+        response = requests.post("https://api-inference.huggingface.co/models/unitary/toxic-bert", headers=headers, json={"inputs": inputs})
         json_response = response.json()
         result = [
             {item["label"]: item["score"] for item in entry}
             for entry in json_response
         ]
-        return json.dumps(result)
+        return json.dumps(result[0])
 
     try:
         output = query(req.apiToken, req.text)
