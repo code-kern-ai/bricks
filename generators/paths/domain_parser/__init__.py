@@ -7,7 +7,6 @@ INPUT_EXAMPLE = {
 
 class DomainParserModel(BaseModel):
     text: str
-    subdomain : bool
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
