@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
     "apiToken": "<API_KEY_GOES_HERE>",
-    "text": "This is a great product and I would by it again, 10/10 would recommend!"
+    "text": "This is a great product and I would buy it again, 10/10 would recommend!"
 }
 
 class DebertaReviewClassifierModel(BaseModel):
@@ -16,7 +16,7 @@ class DebertaReviewClassifierModel(BaseModel):
 
 
 def deberta_review_classifier(req: DebertaReviewClassifierModel):
-    """Uses the Hugging Face API to classify text as toxic or not toxic."""
+    """Uses the Hugging Face API to classify the sentiment of customer reviews."""
     def query(api_token, inputs):
         headers = {"Authorization": f"Bearer {api_token}"}
         response = requests.post("https://api-inference.huggingface.co/models/RashidNLP/Amazon-Deberta-Base-Sentiment", headers=headers, json={"inputs": inputs})
