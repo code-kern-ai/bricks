@@ -20,7 +20,7 @@ def example_integration():
     links = ["linkedin.com", "www.linkedin.com/mynetwork/epic", "www.linkedin.com", "https://mail.google.com/mail/u/0/?pli=1#inbox", "https://www.registry.in/internationalized-domain-names-idns", "https://www.iana.org/domains/root/db/wme.html", "https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains", "https://huggingface.co/sentence-transformers", "https://www.google.com/search?client=firefox-b-d&q=root+domain+names#imgrc=VU1Iy5dzWVXSoM","https://slack.com/intl/de-de/downloads/instructions/windows"]
     extraction_keyword = "domain"
     for link in links:
-        found = domain_parser(link, False)
+        found = domain_parser(link)
         if found:
             print(f"text: \"{link}\" has {extraction_keyword} -> \"{found}\"")
         else:
