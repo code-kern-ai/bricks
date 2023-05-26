@@ -12,7 +12,7 @@ def bic_extraction(text:str, extraction_keyword:str) -> List[Tuple[str, int]]:
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 
-    regex = re.compile(r'\b[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z2-9][A-NP-Z0-9]([X]{3,3}|[A-WY-Z0-9]{1,1}[A-Z0-9]{2,2}|\s|\W|$)')
+    regex = re.compile(r'\b[A-Z]{4,4}[A-Z]{2,2}[A-Z2-9][A-NP-Z0-9]([X]{3,3}|[A-WY-Z0-9]{1,1}[A-Z0-9]{2,2}|\s|\W|$)')
     bic_positions = []
     for match in regex.finditer(text):
         start, end = match.span()
@@ -26,7 +26,7 @@ def bic_extraction(text:str, extraction_keyword:str) -> List[Tuple[str, int]]:
 
 def example_integration():
     texts = ["My BIC is SCFBDE33XXX", "Here my BIC: COBADEBBXXX", "LBSODEB1BLN", "My IBAN DE89370400440532013000 and my BIC DGZFDEFFBER",
-"GENODED1PA6", "My BIC 878653425X3", "I forgot my BIC."]
+"GENODED1PA6", "My BIC 878653425X3", "I forgot my BIC.", "I am a false positive: AVOIDERS"]
     extraction_keyword = "BIC"
     for text in texts:
         found = bic_extraction(text, extraction_keyword)
