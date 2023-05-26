@@ -33,15 +33,7 @@ def get_config():
                         BricksVariableType.GENERIC_STRING.value,
                     ],
                 },
-                "LABEL": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "domain",
-                    "optional": "false",
-                    "addInfo": [
-                        BricksVariableType.LABEL.value,
-                        BricksVariableType.GENERIC_STRING.value,
-                    ],
-                },
+
             },
         },
     )
