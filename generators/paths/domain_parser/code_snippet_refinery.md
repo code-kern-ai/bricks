@@ -1,5 +1,5 @@
 ```python
-import re
+from urllib.parse import urlsplit
 
 ATTRIBUTE: str = "text" # only text attributes
 
