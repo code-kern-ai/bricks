@@ -16,10 +16,10 @@ def deberta_review_classifier(text: str, api_key: str) -> dict:
 # ↓ example implementation 
 
 def example_integration():
-    api = "<API_KEY_GOES_HERE>"
+    api_key = "<API_KEY_GOES_HERE>"
     texts = ["This is a great product and I would by it again, 10/10 would recommend!", "Product broke immediately. Don't like it. :/"]
     for text in texts:
-        print(f"\"{text}\" is {deberta_review_classifier(text, api)}")
+        print(f"\"{text}\" is {deberta_review_classifier(text, api_key)}")
 
 example_integration()
 ```

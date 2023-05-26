@@ -24,19 +24,22 @@ def get_config():
         integrator_inputs={
             "name": "deberta_review_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
+            "outputs": [
+                "Positive",
+                "Neutral",
+                "Negative",
+            ],
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
                 "API_KEY": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "defaultValue": "<API_KEY_GOES_HERE>",
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
                     ]
