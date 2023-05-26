@@ -11,7 +11,10 @@ from .lemmatizer import (
     spacy_lemmatizer,
 )
 
-from .paths import url_keyword_parser
+from .paths import (
+    url_keyword_parser,
+    domain_parser,
+)
 
 from .search import (
     bing_news_search,
@@ -88,6 +91,7 @@ for module in [
     html_unescape,
     vader_sentiment_scores,
     manhattan_distance,
+    domain_parser,
     sumy_website_summarizer,
     bert_toxicity_detector,
     gpt_grammar_correction,
