@@ -1,6 +1,9 @@
 from fastapi import APIRouter
 
-from .llm import gpt_classifier
+from .llm import (
+    gpt_classifier, 
+    deberta_review_classifier,
+)
 
 from .lookup_lists import lookup_list
 
@@ -48,6 +51,7 @@ for module in [
     sentence_complexity,
     textblob_subjectivity,
     workday_classifier,
+    deberta_review_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
