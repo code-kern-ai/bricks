@@ -11,7 +11,10 @@ from .lemmatizer import (
     spacy_lemmatizer,
 )
 
-from .paths import url_keyword_parser
+from .paths import (
+    url_keyword_parser,
+    domain_parser,
+)
 
 from .search import (
     bing_news_search,
@@ -32,6 +35,7 @@ from .spelling import (
 from .summarization import (
     smalltalk_truncation,
     text_summarization,
+    sumy_website_summarizer,
 )
 
 from .text_analytics import (
@@ -48,6 +52,12 @@ from .translation import (
     ibm_translator,
     language_translator,
     microsoft_translator,
+)
+
+from .llm import (
+    bert_toxicity_detector,
+    gpt_grammar_correction,
+    gpt_tldr_summarization,
 )
 
 from .sentiment import vader_sentiment_scores
@@ -81,6 +91,11 @@ for module in [
     html_unescape,
     vader_sentiment_scores,
     manhattan_distance,
+    domain_parser,
+    sumy_website_summarizer,
+    bert_toxicity_detector,
+    gpt_grammar_correction,
+    gpt_tldr_summarization,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

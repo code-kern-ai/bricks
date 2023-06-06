@@ -2,9 +2,6 @@
 import re
 from nltk.corpus import stopwords
 
-# currently only english language is supported here
-# reach out to us if you would like to request other languages to be supported
-
 ATTRIBUTE: str = "text" # only text attributes
 LABEL: str = "smalltalk"
 

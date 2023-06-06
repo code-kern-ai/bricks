@@ -1,6 +1,9 @@
 from fastapi import APIRouter
 
-from .llm import gpt_classifier
+from .llm import (
+    gpt_classifier, 
+    deberta_review_classifier,
+)
 
 from .lookup_lists import lookup_list
 
@@ -23,7 +26,6 @@ from .text_analysis import (
     profanity_detection,
     sentence_complexity,
     textblob_subjectivity,
-    toxicity_classifier,
 )
 
 from .spelling import (
@@ -44,7 +46,7 @@ for module in [
     profanity_detection,
     sentence_complexity,
     textblob_subjectivity,
-    toxicity_classifier,
+    deberta_review_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
