@@ -4,11 +4,7 @@ from pydantic import BaseModel
 INPUT_EXAMPLE = {
     "apiKey": "<API_KEY_GOES_HERE>",
     "prompt": "Named must be your fear before banish it you can.",
-    "temperature": 0.0,
-    "maxTokens": 64,
-    "top_p": 1.0,
-    "frequencyPenalty": 0.0,
-    "presencePenalty": 0.0,
+    "temperature": 0,
 }
 
 
@@ -16,34 +12,32 @@ class GptGrammarCorrectionModel(BaseModel):
     apiKey: str
     prompt: str
     temperature: float
-    maxTokens: int
-    top_p: float
-    frequencyPenalty: float
-    presencePenalty: float
 
     class Config:
         schema_example = {"example": INPUT_EXAMPLE}
 
 
 def gpt_grammar_correction(req: GptGrammarCorrectionModel):
-    """GPT-3 model which can be used to classify text inputs."""
-    # Access openai via API key
+    """GPT-3.5 model which can be used to classify text inputs."""
+    openai.api_key = req.apiKey
     try:
-        openai.api_key = req.apiKey
-
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=f"""
-                Correct this to standard English:\n\n
-                {req.prompt}""",
-            temperature=req.temperature,
-            max_tokens=req.maxTokens,
-            top_p=req.top_p,
-            frequency_penalty=req.frequencyPenalty,
-            presence_penalty=req.presencePenalty,
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"""
+                    Correct this to standard English:\n
+                    {req.text}""",
+                },
+                {
+                    "role": "user",
+                    "content": f"Text to correct: {req.text}",
+                },
+            ],
+            temperature= 0,
         )
-
-        return {"Corrected sentence": response["choices"][0]["text"]}
-
+        answer = response["choices"][0]["message"]["content"]
+        return {"result": answer}
     except:
-        return "That didn't work. Did you provide an OpenAI API key?"
+        return "That didn't work! Did you provide an OpenAI API key?"
