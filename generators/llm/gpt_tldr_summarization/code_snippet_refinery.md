@@ -18,24 +18,20 @@ def gpt_tldr_summarization(record):
     """
     # Access openai via API key
     openai.api_key = API_KEY
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {
-                    "role": "system",
-                    "content": f"""{record[ATTRIBUTE].text}/n/nTl;dr""",
-                },
-                {
-                    "role": "user",
-                    "content": f"Text to shorten: {text}",
-                },
-            ],
-            temperature= TEMPERATURE,
-        )
-        answer = response["choices"][0]["message"]["content"]
-        return {"result": answer}
-    except:
-        return "That didn't work! Did you provide an OpenAI API key?"
-
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "system",
+                "content": f"""{record[ATTRIBUTE].text}/n/nTl;dr""",
+            },
+            {
+                "role": "user",
+                "content": f"Text to shorten: {text}",
+            },
+        ],
+        temperature= TEMPERATURE,
+    )
+    answer = response["choices"][0]["message"]["content"]
+    return answer
 ```
