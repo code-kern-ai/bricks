@@ -31,11 +31,9 @@ def gpt_grammar_correction(record):
                     "content": f"Text to correct: {record[ATTRIBUTE].text}",
                 },
             ],
-            temperature= TEMPERATURE,
+            temperature = TEMPERATURE,
         )
         answer = response["choices"][0]["message"]["content"]
-        return {"result": answer}
-    except:
-        return "That didn't work! Did you provide an OpenAI API key?"
+        return answer
 
 ```
