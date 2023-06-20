@@ -18,7 +18,7 @@ class GptTldrSummarizationModel(BaseModel):
 
 
 def gpt_tldr_summarization(req: GptTldrSummarizationModel):
-    """GPT-3.5 model which can be used to summarise text inputs."""
+    """GPT-3.5 model which can be used to summarize text inputs."""
     openai.api_key = req.apiKey
     try:
         response = openai.ChatCompletion.create(

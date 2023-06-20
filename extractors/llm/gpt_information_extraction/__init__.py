@@ -21,7 +21,6 @@ class GptInformationExtractionModel(BaseModel):
 
 def gpt_information_extraction(req: GptInformationExtractionModel):
     """Uses OpenAI's GPT model to extract keyword from a text."""
-    # Access openai via API key
     openai.api_key = req.apiKey
     try:
        response = openai.ChatCompletion.create(

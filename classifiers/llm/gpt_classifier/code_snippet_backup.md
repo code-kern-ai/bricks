@@ -34,24 +34,25 @@ def gpt_classifier(record):
     - presence_penalty: Value between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     """
     # Access openai via API key
-    openai.api_key = record["api_key"]
-
-    gpt_labels = []
-    for entry in record["text"]:
-        response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=f"""
-                The following sentence will be classfied by {record["classify_by"]}:\n\n
-                {entry}\n
-                use the following labels: {", ".join(record["labels"])}:""",
-            temperature=record["temperature"],
-            max_tokens=record["max_tokens"],
-            top_p=record["top_p"],
-            frequency_penalty=record["frequency_penalty"],
-            presence_penalty=record["presence_penalty"]
+    openai.api_key = api_key
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"You are a classification assistant and need to classify texts based on their {classify_by}. You may only return one of these labels: {', '.join(labels)}. \
+                                Return nothing execpt one of the mentioned labels. The output should only contain a single word.",
+                },
+                {
+                    "role": "user",
+                    "content": f"Text to classify: {text}",
+                },
+            ],
+            temperature=0,
         )
-        gpt_labels.append(response["choices"][0]["text"].lower())
-    
-    gpt_labels = [re.sub(r'\n+', '', label) for label in gpt_labels]
-    return {"gpt_labels": gpt_labels}
+        answer = response["choices"][0]["message"]["content"]
+        return answer
+    except:
+        return "That didn't work! Did you provide an OpenAI API key?"
 ```

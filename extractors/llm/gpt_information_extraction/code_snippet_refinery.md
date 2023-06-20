@@ -6,12 +6,7 @@ import json
 API_KEY: str = "<API_KEY_GOES_HERE>"
 ATTRIBUTE: str = "text" # only text attributes
 EXTRACTION_KEYWORD: str = "names"
-TEMPERATURE: int = 0.0
-MAX_TOKENS: int = 64
-TOP_P: float = 1.0
-FREQUENCY_PENALTY: float = 0.0
-PRESENCE_PENALTY: float = 0.0
-LABEL: str = "name"
+TEMPERATURE: float = 0.0
 
 def gpt_information_extraction(record):
     """
@@ -29,43 +24,46 @@ def gpt_information_extraction(record):
     - presence_penalty: Value between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     """
     # Access openai via API key
-    text = record[ATTRIBUTE].text
-    openai.api_key = API_KEY
-
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=f"""
-            Extract all {EXTRACTION_KEYWORD} from this text:\n\n
-            {text}\n\n
-            return a list of json objects with the keys {EXTRACTION_KEYWORD} and charPosition the {EXTRACTION_KEYWORD} was found. 
-            If nothing is found return NAN!""", 
-        temperature=TEMPERATURE,
-        max_tokens=MAX_TOKENS,
-        top_p=TOP_P,
-        frequency_penalty=FREQUENCY_PENALTY,
-        presence_penalty=PRESENCE_PENALTY
+    openai.api_key = api_key
+    response = openai.ChatCompletion.create(
+        model = "gpt-3.5-turbo",
+        messages = [
+            {
+                "role": "system",
+                "content":   f"""
+                    Please extract all {extraction_keyword} from following text:
+                    {text}-
+                    Only return things that are linked to {extraction_keyword}.
+                    Return only a valid JSON with this structure. 
+                    ```json
+                    {{
+                        "keywords": ["list with keywords goes here"]
+                    }}
+                    ```
+                    Return nothing except this JSON. Make sure to only return {extraction_keyword} and nothing else. 
+                    If you can't find any {extraction_keyword} in the text, just return nothing."""
+                ,
+            },
+        ],
+        temperature=temperature,
     )
-    gpt_response = response["choices"][0]["text"].strip().replace("'","\"")
-    if gpt_response == "NAN!":
-        return []
-    parsed = json.loads(gpt_response)
-    if len(parsed) == 0:
-        return []
-    # find used json key (since e.g. emails will become email)
-    json_key = EXTRACTION_KEYWORD
-    if EXTRACTION_KEYWORD not in parsed[0]:        
-        for key in parsed[0]:
-            if key != "charPosition":
-                json_key = key
-                break
-    #gpt can't reliably find the correct position since the whole prompt is used so we need to find the difference and apply it
-    char_pos_diff = parsed[0]["charPosition"] - text.index(parsed[0][json_key])    
-    for match in parsed:
-        start = match["charPosition"] - char_pos_diff
-        end = start + len(match[json_key]) - 1
-        span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-        if span:
-            yield LABEL, span.start, span.end
+    try: 
+        out = response["choices"][0]["message"]["content"]
+        output_dict = ast.literal_eval(out)
 
-
+        # check if the output is really a dictionary
+        if isinstance(output_dict, dict):
+            if len(output_dict["keywords"]) > 0:
+                for found_keyword in output_dict["keywords"]:
+                    regex = re.compile(f"{found_keyword}")
+                    match =  regex.search(text)
+                    start, end = match.span()
+                    span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
+                    yield extraction_keyword, span.start, span.end
+            else:
+                return "No matching keywords found."
+        else:
+            return f"GPT response was not a valid dictionary. The response was: {response}."
+    except: 
+        return response["choices"][0]["message"]["content"]
 ```

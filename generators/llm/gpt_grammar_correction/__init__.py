@@ -18,7 +18,7 @@ class GptGrammarCorrectionModel(BaseModel):
 
 
 def gpt_grammar_correction(req: GptGrammarCorrectionModel):
-    """GPT-3.5 model which can be used to classify text inputs."""
+    """GPT-3.5 model which can be used to correct grammar."""
     openai.api_key = req.apiKey
     try:
         response = openai.ChatCompletion.create(

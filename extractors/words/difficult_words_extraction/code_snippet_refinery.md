@@ -2,7 +2,7 @@
 import textstat
 import re
 
-ATTRIBUTE: str =  "text"
+ATTRIBUTE: str =  "text" # only text attributes
 SYLLABLE_THRESHOLD: int = 3
 LABEL: str = "difficult_word"
 
