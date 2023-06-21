@@ -1,5 +1,5 @@
 import requests
-import spacy
+from extractors.util.spacy import SpacySingleton
 from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
@@ -22,7 +22,7 @@ def bert_ner_extraction(req: BertNerExtractionModel):
       response_json = response.json()
       ner_positions = []
 
-      nlp = spacy.load("en_core_web_sm")
+      nlp = SpacySingleton.get_nlp("en_core_web_sm")
       doc = nlp(req.text)
 
       for item in response_json:

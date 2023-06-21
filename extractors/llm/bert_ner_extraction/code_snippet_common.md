@@ -1,5 +1,6 @@
 ```python
 import requests
+import spacy
 
 def bert_ner_extraction(text, api_key):
       headers = {"Authorization": f"Bearer {api_key}"}
