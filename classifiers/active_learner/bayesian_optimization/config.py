@@ -21,11 +21,11 @@ def get_config():
             "gdpr_compliant",
         ],
         integrator_inputs={
-            "name": "bayesian_optimization",
+            "name": "MyBayesian",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "EMBEDDING": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "defaultValue": "text-classification-distilbert-base-uncased",
                     "description": "pick this from the options above",
                     "addInfo": [
@@ -48,7 +48,7 @@ def get_config():
                     ]
                 },
                 "LABELS": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "description": "optional, you can specify a list to filter the predictions (e.g. [\"label-a\", \"label-b\"])",
                     "addInfo": [
                         BricksVariableType.GENERIC_STRING.value

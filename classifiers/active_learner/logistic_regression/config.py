@@ -20,11 +20,11 @@ def get_config():
             "gdpr_compliant",
         ],
         integrator_inputs={
-            "name": "logistic_regression",
+            "name": "MyLR",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "EMBEDDING": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "defaultValue": "text-classification-distilbert-base-uncased",
                     "description": "pick this from the options above",
                     "optional": "false",
@@ -41,7 +41,7 @@ def get_config():
                     ]
                 },
                 "LABELS": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "description": "optional, you can specify a list to filter the predictions (e.g. [\"label-a\", \"label-b\"])",
                     "optional": "true",
                     "addInfo": [

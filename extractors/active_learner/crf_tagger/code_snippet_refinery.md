@@ -7,7 +7,7 @@ EMBEDDING: str = "text-extraction-distilbert-base-uncased" # pick this from the 
 MIN_CONFIDENCE: float = 0.8
 LABELS: List[str] = None # optional, you can specify a list to filter the predictions (e.g. ["label-a", "label-b"])
 
-class MyActiveLearner(LearningExtractor):
+class MyCRF(LearningExtractor):
 
     def __init__(self):
         self.model = CRFTagger(
@@ -31,5 +31,4 @@ class MyActiveLearner(LearningExtractor):
     )
     def predict_proba(self, embeddings):
         return self.model.predict_proba(embeddings)
-
 ```

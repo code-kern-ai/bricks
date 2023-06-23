@@ -35,5 +35,4 @@ class MyGrid(LearningClassifier):
 
     def predict_proba(self, embeddings):
         return self.model.predict_proba(embeddings)
-
 ```
