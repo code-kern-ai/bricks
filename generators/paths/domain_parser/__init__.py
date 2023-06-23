@@ -13,6 +13,7 @@ class DomainParserModel(BaseModel):
 
 
 def domain_parser(request: DomainParserModel):
+    """Parses a domain of a URL."""
     link = request.text
     if "http" in link:
         parser = urlsplit(link)
