@@ -3,9 +3,9 @@ from sklearn.tree import DecisionTreeClassifier
 from typing import List
 # you can find further models here: https://scikit-learn.org/stable/supervised_learning.html#supervised-learning
 
-YOUR_EMBEDDING: str = "text-classification-distilbert-base-uncased" 
-YOUR_MIN_CONFIDENCE: float = 0.8
-YOUR_LABELS: List[str] = None # optional, you can specify a list to filter the predictions
+EMBEDDING: str = "text-classification-distilbert-base-uncased" 
+MIN_CONFIDENCE: float = 0.8
+LABELS: List[str] = None # optional, you can specify a list to filter the predictions
 
 class MyDT(LearningClassifier):
 
