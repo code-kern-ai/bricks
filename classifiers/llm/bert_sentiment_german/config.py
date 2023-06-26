@@ -18,7 +18,7 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=[
             "llm",
-            "sentiment"
+            "sentiment",
             "not_gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
