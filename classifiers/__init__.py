@@ -3,6 +3,7 @@ from fastapi import APIRouter
 from .llm import (
     gpt_classifier, 
     deberta_review_classifier,
+    bert_sentiment_german
 )
 
 from .lookup_lists import lookup_list
@@ -51,7 +52,8 @@ for module in [
     sentence_complexity,
     textblob_subjectivity,
     workday_classifier,
-    deberta_review_classifier
+    deberta_review_classifier, 
+    bert_sentiment_german
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
