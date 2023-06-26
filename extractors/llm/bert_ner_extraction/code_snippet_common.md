@@ -10,7 +10,7 @@ def bert_ner_extraction(text, api_key):
       ner_positions = []
 
       nlp = spacy.load("en_core_web_sm")
-      doc = nlp(req.text)
+      doc = nlp(text)
 
       for item in response_json:
             start = item["start"]

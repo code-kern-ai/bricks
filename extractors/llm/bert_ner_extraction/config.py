@@ -25,6 +25,12 @@ def get_config():
             integrator_inputs={
             "name": "bert_ner_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,
+            "outputs": [
+                  "LOC", 
+                  "ORG",
+                  "PER",
+                  "MISC"
+            ],
             "variables": {
                   "API_KEY": {
                         "selectionType": SelectionType.STRING.value,
