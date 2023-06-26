@@ -5,19 +5,22 @@ import spacy
 def bert_ner_extraction(text, api_key):
       headers = {"Authorization": f"Bearer {api_key}"}
       data = {"inputs": text}
-      response = requests.post("https://api-inference.huggingface.co/models/dslim/bert-base-NER", headers=headers, json=data)
-      response_json = response.json()
-      ner_positions = []
+      try: 
+            response = requests.post("https://api-inference.huggingface.co/models/dslim/bert-base-NER", headers=headers, json=data)
+            response_json = response.json()
+            ner_positions = []
 
-      nlp = spacy.load("en_core_web_sm")
-      doc = nlp(text)
+            nlp = spacy.load("en_core_web_sm")
+            doc = nlp(text)
 
-      for item in response_json:
-            start = item["start"]
-            end = item["end"]
-            span = doc.char_span(start, end, alignment_mode="expand")
-            ner_positions.append((item["entity_group"], span.start, span.end))
-      return ner_positions
+            for item in response_json:
+                  start = item["start"]
+                  end = item["end"]
+                  span = doc.char_span(start, end, alignment_mode="expand")
+                  ner_positions.append((item["entity_group"], span.start, span.end))
+            return ner_positions
+      except Exception as e: 
+            return f"That didn't work. Did you provide a valid API key? Go error: {e} and message: {response_json}"
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
