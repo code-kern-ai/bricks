@@ -11,15 +11,13 @@ def get_config():
         tabler_icon="Sausage",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="false",
         type="premium",
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "llm",
-            "sentiment"
-            "not_gdpr_compliant",
+            "sentiment",
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={

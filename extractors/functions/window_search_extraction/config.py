@@ -11,14 +11,12 @@ def get_config():
         tabler_icon="AppWindow",
         state=State.PUBLIC.value,
         min_refinery_version="1.7.0",
-        gdpr_compliant="true",
         type="python_function",
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "functions",
-            "gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={

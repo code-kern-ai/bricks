@@ -13,13 +13,11 @@ def get_config():
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
         type="python_function",
-        gdpr_compliant="true",
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "sentiment",
-            "gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={

@@ -139,12 +139,11 @@ The upper half of the config contains most of the general information of the bri
 - `tabler_icon`: Refers to the icon that should be displayed for this brick. An icon can be chosen [here](https://tabler-icons-react.vercel.app/). 
 - `min_refinery_version`: If the brick requires a Python package, it might only be available after the dev-team has added this package to the execution environment to refinery. The `min_refinery_version` refers to the first version in which the needed library was added to refinery. 
 - `state`: The `state` parameter simply refers to if this bricks should be publicly visible yet. Set this to `DRAFT` if you think this needs some more work. 
-- `gdpr_compliant`:If this module uses an API that sends data to outside to the EU, the brick automatically is not `gdpr_compliant` anymore, which then needs to the set to `"False"` then. 
 - `type`: If the brick uses a paid API, it is also then a `premium` function. Otherwise it's a `python_function`. 
 - `kern_token_proxy_usable`: In the future, Kern AI will offer a Kern API token, with which different services can be used. Once this is the case, the `kern_token_proxy_usable` will be set to `"True"`. Otherwise is is set to `"False".` 
 - `docker_image`: We plan to offer certain bricks as a `docker_image` in the future. The name of the image will then be entered here.
 - `available_for`: The `available_for` containing `"refinery"` if the `"code_snippet_refinery.md"` exists and/or `"commom"` to  `"code_snippet_common.md"` exists. The first containing code that expects a SpaCy dictionary as an input, the latter containing code which can directly be executed in any Python environment without the need for SpaCy.
-- `part_of_group`: Every brick is also part of at least two groups: the parent directory, i.e. `"sentiment"`, `"spelling"` etc, and `"gdpr_compliant"` or `"gdpr_uncompliant"`. This is set at `part_of_group`.
+- `part_of_group`: Every brick is also part of at least two groups: the parent directory, i.e. `"sentiment"`, `"spelling"` etc. This is set at `part_of_group`.
 
 
 ```python
@@ -156,12 +155,11 @@ def get_config():
         tabler_icon="SquareRoundedLetterL",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="True",
         type="python_function",
         kern_token_proxy_usable="False",
         docker_image="None",
         available_for=["refinery", "common"],
-        part_of_group=["distance", "gdpr_compliant"],
+        part_of_group=["distance"],
 ```
  
 At the bottom of the config, you will find the section "integratior inputs". You can leave this section blank and leave it for the Kern AI team do fill it out. This section is mean for the bricks integrator, which allows the integration of bricks into our main tool Kern AI refinery. The integrator should always have at least the following structure:
