@@ -1,0 +1,1 @@
+Uses a Pegasus model hosted by HuggingFace and accessed via their Inference API service for text summarization. Pegasus is a Encoder-Decoder model which is great for summarizing texts. Requires a free API key from HuggingFace. You can learn more about the model here: https://huggingface.co/google/pegasus-large
