@@ -11,6 +11,7 @@ def get_config():
         tabler_icon="FilePencil",
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
+        gdpr_compliant="false",
         type="python_function",
         kern_token_proxy_usable="false",
         docker_image="none",
@@ -18,6 +19,7 @@ def get_config():
         part_of_group=[
             "llm",
             "summarization",
+            "not_gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
