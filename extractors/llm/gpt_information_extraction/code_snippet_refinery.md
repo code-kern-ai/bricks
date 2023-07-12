@@ -2,6 +2,7 @@
 import openai
 import re
 import json
+import ast
 
 API_KEY: str = "<API_KEY_GOES_HERE>"
 ATTRIBUTE: str = "text" # only text attributes
@@ -24,30 +25,31 @@ def gpt_information_extraction(record):
     - presence_penalty: Value between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     """
     # Access openai via API key
-    openai.api_key = api_key
-    response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
-        messages = [
-            {
-                "role": "system",
-                "content":   f"""
-                    Please extract all {extraction_keyword} from following text:
-                    {text}-
-                    Only return things that are linked to {extraction_keyword}.
-                    Return only a valid JSON with this structure. 
-                    ```json
-                    {{
-                        "keywords": ["list with keywords goes here"]
-                    }}
-                    ```
-                    Return nothing except this JSON. Make sure to only return {extraction_keyword} and nothing else. 
-                    If you can't find any {extraction_keyword} in the text, just return nothing."""
-                ,
-            },
-        ],
-        temperature=temperature,
-    )
+    openai.api_key = API_KEY
     try: 
+        response = openai.ChatCompletion.create(
+            model = "gpt-3.5-turbo",
+            messages = [
+                {
+                    "role": "system",
+                    "content":   f"""
+                        Please extract all {EXTRACTION_KEYWORD} from following text:
+                        {record[ATTRIBUTE].text}-
+                        Only return things that are linked to {EXTRACTION_KEYWORD}.
+                        Return only a valid JSON with this structure. 
+                        json
+                        {{
+                            "keywords": ["list with keywords goes here"]
+                        }}
+                        
+                        Return nothing except this JSON. Make sure to only return {EXTRACTION_KEYWORD} and nothing else. 
+                        If you can't find any {EXTRACTION_KEYWORD} in the text, just return nothing."""
+                    ,
+                },
+            ],
+            temperature=TEMPERATURE,
+        )
+
         out = response["choices"][0]["message"]["content"]
         output_dict = ast.literal_eval(out)
 
@@ -64,6 +66,7 @@ def gpt_information_extraction(record):
                 return "No matching keywords found."
         else:
             return f"GPT response was not a valid dictionary. The response was: {response}."
-    except: 
-        return response["choices"][0]["message"]["content"]
+    except Exception as e: 
+            return f"That didn't work. Did you provide a valid API key? Got error: {e} and message: {response}"
+
 ```

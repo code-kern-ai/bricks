@@ -4,10 +4,6 @@ import openai
 API_KEY: str = "<API_KEY_GOES_HERE>"
 ATTRIBUTE: str = "text" # only text attributes
 TEMPERATURE: float = 0.0
-MAX_TOKENS: int = 60
-TOP_P: float = 1.0
-FREQUENCY_PENALTY: float = 0.0
-PRESENCE_PENALTY: float = 1.0
 
 def gpt_tldr_summarization(record):
     """
@@ -18,20 +14,23 @@ def gpt_tldr_summarization(record):
     """
     # Access openai via API key
     openai.api_key = API_KEY
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {
-                "role": "system",
-                "content": f"""{record[ATTRIBUTE].text}/n/nTl;dr""",
-            },
-            {
-                "role": "user",
-                "content": f"Text to shorten: {text}",
-            },
-        ],
-        temperature= TEMPERATURE,
-    )
-    answer = response["choices"][0]["message"]["content"]
-    return answer
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"""{record[ATTRIBUTE].text}/n/nTl;dr""",
+                },
+                {
+                    "role": "user",
+                    "content": f"Text to shorten: {record[ATTRIBUTE].text}",
+                },
+            ],
+            temperature= TEMPERATURE,
+        )
+        answer = response["choices"][0]["message"]["content"]
+        return answer
+    except Exception as e: 
+        return f"That didn't work. Did you provide a valid API key? Go error: {e}"
 ```

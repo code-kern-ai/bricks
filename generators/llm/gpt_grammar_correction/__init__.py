@@ -3,14 +3,14 @@ from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
     "apiKey": "<API_KEY_GOES_HERE>",
-    "prompt": "Named must be your fear before banish it you can.",
-    "temperature": 0,
+    "text": "Named must be your fear before banish it you can.",
+    "temperature": 0.0,
 }
 
 
 class GptGrammarCorrectionModel(BaseModel):
     apiKey: str
-    prompt: str
+    text: str
     temperature: float
 
     class Config:
@@ -35,9 +35,9 @@ def gpt_grammar_correction(req: GptGrammarCorrectionModel):
                     "content": f"Text to correct: {req.text}",
                 },
             ],
-            temperature= 0,
+            temperature=req.temperature,
         )
         answer = response["choices"][0]["message"]["content"]
         return {"result": answer}
-    except:
-        return "That didn't work! Did you provide an OpenAI API key?"
+    except Exception as e: 
+            return f"That didn't work. Did you provide a valid API key? Go error: {e}"

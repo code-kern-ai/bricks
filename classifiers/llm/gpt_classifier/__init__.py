@@ -44,5 +44,5 @@ def gpt_classifier(req: GptClassifierModel):
         )
         answer = response["choices"][0]["message"]["content"]
         return {"result": answer}
-    except:
-        return "That didn't work! Did you provide an OpenAI API key?"
+    except Exception as e: 
+            return f"That didn't work. Did you provide a valid API key? Go error: {e} and message: {response}"

@@ -35,5 +35,6 @@ def gpt_grammar_correction(record):
         )
         answer = response["choices"][0]["message"]["content"]
         return answer
-
+    except Exception as e: 
+        return f"That didn't work. Did you provide a valid API key? Got error: {e}"
 ```
