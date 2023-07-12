@@ -12,7 +12,7 @@ def bert_ner_extraction(record):
             response_json = response.json()
             ner_positions = []
             for item in response_json:
-            start = item["start"]
+                  start = item["start"]
                   end = item["end"]
                   span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
                   yield item["entity_group"], span.start, span.end
