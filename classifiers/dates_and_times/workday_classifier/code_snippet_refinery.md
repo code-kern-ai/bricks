@@ -8,7 +8,7 @@ ATTRIBUTE: str = "text" # only text attributes
 COUNTRY_ID: str = "US" # optional, takes in an ISO country code, such as US, DE, UK. Leave empty if not required
 
 def workday_classifier(record):
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[ATTRIBUTE].text
 
     # try to parse a date from the provided string
     try:
@@ -18,7 +18,7 @@ def workday_classifier(record):
 
     # check if country code is specified
     if YOUR_COUNTRY:
-        national_holidays = holidays.country_holidays(f"{YOUR_COUNTRY}")
+        national_holidays = holidays.country_holidays(f"{COUNTRY_ID}")
         if date in national_holidays:
             return "Holiday"
     
