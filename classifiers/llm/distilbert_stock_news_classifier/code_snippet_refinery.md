@@ -3,7 +3,7 @@ import requests
 import json
 
 API_KEY: str = "<API_KEY_GOES_HERE>"
-ATTRIBUTE: str = "headline" # only text attributes
+ATTRIBUTE: str = "text" # only text attributes
 
 def distilbert_stock_news_classifier(record):
     """
