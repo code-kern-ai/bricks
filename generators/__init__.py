@@ -58,6 +58,7 @@ from .llm import (
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
+    pegasus_summarization,
 )
 
 from .sentiment import vader_sentiment_scores
@@ -96,6 +97,7 @@ for module in [
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
+    pegasus_summarization
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
