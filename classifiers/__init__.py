@@ -52,7 +52,7 @@ for module in [
     profanity_detection,
     sentence_complexity,
     textblob_subjectivity,
-    distilbert_stock_news_classifier
+    distilbert_stock_news_classifier,
     workday_classifier,
     deberta_review_classifier, 
     bert_sentiment_german

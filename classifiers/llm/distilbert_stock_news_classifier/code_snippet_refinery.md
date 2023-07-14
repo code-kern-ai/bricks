@@ -6,9 +6,6 @@ API_KEY: str = "<API_KEY_GOES_HERE>"
 ATTRIBUTE: str = "text" # only text attributes
 
 def distilbert_stock_news_classifier(record):
-    """
-    Uses toxic-bert via Hugging Face Inference API to classify toxicity in text.
-    """
     api_token = API_KEY
     inputs = record[ATTRIBUTE].text
     headers = {"Authorization": f"Bearer {api_token}"}

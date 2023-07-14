@@ -30,5 +30,5 @@ def distilbert_stock_news_classifier(req: DistilbertStockNewsClassifierModel):
     try:
         output = query(req.apiToken, req.text)
         return output
-    except:
-        return "That didn't work. Did you provide a valid Hugging Face API key?"
+    except Exception as e:
+        return f"That didn't work. Did you provide a valid Hugging Face API key? Got error {e}"
