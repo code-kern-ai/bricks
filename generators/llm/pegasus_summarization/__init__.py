@@ -19,7 +19,7 @@ def pegasus_summarization(req: PegasusSummarizationModel):
       headers = {"Authorization": f"Bearer {req.apiKey}"}
       data = {"inputs": req.text}
       try:
-            response = requests.post("https://api-inference.huggingface.co/models/RashidNLP/NER-Deberta", headers=headers, json=data)
+            response = requests.post("https://api-inference.huggingface.co/models/google/pegasus-large", headers=headers, json=data)
             response_json = response.json()
             return response_json[0]["summary_text"]
       except Exception as e: 

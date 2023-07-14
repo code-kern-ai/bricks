@@ -1,10 +1,10 @@
-from util.configs import build_extractor_premium_config
+from util.configs import build_generator_premium_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import pegasus_summarization, INPUT_EXAMPLE
 
 
 def get_config():
-      return build_extractor_premium_config(
+      return build_generator_premium_config(
             function=pegasus_summarization,
             input_example=INPUT_EXAMPLE,
             issue_id=321,
@@ -14,6 +14,7 @@ def get_config():
             type="premium",
             kern_token_proxy_usable="false",
             docker_image="none",
+            gdpr_compliant="false",
             available_for=["refinery", "common"],
             part_of_group=[
                   "llm",
