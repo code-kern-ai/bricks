@@ -16,6 +16,7 @@ from .functions import (
 
 from .llm import (
     gpt_information_extraction,
+    bert_ner_extraction
 )
 
 from .media import work_of_art_extraction
@@ -105,6 +106,7 @@ for module in [
     percentage_extraction,
     difficult_words_extraction,
     bic_extraction,
+    bert_ner_extraction
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
