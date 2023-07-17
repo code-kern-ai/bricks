@@ -42,26 +42,6 @@ def get_config():
                     "allowedValueRange": [0, 100],
                     "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
                 },
-                "MAX_TOKENS": {
-                    "selectionType": SelectionType.INTEGER.value,
-                    "defaultValue": 60,
-                    "addInfo": [BricksVariableType.GENERIC_INT.value],
-                },
-                "TOP_P": {
-                    "selectionType": SelectionType.FLOAT.value,
-                    "defaultValue": 1,
-                    "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
-                },
-                "FREQUENCY_PENALTY": {
-                    "selectionType": SelectionType.FLOAT.value,
-                    "defaultValue": 0,
-                    "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
-                },
-                "PRESENCE_PENALTY": {
-                    "selectionType": SelectionType.FLOAT.value,
-                    "defaultValue": 1,
-                    "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
-                },
             },
         },
     )
