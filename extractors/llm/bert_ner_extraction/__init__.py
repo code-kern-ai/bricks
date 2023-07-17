@@ -31,6 +31,6 @@ def bert_ner_extraction(req: BertNerExtractionModel):
                   end = item["end"]
                   span = doc.char_span(start, end, alignment_mode="expand")
                   ner_positions.append((item["entity_group"], span.start, span.end))
-            return ner_positions
+            return {"entities": ner_positions}
       except Exception as e: 
             return f"That didn't work. Did you provide a valid API key? Go error: {e} and message: {response_json}"
