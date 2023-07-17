@@ -4,36 +4,40 @@ import openai
 import re
 
 
-def gpt_classifier(text:str, classify_by:str, labels:List[str], api_key:str, temperature:float = 0.0, max_tokens:int = 64, top_p:float = 1.0, frequency_penalty:float = 0.0, presence_penalty:float = 0.0) -> str:
+def gpt_classifier(text:str, classify_by:str, labels:List[str], api_key:str, temperature:float = 0.0) -> str:
     """
-    Uses OpenAIs GPT-3 model to classify texts. Visit https://beta.openai.com/docs/api-reference/completions/create for full documentation 
+    Uses OpenAIs GPT-3.5-turbo model to classify texts. Visit https://platform.openai.com/docs/models/gpt-3-5 for full documentation 
 
     @param text: text you want to extract information from
     @param classify_by: keyword to extract
     @param labels: labels to choose from
     @param api_key: OpenAI API key
     @param temperature: OpenAI parameter: Higher values means the model will take more risks. E.g. 0.9 for more creative applications, and 0 for ones with a well-defined answer.
-    @param max_tokens: OpenAI parameter: The maximum number of tokens to generate in the completion.
-    @param top_p: OpenAI parameter: Amount of tokens the model considers.
-    @param frequency_penalty: OpenAI parameter: Value between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency, decreasing the model's likelihood to repeat the same line verbatim.
-    @param presence_penalty: OpenAI parameter: Value between -2.0 and 2.0. Positive values penalize new tokens based on their existing presence (in other words, if you had the choice between two completions, and one of them used a word that you already used in the prompt, the model will be less likely to choose that completion). Decreasing the value of this parameter will make the model more likely to repeat words it has already used.
     @return: The found label
     """
-    # Access openai via API key
     openai.api_key = api_key
-    response = openai.Completion.create(
-            model="text-davinci-003",
-            prompt=f"""
-                The following sentence will be classfied by {classify_by}:\n\n
-                {text}\n
-                use the following labels: {", ".join(labels)}:""",
-            temperature=temperature,
-            max_tokens=max_tokens,
-            top_p=top_p,
-            frequency_penalty=frequency_penalty,
-            presence_penalty=presence_penalty
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"You are a classification assistant and need to classify texts based on their {classify_by}. You may only return one of these labels: {', '.join(labels)}. \
+                                Return nothing execpt one of the mentioned labels. The output should only contain a single word.",
+                },
+                {
+                    "role": "user",
+                    "content": f"Text to classify: {text}",
+                },
+            ],
+            temperature=0,
         )
-    return response["choices"][0]["text"].strip().lower()
+        answer = response["choices"][0]["message"]["content"]
+        return {"result": answer}
+    except Exception as e: 
+            return f"That didn't work. Did you provide a valid API key? Go error: {e} and message: {response}"
+        
+
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
@@ -41,11 +45,10 @@ def gpt_classifier(text:str, classify_by:str, labels:List[str], api_key:str, tem
 
 def example_integration():
 
-    texts = ["This is a positve text.", "This is a negative text."]
-    api_key = "<API_KEY_GOES_HERE>" # paste your OpenAI API key here
+    texts = ["Wow this is a really delicious ice cream!", "Worst. Movie. Ever!"]
+    api_key = "<OPENAI_API_KEY>" # paste your OpenAI API key here
     classify_by = "emotional sentiment"
     labels = ["positive", "neutral", "negative"]
-    extraction_keyword = "emails"
     
     for text in texts:
         print(f"the {classify_by} of \"{text}\" is {gpt_classifier(text, classify_by, labels, api_key)}")
