@@ -9,7 +9,6 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         issue_id=227,
         state=State.PUBLIC.value,
-        gdpr_compliant="true",
         type="python_function",
         kern_token_proxy_usable="false",
         min_refinery_version="1.8.0",
@@ -18,7 +17,6 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=[
             "words",
-            "gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={

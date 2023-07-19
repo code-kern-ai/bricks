@@ -11,14 +11,12 @@ def get_config():
         tabler_icon="CurrencyEuro",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
-        gdpr_compliant="true",
         type="python_function",
         kern_token_proxy_usable="false",
         docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "numbers",
-            "gdpr_compliant",
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={

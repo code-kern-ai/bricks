@@ -167,7 +167,6 @@ def post_module(config: Dict[str, Any]):
                 "sourceCodeRefinery": config["sourceCodeRefinery"],
                 "sourceCodeCommon": config["sourceCodeCommon"],
                 "minRefineryVersion": config["minRefineryVersion"],
-                "gdprCompliant": config["gdprCompliant"],
                 "kernTokenProxyUsable": config["kernTokenProxyUsable"],
                 "dockerImage": config["dockerImage"],
                 "availableFor": config["availableFor"],
@@ -200,8 +199,7 @@ def update_module(config: Dict[str, Any]):
                 "markdownDescription": config["markdownDescription"],
                 "sourceCodeRefinery": config["sourceCodeRefinery"],
                 "sourceCodeCommon": config["sourceCodeCommon"],
-                "minRefineryVersion": config["minRefineryVersion"],  #
-                "gdprCompliant": config["gdprCompliant"],
+                "minRefineryVersion": config["minRefineryVersion"], 
                 "kernTokenProxyUsable": config["kernTokenProxyUsable"],
                 "dockerImage": config["dockerImage"],
                 "availableFor": config["availableFor"],

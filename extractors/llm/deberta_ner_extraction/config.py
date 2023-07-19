@@ -11,7 +11,6 @@ def get_config():
             tabler_icon="Article",
             min_refinery_version="1.7.0",
             state=State.PUBLIC.value,
-            gdpr_compliant="false",
             type="premium",
             kern_token_proxy_usable="false",
             docker_image="none",
@@ -19,7 +18,6 @@ def get_config():
             part_of_group=[
                   "llm",
                   "words"
-                  "not_gdpr_compliant",
             ],  # first entry should be parent directory
             # bricks integrator information
             integrator_inputs={
