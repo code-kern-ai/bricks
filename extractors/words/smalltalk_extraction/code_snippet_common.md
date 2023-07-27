@@ -1,8 +1,11 @@
 ```python
 import re
 from nltk.corpus import stopwords
+import nltk 
 import spacy
 from typing import List, Tuple
+
+nltk.download("stopwords")
 
 def smalltalk_extraction(text:str, extraction_keyword:str) -> List[Tuple[str,int]]:
     """

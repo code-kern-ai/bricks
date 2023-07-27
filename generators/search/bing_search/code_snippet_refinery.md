@@ -13,7 +13,7 @@ def bing_search(record):
     search_url = "https://api.bing.microsoft.com/v7.0/search"
 
     headers = {"Ocp-Apim-Subscription-Key" : API_KEY}
-    params  = {"q": record[ATTRIBUTE].text, "textDecorations": True, "textFormat": "HTML", "mkt": market}
+    params  = {"q": record[ATTRIBUTE].text, "textDecorations": True, "textFormat": "HTML", "mkt": MARKET}
 
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()

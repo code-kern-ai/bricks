@@ -20,7 +20,7 @@ def percentage_extraction(record):
             prev_end += end_
             string = string[end_:]
             
-    for start, end in regex_search(YOUR_REGEX, record[YOUR_ATTRIBUTE].text):
-        span = record[YOUR_ATTRIBUTE].char_span(start, end, alignment_mode="expand")
-        yield YOUR_LABEL, span.start, span.end
+    for start, end in regex_search(REGEX, record[ATTRIBUTE].text):
+        span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
+        yield LABEL, span.start, span.end
 ```
