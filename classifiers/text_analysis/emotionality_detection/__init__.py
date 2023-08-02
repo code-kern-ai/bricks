@@ -7,15 +7,15 @@ INPUT_EXAMPLE = {
       "apiKey": "<API_KEY_GOES_HERE>"
 }
 
-class BertNerExtractionModel(BaseModel):
+class EmotionalityDetectionModel(BaseModel):
       apiKey: str
       text: str 
 
       class Config:
             schema_example = {"example": INPUT_EXAMPLE}
 
-def bert_ner_extraction(req: BertNerExtractionModel):
-      """BERT model for entity recognition."""
+def emotion_detection(req: EmotionalityDetectionModel):
+      """BERT model for emotion detection"""
       headers = {"Authorization": f"Bearer {req.apiKey}"}
       data = {"inputs": req.text}
       try: 
