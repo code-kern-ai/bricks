@@ -14,7 +14,7 @@ class EmotionalityDetectionModel(BaseModel):
       class Config:
             schema_example = {"example": INPUT_EXAMPLE}
 
-def emotion_detection(req: EmotionalityDetectionModel):
+def emotionality_detection(req: EmotionalityDetectionModel):
       """BERT model for emotion detection"""
       headers = {"Authorization": f"Bearer {req.apiKey}"}
       data = {"inputs": req.text}
