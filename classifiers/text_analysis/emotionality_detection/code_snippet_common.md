@@ -1,26 +1,38 @@
 ```python
-from LeXmo import LeXmo
 
-def emotionality_detection(text:str) -> str:
-    """
-    @param text: text to check
-    @return: either 'anger', 'fear', 'anticipation', 'trust', 'surprise', 'sadness', 'joy' or 'disgust' depending on the score
-    """
-    emo = LeXmo.LeXmo(text)
-    del emo["text"]
-    del emo["positive"]
-    del emo["negative"]
-    emo = max(emo, key=emo.get)
-    return emo
-    
+import requests
+import spacy
+
+def emotion_detection(text, api_key):
+      headers = {"Authorization": f"Bearer {api_key}"}
+      data = {"inputs": text}
+      try: 
+            response = requests.post("https://api-inference.huggingface.co/models/j-hartmann/emotion-english-distilroberta-base", headers=headers, json=data)
+            response_json = response.json()
+            ner_positions = []
+
+            nlp = spacy.load("en_core_web_sm")
+            doc = nlp(text)
+
+            for item in response_json:
+                  start = item["start"]
+                  end = item["end"]
+                  span = doc.char_span(start, end, alignment_mode="expand")
+                  ner_positions.append((item["entity_group"], span.start, span.end))
+            return ner_positions
+      except Exception as e: 
+            return f"That didn't work. Did you provide a valid API key? Go error: {e} and message: {response_json}"
+
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
 
 def example_integration():
-    texts = ["I am scared to continue.", "Oh my goodness it was the best evening ever, hype!"]
-    for text in texts:
-        print(f"\"{text}\" has emotion: {emotionality_detection(text)}")
+      hf_api_key = "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"
+      texts = ["What a great day to go to the beach.", "Sorry to hear that. CAn I help you?", "Why the hell would you do that?"]
+      for text in texts:
+            output = emotion_detection(text, api_key=hf_api_key)
+            print(output)
 
 example_integration()
 ```
