@@ -3,7 +3,7 @@
 import requests
 import spacy
 
-def emotion_detection(text, api_key):
+def emotionality_detection(text, api_key):
       headers = {"Authorization": f"Bearer {api_key}"}
       data = {"inputs": text}
       try: 
@@ -27,7 +27,7 @@ def emotion_detection(text, api_key):
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
 
-def example_integration():
+def emotionality_detection():
       hf_api_key = "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"
       texts = ["What a great day to go to the beach.", "Sorry to hear that. CAn I help you?", "Why the hell would you do that?"]
       for text in texts:

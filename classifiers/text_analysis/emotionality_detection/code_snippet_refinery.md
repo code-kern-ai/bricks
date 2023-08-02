@@ -4,7 +4,7 @@ import requests
 ATTRIBUTE: str = "text"
 API_KEY: str = "<API_KEY_GOES_HERE>"
 
-def bert_ner_extraction(record):
+def emotionality_detection(record):
       headers = {"Authorization": f"Bearer {API_KEY}"}
       data = {"inputs": record[ATTRIBUTE].text}
       try:
