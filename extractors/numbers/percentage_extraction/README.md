@@ -1,1 +1,0 @@
-This module extracts percentages from a given text using a regex pattern. The percent sign will be extracted, too.
