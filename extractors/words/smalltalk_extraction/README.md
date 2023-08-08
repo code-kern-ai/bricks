@@ -1,1 +1,0 @@
-This module detects the smalltalk language from a passage of text or chats.

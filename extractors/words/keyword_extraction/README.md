@@ -1,1 +1,0 @@
-This module extracts keywords from a text or passage, using unsupervised methods of keyword extraction. For this, it uses the `flashtext` package which takes input keywords that are needed to be matched and extracts the span of those keywords in the text. Due to this requirement, this module only works in refinery version > 1.6.

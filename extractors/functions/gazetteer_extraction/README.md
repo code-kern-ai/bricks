@@ -1,1 +1,0 @@
-A gazetteer detects full entities given some hint, e.g. a person based on their first name. If I know that "Max" is the first name, the gazetteer will detect "Max Mustermann" as a person. If you get an "AttributeError: module 'knowledge' has no attribute XYZ", you need to ensure that a lookup name with that name exists in refinery!
