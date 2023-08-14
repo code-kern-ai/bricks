@@ -1,5 +1,6 @@
 import openai
 from pydantic import BaseModel
+from litellm import completion
 
 INPUT_EXAMPLE = {
     "apiKey": "<API_KEY_GOES_HERE>",
@@ -21,7 +22,7 @@ def gpt_tldr_summarization(req: GptTldrSummarizationModel):
     """GPT-3.5 model which can be used to summarize text inputs."""
     openai.api_key = req.apiKey
     try:
-        response = openai.ChatCompletion.create(
+        response = completion(
             model="gpt-3.5-turbo",
             messages=[
                 {

@@ -1,4 +1,5 @@
 import openai
+from litellm import completion
 from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
@@ -21,7 +22,7 @@ def gpt_grammar_correction(req: GptGrammarCorrectionModel):
     """GPT-3.5 model which can be used to correct grammar."""
     openai.api_key = req.apiKey
     try:
-        response = openai.ChatCompletion.create(
+        response = completion(
             model="gpt-3.5-turbo",
             messages=[
                 {
