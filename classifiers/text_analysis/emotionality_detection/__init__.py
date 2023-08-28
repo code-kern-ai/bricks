@@ -15,22 +15,22 @@ class EmotionalityDetectionModel(BaseModel):
             schema_example = {"example": INPUT_EXAMPLE}
 
 def emotionality_detection(req: EmotionalityDetectionModel):
-      """BERT model for emotion detection"""
-      headers = {"Authorization": f"Bearer {req.apiKey}"}
+      """huggingface model for emotion detection"""
+      headers = {"Authorization": f"Bearer {req.api_key}"}
       data = {"inputs": req.text}
       try: 
             response = requests.post("https://api-inference.huggingface.co/models/j-hartmann/emotion-english-distilroberta-base", headers=headers, json=data)
             response_json = response.json()
-            ner_positions = []
 
-            nlp = SpacySingleton.get_nlp("en_core_web_sm")
-            doc = nlp(req.text)
+            # flatten the list of lists
+            flat_list = [item for sublist in response_json for item in sublist]
 
-            for item in response_json:
-                  start = item["start"]
-                  end = item["end"]
-                  span = doc.char_span(start, end, alignment_mode="expand")
-                  ner_positions.append((item["entity_group"], span.start, span.end))
-            return {"entities": ner_positions}
+            # find the item with the highest score
+            max_item = max(flat_list, key=lambda x: x["score"])
+
+            # retrieve the label of the item with the highest score
+            max_label = max_item["label"]
+
+            return max_label
       except Exception as e: 
             return f"That didn't work. Did you provide a valid API key? Go error: {e} and message: {response_json}"
