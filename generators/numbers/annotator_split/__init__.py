@@ -2,7 +2,7 @@ from pydantic import BaseModel
 import random
 
 INPUT_EXAMPLE = {
-    "number": 4356
+    "number": 4
 }
 
 

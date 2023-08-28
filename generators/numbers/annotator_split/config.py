@@ -16,14 +16,14 @@ def get_config():
         docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
-            "text_analytics",
+            "numbers",
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
             "name": "annotator_split",
-            "refineryDataType": RefineryDataType.TEXT.value,
+            "refineryDataType": RefineryDataType.INTEGER.value,
             "variables": {
-                "ATTRIBUTE": {
+                "N_SPLIT": {
                     "selectionType": SelectionType.CHOICE.value,
                     "description": "only text fields",
                     "addInfo": [
