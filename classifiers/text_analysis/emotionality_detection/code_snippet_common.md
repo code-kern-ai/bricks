@@ -1,7 +1,6 @@
 ```python
 
 import requests
-import spacy
 
 def emotionality_detection(text, api_key):
       headers = {"Authorization": f"Bearer {api_key}"}
@@ -9,17 +8,17 @@ def emotionality_detection(text, api_key):
       try: 
             response = requests.post("https://api-inference.huggingface.co/models/j-hartmann/emotion-english-distilroberta-base", headers=headers, json=data)
             response_json = response.json()
-            ner_positions = []
 
-            nlp = spacy.load("en_core_web_sm")
-            doc = nlp(text)
+            # flatten the list of lists
+            flat_list = [item for sublist in response_json for item in sublist]
 
-            for item in response_json:
-                  start = item["start"]
-                  end = item["end"]
-                  span = doc.char_span(start, end, alignment_mode="expand")
-                  ner_positions.append((item["entity_group"], span.start, span.end))
-            return ner_positions
+            # find the item with the highest score
+            max_item = max(flat_list, key=lambda x: x["score"])
+
+            # retrieve the label of the item with the highest score
+            max_label = max_item["label"]
+
+            return max_label
       except Exception as e: 
             return f"That didn't work. Did you provide a valid API key? Go error: {e} and message: {response_json}"
 
@@ -27,11 +26,11 @@ def emotionality_detection(text, api_key):
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
 
-def emotionality_detection():
-      hf_api_key = "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"
+def example_integration():
+      hf_api_key = "<API_KEY_GOES_HERE>"
       texts = ["What a great day to go to the beach.", "Sorry to hear that. CAn I help you?", "Why the hell would you do that?"]
       for text in texts:
-            output = emotion_detection(text, api_key=hf_api_key)
+            output = emotionality_detection(text, api_key=hf_api_key)
             print(output)
 
 example_integration()
