@@ -16,7 +16,7 @@ class EmotionalityDetectionModel(BaseModel):
 
 def emotionality_detection(req: EmotionalityDetectionModel):
       """huggingface model for emotion detection"""
-      headers = {"Authorization": f"Bearer {req.api_key}"}
+      headers = {"Authorization": f"Bearer {req.apiKey}"}
       data = {"inputs": req.text}
       try: 
             response = requests.post("https://api-inference.huggingface.co/models/j-hartmann/emotion-english-distilroberta-base", headers=headers, json=data)
