@@ -11,7 +11,7 @@ def stock_ticker_extraction(text:str, extraction_keyword:str) -> List[Tuple[str,
     @return: positions of extracted stick tickers
     """
     # import list of tickers from bricks github repo
-    req = requests.get("https://drive.google.com/file/d/1xw9ZA3jyzIWAkJ2NDniG2VzvPWUsM2no/view?usp=sharing")
+    req = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/main/extractors/codes/stock_ticker_extraction/tickers.txt")
     tickers = req.text.split("\n")
 
     nlp = spacy.load("en_core_web_sm")

@@ -7,7 +7,7 @@ LABEL: str = "Ticker"
 
 def stock_ticker_extraction(record):
     # Import tickers from bricks github repo
-    req = requests.get("https://drive.google.com/file/d/1xw9ZA3jyzIWAkJ2NDniG2VzvPWUsM2no/view?usp=sharing")
+    req = requests.get("https://raw.githubusercontent.com/code-kern-ai/bricks/main/extractors/codes/stock_ticker_extraction/tickers.txt")
     tickers = req.text.split("\n")
 
     text = record[ATTRIBUTE].text
