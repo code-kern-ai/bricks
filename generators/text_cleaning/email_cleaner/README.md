@@ -1,0 +1,1 @@
+This modules removes certain aspects of the email to focus on the context. The aspects being removed are Sentences starting with "EXTERNAL MAIL", Brackets, that starts with "cid.image", everything after the Disclaimer or until the next Mail in case of response-mails and everything after the signiture in brackets or until the next Mail. 

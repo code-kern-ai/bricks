@@ -50,7 +50,11 @@ from .text_analytics import (
     syllable_count,
 )
 
-from .text_cleaning import html_cleanser, html_unescape
+from .text_cleaning import (
+    email_cleaner,
+    html_cleanser, 
+    html_unescape,
+)
 
 from .translation import (
     deepl_translator,
@@ -102,6 +106,7 @@ for module in [
     gpt_grammar_correction,
     gpt_tldr_summarization,
     annotator_split,
+    email_cleaner,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
