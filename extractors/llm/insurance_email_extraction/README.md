@@ -1,0 +1,2 @@
+Uses OpenAI's `GPT-3.5-turbo` model to extract certain information from a insurance email. The informations are: insurance companies, insured company, website of insured company, address of insured company, type of coverage, date of submission, amount of revenue, description of insured company. 
+At a low temperature, the model extracts specified keywords. At a higher temperature, the model generates relevant keywords. An API key can be provided by us or be obtained directly from OpenAI. Contact us at info@kern.ai if you require an API key or need any support from us.

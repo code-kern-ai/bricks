@@ -18,6 +18,7 @@ from .llm import (
     gpt_information_extraction,
     deberta_ner_extraction,
     bert_ner_extraction,
+    insurance_email_extraction,
 )
 
 from .media import work_of_art_extraction
@@ -109,6 +110,7 @@ for module in [
     bic_extraction,
     deberta_ner_extraction,
     bert_ner_extraction,
+    insurance_email_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
