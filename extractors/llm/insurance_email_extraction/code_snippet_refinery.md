@@ -8,7 +8,7 @@ import re
 
 API_KEY: str = "<API_KEY_GOES_HERE>"
 ATTRIBUTE: str = "text" # only text attributes
-EXTRACTION_KEYWORDS: list = ["insurance companies", "insured company", "website of insured company", "address of insured company", "type of coverage", "date of submission", "amount of revenue", "description of insured company"]
+EXTRACTION_KEYWORDS: List = ["insurance companies", "insured company", "website of insured company", "address of insured company", "type of coverage", "date of submission", "amount of revenue", "description of insured company"]
 TEMPERATURE: float = 0.0
 
 def insurance_email_extraction(record):

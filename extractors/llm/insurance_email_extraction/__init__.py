@@ -29,7 +29,7 @@ def gpt_information_extraction(req: InsuranceEmailExtractionModel):
     openai.api_key = req.apiKey
     try: 
         response = openai.ChatCompletion.create(
-            model = "gpt-3.5-turbo",
+            model = "gpt-3.5-turbo-16k",
             messages = [
                 {
                     "role": "system",

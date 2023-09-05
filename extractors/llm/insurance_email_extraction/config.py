@@ -44,7 +44,7 @@ def get_config():
                     "defaultValue": "names",
                 },
                 "EXTRACTION_KEYWORD": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.LIST.value,
                     "defaultValue": "names",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
