@@ -8,7 +8,7 @@ import ast
 def insurance_email_extraction(text: str, extraction_keyword: str, api_key: str, temperature: float) -> List[Tuple[str, int]]:
     openai.api_key = api_key
     response = openai.ChatCompletion.create(
-        model = "gpt-3.5-turbo",
+        model = "gpt-3.5-turbo-16k",
         messages = [
             {
                 "role": "system",

@@ -16,7 +16,7 @@ def insurance_email_extraction(record):
     openai.api_key = API_KEY
     for extraction in EXTRACTION_KEYWORDS:
         response = openai.ChatCompletion.create(
-            model = "gpt-3.5-turbo",
+            model = "gpt-3.5-turbo-16k",
             messages = [
                 {
                     "role": "system",
