@@ -24,7 +24,7 @@ class InsuranceEmailExtractionModel(BaseModel):
         schema_example = {"example": INPUT_EXAMPLE}
 
 
-def gpt_information_extraction(req: InsuranceEmailExtractionModel):
+def insurance_email_extraction(req: InsuranceEmailExtractionModel):
     """Uses OpenAI's GPT model to extract keyword from a text."""
     openai.api_key = req.apiKey
     try: 
