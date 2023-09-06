@@ -1,0 +1,1 @@
+A module that reads text from a PDF and returns it as an output.
