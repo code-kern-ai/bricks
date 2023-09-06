@@ -17,7 +17,7 @@ def pdf_scanner(pdf):
 # ↓ example implementation 
 
 def example_integration():
-    pdf = "/mnt/c/Users/svenj/Downloads/XPhoneBERT.pdf"
+    pdf = "example.pdf"
     print(pdf_scanner(pdf))
 example_integration()
 ```
