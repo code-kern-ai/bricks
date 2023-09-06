@@ -1,11 +1,11 @@
 from util.configs import build_generator_function_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from . import html_cleanser, INPUT_EXAMPLE
+from . import email_cleaner, INPUT_EXAMPLE
 
 
 def get_config():
     return build_generator_function_config(
-        function=html_cleanser,
+        function=email_cleaner,
         input_example=INPUT_EXAMPLE,
         issue_id=328,
         tabler_icon="square-rounded-letter-e",
