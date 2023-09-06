@@ -13,6 +13,6 @@ class AnnotationSplitModel(BaseModel):
         schema_example = {"example": INPUT_EXAMPLE}
 
 def annotator_split(request: AnnotationSplitModel):
-    """Generates a random number for split annotation"""
+    """Generates a random number for split annotations"""
     number = request.number
     return random.randint(0, number-1)
