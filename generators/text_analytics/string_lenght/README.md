@@ -1,0 +1,1 @@
+Module that calculates the lenght of a string.
