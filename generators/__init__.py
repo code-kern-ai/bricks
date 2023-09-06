@@ -43,6 +43,7 @@ from .text_analytics import (
     phonetic_soundex,
     reading_time,
     syllable_count,
+    string_lenght,
 )
 
 from .text_cleaning import html_cleanser, html_unescape
@@ -96,6 +97,7 @@ for module in [
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
+    string_lenght,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
