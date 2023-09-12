@@ -15,7 +15,7 @@ class PDFScannerModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def pdf_scanner(req):
+def pdf_scanner(req:PDFScannerModel):
     pdf = req.pdf
     reader = PdfReader(pdf)
     number_of_pages = len(reader.pages)
