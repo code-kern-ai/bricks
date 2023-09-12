@@ -60,6 +60,8 @@ from .llm import (
     gpt_tldr_summarization,
 )
 
+from .pdf_to_text import pdf_to_text
+
 from .sentiment import vader_sentiment_scores
 
 router = APIRouter()
@@ -96,6 +98,7 @@ for module in [
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
+    pdf_to_text,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
