@@ -1,7 +1,7 @@
 ```python 
 from PyPDF2 import PdfReader
 
-def pdf_scanner(pdf):
+def pdf_to_text(pdf):
     reader = PdfReader(pdf)
     number_of_pages = len(reader.pages)
     number = 0
@@ -18,6 +18,6 @@ def pdf_scanner(pdf):
 
 def example_integration():
     pdf = "example.pdf"
-    print(pdf_scanner(pdf))
+    print(pdf_to_text(pdf))
 example_integration()
 ```

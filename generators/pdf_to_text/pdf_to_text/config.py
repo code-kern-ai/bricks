@@ -1,11 +1,11 @@
 from util.configs import build_generator_function_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from . import pdf_scanner, INPUT_EXAMPLE
+from . import pdf_to_text, INPUT_EXAMPLE
 
 
 def get_config():
     return build_generator_function_config(
-        function=pdf_scanner,
+        function=pdf_to_text,
         input_example=INPUT_EXAMPLE,
         issue_id=329,
         tabler_icon="file-type-pdf",
@@ -20,7 +20,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "pdf_scanner",
+            "name": "pdf_to_text",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "ATTRIBUTE": {

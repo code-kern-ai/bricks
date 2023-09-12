@@ -3,7 +3,7 @@ from PyPDF2 import PdfReader
 
 ATTRIBUTE: str = "link" # only text attributes
 
-def pdf_scanner(record):
+def pdf_to_text(record):
     reader = PdfReader(record[ATTRIBUTE].text)
     number_of_pages = len(reader.pages)
     number = 0

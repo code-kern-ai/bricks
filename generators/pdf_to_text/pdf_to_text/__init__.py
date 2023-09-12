@@ -8,14 +8,14 @@ INPUT_EXAMPLE = {
 }
 
 
-class PDFScannerModel(BaseModel):
+class PdfToTextModel(BaseModel):
     pdf: str
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def pdf_scanner(req:PDFScannerModel):
+def pdf_to_text(req:PdfToTextModel):
     pdf = req.pdf
     reader = PdfReader(pdf)
     number_of_pages = len(reader.pages)
