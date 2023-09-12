@@ -105,8 +105,8 @@ for module in [
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
-    annotator_split,
     email_cleaner,
+    annotator_split,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
