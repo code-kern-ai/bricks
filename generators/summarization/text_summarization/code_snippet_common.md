@@ -1,4 +1,5 @@
 ```python
+import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 from heapq import nlargest
@@ -46,6 +47,6 @@ excitement that came with change but it was useless. That curiosity had long lef
 loathe anything that put him out of his comfort zone."""]
 
     for text in texts:
-        print(f"the summarized version of \n\n{text}\n\nis:\n{smalltalk_truncation(text)}")
+        print(f"the summarized version of \n\n{text}\n\nis:\n{text_summarization(text)}")
 example_integration() 
 ```

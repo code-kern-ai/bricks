@@ -1,6 +1,8 @@
 ```python
 from nltk.corpus import words, brown
+import nltk
 
+nltk.download('words', "brown")
 words_corpus = words.words()
 brown_corpus = brown.words()
 word_list = set(words_corpus + brown_corpus)

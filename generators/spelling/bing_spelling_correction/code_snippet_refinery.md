@@ -1,23 +1,23 @@
 ```python
 import requests
 
-ATTRIBUTE: str = "review" # only text attributes
+ATTRIBUTE: str = "text" # only text attributes
 API_KEY: str = "<API_KEY_GOES_HERE>"
 LANGUAGE: str = "en-US" # en-GB, de-DE, fr-FR, it-IT, zh-CN, ja-JP
 
 def bing_spelling_correction(record):
     '''Uses Microsoft's Bing to retrieve search results.'''
-    text = record[YOUR_ATTRIBUTE].text
+    text = record[ATTRIBUTE].text
     search_url = "https://api.bing.microsoft.com/v7.0/SpellCheck"
     data = {
         'text': text
     }
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Ocp-Apim-Subscription-Key': YOUR_API_KEY,
+        'Ocp-Apim-Subscription-Key': API_KEY,
     }
     params = {
-        'mkt': YOUR_LANGUAGE,
+        'mkt': LANGUAGE,
         'mode':'proof'
     }
     response = requests.post(search_url, headers=headers, params=params, data=data)

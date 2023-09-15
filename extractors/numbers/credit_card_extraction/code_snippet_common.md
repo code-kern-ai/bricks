@@ -3,7 +3,7 @@ import re
 import spacy 
 from typing import List, Tuple
 
-def credit_card_extraction(text: str, extraction_keyword:str) -> List[Tupel]:
+def credit_card_extraction(text: str, extraction_keyword:str) -> List[Tuple]:
     """
     @param text: the input text
     @param extraction_keyword: the label that is assigned to extracted words

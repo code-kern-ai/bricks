@@ -35,7 +35,7 @@ def get_config():
                     "defaultValue": "<API_KEY_GOES_HERE>",
                     "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
-                "language": {
+                "LANGUAGE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "en-US",
                     "allowedValues": [
