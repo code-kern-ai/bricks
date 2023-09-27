@@ -27,18 +27,16 @@ def get_config():
         },
         # bricks integrator information
         integrator_inputs={
-            "name": "textblob_subjectivity",
+            "name": "text_length",
             "refineryDataType": RefineryDataType.TEXT.value,
             "outputs": [
-                "subjective",
-                "rather subjective",
-                "neutral",
-                "rather objective",
-                "objective",
+                "short",
+                "medium", 
+                "long"
             ],
             "variables": {
                 "ATTRIBUTE": {
-                    "selectionType": SelectionType.CHOICE.value,
+                    "selectionType": SelectionType.STRING.value,
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value,
