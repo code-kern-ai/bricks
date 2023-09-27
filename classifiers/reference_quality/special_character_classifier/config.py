@@ -19,8 +19,8 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         cognition_init_mapping = {
-            "true": "Needs fix",
-            "false": "null"
+            "True": "Needs fix",
+            "False": "null"
         },
         integrator_inputs={
             "name": "special_character_classifier",
