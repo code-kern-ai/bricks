@@ -10,7 +10,7 @@ from .llm import (
 from .lookup_lists import lookup_list
 
 from .reference_quality import (
-    text_length
+    text_length_classifier
 )
 
 from .dates_and_times import (
@@ -60,7 +60,7 @@ for module in [
     workday_classifier,
     deberta_review_classifier, 
     bert_sentiment_german,
-    text_length
+    text_length_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

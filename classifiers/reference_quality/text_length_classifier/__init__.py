@@ -4,14 +4,14 @@ from textblob import TextBlob
 INPUT_EXAMPLE = {"text": "This is too short!"}
 
 
-class TextLengthModel(BaseModel):
+class TextLengthClassifierModel(BaseModel):
     text: str
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def text_length(req: TextLengthModel):
+def text_length_classifier(req: TextLengthClassifierModel):
     """Checks the length of a string by counting the number of words in it"""
     words = req.text.split()
     length = len(words)

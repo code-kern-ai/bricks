@@ -1,11 +1,11 @@
 from util.configs import build_classifier_function_config
 from util.enums import State, RefineryDataType, SelectionType, BricksVariableType
-from . import text_length, INPUT_EXAMPLE
+from . import text_length_classifier, INPUT_EXAMPLE
 
 
 def get_config():
     return build_classifier_function_config(
-        function=text_length,
+        function=text_length_classifier,
         input_example=INPUT_EXAMPLE,
         issue_id=348,
         tabler_icon="RulerMeasure",
@@ -25,7 +25,7 @@ def get_config():
         },
         # bricks integrator information
         integrator_inputs={
-            "name": "text_length",
+            "name": "text_length_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
             "outputs": [
                 "short",
