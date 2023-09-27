@@ -18,7 +18,7 @@ def get_config():
             "dates_and_times",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "workday_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,

@@ -18,7 +18,7 @@ def get_config():
             "spelling",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "textblob_spelling_correction",
             "refineryDataType": RefineryDataType.TEXT.value,

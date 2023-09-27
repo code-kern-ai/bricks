@@ -18,7 +18,7 @@ def get_config():
             "translation",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "ibm_translator",
             "refineryDataType": RefineryDataType.TEXT.value,

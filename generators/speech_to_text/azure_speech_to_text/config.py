@@ -18,7 +18,7 @@ def get_config():
             "speech_to_text",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "azure_speech_to_text",
             "refineryDataType": RefineryDataType.TEXT.value,

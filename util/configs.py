@@ -372,6 +372,7 @@ def build_config(
         "type": type,
         "availableFor": json.dumps(available_for, indent=4),
         "partOfGroup": json.dumps(part_of_group, indent=4),
+        "cognitionInitMapping": json.dumps(cognition_init_mapping, indent=4),
         "integratorInputs": json.dumps(integrator_inputs, indent=4),
     }
 

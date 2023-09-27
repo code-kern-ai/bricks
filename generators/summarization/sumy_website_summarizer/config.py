@@ -18,7 +18,7 @@ def get_config():
         part_of_group=[
             "summarization",
         ],  # first entry should be parent directory
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "sumy_website_summarizer",
             "refineryDataType": RefineryDataType.TEXT.value,

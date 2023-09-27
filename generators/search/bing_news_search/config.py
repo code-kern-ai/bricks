@@ -18,7 +18,7 @@ def get_config():
             "search",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "bing_news_search",
             "refineryDataType": RefineryDataType.TEXT.value,

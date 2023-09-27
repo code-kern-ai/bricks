@@ -18,7 +18,7 @@ def get_config():
             "metrics",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "metric_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,

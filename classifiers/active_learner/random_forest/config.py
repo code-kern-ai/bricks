@@ -16,7 +16,7 @@ def get_config():
         part_of_group=[
             "active_learner",
         ],
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "MyRF",
             "refineryDataType": RefineryDataType.TEXT.value,

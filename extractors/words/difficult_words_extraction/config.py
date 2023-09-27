@@ -17,7 +17,7 @@ def get_config():
             "words",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "difficult_words_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,

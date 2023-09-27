@@ -19,7 +19,7 @@ def get_config():
             "spelling",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "spelling_check",
             "refineryDataType": RefineryDataType.TEXT.value,

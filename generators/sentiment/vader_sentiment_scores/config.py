@@ -18,7 +18,7 @@ def get_config():
             "sentiment",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "vader_sentiment_scores",
             "refineryDataType": RefineryDataType.TEXT.value,

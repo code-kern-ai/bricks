@@ -18,7 +18,7 @@ def get_config():
             "codes",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "color_code_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,

@@ -17,7 +17,7 @@ def get_config():
         part_of_group=[
             "similarity",
         ],  # first entry should be parent directory
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "cosine_similarity",
             "refineryDataType": RefineryDataType.TEXT.value,

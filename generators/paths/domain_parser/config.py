@@ -18,7 +18,7 @@ def get_config():
             "paths",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping=None,
+        cognition_init_mapping="none",
         integrator_inputs={
             "name": "domain_parser",
             "refineryDataType": RefineryDataType.TEXT.value,
