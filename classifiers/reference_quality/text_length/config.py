@@ -20,7 +20,7 @@ def get_config():
             "text_analysis"
         ],  # first entry should be parent directory
         # mapping lables for cognition
-        cognition_mapping={
+        cognition_init_mapping={
             "short": "Needs fix",
             "medium": "Sufficient",
             "long": "Sufficient",
