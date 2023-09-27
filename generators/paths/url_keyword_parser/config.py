@@ -12,13 +12,13 @@ def get_config():
         min_refinery_version="1.8.1",
         state=State.PUBLIC.value,
         type="python_function",
-        kern_token_proxy_usable="false",
-        docker_image="none",
+
         available_for=["refinery", "common"],
         part_of_group=[
             "paths",
         ],  # first entry should be parent directory
         # bricks integrator information
+        cognition_init_mapping=None,
         integrator_inputs={
             "name": "url_keyword_parser",
             "refineryDataType": RefineryDataType.TEXT.value,

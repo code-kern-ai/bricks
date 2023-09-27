@@ -15,10 +15,9 @@ def build_classifier_function_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -31,10 +30,9 @@ def build_classifier_function_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -47,10 +45,9 @@ def build_classifier_premium_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -63,10 +60,9 @@ def build_classifier_premium_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -78,10 +74,9 @@ def build_classifier_learner_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -94,10 +89,9 @@ def build_classifier_learner_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -110,10 +104,9 @@ def build_extractor_function_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -126,10 +119,9 @@ def build_extractor_function_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -142,10 +134,9 @@ def build_extractor_premium_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -158,10 +149,9 @@ def build_extractor_premium_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -173,10 +163,9 @@ def build_extractor_learner_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -189,10 +178,9 @@ def build_extractor_learner_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -205,10 +193,9 @@ def build_generator_function_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -221,10 +208,9 @@ def build_generator_function_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -236,10 +222,9 @@ def build_generator_learner_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -252,10 +237,9 @@ def build_generator_learner_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -268,10 +252,9 @@ def build_generator_premium_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     return build_config(
@@ -284,10 +267,9 @@ def build_generator_premium_config(
         min_refinery_version=min_refinery_version,
         state=state,
         type=type,
-        kern_token_proxy_usable=kern_token_proxy_usable,
-        docker_image=docker_image,
         available_for=available_for,
         part_of_group=part_of_group,
+        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
     )
 
@@ -302,10 +284,9 @@ def build_config(
     min_refinery_version: str,
     state: str,
     type: str,
-    kern_token_proxy_usable: bool,
-    docker_image: str,
     available_for: list,
     part_of_group: list,
+    cognition_init_mapping: dict,
     integrator_inputs: dict,
 ):
     markdown_description_path = os.path.join(
@@ -359,10 +340,9 @@ def build_config(
         {"min_refinery_version": min_refinery_version},
         {"state": state},
         {"type": type},
-        {"kern_token_proxy_usable": kern_token_proxy_usable},
-        {"docker_image": docker_image},
         {"available_for": available_for},
         {"part_of_group": part_of_group},
+        {"cognition_init_mapping": cognition_init_mapping},
         {"integrator_inputs": integrator_inputs},
     ]:
         if not list(mandatory_field.values())[0]:
@@ -390,8 +370,6 @@ def build_config(
         "minRefineryVersion": min_refinery_version,
         "state": state,
         "type": type,
-        "kernTokenProxyUsable": kern_token_proxy_usable,
-        "dockerImage": docker_image,
         "availableFor": json.dumps(available_for, indent=4),
         "partOfGroup": json.dumps(part_of_group, indent=4),
         "integratorInputs": json.dumps(integrator_inputs, indent=4),

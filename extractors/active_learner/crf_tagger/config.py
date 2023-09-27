@@ -11,12 +11,12 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="active_learner",
-        kern_token_proxy_usable="false",
-        docker_image="none",
+
         available_for=["refinery"],
         part_of_group=[
             "active_learner",
         ],
+        cognition_init_mapping=None,
         integrator_inputs={
             "name": "MyCRF",
             "refineryDataType": RefineryDataType.TEXT.value,

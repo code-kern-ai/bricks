@@ -171,6 +171,7 @@ def post_module(config: Dict[str, Any]):
                 "dockerImage": config["dockerImage"],
                 "availableFor": config["availableFor"],
                 "partOfGroup": config["partOfGroup"],
+                "cognitionInitMapping": config["cognitionInitMapping"],
                 "integratorInputs": config["integratorInputs"],
             }
         },
@@ -204,6 +205,7 @@ def update_module(config: Dict[str, Any]):
                 "dockerImage": config["dockerImage"],
                 "availableFor": config["availableFor"],
                 "partOfGroup": config["partOfGroup"],
+                "cognitionInitMapping": config["cognitionInitMapping"],
                 "integratorInputs": config["integratorInputs"],
             }
         },
