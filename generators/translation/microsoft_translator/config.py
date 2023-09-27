@@ -12,13 +12,11 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="premium",
-
         available_for=["refinery", "common"],
         part_of_group=[
             "translation",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping="none",
         integrator_inputs={
             "name": "microsoft_translator",
             "refineryDataType": RefineryDataType.TEXT.value,

@@ -19,7 +19,7 @@ def get_config():
             "_template_func",
         ],  # first entry should be parent directory
         # !!! bricks integrator information for the Kern AI team, you can leave this blank !!! 
-        cognition_init_mapping="none",
+        
         integrator_inputs={
             "globalComment": "Only for english text.",
             "name": "_template_func",

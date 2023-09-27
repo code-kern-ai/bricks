@@ -12,12 +12,10 @@ def get_config():
         min_refinery_version="1.8.1",
         state=State.DRAFT.value,
         type="active_learner",
-
         available_for=["refinery"],
         part_of_group=[
             "active_learner",
         ],
-        cognition_init_mapping="none",
         integrator_inputs={
             "name": "MyBayesian",
             "refineryDataType": RefineryDataType.TEXT.value,

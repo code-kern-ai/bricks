@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from typing import Callable, Dict, Any
+from typing import Optional, Callable, Dict, Any
 import json
 from util.exceptions import ErrorneousConfiguration
 
@@ -17,8 +17,8 @@ def build_classifier_function_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="classifier",
@@ -32,8 +32,8 @@ def build_classifier_function_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -47,8 +47,8 @@ def build_classifier_premium_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="classifier",
@@ -62,8 +62,8 @@ def build_classifier_premium_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -76,8 +76,8 @@ def build_classifier_learner_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="classifier",
@@ -91,8 +91,8 @@ def build_classifier_learner_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -106,8 +106,8 @@ def build_extractor_function_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="extractor",
@@ -121,8 +121,8 @@ def build_extractor_function_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -136,8 +136,8 @@ def build_extractor_premium_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="extractor",
@@ -151,8 +151,8 @@ def build_extractor_premium_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -165,8 +165,8 @@ def build_extractor_learner_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="extractor",
@@ -180,8 +180,8 @@ def build_extractor_learner_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -195,8 +195,8 @@ def build_generator_function_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="generator",
@@ -210,8 +210,8 @@ def build_generator_function_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -224,8 +224,8 @@ def build_generator_learner_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="generator",
@@ -239,8 +239,8 @@ def build_generator_learner_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -254,8 +254,8 @@ def build_generator_premium_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     return build_config(
         module_type="generator",
@@ -269,8 +269,8 @@ def build_generator_premium_config(
         type=type,
         available_for=available_for,
         part_of_group=part_of_group,
-        cognition_init_mapping=cognition_init_mapping,
         integrator_inputs=integrator_inputs,
+        cognition_init_mapping=cognition_init_mapping,
     )
 
 
@@ -286,8 +286,8 @@ def build_config(
     type: str,
     available_for: list,
     part_of_group: list,
-    cognition_init_mapping: dict,
     integrator_inputs: dict,
+    cognition_init_mapping: Optional[dict] = None,
 ):
     markdown_description_path = os.path.join(
         f"{module_type}s",
@@ -342,7 +342,7 @@ def build_config(
         {"type": type},
         {"available_for": available_for},
         {"part_of_group": part_of_group},
-        {"cognition_init_mapping": cognition_init_mapping},
+        #{"cognition_init_mapping": cognition_init_mapping},
         {"integrator_inputs": integrator_inputs},
     ]:
         if not list(mandatory_field.values())[0]:

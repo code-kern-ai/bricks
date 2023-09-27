@@ -12,13 +12,11 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="python_function",
-
         available_for=["refinery", "common"],
         part_of_group=[
             "summarization",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping="none",
         integrator_inputs={
             "name": "smalltalk_truncation",
             "refineryDataType": RefineryDataType.TEXT.value,

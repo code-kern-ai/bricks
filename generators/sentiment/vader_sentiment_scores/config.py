@@ -12,13 +12,11 @@ def get_config():
         min_refinery_version="1.7.1",
         state=State.PUBLIC.value,
         type="python_function",
-
         available_for=["refinery", "common"],
         part_of_group=[
             "sentiment",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping="none",
         integrator_inputs={
             "name": "vader_sentiment_scores",
             "refineryDataType": RefineryDataType.TEXT.value,

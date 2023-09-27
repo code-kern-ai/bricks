@@ -11,12 +11,10 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="active_learner",
-
         available_for=["refinery"],
         part_of_group=[
             "active_learner",
         ],
-        cognition_init_mapping="none",
         integrator_inputs={
             "name": "MyGrid",
             "refineryDataType": RefineryDataType.TEXT.value,

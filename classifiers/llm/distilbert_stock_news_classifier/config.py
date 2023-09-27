@@ -12,13 +12,11 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="premium",
-
         available_for=["refinery", "common"],
         part_of_group=[
             "llm",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping="none",
         integrator_inputs={
             "name": "distilbert_stock_news_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
