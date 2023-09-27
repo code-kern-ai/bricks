@@ -2,7 +2,7 @@
 ATTRIBUTE: str = "text" # only text attributes
 
 def text_length(text):
-    words = text.split()
+    words = record[ATTRIBUTE].text.split()
     length = len(words)
     if length < 5:
         return "short"
