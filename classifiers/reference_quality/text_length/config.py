@@ -12,8 +12,6 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="python_function",
-        kern_token_proxy_usable="false",
-        docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "reference_quality",
@@ -22,8 +20,8 @@ def get_config():
         # mapping lables for cognition
         cognition_init_mapping={
             "short": "Needs fix",
-            "medium": "Sufficient",
-            "long": "Sufficient",
+            "medium": "null",
+            "long": "null",
         },
         # bricks integrator information
         integrator_inputs={

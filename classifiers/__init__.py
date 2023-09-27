@@ -9,7 +9,7 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
-from reference_quality import (
+from .reference_quality import (
     text_length
 )
 

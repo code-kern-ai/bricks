@@ -12,6 +12,7 @@ class TextLengthModel(BaseModel):
 
 
 def text_length(req: TextLengthModel):
+    """Checks the length of a string by counting the number of words in it"""
     words = req.text.split()
     length = len(words)
     if length < 5:
