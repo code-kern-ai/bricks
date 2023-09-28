@@ -2,6 +2,10 @@
 import tiktoken
 
 def tiktoken_token_counter(text: str, encoding_name: str = "cl100k_base") -> int:
+    """
+    @param text: Text you want to count the number of tokens in
+    @return: Integer with the token count
+    """
     encoding = tiktoken.get_encoding(encoding_name)
     tokens = encoding.encode(text)
     return len(tokens)
