@@ -1,7 +1,13 @@
 ```python
 import unicodedata
+from typing import List
 
-def special_character_classifier(text, allowed_ranges=None):
+def special_character_classifier(text: str, allowed_ranges: list = None) -> bool:
+    """
+    @param text: Text to detect special characters in
+    @param allowed_ranges: List of allowed Unicode blocks as (start, end) tuples.
+    @return:  True if text contains unusual characters, False otherwise.
+    """
     if allowed_ranges is None:
         allowed_ranges = [
                 (0x0020, 0x007F),  # Basic Latin
