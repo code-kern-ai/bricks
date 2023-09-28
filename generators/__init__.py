@@ -16,6 +16,10 @@ from .paths import (
     domain_parser,
 )
 
+from .reference_quality import (
+    tiktoken_token_counter
+)
+
 from .search import (
     bing_news_search,
     bing_search,
@@ -96,6 +100,7 @@ for module in [
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
+    tiktoken_token_counter
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
