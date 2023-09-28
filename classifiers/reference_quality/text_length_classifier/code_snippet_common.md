@@ -1,5 +1,5 @@
 ```python
-def text_length_classifier(text):
+def text_length_classifier(text: str) -> str:
     """
     @param text: text to check the length of.
     @return: either 'short', 'medium' or 'long' depending on the counted words.
