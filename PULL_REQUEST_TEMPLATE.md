@@ -3,7 +3,7 @@ refinery
 - [ ] Tested by reviewer on refinery
 - [ ] Ensured that output of brick conforms with refinery structure (to be checked by reviewer)
 
-localhost
+API
 - [ ] Tested by creator on localhost:8000/docs
 - [ ] Tested by reviewer on localhost:8000/docs
 
