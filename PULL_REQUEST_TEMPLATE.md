@@ -10,6 +10,7 @@ API
 common code
 - [ ] Common code tested in notebook/ script by creator
 - [ ] Common code tested in notebook/ script by reviewer
+- [ ] Common code contains docstrings and type hints
 
 additional points:
 - [ ] Docstring and README is existing
