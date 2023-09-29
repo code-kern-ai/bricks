@@ -10,7 +10,7 @@ INPUT_EXAMPLE = {
     "spacy_model": "en_core_web_sm"
 }
 
-class SentenceComplexityModel(BaseModel):
+class ChunkedSentenceComplexityModel(BaseModel):
     text: str
     language: Optional[str]
     spacy_model: Optional[str]
@@ -39,25 +39,13 @@ def get_mapping_complexity(score):
     return OUTCOMES[int(score)]
 
 
-def sentence_complexity(request: SentenceComplexityModel):
-    text = request.text
-    if len(text.strip()) == 0:
-        return "Please provide a text input."
-    else:
-        language = request.language
-        if language is not None:
-            try:
-                textstat.set_lang(language)
-            except:
-                print("Set language couldn't get identified. Setting to english as default.")
-                textstat.set_lang("en")
-
-        sentence_complexity_score = textstat.flesch_reading_ease(text)
-        sentence_complexity = get_mapping_complexity(sentence_complexity_score)
-        return {"sentenceComplexity": sentence_complexity}
+def sentence_complexity(text):
+    sentence_complexity_score = textstat.flesch_reading_ease(text)
+    sentence_complexity = get_mapping_complexity(sentence_complexity_score)
+    return sentence_complexity
     
     
-def chunked_sentence_complexity(req: SentenceComplexityModel):
+def chunked_sentence_complexity(req: ChunkedSentenceComplexityModel):
     """Calculate sentence complexity of a text."""
     textstat.set_lang(req.language)
     nlp = SpacySingleton.get_nlp(req.spacy_model)
