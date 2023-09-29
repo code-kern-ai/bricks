@@ -46,7 +46,7 @@ def sentence_complexity(text):
     
     
 def chunked_sentence_complexity(req: ChunkedSentenceComplexityModel):
-    """Calculate sentence complexity of a text."""
+    """Chunks a text and calculates complexity of it."""
     textstat.set_lang(req.language)
     nlp = SpacySingleton.get_nlp(req.spacy_model)
     doc = nlp(req.text)
