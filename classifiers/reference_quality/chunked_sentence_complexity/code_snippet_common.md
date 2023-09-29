@@ -3,15 +3,11 @@ from collections import Counter
 import textstat
 import spacy
 
-# Load the Spacy model
-nlp = spacy.load('en_core_web_sm')
-
-def sentence_complexity(text: str, language: str = "en")->str:    
+def sentence_complexity(text: str)->str:    
     """
     @param text: text to check
     @return: either 'very difficult', 'difficult', 'fairly difficult', 'standard', 'fairly easy', 'easy' or 'very easy' depending on the score
     """
-    textstat.set_lang(language)
     return lookup_label(textstat.flesch_reading_ease(text))
 
 def lookup_label(score:int) -> str:
@@ -29,8 +25,9 @@ def lookup_label(score:int) -> str:
         return "easy"        
     return "very easy"
 
-def calculate_sentence_complexity(text: str) -> str:
-    # Use Spacy for sentence tokenization
+def chunked_sentence_complexity(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
+    textstat.set_lang(language)
+    nlp = spacy.load(spacy_model)
     doc = nlp(text)
     
     complexities = []
@@ -38,34 +35,47 @@ def calculate_sentence_complexity(text: str) -> str:
         # Apply the complexity function to each sentence
         complexity = sentence_complexity(sent.text)
         complexities.append(complexity)
-    
-    # find the item with the highest count
+
     counter = Counter(complexities)
-    max_item = max(counter.items(), key=lambda x: x[1])
+    
+    # aggregating the complexity
+    complexity_scores = {"very easy": 1, "easy": 2, "fairly easy": 3, "standard": 4, "fairly difficult": 5, "difficult": 6, "very difficult": 7}
 
-    # check if there are other items with the same count
-    same_count_items = [item for item, count in counter.items() if count == max_item[1]]
+    total_score = 0
+    total_count = 0
+    for comp, count in counter.items():
+        total_score += complexity_scores[comp] * count
+        total_count += count
 
-    if len(same_count_items) > 1:
-        print("Couldn't find highest value")
-    else:
-        return max_item[0]
+    # weighted average complexity
+    average_complexity = total_score / total_count
+
+    # create a reverse mapping from scores to complexity levels
+    reverse_mapping = {v: k for k, v in complexity_scores.items()}
+
+    # find the closest complexity level to the average complexity
+    closest_complexity = min(reverse_mapping.keys(), key=lambda x: abs(x - average_complexity))
+    return reverse_mapping[closest_complexity]
+    
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
 
+
 def example_integration():
-    texts = ["Doctors from Stockhold University invent cure for rare disease.", "Mary had a little lamb.", """Once upon a time, in a small town, there lived a little girl named Lily. She was known for her kindness and love for nature. Every morning, she would wake up early and go to the garden to water her plants. She had a variety of flowers, but her favorite were the sunflowers. They stood tall and bright, bringing joy to everyone who saw them.
-
-One day, a new family moved into the house next door. They had a son named Max. Max was shy and found it hard to make friends in the new town. Seeing this, Lily decided to help. She invited Max to help her in the garden. Together, they planted more sunflowers and watered them daily.
-
-As the sunflowers grew, so did their friendship. Max was no longer the shy boy he used to be. He made many friends and was happy in his new home. And Lily was glad she could help. Doctors from Stockhold University invent cure for rare disease. From then on, they became the best of friends, all thanks to the sunflowers in Lily's garden.
-"""]
-    target_language = "en"
-    textstat.set_lang("en") #en, de, es, fr, it, nl, ru
+    texts = [
+    """
+    In a small town, there lived a humble baker named Thomas. He was known for his delicious pastries, which were loved by everyone in the town. Every morning, he would wake up early to prepare the dough for his pastries. He would then bake them in his old but reliable oven.
+    One day, a stranger came to the town. He had heard about Thomas's pastries and wanted to try them. He went to the bakery and ordered a pastry. As he took his first bite, his eyes lit up with delight. He praised Thomas for his skill and promised to spread the word about his bakery.
+    Word of Thomas's pastries spread far and wide. People from neighboring towns started visiting his bakery. Despite the increase in customers, Thomas remained humble. He continued to wake up early every morning to prepare his pastries, ensuring that each one was made with care.
+    Thomas's story is a reminder that passion and dedication can lead to success. It shows that humility and hard work are respected and rewarded. His delicious pastries were not just food items but a source of joy for everyone who tasted them.
+    """
+    ]
+    language = "en" # other languages: de, es, fr, it, nl, ru
+    spacy_model = "en_core_web_sm"
     for text in texts:
-        print(f"\"{text}\" is {calculate_sentence_complexity(text)}")
+        print(f"\"{text}\" is {chunked_sentence_complexity(text, language, spacy_model)}")
 
 example_integration()
 ```

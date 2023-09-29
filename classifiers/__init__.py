@@ -9,6 +9,10 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
+from .reference_quality import (
+    chunked_sentence_complexity,
+)
+
 from .dates_and_times import (
     workday_classifier,
 )
@@ -55,7 +59,8 @@ for module in [
     distilbert_stock_news_classifier,
     workday_classifier,
     deberta_review_classifier, 
-    bert_sentiment_german
+    bert_sentiment_german,
+    chunked_sentence_complexity
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
