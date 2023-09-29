@@ -3,14 +3,12 @@ from collections import Counter
 import textstat
 import spacy
 
-def sentence_complexity(text: str)->str:    
+def sentence_complexity(text: str)-> str:    
     """
     @param text: text to check
     @return: either 'very difficult', 'difficult', 'fairly difficult', 'standard', 'fairly easy', 'easy' or 'very easy' depending on the score
     """
-    return lookup_label(textstat.flesch_reading_ease(text))
-
-def lookup_label(score:int) -> str:
+    score = textstat.flesch_reading_ease(text)
     if score < 30:
         return "very difficult"
     if score < 50:
@@ -26,6 +24,12 @@ def lookup_label(score:int) -> str:
     return "very easy"
 
 def chunked_sentence_complexity(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
+    """
+    @param text: 
+    @param language: iso language code
+    @spacy model: name of a language model from SpaCy 
+    @return: aggregated reading ease score of a whole text
+    """
     textstat.set_lang(language)
     nlp = spacy.load(spacy_model)
     doc = nlp(text)

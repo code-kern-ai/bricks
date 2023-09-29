@@ -34,10 +34,7 @@ def chunked_sentence_complexity(record):
     return reverse_mapping[closest_complexity]
 
 def sentence_complexity(text):
-    sentence_complexity_score = textstat.flesch_reading_ease(text)
-    return lookup_label(sentence_complexity_score)
-
-def lookup_label(score:int) -> str:
+    score = textstat.flesch_reading_ease(text)
     if score < 30:
         return "very difficult"
     if score < 50:
