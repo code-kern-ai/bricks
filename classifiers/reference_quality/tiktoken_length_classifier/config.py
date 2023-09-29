@@ -29,7 +29,6 @@ def get_config():
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value
@@ -38,7 +37,6 @@ def get_config():
                 "ENCODING_NAME": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "cl100k_base",
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
                     ]
