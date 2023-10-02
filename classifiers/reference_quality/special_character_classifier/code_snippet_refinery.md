@@ -1,9 +1,12 @@
 ```python
 import unicodedata
-from typing import Set
+from typing import List
 
 ATTRIBUTE: str = "text" # only text attributes
-ALLOWED_RANGES: Set[int] = set(range(0x0020, 0x007F)).union( # Basic Latin
+ALLOWED_RANGES: List = None
+
+# das hier wird nicht angepasst
+DEFAULT_ALLOWED_RANGES: = set(range(0x0020, 0x007F)).union( # Basic Latin
     set(range(0x00A0, 0x00FF)), # Latin-1 Supplement
     set(range(0x0100, 0x017F)),  # Latin Extended-A
     set(range(0x0180, 0x024F)),  # Latin Extended-B
@@ -13,10 +16,13 @@ ALLOWED_RANGES: Set[int] = set(range(0x0020, 0x007F)).union( # Basic Latin
 )  
 
 def special_character_classifier(record):
-    global ALLOWED_RANGES
     text = record[ATTRIBUTE].text    
+
+    allowed = ALLOWED_RANGES
+    if not allowed:
+        allowed = DEFAULT_ALLOWED_RANGES
     for char in text:
-        if ord(char) not in ALLOWED_RANGES and unicodedata.category(char) != "Zs":
+        if ord(char) not in allowed and unicodedata.category(char) != "Zs":
             return True
     return False
 ```

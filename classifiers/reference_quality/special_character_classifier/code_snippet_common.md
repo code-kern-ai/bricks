@@ -2,7 +2,7 @@
 import unicodedata
 from typing import List,Optional, Set
 
-ALLOWED_RANGES = set(range(0x0020, 0x007F)).union( # Basic Latin
+DEFAULT_ALLOWED_RANGES = set(range(0x0020, 0x007F)).union( # Basic Latin
     set(range(0x00A0, 0x00FF)), # Latin-1 Supplement
     set(range(0x0100, 0x017F)),  # Latin Extended-A
     set(range(0x0180, 0x024F)),  # Latin Extended-B
@@ -20,7 +20,7 @@ def contains_special_characters(text: str, allowed_ranges: Optional[Set[int]] = 
     """
     
     if allowed_ranges is None:
-        allowed_ranges = ALLOWED_RANGES
+        allowed_ranges = DEFAULT_ALLOWED_RANGES
     
     for char in text:
         if ord(char) not in allowed_ranges and unicodedata.category(char) != "Zs":
