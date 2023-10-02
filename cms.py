@@ -167,10 +167,9 @@ def post_module(config: Dict[str, Any]):
                 "sourceCodeRefinery": config["sourceCodeRefinery"],
                 "sourceCodeCommon": config["sourceCodeCommon"],
                 "minRefineryVersion": config["minRefineryVersion"],
-                "kernTokenProxyUsable": config["kernTokenProxyUsable"],
-                "dockerImage": config["dockerImage"],
                 "availableFor": config["availableFor"],
                 "partOfGroup": config["partOfGroup"],
+                "cognitionInitMapping": config["cognitionInitMapping"],
                 "integratorInputs": config["integratorInputs"],
             }
         },
@@ -200,10 +199,9 @@ def update_module(config: Dict[str, Any]):
                 "sourceCodeRefinery": config["sourceCodeRefinery"],
                 "sourceCodeCommon": config["sourceCodeCommon"],
                 "minRefineryVersion": config["minRefineryVersion"], 
-                "kernTokenProxyUsable": config["kernTokenProxyUsable"],
-                "dockerImage": config["dockerImage"],
                 "availableFor": config["availableFor"],
                 "partOfGroup": config["partOfGroup"],
+                "cognitionInitMapping": config["cognitionInitMapping"],
                 "integratorInputs": config["integratorInputs"],
             }
         },

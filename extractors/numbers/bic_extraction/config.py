@@ -12,13 +12,11 @@ def get_config():
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="python_function",
-        kern_token_proxy_usable="false",
-        docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "numbers",
         ],  # first entry should be parent directory
-        # bricks integrator information
+        # bricks integrator information   
         integrator_inputs={
             "name": "bic_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,
