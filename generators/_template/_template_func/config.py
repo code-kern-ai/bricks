@@ -13,13 +13,10 @@ def get_config():
         min_refinery_version="1.8.0",
         state=State.PUBLIC.value,
         type="python_function",
-        kern_token_proxy_usable="false",
-        docker_image="none",
         available_for=["refinery", "common"],
         part_of_group=[
             "_template_func",
         ],  # first entry should be parent directory
-        # !!! bricks integrator information for the Kern AI team, you can leave this blank !!! 
         integrator_inputs={
             "globalComment": "Only for english text.",
             "name": "_template_func",
