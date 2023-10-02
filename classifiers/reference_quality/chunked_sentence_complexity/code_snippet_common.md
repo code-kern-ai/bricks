@@ -2,7 +2,7 @@
 import textstat
 import spacy
 
-def sentence_complexity_int(score: int)-> str:    
+def get_mapping_complexity(score: int)-> str:    
     if score < 30:
         return "very difficult"
     if score < 50:
@@ -17,15 +17,21 @@ def sentence_complexity_int(score: int)-> str:
         return "easy"        
     return "very easy"
 
-nlp_lookup = {}
+spacy_models_loaded = {}
 
-def get_spacy(model:str):
-    global nlp_lookup
-    if model not in nlp_lookup:
-        nlp_lookup[model] = spacy.load(model)
-    return nlp_lookup[model]
+models = {
+    "en": "en_core_web_sm",
+    "de": "de_core_news_sm"
+}
 
-def chunked_sentence_complexity_v2(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
+def get_spacy(language: str):
+    global spacy_models_loaded
+    model_name = models.get(language, "en_core_web_sm")
+    if model_name not in spacy_models_loaded:
+        spacy_models_loaded[model_name] = spacy.load(model_name)
+    return spacy_models_loaded[model_name]
+
+def chunked_sentence_complexity(text: str, language: str = "en") -> str:
     """
     @param text: 
     @param language: iso language code
@@ -33,13 +39,15 @@ def chunked_sentence_complexity_v2(text: str, language: str = "en", spacy_model:
     @return: aggregated reading ease score of a whole text
     """
     textstat.set_lang(language)
-    nlp = get_spacy(spacy_model)
+    nlp = get_spacy(language)
     doc = nlp(text)
 
     complexities = [textstat.flesch_reading_ease(sent.text) for sent in doc.sents]
 
     avg = int(round(sum(complexities) / len(complexities)))
-    return sentence_complexity_int(avg)
+    return get_mapping_complexity(avg)
+
+
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
@@ -57,7 +65,7 @@ def example_integration():
     language = "en" # other languages: de, es, fr, it, nl, ru
     spacy_model = "en_core_web_sm"
     for text in texts:
-        print(f"\"{text}\" is {chunked_sentence_complexity(text, language, spacy_model)}")
+        print(f"\"{text}\" is {chunked_sentence_complexity(text, language)}")
 
 example_integration()
 ```
