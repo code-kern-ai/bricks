@@ -51,11 +51,9 @@ def chunked_sentence_complexity(req: ChunkedSentenceComplexityModel):
     nlp = SpacySingleton.get_nlp(req.spacy_model)
     doc = nlp(req.text)
     
-    complexities = []
-    for sent in doc.sents:
-        # Apply the complexity function to each sentence
-        complexity = sentence_complexity(sent.text)
-        complexities.append(complexity)
+    complexities = [
+        sentence_complexity(sent.text) for sent in doc.sents
+    ]
 
     counter = Counter(complexities)
     
