@@ -19,24 +19,20 @@ class ChunkedSentenceComplexityModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def setall(d, keys, value):
-    for k in keys:
-        d[k] = value
-
-OUTCOMES = {}
-setall(OUTCOMES, range(90, 122), "very easy")
-setall(OUTCOMES, range(80, 90), "easy")
-setall(OUTCOMES, range(70, 80), "fairly easy")
-setall(OUTCOMES, range(60, 70), "standard")
-setall(OUTCOMES, range(50, 60), "fairly difficult")
-setall(OUTCOMES, range(30, 50), "difficult")
-setall(OUTCOMES, range(0, 30), "very difficult")
-
-
 def get_mapping_complexity(score):
-    if score < 0:
-        return OUTCOMES[0]
-    return OUTCOMES[int(score)]
+    if score < 30:
+        return "very difficult"
+    if score < 50:
+        return "difficult"
+    if score < 60:
+        return "fairly difficult"
+    if score < 70:
+        return "standard"
+    if score < 80:
+        return "fairly easy"
+    if score < 90:
+        return "easy"        
+    return "very easy"
 
 
 def sentence_complexity(text):
