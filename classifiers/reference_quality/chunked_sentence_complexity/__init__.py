@@ -12,8 +12,8 @@ INPUT_EXAMPLE = {
 
 class ChunkedSentenceComplexityModel(BaseModel):
     text: str
-    language: Optional[str]
-    spacy_model: Optional[str]
+    language: Optional[str] = None
+    spacy_model: Optional[str] = None
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
