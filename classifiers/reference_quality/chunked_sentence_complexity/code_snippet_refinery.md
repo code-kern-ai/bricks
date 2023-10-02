@@ -1,6 +1,5 @@
 ```python
 import textstat
-from collections import Counter
 
 ATTRIBUTE: str = "text" # only text attributes
 TARGET_LANGUAGE: str = "en" # iso codes

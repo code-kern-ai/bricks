@@ -19,19 +19,13 @@ def get_mapping_complexity(score: int)-> str:
 
 spacy_models_loaded = {}
 
-models = {
-    "en": "en_core_web_sm",
-    "de": "de_core_news_sm"
-}
-
-def get_spacy(language: str):
-    global spacy_models_loaded
-    model_name = models.get(language, "en_core_web_sm")
-    if model_name not in spacy_models_loaded:
+def get_spacy(spacy_model: str):
+    global spacy_models_loadeda
+    if spacy_model not in spacy_models_loaded:
         spacy_models_loaded[model_name] = spacy.load(model_name)
     return spacy_models_loaded[model_name]
 
-def chunked_sentence_complexity(text: str, language: str = "en") -> str:
+def chunked_sentence_complexity_v2(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
     """
     @param text: 
     @param language: iso language code
@@ -39,13 +33,12 @@ def chunked_sentence_complexity(text: str, language: str = "en") -> str:
     @return: aggregated reading ease score of a whole text
     """
     textstat.set_lang(language)
-    nlp = get_spacy(language)
+    nlp = get_spacy(spacy_model)
     doc = nlp(text)
 
     complexities = [textstat.flesch_reading_ease(sent.text) for sent in doc.sents]
-
     avg = int(round(sum(complexities) / len(complexities)))
-    return get_mapping_complexity(avg)
+    return sentence_complexity_int(avg)
 
 
 # ↑ necessary bricks function 

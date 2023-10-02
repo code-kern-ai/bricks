@@ -9,7 +9,7 @@ INPUT_EXAMPLE = {
     "language": "en",
 }
 
-models = {
+MODELS = {
     "en": "en_core_web_sm",
     "de": "de_core_news_sm"
 }
@@ -21,7 +21,6 @@ class ChunkedSentenceComplexityModel(BaseModel):
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
-
 
 def get_mapping_complexity(score):
     if score < 30:
@@ -37,24 +36,13 @@ def get_mapping_complexity(score):
     if score < 90:
         return "easy"        
     return "very easy"
-
-
-def sentence_complexity(text):
-    sentence_complexity_score = textstat.flesch_reading_ease(text)
-    sentence_complexity = get_mapping_complexity(sentence_complexity_score)
-    return sentence_complexity
-    
     
 def chunked_sentence_complexity(req: ChunkedSentenceComplexityModel):
     """Chunks a text and calculates complexity of it."""
     textstat.set_lang(req.language)
 
-    nlp = SpacySingleton.get_nlp(models.get(req.language, "en_core_web_sm")) # defaults to "en_core_web_sm"  
+    nlp = SpacySingleton.get_nlp(MODELS.get(req.language, "en_core_web_sm")) # defaults to "en_core_web_sm"  
     doc = nlp(req.text)
-    
-    complexities = [
-        sentence_complexity(sent.text) for sent in doc.sents
-    ]
     
     complexities = [textstat.flesch_reading_ease(sent.text) for sent in doc.sents]
 
