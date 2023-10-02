@@ -1,7 +1,6 @@
 import unicodedata
-from typing import List
+from typing import Optional, List, Tuple
 from pydantic import BaseModel
-from nltk.corpus import words, brown
 
 INPUT_EXAMPLE = {
     "text": "Super funny haha 😀.",
@@ -19,7 +18,7 @@ ALLOWED_RANGES = set(range(0x0020, 0x007F)).union( # Basic Latin
 
 class SpecialCharacterClassifierModel(BaseModel):
     text: str
-    allowed_ranges: List[str] = None
+    allowed_ranges: Optional[List[Tuple[int,int]]] = None
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
@@ -34,5 +33,5 @@ def special_character_classifier(req: SpecialCharacterClassifierModel):
 
     for char in text:
         if ord(char) not in allowed_ranges and unicodedata.category(char) != "Zs":
-            return {"contains_special_char": True}
-    return {"contains_special_char": False}
+            return {"contains_special_char": "true"}
+    return {"contains_special_char": "false"}

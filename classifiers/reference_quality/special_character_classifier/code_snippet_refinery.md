@@ -1,12 +1,11 @@
 ```python
 import unicodedata
-from typing import List
+from typing import Optional, List, Tuple
 
 ATTRIBUTE: str = "text" # only text attributes
-ALLOWED_RANGES: List = None
+ALLOWED_RANGES: Optional[List[Tuple[int,int]]] = None
 
-# das hier wird nicht angepasst
-DEFAULT_ALLOWED_RANGES: = set(range(0x0020, 0x007F)).union( # Basic Latin
+default_allowed_values = set(range(0x0020, 0x007F)).union( # Basic Latin
     set(range(0x00A0, 0x00FF)), # Latin-1 Supplement
     set(range(0x0100, 0x017F)),  # Latin Extended-A
     set(range(0x0180, 0x024F)),  # Latin Extended-B
@@ -20,9 +19,9 @@ def special_character_classifier(record):
 
     allowed = ALLOWED_RANGES
     if not allowed:
-        allowed = DEFAULT_ALLOWED_RANGES
+        allowed = default_allowed_values
     for char in text:
         if ord(char) not in allowed and unicodedata.category(char) != "Zs":
-            return True
-    return False
+            return "true"
+    return "false"
 ```
