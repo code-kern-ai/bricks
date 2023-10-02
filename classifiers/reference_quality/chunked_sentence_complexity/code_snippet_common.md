@@ -1,14 +1,8 @@
 ```python
-from collections import Counter
 import textstat
 import spacy
 
-def sentence_complexity(text: str)-> str:    
-    """
-    @param text: text to check
-    @return: either 'very difficult', 'difficult', 'fairly difficult', 'standard', 'fairly easy', 'easy' or 'very easy' depending on the score
-    """
-    score = textstat.flesch_reading_ease(text)
+def sentence_complexity_int(score: int)-> str:    
     if score < 30:
         return "very difficult"
     if score < 50:
@@ -23,7 +17,15 @@ def sentence_complexity(text: str)-> str:
         return "easy"        
     return "very easy"
 
-def chunked_sentence_complexity(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
+nlp_lookup = {}
+
+def get_spacy(model:str):
+    global nlp_lookup
+    if model not in nlp_lookup:
+        nlp_lookup[model] = spacy.load(model)
+    return nlp_lookup[model]
+
+def chunked_sentence_complexity_v2(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
     """
     @param text: 
     @param language: iso language code
@@ -31,37 +33,13 @@ def chunked_sentence_complexity(text: str, language: str = "en", spacy_model: st
     @return: aggregated reading ease score of a whole text
     """
     textstat.set_lang(language)
-    nlp = spacy.load(spacy_model)
+    nlp = get_spacy(spacy_model)
     doc = nlp(text)
-    
-    complexities = []
-    for sent in doc.sents:
-        # Apply the complexity function to each sentence
-        complexity = sentence_complexity(sent.text)
-        complexities.append(complexity)
 
-    counter = Counter(complexities)
-    
-    # aggregating the complexity
-    complexity_scores = {"very easy": 1, "easy": 2, "fairly easy": 3, "standard": 4, "fairly difficult": 5, "difficult": 6, "very difficult": 7}
+    complexities = [textstat.flesch_reading_ease(sent.text) for sent in doc.sents]
 
-    total_score = 0
-    total_count = 0
-    for comp, count in counter.items():
-        total_score += complexity_scores[comp] * count
-        total_count += count
-
-    # weighted average complexity
-    average_complexity = total_score / total_count
-
-    # create a reverse mapping from scores to complexity levels
-    reverse_mapping = {v: k for k, v in complexity_scores.items()}
-
-    # find the closest complexity level to the average complexity
-    closest_complexity = min(reverse_mapping.keys(), key=lambda x: abs(x - average_complexity))
-    return reverse_mapping[closest_complexity]
-    
-
+    avg = int(round(sum(complexities) / len(complexities)))
+    return sentence_complexity_int(avg)
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
 # ↓ example implementation 
