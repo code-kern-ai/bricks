@@ -25,26 +25,20 @@ def get_config():
         integrator_inputs={
             "name": "special_character_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
-            "outputs": [
-                "True", 
-                "False"
-            ],
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
                 "ALLOWED_RANGES": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
+                    "selectionType": SelectionType.LIST.value,
                     "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
                     ]
-                }
+                },
             }
         }
     )
