@@ -3,7 +3,7 @@ import unicodedata
 from typing import Optional, List, Tuple
 
 ATTRIBUTE: str = "text" # only text attributes
-ALLOWED_RANGES: Optional[List[Tuple[int,int]]] = None
+ALLOWED_RANGES: List[Tuple[int,int]] = None
 
 default_allowed_values = set(range(0x0020, 0x007F)).union( # Basic Latin
     set(range(0x00A0, 0x00FF)), # Latin-1 Supplement

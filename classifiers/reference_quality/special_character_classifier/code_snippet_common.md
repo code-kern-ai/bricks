@@ -1,6 +1,6 @@
 ```python
 import unicodedata
-from typing import Optional, List, Tuple
+from typing import List, Tuple
 
 DEFAULT_ALLOWED_RANGES = set(range(0x0020, 0x007F)).union( # Basic Latin
     set(range(0x00A0, 0x00FF)), # Latin-1 Supplement
@@ -12,7 +12,7 @@ DEFAULT_ALLOWED_RANGES = set(range(0x0020, 0x007F)).union( # Basic Latin
     )  
 
 
-def contains_special_characters(text: str, allowed_ranges: Optional[List[Tuple[int,int]]] = None) -> str:
+def contains_special_characters(text: str, allowed_ranges: List[Tuple[int,int]] = None) -> str:
     """
     @param text: Text to detect special characters in
     @param allowed_char_codes: Set of allowed char codes.
