@@ -30,7 +30,7 @@ def chunked_sentence_complexity(text: str, language: str = "en", spacy_model: st
     @param text: 
     @param language: iso language code
     @spacy model: name of a language model from SpaCy 
-    @return: aggregated reading ease score of a whole text
+    @return: string label of the aggregated sentence complexity of a text
     """
     textstat.set_lang(language)
     nlp = get_spacy(spacy_model)
