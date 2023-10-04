@@ -20,7 +20,7 @@ def get_mapping_complexity(score: int)-> str:
 spacy_models_loaded = {}
 
 def get_spacy(spacy_model: str):
-    global spacy_models_loadeda
+    global spacy_models_loaded
     if spacy_model not in spacy_models_loaded:
         spacy_models_loaded[model_name] = spacy.load(model_name)
     return spacy_models_loaded[model_name]
@@ -58,7 +58,7 @@ def example_integration():
     language = "en" # other languages: de, es, fr, it, nl, ru
     spacy_model = "en_core_web_sm"
     for text in texts:
-        print(f"\"{text}\" is {chunked_sentence_complexity(text, language)}")
+        print(f"\"{text}\" is {chunked_sentence_complexity(text, language, spacy_model)}")
 
 example_integration()
 ```
