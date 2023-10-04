@@ -15,8 +15,8 @@ common code
 additional points:
 - [ ] Docstring and README is existing
 - [ ] Import statements (in `__init__.py`)
-- [ ] Added dependency to requirements.txt
-- [ ] (If necessary) Added dependency to Issue for refinery env [here](https://github.com/code-kern-ai/refinery/issues/166)
+- [ ] (If necessary) Added dependency to requirements.txt
+- [ ] (If necessary) Added dependency to issue for refinery env [here](https://github.com/code-kern-ai/refinery/issues/166)
 - [ ] Published brick to Strapi CMS (locally)
 
 
