@@ -25,7 +25,7 @@ def get_spacy(spacy_model: str):
         spacy_models_loaded[spacy_model] = spacy.load(spacy_model)
     return spacy_models_loaded[spacy_model]
 
-def chunked_sentence_complexity_v2(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
+def chunked_sentence_complexity(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
     """
     @param text: 
     @param language: iso language code
