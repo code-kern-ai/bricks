@@ -22,8 +22,8 @@ spacy_models_loaded = {}
 def get_spacy(spacy_model: str):
     global spacy_models_loadeda
     if spacy_model not in spacy_models_loaded:
-        spacy_models_loaded[model_name] = spacy.load(model_name)
-    return spacy_models_loaded[model_name]
+        spacy_models_loaded[spacy_model] = spacy.load(spacy_model)
+    return spacy_models_loaded[spacy_model]
 
 def chunked_sentence_complexity_v2(text: str, language: str = "en", spacy_model: str = "en_core_web_sm") -> str:
     """
