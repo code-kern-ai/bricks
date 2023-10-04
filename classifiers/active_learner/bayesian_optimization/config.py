@@ -12,8 +12,6 @@ def get_config():
         min_refinery_version="1.8.1",
         state=State.DRAFT.value,
         type="active_learner",
-        kern_token_proxy_usable="false",
-        docker_image="none",
         available_for=["refinery"],
         part_of_group=[
             "active_learner",
