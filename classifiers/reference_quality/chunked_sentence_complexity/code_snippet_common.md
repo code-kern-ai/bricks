@@ -38,7 +38,7 @@ def chunked_sentence_complexity_v2(text: str, language: str = "en", spacy_model:
 
     complexities = [textstat.flesch_reading_ease(sent.text) for sent in doc.sents]
     avg = int(round(sum(complexities) / len(complexities)))
-    return sentence_complexity_int(avg)
+    return get_mapping_complexity(avg)
 
 
 # ↑ necessary bricks function 
