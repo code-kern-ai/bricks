@@ -34,14 +34,16 @@ def get_config():
                 },
                 "ALLOWED_RANGES": {
                     "selectionType": SelectionType.LIST.value,
+                    "optional": "true",
                     "addInfo": [
                         BricksVariableType.GENERIC_INT.value
                     ]
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "is_special_character",
+                    "defaultValue": "has_special_character",
                     "addInfo": [
+                        BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 }
