@@ -19,8 +19,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         cognition_init_mapping = {
-            "true": "Needs fix",
-            "false": "null"
+            "@@LABEL@@": "Needs fix",
         },
         integrator_inputs={
             "name": "special_character_classifier",
@@ -37,6 +36,13 @@ def get_config():
                     "selectionType": SelectionType.LIST.value,
                     "addInfo": [
                         BricksVariableType.GENERIC_INT.value
+                    ]
+                },
+                "LABEL": {
+                    "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "is_special_character",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
                     ]
                 }
             }
