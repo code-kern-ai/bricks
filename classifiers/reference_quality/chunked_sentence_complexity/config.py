@@ -18,6 +18,15 @@ def get_config():
             "text_analysis"
         ],  # first entry should be parent directory
         # bricks integrator information
+        cognition_init_mapping={
+            "very easy": "null",
+            "easy": "null",
+            "fairly easy": "null",
+            "standard": "null",
+            "fairly difficult": "Needs fix",
+            "difficult": "Needs fix",
+            "very difficult": "Needs fix",
+        },
         integrator_inputs={
             "name": "chunked_sentence_complexity",
             "refineryDataType": RefineryDataType.TEXT.value,
