@@ -12,8 +12,6 @@ def get_config():
             min_refinery_version="1.7.0",
             state=State.PUBLIC.value,
             type="premium",
-            kern_token_proxy_usable="false",
-            docker_image="none",
             available_for=["refinery", "common"],
             part_of_group=[
                   "llm",
