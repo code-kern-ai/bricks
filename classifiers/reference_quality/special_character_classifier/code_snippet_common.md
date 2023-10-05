@@ -15,7 +15,7 @@ DEFAULT_ALLOWED_RANGE = set(range(32, 127)).union( # Basic Latin
 def special_character_classifier(text: str, allowed_range: List[int] = None) -> str:
     """
     @param text: Text to detect special characters in
-    @param allowed_range: Set of allowed hexcodes for Unicode code range
+    @param allowed_ranges: whitelist of hexcodes
     @return: boolean if text contains special characters
     """
     
