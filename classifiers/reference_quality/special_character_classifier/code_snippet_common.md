@@ -12,11 +12,11 @@ DEFAULT_ALLOWED_RANGES = set(range(32, 127)).union( # Basic Latin
 )
 
 
-def contains_special_characters(text: str, label_true: str, label_false: str, allowed_ranges: List[int] = None) -> str:
+def special_character_classifier(text: str, allowed_ranges: List[int] = None) -> str:
     """
     @param text: Text to detect special characters in
-    @param allowed_char_codes: Set of allowed char codes.
-    @return: label if text contains special character
+    @param allowed_ranges: Set of allowed hexcodes for Unicode code ranges
+    @return: boolean if text contains special characters
     """
     
     if allowed_ranges is None:
@@ -24,8 +24,8 @@ def contains_special_characters(text: str, label_true: str, label_false: str, al
     
     for char in text:
         if ord(char) not in allowed_ranges and unicodedata.category(char) != "Zs":
-            return label_true
-    return label_false
+            return True
+    return False
 
 
 # ↑ necessary bricks function 
@@ -34,10 +34,8 @@ def contains_special_characters(text: str, label_true: str, label_false: str, al
 
 def example_integration():
     texts = ["This contains a special char 你好.", "Such a clean text, wow!", "This is a greek letter: α", "Super funny 😀", "Rainbows are very nice."]
-    label_true = "has_special_character"
-    label_false = "has_no_special_character"
     for text in texts:
-        print(f"\"{text}\" -> {special_character_classifier(text, label_true, label_false)}")
+        print(f"\"{text}\" -> {special_character_classifier(text)}")
 
 example_integration()
 ```
