@@ -1,7 +1,7 @@
 ```python
 ATTRIBUTE: str = "text" # only text attributes
 
-def text_length_classifier(record):
+def word_count_classifier(record):
     words = record[ATTRIBUTE].text.split()
     length = len(words)
     if length < 5:

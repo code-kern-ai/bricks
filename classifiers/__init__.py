@@ -10,7 +10,7 @@ from .llm import (
 from .lookup_lists import lookup_list
 
 from .reference_quality import (
-    text_length_classifier,
+    word_count_classifier,
     chunked_sentence_complexity,
 )
 
@@ -61,7 +61,7 @@ for module in [
     workday_classifier,
     deberta_review_classifier, 
     bert_sentiment_german,
-    text_length_classifier,
+    word_count_classifier,
     chunked_sentence_complexity,
 ]:
     module_name = module.__name__.split(".")[-1]

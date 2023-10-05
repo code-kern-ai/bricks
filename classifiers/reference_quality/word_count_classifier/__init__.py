@@ -1,17 +1,16 @@
 from pydantic import BaseModel
-from textblob import TextBlob
 
 INPUT_EXAMPLE = {"text": "This is too short!"}
 
 
-class TextLengthClassifierModel(BaseModel):
+class WordCountClassifierModel(BaseModel):
     text: str
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def text_length_classifier(req: TextLengthClassifierModel):
+def word_count_classifier(req: WordCountClassifierModel):
     """Checks the length of a string by counting the number of words in it"""
     words = req.text.split()
     length = len(words)
