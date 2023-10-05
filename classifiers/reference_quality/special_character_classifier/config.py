@@ -32,7 +32,7 @@ def get_config():
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
-                "ALLOWED_RANGES": {
+                "ALLOWED_RANGE": {
                     "selectionType": SelectionType.LIST.value,
                     "optional": "true",
                     "addInfo": [

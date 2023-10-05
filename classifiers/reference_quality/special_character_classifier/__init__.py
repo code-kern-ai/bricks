@@ -4,10 +4,10 @@ from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
     "text": "Super funny haha 😀.",
-    "allowedRanges": None
+    "allowedRange": None
 }
 
-ALLOWED_RANGES = set(range(32, 127)).union( # Basic Latin
+ALLOWED_RANGE = set(range(32, 127)).union( # Basic Latin
     set(range(160, 255)), # Latin-1 Supplement
     set(range(256, 384)),  # Latin Extended-A
     set(range(384, 592)),  # Latin Extended-B
@@ -18,7 +18,7 @@ ALLOWED_RANGES = set(range(32, 127)).union( # Basic Latin
 
 class SpecialCharacterClassifierModel(BaseModel):
     text: str
-    allowedRanges: Optional[List[int]] = None
+    allowedRange: Optional[List[int]] = None
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
@@ -27,11 +27,11 @@ class SpecialCharacterClassifierModel(BaseModel):
 def special_character_classifier(req: SpecialCharacterClassifierModel):
     """Checks if a string contains special characters"""
     text = req.text
-    allowed_ranges = req.allowedRanges
-    if allowed_ranges is None:
-        allowed_ranges = ALLOWED_RANGES
+    allowed_range = req.allowedRange
+    if allowed_range is None:
+        allowed_range = ALLOWED_RANGE
 
     for char in text:
-        if ord(char) not in allowed_ranges and unicodedata.category(char) != "Zs":
+        if ord(char) not in allowed_range and unicodedata.category(char) != "Zs":
             return {"contains_special_char": True}
     return {"contains_special_char": False}

@@ -3,13 +3,13 @@ import unicodedata
 from typing import Optional, List, Tuple
 
 ATTRIBUTE: str = "text" # only text attributes
-ALLOWED_RANGES: List[int] = None # list of integers that represent Unicode code points
+ALLOWED_RANGE: List[int] = None # list of integers that represent Unicode code points
 LABEL: str = "has_special_character"
 
 def special_character_classifier(record):
     text = record[ATTRIBUTE].text    
 
-    allowed = ALLOWED_RANGES
+    allowed = ALLOWED_RANGE
     if not allowed:
         allowed = default_allowed_values
     for char in text:

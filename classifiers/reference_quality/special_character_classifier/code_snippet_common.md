@@ -2,7 +2,7 @@
 import unicodedata
 from typing import List, Tuple
 
-DEFAULT_ALLOWED_RANGES = set(range(32, 127)).union( # Basic Latin
+DEFAULT_ALLOWED_RANGE = set(range(32, 127)).union( # Basic Latin
     set(range(160, 255)), # Latin-1 Supplement
     set(range(256, 384)),  # Latin Extended-A
     set(range(384, 592)),  # Latin Extended-B
@@ -12,18 +12,18 @@ DEFAULT_ALLOWED_RANGES = set(range(32, 127)).union( # Basic Latin
 )
 
 
-def special_character_classifier(text: str, allowed_ranges: List[int] = None) -> str:
+def special_character_classifier(text: str, allowed_range: List[int] = None) -> str:
     """
     @param text: Text to detect special characters in
-    @param allowed_ranges: Set of allowed hexcodes for Unicode code ranges
+    @param allowed_range: Set of allowed hexcodes for Unicode code range
     @return: boolean if text contains special characters
     """
     
-    if allowed_ranges is None:
-        allowed_ranges = DEFAULT_ALLOWED_RANGES
+    if allowed_range is None:
+        allowed_range= DEFAULT_ALLOWED_RANGE
     
     for char in text:
-        if ord(char) not in allowed_ranges and unicodedata.category(char) != "Zs":
+        if ord(char) not in allowed_range and unicodedata.category(char) != "Zs":
             return True
     return False
 
