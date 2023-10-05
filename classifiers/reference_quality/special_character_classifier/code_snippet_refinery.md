@@ -3,8 +3,8 @@ import unicodedata
 from typing import Optional, List, Tuple
 
 ATTRIBUTE: str = "text" # only text attributes
-ALLOWED_RANGES: List[int] = None # list of integers that represent Unicode code points
 LABEL: str = "has_special_character"
+ALLOWED_RANGES: List[int] = None # list of integers that represent Unicode code points
 
 def special_character_classifier(record):
     text = record[ATTRIBUTE].text    
