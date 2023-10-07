@@ -1,7 +1,10 @@
 from pydantic import BaseModel
 
 INPUT_EXAMPLE = {
-    "text": "https://huggingface.co/sentence-transformers",
+    "text": """This is the first line.
+    And this is the second line.
+    Here's a third one, too.
+    """,
 }
 
 class NewlineSplitterModel(BaseModel):
@@ -13,7 +16,7 @@ class NewlineSplitterModel(BaseModel):
 
 def newline_splitter(req: NewlineSplitterModel):
     """Splits a text by newline characters"""
-    splits = req.text.split("\n")
-    return {"splitted_text" :[val for val in splits if len(val) > 0]}
+    splits = req.text.strip().split("\n")
+    return {"splitted_text" : [val for val in splits if len(val) > 0]}
 
 

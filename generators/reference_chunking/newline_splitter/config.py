@@ -18,8 +18,8 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "domain_parser",
-            "refineryDataType": RefineryDataType.TEXT.value,
+            "name": "newline_splitter",
+            "refineryDataType": RefineryDataType.EMBEDDING_LIST.value,
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,

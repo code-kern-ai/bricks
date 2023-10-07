@@ -2,7 +2,7 @@
 from typing import List 
 
 def newline_splitter(text: str) -> List[str]:
-    splits = text.split("\n")
+    splits = text.strip().split("\n")
     return [val for val in splits if len(val) > 0]
 
 # ↑ necessary bricks function 
