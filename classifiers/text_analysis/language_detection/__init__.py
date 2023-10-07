@@ -17,8 +17,6 @@ def language_detection(request: LanguageDetectionModel):
     """Detects the language of a given text."""
 
     text = request.text
-    try:
-        language = detect(text)
-        return {"language": language}
-    except LangDetectException:
-        return "No language detected."
+    if not text or not text.strip():
+        return {"language": "unknown"}
+    return {"language": detect(text)}

@@ -6,6 +6,8 @@ def language_detection(text:str)->str:
     @param text: text to check
     @return: language iso code. Full list here https://github.com/Mimino666/langdetect#languages
     """
+    if not text or not text.strip():
+        return "unknown"
     return detect(text)
 
 # ↑ necessary bricks function 
