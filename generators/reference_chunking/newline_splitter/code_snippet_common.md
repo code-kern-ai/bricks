@@ -13,7 +13,7 @@ def example_integration():
     texts = ["""
     This is a sentences.
     This too, but in another line
-    """]
+    """, "This is a sentence\nwith a newline literal!"]
     for text in texts:
         print(f"The text {text} was split into {newline_splitter(text)}")
 
