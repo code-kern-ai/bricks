@@ -63,7 +63,6 @@ for module in [
     deberta_review_classifier, 
     bert_sentiment_german,
     tiktoken_length_classifier,
-    chunked_sentence_complexity,
     special_character_classifier,
     chunked_sentence_complexity
 ]:
