@@ -17,6 +17,6 @@ class NewlineSplitterModel(BaseModel):
 def newline_splitter(req: NewlineSplitterModel):
     """Splits a text by newline characters"""
     splits = req.text.split("\n")
-    return {"splitted_text" : [val for val in splits if len(val.strip()) > 0]}
+    return {"splitted_text" : [val.strip() for val in splits if len(val) > 0]}
 
 

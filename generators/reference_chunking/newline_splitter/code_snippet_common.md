@@ -6,8 +6,8 @@ def newline_splitter(text: str) -> List[str]:
     @param text: The input string that needs to be split.
     @return:  A list of strings where each string is a non-empty line from the input.
     """
-    splits = text.strip().split("\n")
-    return [val for val in splits if len(val) > 0]
+    splits = text.split("\n")
+    return [val.strip() for val in splits if len(val) > 0]
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
