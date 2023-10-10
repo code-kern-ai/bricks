@@ -2,13 +2,15 @@
 import spacy
 from typing import List, Tuple
 
-def location_extraction(text: str, label: str) -> List[Tuple[str, int]]:
+nlp = spacy.load("en_core_web_sm")
+
+def location_extraction(text: str, extraction_keyword: str) -> List[Tuple[str, int]]:
     """
     @param text: the input text
-    @param label: the label that is assigned to extracted words
+    @param extraction_keyword: the label that is assigned to extracted words
     @return: positions of extracted names of persons  
     """
-    nlp = spacy.load("en_core_web_sm")
+
     doc = nlp(text)
 
     name_positions = []
@@ -23,11 +25,11 @@ def location_extraction(text: str, label: str) -> List[Tuple[str, int]]:
 
 def example_integration():
     texts = ["Tokyo is a place in Japan.", "My hometown is Cologne in Northrhine-Westphalia.", "She's from Berlin and likes EDM.", "Man I love pasta."]
-    label = "location"
+    extraction_keyword = "location"
     for text in texts:
-        found = location_extraction(text, label)
+        found = location_extraction(text, extraction_keyword)
         if found:
-            print(f"text: \"{text}\" has {label} -> \"{found}\"")
+            print(f"text: \"{text}\" has {label} -> {found}")
         else:
             print(f"text: \"{text}\" doesn't have {label}")
 
