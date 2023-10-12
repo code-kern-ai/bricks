@@ -10,7 +10,7 @@ def get_config():
         input_example=INPUT_EXAMPLE,
         issue_id=359,
         tabler_icon="SortAscendingNumbers",
-        min_refinery_version="1.7.0",
+        min_refinery_version="2.0.0",
         state=State.PUBLIC.value,
         type="python_function",
         available_for=["refinery", "common"],
@@ -24,7 +24,6 @@ def get_config():
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value
@@ -33,7 +32,7 @@ def get_config():
                 "ENCODING_NAME": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "cl100k_base",
-                    "optional": "false",
+                    "allowedValues": ["cl100k_base", "p50k_base", "r50k_base"],
                     "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
                     ]
