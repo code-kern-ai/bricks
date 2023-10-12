@@ -1,3 +1,4 @@
+
 from fastapi import APIRouter
 
 from .distance import (
@@ -9,6 +10,10 @@ from .distance import (
 
 from .lemmatizer import (
     spacy_lemmatizer,
+)
+
+from .numbers import (
+    annotator_split
 )
 
 from .paths import (
@@ -96,6 +101,7 @@ for module in [
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
+    annotator_split,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

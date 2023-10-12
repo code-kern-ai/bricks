@@ -1,0 +1,1 @@
+The module gives out a random number within a given frame. With that, you can split annotations randomly. Every split between 0 and the maximal lenght of the frame is possible.
