@@ -2,9 +2,9 @@
 import tiktoken 
 
 ATTRIBUTE: str = "text" # only text attributes
-ENCODING_NAME: str = "cl100k_base"
+ENCODING_MODEL: str = "cl100k_base"
 
-encoding = tiktoken.get_encoding(ENCODING_NAME)
+encoding = tiktoken.get_encoding(ENCODING_MODEL)
 
 def tiktoken_length_classifier(record):
     tokens = encoding.encode(record[ATTRIBUTE].text)

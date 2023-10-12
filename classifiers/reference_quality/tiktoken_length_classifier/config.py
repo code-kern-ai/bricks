@@ -26,6 +26,7 @@ def get_config():
         integrator_inputs={
             "name": "tiktoken_length_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
+            "outputs": ["short", "medium", "long"],
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -34,7 +35,7 @@ def get_config():
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
-                "ENCODING_NAME": {
+                "ENCODING_MODEL": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "cl100k_base",
                     "allowedValues": ["cl100k_base", "p50k_base", "r50k_base"],

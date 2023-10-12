@@ -9,7 +9,7 @@ INPUT_EXAMPLE = {
 
 class TiktokenLengthClassifierModel(BaseModel):
     text: str
-    encding_model: str = "cl100k_base"
+    encoding_model: str = "cl100k_base"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
