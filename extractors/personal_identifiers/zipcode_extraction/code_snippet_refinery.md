@@ -2,12 +2,14 @@
 import re
 from typing import List
 
-ATTRIBUTE: str = "text" # only text attributes.
-COUNTRY_IDS: List[str] = ["US"] # see list below for more countries
+ATTRIBUTE: str = "text"  # only text attributes.
+COUNTRY_IDS: List[str] = ["US"]  # see list below for more countries
 LABEL: str = "zip code"
 
+
 def zipcode_extraction(record):
-    text = record[ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
+    # SpaCy doc, hence we need to use .text to get the string.
+    text = record[ATTRIBUTE].text
 
     for country_id in COUNTRY_IDS:
         for match in zip_codes[country_id].finditer(text):
@@ -15,6 +17,7 @@ def zipcode_extraction(record):
             span = record[ATTRIBUTE].char_span(start, end, alignment_mode="expand")
 
             yield LABEL, span.start, span.end
+
 
 zip_regex_lookup = {
     "GB": r"GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BH|BL|BN|BR|BS|BT|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\d{1,4}",
@@ -174,8 +177,10 @@ zip_regex_lookup = {
     "TC": r"TKCA 1ZZ",
     "WF": r"986\d{2}",
     "XK": r"\d{5}",
-    "YT": r"976\d{2}"
+    "YT": r"976\d{2}",
 }
 zip_codes = {
-    country_id:re.compile(zip_regex_lookup[country_id]) for country_id in COUNTRY_IDS}
+    country_id: re.compile(zip_regex_lookup[country_id]) for country_id in COUNTRY_IDS
+}
+
 ```
