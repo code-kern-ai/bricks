@@ -2,17 +2,15 @@
 import requests
 
 ATTRIBUTE: str = "text" # only text attributes
-API_KEY: str = "<API_KEY_GOES_HERE>"
+MODEL_NAME: str = "KernAI/multilingual-e5-communication-style"
+REQUEST_URL: str = "https://free.api.kern.ai/inference"
 
 def communication_style_classifier(record):
-    text = record[ATTRIBUTE].text
-    url = ""
-
-    data = {}
-    headers = {}
-    params = {}
-
-    response = requests.post(search_url, headers=headers, params=params, data=data)
-    response.raise_for_status()
-    return response.json()
+    payload = {
+        "name_model": MODEL_NAME,
+        "text": record[ATTRIBUTE].text
+    }      
+    response = requests.post(REQUEST_URL, json=payload)
+    if response.ok:
+        return response.json()["label"]
 ```

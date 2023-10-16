@@ -1,6 +1,6 @@
 from util.configs import build_classifier_function_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from .. import communication_style_classifier, INPUT_EXAMPLE
+from . import communication_style_classifier, INPUT_EXAMPLE
 
 
 def get_config():
@@ -23,15 +23,21 @@ def get_config():
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "text",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
-                "API_KEY": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "<API_KEY_GOES_HERE>",
+                "MODEL_NAME": {
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "KernAI/multilingual-e5-communication-style",
+                    "addInfo": [
+                        BricksVariableType.GENERIC_STRING.value
+                    ]
+                },
+                "REQUEST_URL": {
+                    "selectionType": SelectionType.STRING.value,
+                    "defaultValue": "https://free.api.kern.ai/inference",
                     "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
                     ]

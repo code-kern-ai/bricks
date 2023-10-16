@@ -1,20 +1,21 @@
 ```python
 import requests
 
-def communication_style_classifier(text: str, api_key: str) -> str:
+def communication_style_classifier(text: str, model_name: str, request_url: str = "https://free.api.kern.ai/inference") -> str:
     """
     @param text: text with a user query you want to classify
+    @param model_name: Name of a model provided by Kern AI
+    @param request_url: URL to the API endpoint of Kern AI
     @return: returns either 'keyword-question', 'interrogative-question' or 'statement-question' 
     """
-    url = ""
-
-    data = {}
-    headers = {}
-    params = {}
-
-    response = requests.post(search_url, headers=headers, params=params, data=data)
-    response.raise_for_status()
-    return response.json()
+    payload = {
+        "name_model": model_name,
+        "text": text
+    }      
+    response = requests.post(request_url, json=payload)
+    if response.ok:
+        return response.json()["label"]
+    return response.raise_for_status()
 
 
 # ↑ necessary bricks function 
@@ -22,11 +23,12 @@ def communication_style_classifier(text: str, api_key: str) -> str:
 # ↓ example implementation 
 
 
+model_name = "KernAI/multilingual-e5-communication-style"
+
 def example_integration():
-    texts = ["Travel documents Germany", "What is the content of these documents about?", "Tell me the summary of the provided references."]
+    texts = ["Travel documents Germany", "Super bowl 2023", "Is this a document related to travel insurance?", "Tell me the summary of the provided references."]
     for text in texts:
-        print(f"the sentiment of \"{text}\" is \"{communication_style_classifier(text)}\"")
+        print(f"the sentiment of \"{text}\" is \"{communication_style_classifier(text, model_name=model_name)}\"")
 
 example_integration()
-
 ```
