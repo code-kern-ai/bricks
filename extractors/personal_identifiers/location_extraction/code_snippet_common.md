@@ -35,9 +35,9 @@ def example_integration():
     for text in texts:
         found = location_extraction(text, extraction_keyword)
         if found:
-            print(f"text: \"{text}\" has {label} -> {found}")
+            print(f"text: \"{text}\" has {extraction_keyword} -> {found}")
         else:
-            print(f"text: \"{text}\" doesn't have {label}")
+            print(f"text: \"{text}\" doesn't have {extraction_keyword}")
 
 example_integration()
 ```
