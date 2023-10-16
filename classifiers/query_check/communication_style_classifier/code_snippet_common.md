@@ -6,7 +6,7 @@ def communication_style_classifier(text: str, model_name: str, request_url: str 
     @param text: text with a user query you want to classify
     @param model_name: Name of a model provided by Kern AI
     @param request_url: URL to the API endpoint of Kern AI
-    @return: returns either 'keyword-question', 'interrogative-question' or 'statement-question' 
+    @return: returns either 'action-seeking', 'fact-oriented', 'information-seeking' or 'self-revealing'.
     """
     payload = {
         "name_model": model_name,
