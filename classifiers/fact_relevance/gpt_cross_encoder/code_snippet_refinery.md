@@ -35,10 +35,6 @@ def gpt_cross_encoder(record):
                     Answer ONLY with the score itself (i.e. a number between 0 and 100).
                     If you answer with more than one number between 0 and 100, I will not process your output!""",
             },
-            # {
-            #     "role": "user",
-            #     "content": f"Text to classify: {text}",
-            # },
         ],
         temperature=TEMPERATURE,
     )
