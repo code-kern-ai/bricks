@@ -18,6 +18,10 @@ from .dates_and_times import (
     workday_classifier,
 )
 
+from .fact_relevance import (
+    gpt_cross_encoder
+)
+
 from .sentiment import (
     textblob_sentiment,
     vader_sentiment_classifier,
@@ -62,7 +66,8 @@ for module in [
     deberta_review_classifier, 
     bert_sentiment_german,
     special_character_classifier,
-    chunked_sentence_complexity
+    chunked_sentence_complexity,
+    gpt_cross_encoder
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
