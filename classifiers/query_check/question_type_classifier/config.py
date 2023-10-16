@@ -20,6 +20,7 @@ def get_config():
         integrator_inputs={
             "name": "question_type_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
+            "outputs": ["keyword-question", "statement-question", "interrogative-question"],
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
