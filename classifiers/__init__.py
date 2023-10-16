@@ -9,6 +9,10 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
+from .query_check import (
+    communication_style_classifier
+)
+
 from .reference_quality import (
     special_character_classifier,
     chunked_sentence_complexity,
@@ -62,7 +66,8 @@ for module in [
     deberta_review_classifier, 
     bert_sentiment_german,
     special_character_classifier,
-    chunked_sentence_complexity
+    chunked_sentence_complexity,
+    communication_style_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
