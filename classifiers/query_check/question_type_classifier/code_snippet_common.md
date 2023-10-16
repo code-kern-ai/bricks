@@ -1,7 +1,7 @@
 ```python
 import requests
 
-def communication_style_classifier(text: str, model_name: str, request_url: str = "https://free.api.kern.ai/inference") -> str:
+def question_type_classifier(text: str, model_name: str, request_url: str = "https://free.api.kern.ai/inference") -> str:
     """
     @param text: text with a user query you want to classify
     @param model_name: Name of a model provided by Kern AI
@@ -28,7 +28,7 @@ model_name = "KernAI/multilingual-e5-question-type"
 def example_integration():
     texts = ["Travel documents Germany", "Give me documents related to travel insurance.", "What is the content of these documents about?"]
     for text in texts:
-        print(f"the sentiment of \"{text}\" is \"{communication_style_classifier(text, model_name=model_name)}\"")
+        print(f"the sentiment of \"{text}\" is \"{question_type_classifier(text, model_name=model_name)}\"")
 
 example_integration()
 ```
