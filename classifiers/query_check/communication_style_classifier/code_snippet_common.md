@@ -26,7 +26,7 @@ def communication_style_classifier(text: str, model_name: str, request_url: str 
 model_name = "KernAI/multilingual-e5-communication-style"
 
 def example_integration():
-    texts = ["Travel documents Germany", "Super bowl 2023", "Is this a document related to travel insurance?", "Tell me the summary of the provided references."]
+    texts = ["Change the number in row 2 and 3.", "Can you show me some data from the references?", "I am super happy today."]
     for text in texts:
         print(f"the sentiment of \"{text}\" is \"{communication_style_classifier(text, model_name=model_name)}\"")
 

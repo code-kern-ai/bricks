@@ -2,7 +2,7 @@ from pydantic import BaseModel
 import requests
 
 INPUT_EXAMPLE = {
-    "text": "Sushi restaurants Barcelona",
+    "text": "Change the number in row 2 and 3.",
     "model_name": "KernAI/multilingual-e5-communication-style",
 }
 
