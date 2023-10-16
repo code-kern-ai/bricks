@@ -21,6 +21,7 @@ def get_config():
         integrator_inputs={
             "name": "gpt_cross_encoder",
             "refineryDataType": RefineryDataType.TEXT.value,
+            "outputs": ["Yes", "No"]
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
