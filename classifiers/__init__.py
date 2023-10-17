@@ -65,7 +65,6 @@ for module in [
     word_count_classifier,
     chunked_sentence_complexity,
     special_character_classifier,
-    chunked_sentence_complexity
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

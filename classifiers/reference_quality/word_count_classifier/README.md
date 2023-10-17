@@ -1,2 +1,2 @@
-This simple bricks counts the amount of words in a string by splitting it. If there are less than five words found, it returns "short". If there are less than 20, it returns "medium" 
+This simple brick counts the amount of words in a string by splitting it. If there are less than five words found, it returns "short". If there are less than 20, it returns "medium" 
 and with more than 20, it returns "long". This brick can be used to check the quality of references for RAG (Retrieval Augmented Generation) use cases.
