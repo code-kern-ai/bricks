@@ -1,15 +1,14 @@
 from util.configs import build_extractor_function_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from . import address_extraction, INPUT_EXAMPLE
+from . import location_extraction, INPUT_EXAMPLE
 
 
 def get_config():
     return build_extractor_function_config(
-        # strapi information
-        function=address_extraction,
+        function=location_extraction,
         input_example=INPUT_EXAMPLE,
-        issue_id=62,
-        tabler_icon="AddressBook",
+        issue_id=369,
+        tabler_icon="Location",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="python_function",
@@ -17,14 +16,16 @@ def get_config():
         part_of_group=[
             "personal_identifiers",
         ],  # first entry should be parent directory
-        # bricks integrator information
+        # bricks integrator information 
+        cognition_init_mapping={
+            "@@LABEL@@": "Location"
+        },       
         integrator_inputs={
-            "name": "address_extraction",
+            "name": "location_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value,
@@ -32,8 +33,7 @@ def get_config():
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "address",
-                    "optional": "false",
+                    "defaultValue": "location",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value,
