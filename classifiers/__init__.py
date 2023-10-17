@@ -9,8 +9,11 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
-from .reference_quality import (
+from .reference_complexity import (
     tiktoken_length_classifier,
+)
+
+from .reference_quality import (
     special_character_classifier,
     chunked_sentence_complexity,
 )

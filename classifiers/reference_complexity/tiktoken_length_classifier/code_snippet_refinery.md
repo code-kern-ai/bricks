@@ -10,9 +10,9 @@ def tiktoken_length_classifier(record):
     tokens = encoding.encode(record[ATTRIBUTE].text)
     num_tokens = len(tokens)
 
-    if num_tokens < 64:
+    if num_tokens < 128:
         return "short"
-    elif num_tokens < 256:
+    elif num_tokens < 1024:
         return "medium"
     else:
         return "long"

@@ -21,9 +21,9 @@ def tiktoken_length_classifier(req: TiktokenLengthClassifierModel):
     tokens = encoding.encode(req.text)
     num_tokens = len(tokens)
 
-    if num_tokens < 64:
+    if num_tokens < 128:
         return {"token_length": "short"}
-    elif num_tokens < 256:
+    elif num_tokens < 1024:
         return {"token_length": "medium"}
     else:
         return{"token_length": "long"} 

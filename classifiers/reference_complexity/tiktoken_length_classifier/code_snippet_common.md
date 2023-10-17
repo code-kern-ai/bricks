@@ -11,9 +11,9 @@ def tiktoken_length_classifier(text: str, encoding_model: str = "cl100k_base") -
     tokens = encoding.encode(text)
     num_tokens = len(tokens)
 
-    if num_tokens < 64:
+    if num_tokens < 128:
         return "short"
-    elif num_tokens < 256:
+    elif num_tokens < 1024:
         return "medium"
     else:
         return "long"
