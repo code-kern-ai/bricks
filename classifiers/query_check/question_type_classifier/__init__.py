@@ -18,7 +18,7 @@ class QuestionTypeClassifierModel(BaseModel):
 def question_type_classifier(req: QuestionTypeClassifierModel):
     """Uses custom E5 model to classify the question type of a text"""
     payload = {
-        "name_model": req.model_name,
+        "model_name": req.model_name,
         "text": req.text
     }      
     response = requests.post("https://free.api.kern.ai/inference", json=payload)

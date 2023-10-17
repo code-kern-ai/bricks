@@ -7,7 +7,7 @@ REQUEST_URL: str = "https://free.api.kern.ai/inference"
 
 def question_type_classifier(record):
     payload = {
-        "name_model": MODEL_NAME,
+        "model_name": MODEL_NAME,
         "text": record[ATTRIBUTE].text
     }      
     response = requests.post(REQUEST_URL, json=payload)
