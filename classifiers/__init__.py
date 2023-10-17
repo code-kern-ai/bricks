@@ -9,8 +9,8 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
-from .communication_style import (
-    communication_style_classifier
+from .question_type import (
+    question_type_classifier
 )
 
 from .reference_quality import (
@@ -67,7 +67,7 @@ for module in [
     bert_sentiment_german,
     special_character_classifier,
     chunked_sentence_complexity,
-    communication_style_classifier
+    question_type_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
