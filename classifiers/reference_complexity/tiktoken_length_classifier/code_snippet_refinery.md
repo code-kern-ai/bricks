@@ -11,9 +11,9 @@ def tiktoken_length_classifier(record):
     num_tokens = len(tokens)
 
     if num_tokens < 128:
-        return "short"
+        return "Short"
     elif num_tokens < 1024:
-        return "medium"
+        return "Medium"
     else:
-        return "long"
+        return "Long"
 ```
