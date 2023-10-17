@@ -9,6 +9,10 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
+from .question_type import (
+    question_type_classifier
+)
+
 from .reference_quality import (
     word_count_classifier,
     special_character_classifier,
@@ -65,6 +69,8 @@ for module in [
     word_count_classifier,
     chunked_sentence_complexity,
     special_character_classifier,
+    chunked_sentence_complexity,
+    question_type_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
