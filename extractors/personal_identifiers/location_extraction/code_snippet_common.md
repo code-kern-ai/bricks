@@ -9,7 +9,7 @@ def load_spacy(spacy_model):
     return loaded_models[spacy_model]
 
 
-def location_extraction(text: str, extraction_keyword: str, spacy_model: str = "en_core_web_sm") -> List[Tuple[str, int]]:
+def location_extraction(text: str, extraction_keyword: str, spacy_model: str = "en_core_web_sm") -> List[Tuple[str, int, int]]:
     """
     @param text: the input text
     @param extraction_keyword: the label that is assigned to extracted words
