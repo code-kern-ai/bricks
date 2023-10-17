@@ -4,6 +4,45 @@ import spacy
 from typing import List, Tuple
 
 
+
+loaded_models = {}
+def load_spacy(spacy_model):
+    if spacy_model not in loaded_models:  
+        loaded_models[spacy_model] = spacy.load(spacy_model)
+    return loaded_models[spacy_model]
+
+compiled_regex = {}
+
+def get_regex(country_id:str):
+    global compiled_regex
+
+    if country_id not in compiled_regex:
+        r = zip_regex_lookup.get(country_id)
+        if not r:
+            raise Exception("unknown country ISO code")
+        compiled_regex[country_id] = re.compile(r)
+    return compiled_regex[country_id]
+
+
+def zipcode_extraction(text: str, extraction_keyword: str, country_id: str, spacy_model: str = "en_core_web_sm") -> List[Tuple[str, int, int]]:
+    """
+    @param text: the input text
+    @param extraction_keyword: the label that is assigned to extracted words
+    @param country_id: ISO code of a country
+    @return: extracted zip code positions
+    """
+    nlp = load_spacy(spacy_model)
+    doc = nlp(text)
+
+    regex = get_regex(country_id)
+
+    zipcode_positions = []
+    for match in regex.finditer(text):
+        start, end = match.span()
+        span = doc.char_span(start, end, alignment_mode="expand")
+        zipcode_positions.append((extraction_keyword, span.start, span.end))
+    return zipcode_positions
+
 zip_regex_lookup = {
     "GB": r"GIR[ ]?0AA|((AB|AL|B|BA|BB|BD|BH|BL|BN|BR|BS|BT|CA|CB|CF|CH|CM|CO|CR|CT|CV|CW|DA|DD|DE|DG|DH|DL|DN|DT|DY|E|EC|EH|EN|EX|FK|FY|G|GL|GY|GU|HA|HD|HG|HP|HR|HS|HU|HX|IG|IM|IP|IV|JE|KA|KT|KW|KY|L|LA|LD|LE|LL|LN|LS|LU|M|ME|MK|ML|N|NE|NG|NN|NP|NR|NW|OL|OX|PA|PE|PH|PL|PO|PR|RG|RH|RM|S|SA|SE|SG|SK|SL|SM|SN|SO|SP|SR|SS|ST|SW|SY|TA|TD|TF|TN|TQ|TR|TS|TW|UB|W|WA|WC|WD|WF|WN|WR|WS|WV|YO|ZE)(\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}))|BFPO[ ]?\d{1,4}",
     "JE": r"JE\d[\dA-Z]?[ ]?\d[ABD-HJLN-UW-Z]{2}",
@@ -164,44 +203,6 @@ zip_regex_lookup = {
     "XK": r"\d{5}",
     "YT": r"976\d{2}"
 }
-
-loaded_models = {}
-def load_spacy(spacy_model):
-    if spacy_model not in loaded_models:  
-        loaded_models[spacy_model] = spacy.load(spacy_model)
-    return loaded_models[spacy_model]
-
-compiled_regex = {}
-
-def get_regex(country_id:str):
-    global compiled_regex
-
-    if country_id not in compiled_regex:
-        r = zip_regex_lookup.get(country_id)
-        if not r:
-            raise Exception("unknown country ISO code")
-        compiled_regex[country_id] = re.compile(r)
-    return compiled_regex[country_id]
-
-
-def zipcode_extraction(text: str, extraction_keyword: str, country_id: str, spacy_model: str = "en_core_web_sm") -> List[Tuple[str, int, int]]:
-    """
-    @param text: the input text
-    @param extraction_keyword: the label that is assigned to extracted words
-    @param country_id: ISO code of a country
-    @return: extracted zip code positions
-    """
-    nlp = load_spacy(spacy_model)
-    doc = nlp(text)
-
-    regex = get_regex(country_id)
-
-    zipcode_positions = []
-    for match in regex.finditer(text):
-        start, end = match.span()
-        span = doc.char_span(start, end, alignment_mode="expand")
-        zipcode_positions.append((extraction_keyword, span.start, span.end))
-    return zipcode_positions
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------
