@@ -20,7 +20,7 @@ def get_config():
         integrator_inputs={
             "name": "communication_style_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
-            "outputs": ["action-seeking", "fact-oriented", "information-seeking", "self-revealing"],
+            "outputs": ["Action-seeking", "Fact-oriented", "Information-seeking", "Self-revealing"],
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
