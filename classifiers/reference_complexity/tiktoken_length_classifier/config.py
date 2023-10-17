@@ -15,18 +15,13 @@ def get_config():
         type="python_function",
         available_for=["refinery", "common"],
         part_of_group=[
-            "reference_quality",
+            "reference_complexity",
         ],  # first entry should be parent directory
-        cognition_init_mapping={
-            "short": "Needs fix",
-            "medium": "Sufficient",
-            "long": "Needs fix"
-        },
         # bricks integrator information
         integrator_inputs={
             "name": "tiktoken_length_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
-            "outputs": ["short", "medium", "long"],
+            "outputs": ["Short", "Medium", "Long"],
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
