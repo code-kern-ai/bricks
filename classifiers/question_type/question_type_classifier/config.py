@@ -14,7 +14,7 @@ def get_config():
         type="python_function",
         available_for=["refinery", "common"],
         part_of_group=[
-            "query_check"
+            "question_type"
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
@@ -31,7 +31,7 @@ def get_config():
                 },
                 "MODEL_NAME": {
                     "selectionType": SelectionType.STRING.value,
-                    "defaultValue": "KernAI/multilingual-e5-communication-style",
+                    "defaultValue": "KernAI/multilingual-e5-question-type",
                     "addInfo": [
                         BricksVariableType.GENERIC_STRING.value
                     ]

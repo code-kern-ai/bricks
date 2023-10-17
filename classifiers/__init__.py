@@ -9,7 +9,7 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
-from .query_check import (
+from .question_type import (
     question_type_classifier
 )
 
