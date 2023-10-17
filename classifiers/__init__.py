@@ -11,9 +11,17 @@ from .lookup_lists import lookup_list
 
 from .reference_complexity import (
     chunked_sentence_complexity,
+
+from .question_type import (
+    question_type_classifier
+)
+
+from .communication_style import (
+    communication_style_classifier
 )
 
 from .reference_quality import (
+    word_count_classifier,
     special_character_classifier,
 )
 
@@ -64,8 +72,12 @@ for module in [
     workday_classifier,
     deberta_review_classifier, 
     bert_sentiment_german,
+    word_count_classifier,
+    chunked_sentence_complexity,
     special_character_classifier,
-    chunked_sentence_complexity
+    chunked_sentence_complexity,
+    question_type_classifier,
+    communication_style_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
