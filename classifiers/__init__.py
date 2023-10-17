@@ -9,7 +9,7 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
-from .query_check import (
+from .communication_style import (
     communication_style_classifier
 )
 

@@ -14,7 +14,7 @@ def get_config():
         type="python_function",
         available_for=["refinery", "common"],
         part_of_group=[
-            "query_check"
+            "communication_style"
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
