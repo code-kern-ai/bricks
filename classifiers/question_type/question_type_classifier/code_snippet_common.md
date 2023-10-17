@@ -6,7 +6,7 @@ def question_type_classifier(text: str, model_name: str, request_url: str = "htt
     @param text: text with a user query you want to classify
     @param model_name: Name of a model provided by Kern AI
     @param request_url: URL to the API endpoint of Kern AI
-    @return: returns either 'keyword-question', 'interrogative-question' or 'statement-question' 
+    @return: returns either 'Keyword-query', 'Interrogative-query' or 'Statement-query' 
     """
     payload = {
         "model_name": model_name,
