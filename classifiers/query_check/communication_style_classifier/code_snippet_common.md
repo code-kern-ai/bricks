@@ -9,7 +9,7 @@ def communication_style_classifier(text: str, model_name: str, request_url: str 
     @return: returns either 'action-seeking', 'fact-oriented', 'information-seeking' or 'self-revealing'.
     """
     payload = {
-        "name_model": model_name,
+        "model_name": model_name,
         "text": text
     }      
     response = requests.post(request_url, json=payload)
@@ -28,7 +28,7 @@ model_name = "KernAI/multilingual-e5-communication-style"
 def example_integration():
     texts = ["Change the number in row 2 and 3.", "Can you show me some data from the references?", "I am super happy today."]
     for text in texts:
-        print(f"the sentiment of \"{text}\" is \"{communication_style_classifier(text, model_name=model_name)}\"")
+        print(f"the communication style of \"{text}\" is \"{communication_style_classifier(text, model_name=model_name)}\"")
 
 example_integration()
 ```
