@@ -9,9 +9,12 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
+from .reference_complexity import (
+    chunked_sentence_complexity,
+)
+
 from .reference_quality import (
     special_character_classifier,
-    chunked_sentence_complexity,
 )
 
 from .dates_and_times import (
