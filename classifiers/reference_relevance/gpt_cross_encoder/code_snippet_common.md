@@ -33,7 +33,7 @@ def gpt_cross_encoder(reference: str, question: str, api_key:str, api_base: str 
                     If a reference is directly related to the topic of the question (e.g. directly or even by implying consequences), it is "Relevant".
                     If there is no connection, it is "Irrelevant". In case of doubt, the reference is "Irrelevant".
 
-                        Feference: {fact}
+                        Reference: {reference}
                         Question: {question}
 
                     Determine the relevance. Give a score from 0 to 100 for this (100 would be a straight answer to the question). 
