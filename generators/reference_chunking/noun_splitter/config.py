@@ -1,10 +1,10 @@
-from util.configs import build_generator_premium_config
+from util.configs import build_generator_function_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
 from . import noun_splitter, INPUT_EXAMPLE
 
 
 def get_config():
-    return build_generator_premium_config(
+    return build_generator_function_config(
         function=noun_splitter,
         input_example=INPUT_EXAMPLE,
         issue_id=384,
