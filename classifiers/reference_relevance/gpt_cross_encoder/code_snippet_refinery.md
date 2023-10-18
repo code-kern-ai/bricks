@@ -2,13 +2,13 @@
 import openai
 import os 
 
-QUESTION: str = "text" 
+QUESTION: str = "text" # only text attributes
 REFERENCE: str = "reference"
 API_KEY: str = "<API_KEY_GOES_HERE>"
-API_BASE: str = "https://api.openai.com/v1"
-API_TYPE: str = "open_ai" # or 'azure'
-API_VERSION: str = None
-ENGINE: str = None
+API_BASE: str = "https://api.openai.com/v1" # Optional: Unique URL of your Azure OpenAI service.
+API_TYPE: str = "open_ai" # Optional: Use 'azure' if you are using the Azure service.
+API_VERSION: str = None # Optional: Only needed when using the Azure service. Current version can be checked here: https://learn.microsoft.com/en-us/azure/ai-services/openai/reference
+ENGINE: str = None # Optional: Only needed when using the Azure service. With Azure, this is the unique deployment name of your model.
 TEMPERATURE: float = 0.0
 
 openai.api_key = API_KEY
