@@ -17,6 +17,7 @@ from .paths import (
 )
 
 from .reference_chunking import (
+    newline_splitter,
     noun_splitter
 )
 
@@ -100,6 +101,7 @@ for module in [
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
+    newline_splitter,
     noun_splitter
 ]:
     module_name = module.__name__.split(".")[-1]
