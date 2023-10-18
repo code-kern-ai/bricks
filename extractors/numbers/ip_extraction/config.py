@@ -19,7 +19,7 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information   
         cognition_init_mapping={
-            "@@LABEL@@": "IP-address"
+            "@@LABEL@@": "IP Address"
         },
         integrator_inputs={
             "name": "ip_extraction",
@@ -35,7 +35,7 @@ def get_config():
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "IP-address",
+                    "defaultValue": "IP Address",
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
