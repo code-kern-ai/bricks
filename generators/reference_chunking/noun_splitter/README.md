@@ -1,0 +1,1 @@
+Uses spaCy to find nouns in a texts and returns a list of all nouns in a text. This can be used to create an embedding list or use the nouns as pointers to retrieve the original text in a RAG use-case.
