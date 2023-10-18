@@ -3,10 +3,10 @@ import requests
 
 def question_type_classifier(text: str, model_name: str, request_url: str = "https://free.api.kern.ai/inference") -> str:
     """
-    @param text: text with a user query you want to classify
+    @param text: text with a user question you want to classify
     @param model_name: Name of a model provided by Kern AI
     @param request_url: URL to the API endpoint of Kern AI
-    @return: returns either 'keyword-question', 'interrogative-question' or 'statement-question' 
+    @return: returns either 'Keyword-question', 'Interrogative-question' or 'Statement-question' 
     """
     payload = {
         "model_name": model_name,
