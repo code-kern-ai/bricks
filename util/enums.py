@@ -37,3 +37,4 @@ class RefineryDataType(Enum):
     INTEGER = "integer"
     FLOAT = "float"
     BOOLEAN = "boolean"
+    EMBEDDING_LIST = "embedding_list"
