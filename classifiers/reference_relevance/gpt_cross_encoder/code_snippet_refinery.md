@@ -2,8 +2,8 @@
 import openai
 import os 
 
-ATTRIBUTE: str = "text" 
-FACT: str = "fact"
+QUESTION: str = "text" 
+REFERENCE: str = "reference"
 API_KEY: str = "<API_KEY_GOES_HERE>"
 API_BASE: str = "https://api.openai.com/v1"
 API_TYPE: str = "open_ai" # or 'azure'
@@ -24,12 +24,12 @@ def gpt_cross_encoder(record):
             {
                 "role": "system",
                 "content": f"""
-                    Take a breath. You are assessing the relevance of question-fact pairs.
-                    If a fact is directly related to the topic of the question (e.g. directly or even by implying consequences), it is "Relevant".
-                    If there is no connection, it is "Irrelevant". In case of doubt, the fact is "Irrelevant".
+                    Take a breath. You are assessing the relevance of question-reference pairs.
+                    If a reference is directly related to the topic of the question (e.g. directly or even by implying consequences), it is "Relevant".
+                    If there is no connection, it is "Irrelevant". In case of doubt, the reference is "Irrelevant".
 
-                        Fact: {record[FACT].text}
-                        Question: {record[ATTRIBUTE].text}
+                        Reference: {record[REFERENCE].text}
+                        Question: {record[QUESTION].text}
 
                     Determine the relevance. Give a score from 0 to 100 for this (100 would be a straight answer to the question). 
                     Answer ONLY with the score itself (i.e. a number between 0 and 100).

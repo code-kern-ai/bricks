@@ -18,7 +18,7 @@ from .dates_and_times import (
     workday_classifier,
 )
 
-from .fact_relevance import (
+from .reference_relevance import (
     gpt_cross_encoder
 )
 

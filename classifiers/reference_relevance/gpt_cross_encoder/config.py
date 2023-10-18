@@ -14,7 +14,7 @@ def get_config():
         type="premium",
         available_for=["refinery", "common"],
         part_of_group=[
-            "fact_relevance",
+            "reference_relevance",
             "llm",
         ],  # first entry should be parent directory
         # bricks integrator information
@@ -23,16 +23,16 @@ def get_config():
             "refineryDataType": RefineryDataType.TEXT.value,
             "outputs": ["Yes", "No"],
             "variables": {
-                "ATTRIBUTE": {
+                "QUESTION": {
                     "selectionType": SelectionType.CHOICE.value,
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value
                     ]
                 },
-                "FACT": {
+                "REFERENCE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "fact",
+                    "defaultValue": "reference",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value
