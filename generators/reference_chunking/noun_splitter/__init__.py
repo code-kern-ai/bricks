@@ -6,7 +6,7 @@ INPUT_EXAMPLE = {
     "spacy_model": "en_core_web_sm"
 }
 
-class NounChunkerModel(BaseModel):
+class NounSplitterModel(BaseModel):
     text: str
     spacy_model: str
 
@@ -14,7 +14,7 @@ class NounChunkerModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def noun_splitter(req: NounChunkerModel):
+def noun_splitter(req: NounSplitterModel):
     """Creates embedding chunks based on the nouns in a text"""
     nlp = SpacySingleton.get_nlp(req.spacy_model)
     doc = nlp(req.text)
