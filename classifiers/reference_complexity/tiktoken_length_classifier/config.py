@@ -18,6 +18,11 @@ def get_config():
             "reference_complexity",
         ],  # first entry should be parent directory
         # bricks integrator information
+        cognition_init_mapping={
+            "Short": "Low",
+            "Medium": "Medium",
+            "Long": "High"
+        },
         integrator_inputs={
             "name": "tiktoken_length_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
