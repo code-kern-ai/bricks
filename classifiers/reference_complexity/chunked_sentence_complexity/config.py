@@ -14,18 +14,18 @@ def get_config():
         type="python_function",
         available_for=["refinery", "common"],
         part_of_group=[
-            "reference_quality",
+            "reference_complexity",
             "text_analysis"
         ],  # first entry should be parent directory
         # bricks integrator information
         cognition_init_mapping={
-            "very easy": "null",
-            "easy": "null",
-            "fairly easy": "null",
-            "standard": "null",
-            "fairly difficult": "Needs fix",
-            "difficult": "Needs fix",
-            "very difficult": "Needs fix",
+            "very easy": "Low",
+            "easy": "Low",
+            "fairly easy": "Low",
+            "standard": "Medium",
+            "fairly difficult": "Medium",
+            "difficult": "High",
+            "very difficult": "High",
         },
         integrator_inputs={
             "name": "chunked_sentence_complexity",
