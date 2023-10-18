@@ -1,5 +1,5 @@
 ```python
-ATTRIBUTE = "text" # only text attributes
+ATTRIBUTE: str = "text" # only text attributes
 
 def noun_splitter(record):
     nouns_sents = []
