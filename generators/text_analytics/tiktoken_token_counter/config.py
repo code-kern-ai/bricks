@@ -15,7 +15,7 @@ def get_config():
         type="python_function",
         available_for=["refinery", "common"],
         part_of_group=[
-            "reference_quality",
+            "text_analytics",
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={

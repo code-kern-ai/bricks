@@ -17,7 +17,7 @@ from .paths import (
 )
 
 from .reference_quality import (
-    tiktoken_token_counter
+    
 )
 
 from .search import (
@@ -47,6 +47,7 @@ from .text_analytics import (
     phonetic_soundex,
     reading_time,
     syllable_count,
+    tiktoken_token_counter
 )
 
 from .text_cleaning import html_cleanser, html_unescape
