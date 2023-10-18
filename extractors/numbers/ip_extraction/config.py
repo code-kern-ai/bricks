@@ -15,8 +15,12 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=[
             "numbers",
+            "personal_identifiers"
         ],  # first entry should be parent directory
         # bricks integrator information   
+        cognition_init_mapping={
+            "@@LABEL@@": "IP Address"
+        },
         integrator_inputs={
             "name": "ip_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,
@@ -31,7 +35,7 @@ def get_config():
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "IP-address",
+                    "defaultValue": "IP Address",
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
