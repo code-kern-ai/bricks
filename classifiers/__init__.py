@@ -10,7 +10,9 @@ from .llm import (
 from .lookup_lists import lookup_list
 
 from .reference_complexity import (
-    chunked_sentence_complexity,
+    tiktoken_length_classifier,
+    chunked_sentence_complexity
+)
 
 from .question_type import (
     question_type_classifier
@@ -36,10 +38,6 @@ from .sentiment import (
 
 from .similarity import (
     cosine_similarity,
-)
-
-from .spelling import (
-    spelling_check,
 )
 
 from .text_analysis import (
@@ -72,8 +70,8 @@ for module in [
     workday_classifier,
     deberta_review_classifier, 
     bert_sentiment_german,
+    tiktoken_length_classifier,
     word_count_classifier,
-    chunked_sentence_complexity,
     special_character_classifier,
     chunked_sentence_complexity,
     question_type_classifier,
