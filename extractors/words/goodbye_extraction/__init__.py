@@ -25,7 +25,7 @@ def goodbye_extraction(request: GoodbyeExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
-    regex = re.compile(r"((?:((?i)good)(?:[ ])?)?((?i)bye)|(?i)Ciao|(?:((?i)see you)(?:[ ]?)((?i)tomorrow|later|soon)?))")
+    regex = re.compile(r"((?:(good)(?:[ ])?)?(bye)|Ciao|(?:(see you)(?:[ ]?)(tomorrow|later|soon)?))", re.IGNORECASE)
 
     farewell = []
     for match in regex.finditer(text):

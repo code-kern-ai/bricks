@@ -8,42 +8,25 @@ INPUT_EXAMPLE = {
     "spacyTokenizer": "en_core_web_sm",
 }
 
-
 class PercentageExtractionModel(BaseModel):
     text: str
-    regex: str = r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)%"
     spacyTokenizer: str = "en_core_web_sm"
-    yourLabel: str = "percentage"
 
     class Config:
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
 def percentage_extraction(request: PercentageExtractionModel):
-    """Extracts percentages from a given text."""
+    """Extracts the Percentages from a text"""
+
+    text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
-    doc = nlp(request.text)
+    doc = nlp(text)
+    regex = re.compile(r"(?:[\d-]{17}|[\d-]{13})")
 
-    matches = []
-
-    def regex_search(pattern, string):
-        """
-        some helper function to easily iterate over regex matches
-        """
-        prev_end = 0
-        while True:
-            match = re.search(pattern, string)
-            if not match:
-                break
-
-            start, end = match.span()
-            yield start + prev_end, end + prev_end
-
-            prev_end += end
-            string = string[end:]
-
-    for start, end in regex_search(request.regex, request.text):
+    p = []
+    for match in regex.finditer(text):
+        start, end = match.span()
         span = doc.char_span(start, end, alignment_mode="expand")
-        matches.append([request.yourLabel, span.start, span.end])
-
-    return {f"{request.yourLabel}s": matches}
+        p.append([span.start, span.end, span.text])
+    return {"percentages": p}

@@ -22,7 +22,7 @@ def url_extraction(request: UrlExtractionModel):
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
 
-    regex_pattern = re.compile(r"(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+")
+    regex_pattern = re.compile(r"(?:(?:(?:https?|ftp):\/\/){1})?[\w\-\/?=%.]{3,}\.[\/\w\-&?=%.]{2,}")
     regex_pattern.findall(text)
 
     urls = []
