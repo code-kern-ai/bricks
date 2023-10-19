@@ -25,6 +25,7 @@ from .communication_style import (
 from .reference_quality import (
     word_count_classifier,
     special_character_classifier,
+    sentence_complete_classifier
 )
 
 from .dates_and_times import (
@@ -75,7 +76,8 @@ for module in [
     special_character_classifier,
     chunked_sentence_complexity,
     question_type_classifier,
-    communication_style_classifier
+    communication_style_classifier,
+    sentence_complete_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
