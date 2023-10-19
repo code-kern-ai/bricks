@@ -1,1 +1,1 @@
-Uses spaCy to find nouns in a texts and returns a list of all nouns in a text. This can be used to create an embedding list or use the nouns as pointers to retrieve the original text in a RAG use-case.
+Uses spaCy to find nouns in a texts and returns them in a list. In RAG use-cases, it can be a successful strategy to conduct a similarity search only on the nouns. This can be done in refinery by using this brick to create an embedding list.

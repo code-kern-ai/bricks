@@ -19,11 +19,11 @@ def noun_splitter(req: NounSplitterModel):
     nlp = SpacySingleton.get_nlp(req.spacy_model)
     doc = nlp(req.text)
 
-   nouns_sents = set()
+    nouns_sents = set()
     for sent in doc.sents:
         for token in sent:
             if token.pos_ == "NOUN" and len(token.text) > 1:
-                nouns_sents.add(token.text)
+                nouns_sents.add(token.text)               
                 
     return {"nouns": list(nouns_sents)}
 
