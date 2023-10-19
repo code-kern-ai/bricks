@@ -14,7 +14,7 @@ class SentenceCompleteClassifierModel(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 def sentence_complete_classifier(req: SentenceCompleteClassifierModel):
-    """Classify wether or not a text is complete"""
+    """Classify whether or not a text is complete"""
     nlp = SpacySingleton.get_nlp(req.spacy_model)
     doc = nlp(req.text)
 
