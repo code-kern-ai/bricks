@@ -15,8 +15,8 @@ def sentence_complete_classifier(text: str, spacy_model: str = "en_core_web_sm")
     """
     nlp = load_spacy(spacy_model)
     doc = nlp(text)
-    classifications = []
 
+    classifications = []
     for sent in doc.sents:
         if sent[0].is_title and sent[-1].is_punct:
             has_noun = 2
@@ -36,6 +36,8 @@ def sentence_complete_classifier(text: str, spacy_model: str = "en_core_web_sm")
     # Aggregation logic
     if all(classification == "complete" for classification in classifications):
         return "complete"
+    elif all(classification == "incomplete" for classification in classifications):
+        return "incomplete"
     elif any(classification == "incomplete" for classification in classifications):
         return "partly complete"
 
@@ -47,7 +49,7 @@ def sentence_complete_classifier(text: str, spacy_model: str = "en_core_web_sm")
 def example_integration():
     texts = [
         "This is a complete sentence written by me!",
-        "The first sentence I have written is complete! However, the second one...
+        "The first sentence I have written is complete! However, the second one...",
         "and they rand over here and then"
     ]
     for text in texts: 
