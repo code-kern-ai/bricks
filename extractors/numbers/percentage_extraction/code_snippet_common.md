@@ -14,12 +14,12 @@ def percentage_extraction(text: str, extraction_keyword:str) -> List[Tuple[str, 
 
     regex = re.compile(r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)%")
     
-    isbn_positions = []
+    percentage_positions = []
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end, alignment_mode="expand")
-        isbn_positions.append((extraction_keyword, span.start, span.end))
-    return isbn_positions
+        percentage_positions.append((extraction_keyword, span.start, span.end))
+    return percentage_positions
 
 # ↑ necessary bricks function 
 # -----------------------------------------------------------------------------------------

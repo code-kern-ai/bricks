@@ -22,11 +22,11 @@ def percentage_extraction(request: PercentageExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
-    regex = re.compile(r"(?:[\d-]{17}|[\d-]{13})")
-
+    regex = re.compile(r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)%")
+    print(text,flush=True)
     p = []
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end, alignment_mode="expand")
-        p.append([span.start, span.end, span.text])
+        p.append(["percentage", span.start, span.end])
     return {"percentages": p}

@@ -31,6 +31,6 @@ def goodbye_extraction(request: GoodbyeExtractionModel):
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end, alignment_mode="expand")
-        farewell.append(["span", span.start, span.end])
+        farewell.append(["farewellWords", span.start, span.end])
 
     return {"farewellWords": farewell}
