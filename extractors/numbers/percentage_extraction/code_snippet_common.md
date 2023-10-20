@@ -12,7 +12,7 @@ def percentage_extraction(text: str, extraction_keyword:str) -> List[Tuple[str, 
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 
-    regex = re.compile(r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)%")
+    regex = re.compile(r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)\s*%")
     
     percentage_positions = []
     for match in regex.finditer(text):

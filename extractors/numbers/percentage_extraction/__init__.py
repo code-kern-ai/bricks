@@ -1,4 +1,3 @@
-
 from pydantic import BaseModel
 from extractors.util.spacy import SpacySingleton
 import re
@@ -7,6 +6,7 @@ INPUT_EXAMPLE = {
     "text": "percentages 110% are found -.5% at 42,13% positions 1, 5 and 8",
     "spacyTokenizer": "en_core_web_sm",
 }
+
 
 class PercentageExtractionModel(BaseModel):
     text: str
@@ -22,11 +22,10 @@ def percentage_extraction(request: PercentageExtractionModel):
     text = request.text
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
-    regex = re.compile(r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)%")
-    print(text,flush=True)
-    p = []
+    regex = re.compile(r"(-?\d+(?:[.,]\d*)?|-?[.,]\d+)\s*%")
+    percentages = []
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end, alignment_mode="expand")
-        p.append(["percentage", span.start, span.end])
-    return {"percentages": p}
+        percentages.append(["percentage", span.start, span.end])
+    return {"percentages": percentages}
