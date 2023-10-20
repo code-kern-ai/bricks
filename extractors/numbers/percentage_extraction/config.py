@@ -31,19 +31,12 @@ def get_config():
                 },
                 "LABEL": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "defaultValue": "isbn",
+                    "defaultValue": "percentage",
                     "optional": "false",
                     "addInfo": [
                         BricksVariableType.LABEL.value,
                         BricksVariableType.GENERIC_STRING.value,
                     ],
-                },
-                "REGEX": {
-                    "selectionType": SelectionType.STRING.value,
-                    "defaultValue": "(-?\d+(?:[.,]\d*)?|-?[.,]\d+)%",
-                    "description": "Choose any regex here",
-                    "optional": "false",
-                    "addInfo": [BricksVariableType.REGEX.value],
                 },
             },
         },
