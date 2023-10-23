@@ -1,0 +1,1 @@
+Uses OpenAI's tiktoken tokenizer library to count the amount of tokens in a string. The tokenizer is used for the GPT models and converts words into integers. The conversion is reversible and lossless, meaning that a tokenized sentence can be converted back. This brick returns the amount of tokens in a given text.
