@@ -28,6 +28,8 @@ from .dates_and_times import (
     workday_classifier,
 )
 
+from .reference_relevance import gpt_cross_encoder
+
 from .sentiment import (
     textblob_sentiment,
     vader_sentiment_classifier,
@@ -71,6 +73,7 @@ for module in [
     word_count_classifier,
     special_character_classifier,
     chunked_sentence_complexity,
+    gpt_cross_encoder,
     maximum_sentence_complexity,
     question_type_classifier,
     communication_style_classifier,
