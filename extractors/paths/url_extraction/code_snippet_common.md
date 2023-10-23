@@ -12,7 +12,7 @@ def url_extraction(text: str, extraction_keyword: str) -> List[Tuple[str, int]]:
     npl = spacy.load("en_core_web_sm")
     doc = npl(text)
 
-    regex_pattern = re.compile(r"(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-&?=%.]+")  
+    regex_pattern = re.compile(r"(?:(?:(?:https?|ftp):\/\/){1})?[\w\-\/?=%.]{3,}\.[\/\w\-&?=%.]{2,}")  
 
     url_positions = []   
     for match in regex_pattern.finditer(text):

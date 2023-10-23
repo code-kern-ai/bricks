@@ -2,7 +2,7 @@
 import re
 
 ATTRIBUTE: str = "text" # only text attributes
-LABEL: str = "IP-address"
+LABEL: str = "IP Address"
 
 def ip_extraction(record):
     regex = re.compile(r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b")
