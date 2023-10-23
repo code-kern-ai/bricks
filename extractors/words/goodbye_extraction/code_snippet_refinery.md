@@ -5,7 +5,7 @@ ATTRIBUTE: str = "text" # only text attributes
 LABEL: str = "goodbye"
 
 def goodbye_extraction(record):
-    regex = re.compile(r"((?:((?i)good)(?:[ ])?)?((?i)bye)|(?i)Ciao|(?:((?i)see you)(?:[ ]?)((?i)tomorrow|later|soon)?))")
+    regex = re.compile(r"((?:(good)(?:[ ])?)?(bye)|Ciao|(?:(see you)(?:[ ]?)(tomorrow|later|soon)?))", re.IGNORECASE)
     text = record[ATTRIBUTE].text # SpaCy doc, hence we need to use .text to get the string.
     
     for match in regex.finditer(text):

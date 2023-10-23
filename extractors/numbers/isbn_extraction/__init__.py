@@ -28,5 +28,5 @@ def isbn_extraction(request: IsbnExtractionModel):
     for match in regex.finditer(text):
         start, end = match.span()
         span = doc.char_span(start, end, alignment_mode="expand")
-        isbn.append([span.start, span.end, span.text])
+        isbn.append(["isbn", span.start, span.end])
     return {"isbn": isbn}

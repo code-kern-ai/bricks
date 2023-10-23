@@ -9,9 +9,22 @@ from .llm import (
 
 from .lookup_lists import lookup_list
 
+from .reference_complexity import (
+    tiktoken_length_classifier,
+    chunked_sentence_complexity
+)
+
+from .question_type import (
+    question_type_classifier
+)
+
+from .communication_style import (
+    communication_style_classifier
+)
+
 from .reference_quality import (
+    word_count_classifier,
     special_character_classifier,
-    chunked_sentence_complexity,
 )
 
 from .dates_and_times import (
@@ -25,10 +38,6 @@ from .sentiment import (
 
 from .similarity import (
     cosine_similarity,
-)
-
-from .spelling import (
-    spelling_check,
 )
 
 from .text_analysis import (
@@ -61,8 +70,12 @@ for module in [
     workday_classifier,
     deberta_review_classifier, 
     bert_sentiment_german,
+    tiktoken_length_classifier,
+    word_count_classifier,
     special_character_classifier,
-    chunked_sentence_complexity
+    chunked_sentence_complexity,
+    question_type_classifier,
+    communication_style_classifier
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
