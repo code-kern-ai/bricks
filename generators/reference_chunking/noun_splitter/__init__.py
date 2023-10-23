@@ -3,8 +3,9 @@ from extractors.util.spacy import SpacySingleton
 
 INPUT_EXAMPLE = {
     "text": "My favorite noun is 'friend'.",
-    "spacy_model": "en_core_web_sm"
+    "spacy_model": "en_core_web_sm",
 }
+
 
 class NounSplitterModel(BaseModel):
     text: str
@@ -23,7 +24,6 @@ def noun_splitter(req: NounSplitterModel):
     for sent in doc.sents:
         for token in sent:
             if token.pos_ == "NOUN" and len(token.text) > 1:
-                nouns_sents.add(token.text)               
-                
-    return {"nouns": list(nouns_sents)}
+                nouns_sents.add(token.text)
 
+    return {"nouns": list(nouns_sents)}
