@@ -22,16 +22,16 @@ def gpt_cross_encoder(reference: str, question: str, api_key:str, api_base: str 
     openai.api_type = api_type
     openai.api_version = api_version
 
-    score = gpt_relevance_score(question, reference, temperature, engine)
+    score = gpt_relevance_score(question, reference, temperature, model, engine)
 
     if score > 50:
         return "Yes"
     return "No"
 
 
-def gpt_relevance_score(question: str, reference: str, temperature: float, engine: str) -> int:
+def gpt_relevance_score(question: str, reference: str, temperature: float, model: str, engine: str) -> int:
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model=model,
         engine=engine,
         messages=[
             {
@@ -41,7 +41,7 @@ def gpt_relevance_score(question: str, reference: str, temperature: float, engin
                     If a reference is directly related to the topic of the question (e.g. directly or even by implying consequences), it is "Relevant".
                     If there is no connection, it is "Irrelevant". In case of doubt, the reference is "Irrelevant".
 
-                        Reference: Reference: {reference}
+                        Reference: {reference}
                         Question: {question}
 
                     Determine the relevance. Give a score from 0 to 100 for this (100 would be a straight answer to the question).
