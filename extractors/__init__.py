@@ -44,6 +44,7 @@ from .paths import (
 )
 
 from .personal_identifiers import (
+    location_extraction,
     address_extraction,
     email_extraction,
     person_extraction,
@@ -109,6 +110,7 @@ for module in [
     bic_extraction,
     deberta_ner_extraction,
     bert_ner_extraction,
+    location_extraction,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (

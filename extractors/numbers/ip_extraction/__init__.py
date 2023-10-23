@@ -22,7 +22,6 @@ def ip_extraction(request: IpExtractionModel):
     nlp = SpacySingleton.get_nlp(request.spacyTokenizer)
     doc = nlp(text)
     regex = re.compile(r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b")
-    regex.findall(text)
 
     ip_addresses = []
     for match in regex.finditer(text):

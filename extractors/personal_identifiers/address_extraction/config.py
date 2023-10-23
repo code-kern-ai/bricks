@@ -11,13 +11,16 @@ def get_config():
         issue_id=62,
         tabler_icon="AddressBook",
         min_refinery_version="1.7.0",
-        state=State.DRAFT.value,
+        state=State.PUBLIC.value,
         type="python_function",
         available_for=["refinery", "common"],
         part_of_group=[
             "personal_identifiers",
         ],  # first entry should be parent directory
         # bricks integrator information
+        cognition_init_mapping={
+            "@@LABEL@@": "Address"
+        },
         integrator_inputs={
             "name": "address_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,

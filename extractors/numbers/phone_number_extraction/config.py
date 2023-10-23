@@ -15,8 +15,12 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=[
             "numbers",
+            "personal_identifiers"
         ],  # first entry should be parent directory
         # bricks integrator information
+        cognition_init_mapping={
+            "@@LABEL@@": "Phone number"
+        },
         integrator_inputs={
             "name": "phone_number_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,

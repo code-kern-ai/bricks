@@ -16,7 +16,10 @@ def get_config():
         part_of_group=[
             "personal_identifiers",
         ],  # first entry should be parent directory
-        # bricks integrator information        
+        # bricks integrator information  
+        cognition_init_mapping={
+            "@@LABEL@@": "Person"
+        },
         integrator_inputs={
             "name": "person_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,
