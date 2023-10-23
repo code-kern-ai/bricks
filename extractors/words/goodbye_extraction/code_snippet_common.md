@@ -12,7 +12,7 @@ def goodbye_extraction(text: str, extraction_keyword: str) -> List[Tuple[str,int
     nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
 
-    regex = re.compile(r"((?:((?i)good)(?:[ ])?)?((?i)bye)|(?i)Ciao|(?:((?i)see you)(?:[ ]?)((?i)tomorrow|later|soon)?))")
+    regex = re.compile(r"((?:(good)(?:[ ])?)?(bye)|Ciao|(?:(see you)(?:[ ]?)(tomorrow|later|soon)?))", re.IGNORECASE)
 
     goodbye_positions = []
     for match in regex.finditer(text):

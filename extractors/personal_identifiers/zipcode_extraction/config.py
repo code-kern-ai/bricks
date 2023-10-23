@@ -17,6 +17,9 @@ def get_config():
             "personal_identifiers",
         ],  # first entry should be parent directory
         # bricks integrator information
+        cognition_init_mapping={
+            "@@LABEL@@": "Zip code"
+        },
         integrator_inputs={
             "name": "zipcode_extraction",
             "refineryDataType": RefineryDataType.TEXT.value,
