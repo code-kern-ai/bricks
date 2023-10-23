@@ -23,6 +23,14 @@ def gpt_cross_encoder(req: GptCrossEncoderModel):
     """Uses GPT as a cross-encoder to get the relevance of a reference to a question"""
     openai.api_key = req.api_key
 
+    score = gpt_relevance_score(req.question, req.reference, req.temperature)
+
+    if score > 50:
+        return "Yes"
+    return "No"
+
+
+def gpt_relevance_score(question: str, reference: str, temperature: float) -> int:
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -33,18 +41,14 @@ def gpt_cross_encoder(req: GptCrossEncoderModel):
                     If a reference is directly related to the topic of the question (e.g. directly or even by implying consequences), it is "Relevant".
                     If there is no connection, it is "Irrelevant". In case of doubt, the reference is "Irrelevant".
 
-                        Reference: {req.reference}
-                        Question: {req.question}
+                        Reference: Reference: {reference}
+                        Question: {question}
 
-                    Determine the relevance. Give a score from 0 to 100 for this (100 would be a straight answer to the question). 
+                    Determine the relevance. Give a score from 0 to 100 for this (100 would be a straight answer to the question).
                     Answer ONLY with the score itself (i.e. a number between 0 and 100).
                     If you answer with more than one number between 0 and 100, I will not process your output!""",
             },
         ],
-        temperature=req.temperature,
+        temperature=temperature,
     )
-    answer = response["choices"][0]["message"]["content"]
-
-    if int(answer) > 50:
-        return "Yes"
-    return "No"
+    return int(response["choices"][0]["message"]["content"])

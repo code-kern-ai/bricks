@@ -25,33 +25,30 @@ def get_config():
             "variables": {
                 "QUESTION": {
                     "selectionType": SelectionType.CHOICE.value,
+                    "defaultValue": "question",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "REFERENCE": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "reference",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "API_KEY": {
                     "selectionType": SelectionType.STRING.value,
                     "defaultValue": "<API_KEY_GOES_HERE>",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "API_BASE": {
                     "selectionType": SelectionType.STRING.value,
                     "defaultValue": "https://api.openai.com/v1",
                     "optional": "true",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "API_TYPE": {
                     "selectionType": SelectionType.CHOICE.value,
@@ -59,31 +56,23 @@ def get_config():
                     "allowedValues": ["open_ai", "azure"],
                     "description": "or 'azure'",
                     "optional": "true",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "API_VERSION": {
                     "selectionType": SelectionType.STRING.value,
                     "optional": "true",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "ENGINE": {
                     "selectionType": SelectionType.STRING.value,
                     "optional": "true",
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
                 },
                 "TEMPERATURE": {
                     "selectionType": SelectionType.FLOAT.value,
                     "defaultValue": 0,
-                    "addInfo": [
-                        BricksVariableType.GENERIC_FLOAT.value
-                    ]
-                }
-            }
-        }
+                    "addInfo": [BricksVariableType.GENERIC_FLOAT.value],
+                },
+            },
+        },
     )
