@@ -1,31 +1,28 @@
 from fastapi import APIRouter
 
 from .llm import (
-    gpt_classifier, 
+    gpt_classifier,
     deberta_review_classifier,
     bert_sentiment_german,
-    distilbert_stock_news_classifier
+    distilbert_stock_news_classifier,
 )
 
 from .lookup_lists import lookup_list
 
 from .reference_complexity import (
+    maximum_sentence_complexity,
     tiktoken_length_classifier,
-    chunked_sentence_complexity
+    chunked_sentence_complexity,
 )
 
-from .question_type import (
-    question_type_classifier
-)
+from .question_type import question_type_classifier
 
-from .communication_style import (
-    communication_style_classifier
-)
+from .communication_style import communication_style_classifier
 
 from .reference_quality import (
     word_count_classifier,
     special_character_classifier,
-    sentence_complete_classifier
+    sentence_complete_classifier,
 )
 
 from .dates_and_times import (
@@ -69,15 +66,16 @@ for module in [
     textblob_subjectivity,
     distilbert_stock_news_classifier,
     workday_classifier,
-    deberta_review_classifier, 
+    deberta_review_classifier,
     bert_sentiment_german,
     tiktoken_length_classifier,
     word_count_classifier,
     special_character_classifier,
     chunked_sentence_complexity,
+    maximum_sentence_complexity,
     question_type_classifier,
     communication_style_classifier,
-    sentence_complete_classifier
+    sentence_complete_classifier,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
