@@ -1,14 +1,14 @@
 from util.configs import build_generator_function_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from . import newline_splitter, INPUT_EXAMPLE
+from . import noun_splitter, INPUT_EXAMPLE
 
 
 def get_config():
     return build_generator_function_config(
-        function=newline_splitter,
+        function=noun_splitter,
         input_example=INPUT_EXAMPLE,
-        issue_id=367,
-        tabler_icon="Slice",
+        issue_id=384,
+        tabler_icon="ArrowMerge",
         min_refinery_version="1.7.0",
         state=State.PUBLIC.value,
         type="python_function",
@@ -18,18 +18,16 @@ def get_config():
         ],  # first entry should be parent directory
         # bricks integrator information
         integrator_inputs={
-            "name": "newline_splitter",
+            "name": "noun_splitter",
             "refineryDataType": RefineryDataType.EMBEDDING_LIST.value,
             "variables": {
                 "ATTRIBUTE": {
                     "selectionType": SelectionType.CHOICE.value,
-                    "optional": "false",
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value,
                     ],
                 },
-
             },
         },
     )

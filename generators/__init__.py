@@ -16,7 +16,7 @@ from .paths import (
     domain_parser,
 )
 
-from .reference_chunking import newline_splitter
+from .reference_chunking import newline_splitter, noun_splitter
 
 from .search import (
     bing_news_search,
@@ -99,8 +99,9 @@ for module in [
     bert_toxicity_detector,
     gpt_grammar_correction,
     gpt_tldr_summarization,
-    tiktoken_token_counter,
     newline_splitter,
+    tiktoken_token_counter,
+    noun_splitter,
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
