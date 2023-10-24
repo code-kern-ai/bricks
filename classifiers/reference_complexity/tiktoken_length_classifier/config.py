@@ -16,13 +16,10 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=[
             "reference_complexity",
+            "question_complexity",
         ],  # first entry should be parent directory
         # bricks integrator information
-        cognition_init_mapping={
-            "Short": "Low",
-            "Medium": "Medium",
-            "Long": "High"
-        },
+        cognition_init_mapping={"Short": "Low", "Medium": "Medium", "Long": "High"},
         integrator_inputs={
             "name": "tiktoken_length_classifier",
             "refineryDataType": RefineryDataType.TEXT.value,
@@ -32,17 +29,15 @@ def get_config():
                     "selectionType": SelectionType.CHOICE.value,
                     "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
+                        BricksVariableType.GENERIC_STRING.value,
+                    ],
                 },
                 "ENCODING_MODEL": {
                     "selectionType": SelectionType.CHOICE.value,
                     "defaultValue": "cl100k_base",
                     "allowedValues": ["cl100k_base", "p50k_base", "r50k_base"],
-                    "addInfo": [
-                        BricksVariableType.GENERIC_STRING.value
-                    ]
-                }
-            }
-        }
+                    "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                },
+            },
+        },
     )
