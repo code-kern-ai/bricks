@@ -15,7 +15,8 @@ def get_config():
         available_for=["refinery", "common"],
         part_of_group=[
             "reference_complexity",
-            "text_analysis"
+            "question_complexity",
+            "text_analysis",
         ],  # first entry should be parent directory
         # bricks integrator information
         cognition_init_mapping={
