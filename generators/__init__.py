@@ -110,7 +110,7 @@ for module in [
     exec(
         f"""
 @router.post("/{module_name}")
-async def api_{module_name}(request: {module_name}.{model_name}):
+def api_{module_name}(request: {module_name}.{model_name}):
     return {module_name}.{module_name}(request)
     """
     )
