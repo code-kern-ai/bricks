@@ -1,11 +1,11 @@
 from util.configs import build_generator_function_config
 from util.enums import State, RefineryDataType, BricksVariableType, SelectionType
-from . import nltk_ngram, INPUT_EXAMPLE
+from . import nltk_ngram_generator, INPUT_EXAMPLE
 
 
 def get_config():
     return build_generator_function_config(
-        function=nltk_ngram,
+        function=nltk_ngram_generator,
         input_example=INPUT_EXAMPLE,
         issue_id=279,
         tabler_icon="Transform",
