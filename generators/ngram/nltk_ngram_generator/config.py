@@ -17,17 +17,27 @@ def get_config():
             "ngram",
         ],  # first entry should be parent directory
         # bricks integrator information
-        integrator_inputs={
-            "name": "nltk_ngram_generator",
-            "refineryDataType": RefineryDataType.TEXT.value,
-            "variables": {
-                "ATTRIBUTE": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "addInfo": [
-                        BricksVariableType.ATTRIBUTE.value,
-                        BricksVariableType.GENERIC_STRING.value,
-                    ],
-                }
-            },
+integrator_inputs={
+    "name": "nltk_ngram_generator",
+    "refineryDataType": RefineryDataType.TEXT.value,
+    "variables": {
+        "ATTRIBUTE": {
+            "selectionType": SelectionType.CHOICE.value,
+            "description": "only text fields",
+            "optional": "false",
+            "addInfo": [
+                BricksVariableType.ATTRIBUTE.value,
+                BricksVariableType.GENERIC_STRING.value
+            ]
         },
+        "NGRAM_SIZE": {
+            "selectionType": SelectionType.INTEGER.value,
+            "defaultValue": 2,
+            "optional": "false",
+            "addInfo": [
+                BricksVariableType.GENERIC_INT.value
+            ]
+        }
+    }
+}
     )
