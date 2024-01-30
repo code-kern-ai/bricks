@@ -65,6 +65,10 @@ from .llm import (
 
 from .sentiment import vader_sentiment_scores
 
+from .ngram import (
+    nltk_ngram_generator
+)
+
 router = APIRouter()
 
 for module in [
@@ -102,6 +106,7 @@ for module in [
     newline_splitter,
     tiktoken_token_counter,
     noun_splitter,
+    nltk_ngram_generator,  
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
