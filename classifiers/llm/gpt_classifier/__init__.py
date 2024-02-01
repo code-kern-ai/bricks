@@ -1,4 +1,5 @@
 import openai
+from litellm import completion
 from pydantic import BaseModel
 from typing import List
 
@@ -27,7 +28,7 @@ def gpt_classifier(req: GptClassifierModel):
 
     openai.api_key = req.apiKey
     try:
-        response = openai.ChatCompletion.create(
+        response = completion(
             model="gpt-3.5-turbo",
             messages=[
                 {

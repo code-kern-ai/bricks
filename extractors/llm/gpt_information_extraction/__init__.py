@@ -1,6 +1,7 @@
 import re
 import ast
 import openai
+from litellm import completion
 from extractors.util.spacy import SpacySingleton
 from pydantic import BaseModel
 
@@ -28,7 +29,7 @@ def gpt_information_extraction(req: GptInformationExtractionModel):
     """Uses OpenAI's GPT model to extract keyword from a text."""
     openai.api_key = req.apiKey
     try: 
-        response = openai.ChatCompletion.create(
+        response = completion(
             model = "gpt-3.5-turbo",
             messages = [
                 {
