@@ -1,35 +1,36 @@
+import requests
+from extractors.util.spacy import SpacySingleton
 from pydantic import BaseModel
-from LeXmo import LeXmo
 
 INPUT_EXAMPLE = {
-    "text": """As Harry went inside the Chamber of Secrets, he discovered the Basilisk's layer. Before him stood Tom
-            Riddle, with his wand. Harry was numb for a second as if he had seen a ghost. Moments later the giant 
-            snake attacked Harry but fortunately, Harry dodged and ran into one of the sewer lines while the serpent 
-            followed. The Basilisk couldn't be killed with bare hands but only with a worthy weapon."""
+      "text": "I did not know that you were coming! I am very glad to see you. If you would tell me sooner, I would have baked some cookies, though.",
+      "apiKey": "<API_KEY_GOES_HERE>"
 }
 
-
 class EmotionalityDetectionModel(BaseModel):
-    text: str
+      apiKey: str
+      text: str 
 
-    class Config:
-        schema_example = {"example": INPUT_EXAMPLE}
+      class Config:
+            schema_example = {"example": INPUT_EXAMPLE}
 
+def emotionality_detection(req: EmotionalityDetectionModel):
+      """huggingface model for emotion detection"""
+      headers = {"Authorization": f"Bearer {req.apiKey}"}
+      data = {"inputs": req.text}
+      try: 
+            response = requests.post("https://api-inference.huggingface.co/models/j-hartmann/emotion-english-distilroberta-base", headers=headers, json=data)
+            response_json = response.json()
 
-def emotionality_detection(request: EmotionalityDetectionModel):
-    """Fetches emotions from a given text"""
+            # flatten the list of lists
+            flat_list = [item for sublist in response_json for item in sublist]
 
-    text = request.text
-    try:
-        emo = LeXmo.LeXmo(text)
-        del emo["text"]
-        del emo["positive"]
-        del emo["negative"]
-        unique = dict(zip(emo.values(), emo.keys()))
-        if len(unique) == 1:
-            return "Cannot determine emotion"
-        else:
-            emo = max(emo, key=emo.get)
-            return {"emotion": emo}
-    except ValueError:
-        return "Valid text required"
+            # find the item with the highest score
+            max_item = max(flat_list, key=lambda x: x["score"])
+
+            # retrieve the label of the item with the highest score
+            max_label = max_item["label"]
+
+            return max_label
+      except Exception as e: 
+            return f"That didn't work. Did you provide a valid API key? Go error: {e} and message: {response_json}"

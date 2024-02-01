@@ -17,28 +17,31 @@ def get_config():
             "text_analysis",
         ],  # first entry should be parent directory
         # bricks integrator information
-        integrator_inputs={
+              integrator_inputs={
             "name": "emotionality_detection",
             "refineryDataType": RefineryDataType.TEXT.value,
-            "globalComment": "Only for english text.\nWorks best with longer texts since scores for each word are accumulated.",
             "outputs": [
-                "anger",
-                "fear",
-                "anticipation",
-                "trust",
-                "surprise",
-                "sadness",
-                "joy",
-                "disgust",
+                  "anger", 
+                  "disgust",
+                  "fear",
+                  "joy",
+                  "sadness", 
+                  "neutral",
+                  "suprise"
             ],
             "variables": {
-                "ATTRIBUTE": {
-                    "selectionType": SelectionType.CHOICE.value,
-                    "addInfo": [
+                  "API_KEY": {
+                        "selectionType": SelectionType.STRING.value,
+                        "defaultValue": "<API_KEY_GOES_HERE>",
+                        "addInfo": [BricksVariableType.GENERIC_STRING.value],
+                  },
+                  "ATTRIBUTE": {
+                        "selectionType": SelectionType.CHOICE.value,
+                        "addInfo": [
                         BricksVariableType.ATTRIBUTE.value,
                         BricksVariableType.GENERIC_STRING.value,
-                    ],
-                }
+                        ],
+                  },
             },
-        },
-    )
+      },
+)
