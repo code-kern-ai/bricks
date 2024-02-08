@@ -7,7 +7,7 @@ INPUT_EXAMPLE = {"text": "Bright violets grow along the stream.",
                  "language_code": "eng-Latn"}
 
 
-class PhoneticTranscription(BaseModel):
+class PhoneticTranscriptorModel(BaseModel):
     text: str
     language_code: str
 
@@ -15,7 +15,7 @@ class PhoneticTranscription(BaseModel):
         schema_extra = {"example": INPUT_EXAMPLE}
 
 
-def phonetic_transcriptor(req: PhoneticTranscription):
+def phonetic_transcriptor(req: PhoneticTranscriptorModel):
     """Generates phonetic transcription of each word from a given text. """
     text = req.text
     language_code = req.language_code
