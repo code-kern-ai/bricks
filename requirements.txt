@@ -29,3 +29,5 @@ scikit-optimize==0.9.0
 holidays==0.21.13
 sumy==0.11.0
 tiktoken==0.4.0
+epitran==1.24
+jieba==0.42.1

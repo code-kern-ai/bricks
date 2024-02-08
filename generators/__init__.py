@@ -69,6 +69,8 @@ from .ngram import (
     nltk_ngram_generator
 )
 
+from .phonetic_transcription import phonetic_transcriptor
+
 router = APIRouter()
 
 for module in [
@@ -106,7 +108,8 @@ for module in [
     newline_splitter,
     tiktoken_token_counter,
     noun_splitter,
-    nltk_ngram_generator,  
+    nltk_ngram_generator,
+    phonetic_transcriptor
 ]:
     module_name = module.__name__.split(".")[-1]
     model_name = (
