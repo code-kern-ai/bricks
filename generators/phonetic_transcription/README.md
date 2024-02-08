@@ -1,1 +1,0 @@
-Reduces all tokens in a text to their base form with the use of a vocabulary and morphological analysis of the tokens. Uses a spaCy model, see official documentation here: https://spacy.io/api/lemmatizer

@@ -1,4 +1,9 @@
 ```python
+import epitran
+import jieba
+import re
+import json
+
 ATTRIBUTE: str = "text"
 LANGUAGE_CODE: str = "eng-Latn"
 
@@ -16,8 +21,8 @@ def phonetic_transcriptor(record):
         cedict_path = "cedict_1_0_ts_utf-8_mdbg.txt"
         epi = epitran.Epitran(LANGUAGE_CODE, cedict_file=cedict_path)             
         result = [epi.transliterate(token) for token in tokens]
-        return {"tokens": tokens,
-                "phonetic_transcriptions": result}
+        return json.dumps({"tokens": tokens,
+                "phonetic_transcriptions": result}, ensure_ascii=False)
 
     if language_group == 'Arab':
         # Tokenize Arabic script using regex
@@ -73,7 +78,7 @@ def phonetic_transcriptor(record):
     
     epi = epitran.Epitran(LANGUAGE_CODE)
     result = [epi.transliterate(token) for token in tokens]
-    return {"tokens": tokens,
-            "phonetic_transcriptions": result}
+    return json.dumps({"tokens": tokens,
+            "phonetic_transcriptions": result}, ensure_ascii=False)
     
 ```

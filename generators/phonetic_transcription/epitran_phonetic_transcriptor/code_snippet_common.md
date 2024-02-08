@@ -5,6 +5,23 @@ import re
 from typing import Dict, List
 
 def phonetic_transcriptor(text: str, language_code: str) -> Dict[str, List[str]]:
+    """
+    Generate phonetic transcription of words in the given text.
+
+    @param text: Text for which to generate phonetic transcription.
+    @param language_code: language codes formatted as a combination of ISO 639-3 language codes and ISO 15924 script codes, e.g. "eng-Latn". Supported languages and code formats are as in epitran library this function relies on (https://github.com/dmort27/epitran?tab=readme-ov-file#language-support). 
+    
+    @return: A dictionary with two keys:
+        - "tokens": a list of words (or tokens) extracted from the input text.
+        - "phonetic_transcriptions": a corresponding list of phonetic transcriptions for each token.
+    
+    Example:
+    >>> phonetic_transcriptor("hello world", "eng-Latn")
+    {'tokens': ['hello', 'world'], 'phonetic_transcriptions': ['həˈloʊ', 'wɜrld']}
+    
+    Note: Unsupported language codes or invalid inputs may result in errors or empty transcriptions.
+    Performance may vary based on text length and complexity.
+    """
     # Tokenize based on language group
     language_group = language_code.split('-')[1]
     # Handle the case of Chinese lanugage separatly 
