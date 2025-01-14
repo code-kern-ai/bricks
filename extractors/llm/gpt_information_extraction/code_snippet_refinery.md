@@ -1,4 +1,5 @@
 ```python
+# DISCLAIMER: this might use an outdated version of the openai package, if you encounter problems, please open an issue at https://github.com/code-kern-ai/bricks/issues
 import openai
 import re
 import json

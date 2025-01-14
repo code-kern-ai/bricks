@@ -1,5 +1,6 @@
 ```python
 
+# DISCLAIMER: this might use an outdated version of the openai package, if you encounter problems, please open an issue at https://github.com/code-kern-ai/bricks/issues
 import openai
 
 def gpt_summarizer(text:str, api_key:str, temperature:float = 0) -> str:
